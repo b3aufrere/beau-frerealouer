@@ -1,0 +1,127 @@
+<odoo>
+  <data>
+        <!-- Type Habitation -->
+        <record id="view_partner_type_habitation_form" model="ir.ui.view">
+            <field name="name">Type Habitations</field>
+            <field name="model">res.habitat</field>
+            <field name="arch" type="xml">
+                <form string="Type Habitation">
+                    <sheet>
+                        <group col="4">
+                            <field name="name" placeholder='e.g. "Consulting Services"'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_partner_type_habitation_liste" model="ir.ui.view">
+            <field name="name">Type Habitations</field>
+            <field name="model">res.habitat</field>
+            <field eval="6" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Type Habitation">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+<!--         <record id="view_partner_type_habitation_search" model="ir.ui.view">
+            <field name="name">Type.Habitations.search</field>
+            <field name="model">res.habitat</field>
+            <field name="arch" type="xml">
+                <search string="Search Type Habitation">
+                    <field name="name"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record> -->
+
+        <!-- Type Client Maison -->
+        <record id="view_type_client_maison_form" model="ir.ui.view">
+            <field name="name">Type Client Maison</field>
+            <field name="model">res.client.type</field>
+            <field name="arch" type="xml">
+                <form string="Type Client">
+                    <sheet>
+                        <group col="4">
+                            <field name="name" placeholder='e.g. "Consulting Services"'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_type_client_maison_liste" model="ir.ui.view">
+            <field name="name">Type Client Maison</field>
+            <field name="model">res.client.type</field>
+            <field eval="6" name="priority"/>
+            <field name="arch" type="xml">
+                <tree string="Type Client">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+<!--         <record id="view_type_client_maison_search" model="ir.ui.view">
+            <field name="name">Type.Habitations.search</field>
+            <field name="model">res.client.type</field>
+            <field name="arch" type="xml">
+                <search string="Search Type Client">
+                    <field name="name"/>
+                    <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                </search>
+            </field>
+        </record> -->
+
+
+        <!-- Res Partner Inherited -->
+
+    <record id="res_partner_view_form_customfields_inherit" model="ir.ui.view">
+        <field name="name">res.partner.view.form.customfields.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            
+            <field name="vat" position="before">
+                <field name='habita_type' />
+                <field name='client_type_maison' />
+                <field name='black_liste' />
+                <field name='mkg' />
+                <field name='enter_date' />
+            </field>
+            
+        </field>
+    </record>
+
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="action_type_habitation_form">
+      <field name="name">type habitation action window</field>
+      <field name="res_model">res.habitat</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_type_maison_client_form">
+      <field name="name">type Maison de client action window</field>
+      <field name="res_model">res.client.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+    <!-- menu categories -->
+
+    <menuitem action="contact_custom_fields.action_type_habitation_form" name="Type Habitation" id="contact_custom_fields.type_habitation" parent="contacts.res_partner_menu_config"/>
+
+    <menuitem  action="contact_custom_fields.action_type_maison_client_form" name="Type Maison de client" id="contact_custom_fields.type_client_maison" parent="contacts.res_partner_menu_config"/>
+
+
+
+  </data>
+</odoo>

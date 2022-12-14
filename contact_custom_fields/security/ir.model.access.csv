@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+reshabitationaccessbaseid,reshabitationaccessbase,model_res_habitat,base.group_user,1,1,1,1
+resclientmaisontypeaccessbaseid,resclientmaisontypeaccessbase,model_res_client_type,base.group_user,1,1,1,1
