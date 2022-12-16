@@ -8,7 +8,7 @@ class inheritcontact(models.Model):
 
     enter_date = fields.Date(string='Date entré')
     habita_type = fields.Many2one('res.habitat',string='Type habitation')
-    mkg = fields.Float(default='1',string='MKG')
+    mkg = fields.Boolean(string='MKG')
     client_type_maison = fields.Many2one('res.client.type',string='Type Client')
     black_liste = fields.Boolean(default=False)
 
@@ -33,6 +33,7 @@ class inheritcontact(models.Model):
     state_id = fields.Many2one('res.country.state', string='State',
 
                                  default=_get_default_state)
+
 
 
 
