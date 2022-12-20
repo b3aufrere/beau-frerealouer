@@ -89,7 +89,7 @@
                 <field name='habita_type' />
                 <field name='client_type_maison' />
                 <field name='black_liste' />
-                <field name='mkg' />
+                <field name='mkg_flag' />
                 <field name='enter_date' />
             </field>
             
