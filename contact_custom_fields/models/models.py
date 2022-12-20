@@ -8,7 +8,9 @@ class inheritcontact(models.Model):
 
     enter_date = fields.Datetime(string='Date entré', related='create_date')
     habita_type = fields.Many2one('res.habitat',string='Type habitation')
+
     mkg_flag = fields.Boolean (string="MKG",default='True')
+
     client_type_maison = fields.Many2one('res.client.type',string='Type Client')
     black_liste = fields.Boolean(default=False)
 
