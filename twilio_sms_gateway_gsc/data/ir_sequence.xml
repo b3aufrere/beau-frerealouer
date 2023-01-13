@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<!-- Send SMS Sequence Section -->
+		<record id="twilio_sms_send_seq" model="ir.sequence">
+			<field name="name">Odoo Twilio SMS Send Sequence</field>
+			<field name="code">odoo.twilio.sms.send.seq</field>
+			<field name="padding">4</field>
+			<field name="prefix">SMS/</field>
+			<field name="company_id" eval="False" />
+		</record>
+		
+		<!-- Log History Sequence Section -->
+		<record id="twilio_sms_log_history_seq" model="ir.sequence">
+			<field name="name">Odoo Twilio SMS Log History Sequence</field>
+			<field name="code">odoo.twilio.sms.log.history.seq</field>
+			<field name="padding">4</field>
+			<field name="prefix">Log/SMS/</field>
+			<field name="company_id" eval="False" />
+		</record>
+	</data>
+</odoo>

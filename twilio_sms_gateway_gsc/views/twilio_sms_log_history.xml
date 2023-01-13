@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<!-- Tree View Section -->
+	<record id="twilio_sms_log_history_tree_view" model="ir.ui.view">
+		<field name="name">twilio.sms.log.history.tree</field>
+		<field name="model">twilio.sms.log.history</field>
+		<field name="arch" type="xml">
+			<tree create="0" edit="0" decoration-success="status in ('accepted', 'queued', 'sending', 'sent', 'delivered')"
+										decoration-danger="status not in ('accepted', 'queued', 'sending', 'sent', 'delivered')">
+				<field name="name" />
+				<field name="twilio_account_id" />
+				<field name="sms_send_rec_id" />
+				<field name="mobile_number" />
+				<field name="message" />
+				<field name="message_price" optional="hide" />
+				<field name="status" optional="show" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="twilio_sms_log_history_form_view" model="ir.ui.view">
+		<field name="name">twilio.sms.log.history.form</field>
+		<field name="model">twilio.sms.log.history</field>
+		<field name="arch" type="xml">
+			<form edit="0" create="0">
+				<sheet>
+					<div class="oe_title">
+						<label class="oe_edit_only" for="name" string="SMS Log ID" />
+						<h1 class="d-flex flex-row justify-content-between">
+							<field name="name" default_focus="1" class="text-truncate" />
+						</h1>
+					</div>
+
+					<group>
+						<group>
+							<field name="twilio_account_id" />
+							<field name="sms_send_rec_id" />
+						</group>
+						<group>
+							<field name="mobile_number" />
+							<field name="message_id" />
+							<field name="message" />
+							<field name="message_price" />
+							<field name="status" />
+						</group>
+					</group>
+					
+					<group string="Failed Message Informations">
+						<group>
+							<field name="error_status_code" />
+							<field name="error_message" />
+							<field name="error_code" />
+							<field name="error_more_info" />
+						</group>
+						<group>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Action View Section -->
+	<record id="twilio_sms_log_history_action"
+		model="ir.actions.act_window">
+		<field name="name">Twilio SMS Log History</field>
+		<field name="res_model">twilio.sms.log.history</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="twilio_sms_log_history_tree_view" />
+	</record>
+
+	<!-- Child Menu Section -->
+	<menuitem id="twilio_sms_log_history_menu" name="SMS Log History"
+		parent="twilio_sms_gateway_gsc.twilio_sms_main_menu"
+		sequence="2" action="twilio_sms_log_history_action" />
+
+</odoo>

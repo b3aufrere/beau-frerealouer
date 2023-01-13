@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<!-- Tree View Section -->
+	<record id="twilio_sms_groups_tree_view" model="ir.ui.view">
+		<field name="name">twilio.sms.groups.tree</field>
+		<field name="model">twilio.sms.groups</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="active" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="twilio_sms_groups_form_view" model="ir.ui.view">
+		<field name="name">twilio.sms.groups.form</field>
+		<field name="model">twilio.sms.groups</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_view_recipients" style="width:16%"
+							type="object" class="oe_stat_button" icon="fa-users"
+							attrs="{'invisible': [('recipients_count', '=', 0)]}">
+							<field name="recipients_count" widget="statinfo"
+								string="Recipients" />
+						</button>
+					</div>
+					<widget name="web_ribbon" title="Archived"
+						bg_color="bg-danger"
+						attrs="{'invisible': [('active', '=', True)]}" />
+					<div class="oe_title">
+						<label class="oe_edit_only" for="name" string="Group Name" />
+						<h1 class="d-flex flex-row justify-content-between">
+							<field name="name" default_focus="1" class="text-truncate"
+								placeholder="e.g Top 10 Customers" />
+						</h1>
+					</div>
+
+					<group>
+						<group>
+							<field name="active" invisible="1" />
+						</group>
+						<group>
+						</group>
+					</group>
+					<notebook>
+						<page string="Recipients">
+							<field name="recipients" mode="tree" nolabel="1">
+								<tree edit="0">
+									<field name="name" />
+									<field name="mobile" />
+									<field name="email" />
+									<field name="country_id" />
+								</tree>
+							</field>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Action View Section -->
+	<record id="twilio_sms_groups_action"
+		model="ir.actions.act_window">
+		<field name="name">Twilio SMS Groups</field>
+		<field name="res_model">twilio.sms.groups</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="twilio_sms_groups_tree_view" />
+		<field name="help" type="html">
+			<div>
+				<br />
+				<p>
+					<b>There is no any Twilio SMS Group configured yet.</b>
+				</p>
+
+			</div>
+		</field>
+	</record>
+
+	<!-- Child Menu Section -->
+	<menuitem id="twilio_sms_groups_menu" name="SMS Groups"
+		parent="twilio_sms_gateway_gsc.twilio_sms_gateway_config_menu"
+		sequence="2" action="twilio_sms_groups_action" />
+
+</odoo>
