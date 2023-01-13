@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<!-- Tree View Section -->
+	<record id="twilio_sms_template_tree_view" model="ir.ui.view">
+		<field name="name">twilio.sms.template.tree</field>
+		<field name="model">twilio.sms.template</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="message" />
+				<field name="active" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="twilio_sms_template_form_view" model="ir.ui.view">
+		<field name="name">twilio.sms.template.form</field>
+		<field name="model">twilio.sms.template</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button class="oe_stat_button" name="%(twilio_sms_gateway_gsc.twilio_sms_template_preview_action)d" icon="fa-search-plus" string="Preview" 
+						type="action" target="new" attrs="{'invisible': [('model_id', '=', False)]}"/>
+					</div>
+					<widget name="web_ribbon" title="Archived"
+						bg_color="bg-danger"
+						attrs="{'invisible': [('active', '=', True)]}" />
+					<div class="oe_title">
+						<label class="oe_edit_only" for="name"
+							string="SMS Template Name" />
+						<h1 class="d-flex flex-row justify-content-between">
+							<field name="name" default_focus="1" class="text-truncate"
+								placeholder="SMS Template Name" />
+						</h1>
+						<group>
+							<field name="model_id"
+								options="{'no_create': True}" />
+							<field name="model" invisible="1"/>
+							<field name="active" invisible="1" />
+						</group>
+
+					</div>
+
+					<notebook>
+						<page string="Message" name="sms_message">
+							<field name="message" required="1" nolabel="1" />
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Action View Section -->
+	<record id="twilio_sms_template_action"
+		model="ir.actions.act_window">
+		<field name="name">Twilio SMS Template</field>
+		<field name="res_model">twilio.sms.template</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="twilio_sms_template_tree_view" />
+		<field name="help" type="html">
+			<div>
+				<br />
+				<p>
+					<b>There is no any Twilio SMS Template configured yet.</b>
+				</p>
+
+			</div>
+		</field>
+	</record>
+
+	<!-- Child Menu Section -->
+	<menuitem id="twilio_sms_template_menu" name="SMS Template"
+		parent="twilio_sms_gateway_gsc.twilio_sms_gateway_config_menu"
+		sequence="3" action="twilio_sms_template_action" />
+
+</odoo>

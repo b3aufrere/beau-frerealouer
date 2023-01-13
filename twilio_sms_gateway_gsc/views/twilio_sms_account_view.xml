@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<!-- Tree View Section -->
+	<record id="twilio_sms_gateway_account_tree_view"
+		model="ir.ui.view">
+		<field name="name">twilio.sms.gateway.account.tree</field>
+		<field name="model">twilio.sms.gateway.account</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="name" />
+				<field name="account_sid" />
+				<field name="authtoken" password="True" />
+				<field name="is_default_sms_account" />
+				<field name="state" decoration-success="state == 'confirmed'"
+					widget="badge" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="twilio_sms_gateway_account_form_view"
+		model="ir.ui.view">
+		<field name="name">twilio.sms.gateway.account.form</field>
+		<field name="model">twilio.sms.gateway.account</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<button class="btn-primary"
+						name="test_twilio_sms_connection" type="object"
+						string="Test Connection"
+						attrs="{'invisible': [('state', '!=', 'new')]}" />
+					<button class="btn-primary"
+						name="test_and_confirm_twilio_sms_account" type="object"
+						string="Test &amp; Confirm Account"
+						attrs="{'invisible': [('state', '!=', 'new')]}" />
+					<button name="reset_to_new" string="Reset To New"
+						type="object" attrs="{'invisible': [('state', '=', 'new')]}" />
+					<button name="get_twilio_account_details"
+						class="btn-primary" string="Get Account Details" type="object"
+						attrs="{'invisible': [('state', '=', 'new')]}" />
+
+					<field name="state" widget="statusbar" />
+				</header>
+				<sheet>
+					<div class="oe_button_box" name="button_box">
+						<button name="action_open_sms_send_records"
+							style="width:16%" type="object" class="oe_stat_button"
+							icon="fa-send"
+							attrs="{'invisible': [('sms_records_count', '=', 0)]}">
+							<field name="sms_records_count" widget="statinfo"
+								string="SMS Records" />
+						</button>
+						<button name="action_open_sms_account_logs_records"
+							style="width:16%" type="object" class="oe_stat_button"
+							icon="fa-tasks"
+							attrs="{'invisible': [('account_sms_logs_count', '=', 0)]}">
+							<field name="account_sms_logs_count" widget="statinfo"
+								string="SMS Logs" />
+						</button>
+					</div>
+
+					<div class="oe_title">
+						<label class="oe_edit_only" for="name" string="Account Name" />
+						<h1 class="d-flex flex-row justify-content-between">
+							<field name="name" default_focus="1" class="text-truncate"
+								placeholder="e.g Twilio"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+						</h1>
+					</div>
+
+					<group name="group_sms_account_settings">
+						<group name="group_01">
+							<field name="account_sid"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+							<field name="authtoken" password="True"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+							<field name="account_from_mobile_number"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+						</group>
+						<group name="group_02">
+							<field name="test_connection_mobile_number"
+								placeholder="+91xxxxxxxxxx"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+							<field name="is_default_sms_account" />
+							<div class="alert alert-warning" role="alert" style="width: 400% !important">
+								<b>Note:</b>
+								If you have Marked True Is Default SMS account then system
+								automatically
+								pick this account and send SMS to Customer while
+								Confirming Order and While Validating Delivery.
+								<br />
+								Else, System will pick first SMS account(If you has configured
+								multiple) then sent SMS to
+								Customer while Confirming Order and
+								Validating delivery.
+							</div>
+						</group>
+						<group string="Twilio Informations" name="group_3">
+							<field name="account_type" readonly='1' />
+							<field name="account_status" readonly='1' />
+						</group>
+					</group>
+					
+					<group string="Advanced Features">
+						<group>
+							<field name="is_confirm_so_to_send_sms"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+							<field name="sms_so_confirm_template_id"
+								options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+								attrs="{'readonly': [('state', '!=', 'new')], 'required': [('is_confirm_so_to_send_sms', '=', True)], 'invisible': [('is_confirm_so_to_send_sms', '=', False)] }" />
+						</group>
+						<group>
+							<field name="is_validate_do_to_send_sms"
+								attrs="{'readonly': [('state', '!=', 'new')]}" />
+							<field name="sms_do_validate_template_id"
+								options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+								attrs="{'readonly': [('state', '!=', 'new')], 'required': [('is_validate_do_to_send_sms', '=', True)], 'invisible': [('is_validate_do_to_send_sms', '=', False)] }" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+
+	<!-- Action View Section -->
+	<record id="twilio_sms_gateway_account_action"
+		model="ir.actions.act_window">
+		<field name="name">Twilio SMS Account</field>
+		<field name="res_model">twilio.sms.gateway.account</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_id" ref="twilio_sms_gateway_account_tree_view" />
+		<field name="help" type="html">
+			<div>
+				<br />
+				<p>
+					<b>There is no any Twilio SMS Account configured yet.</b>
+				</p>
+
+			</div>
+		</field>
+	</record>
+
+	<!-- Top Parent Menu -->
+	<!-- Main Channel Engine Menu -->
+	<menuitem id="twilio_sms_gateway_main_app_menu"
+		name="Twilio SMS Gateway" sequence="20"
+		web_icon="twilio_sms_gateway_gsc,static/description/icon.png" />
+
+	<!-- Parent/Top Menu Section -->
+	<menuitem id="twilio_sms_gateway_config_menu"
+		name="Configuration" parent="twilio_sms_gateway_main_app_menu"
+		sequence="6"
+		groups="twilio_sms_gateway_gsc.group_twilio_sms_gateway_gsc_manager" />
+
+	<!-- Child Menu Section -->
+	<menuitem id="twilio_sms_gateway_account_menu"
+		name="Twilio Accounts" parent="twilio_sms_gateway_config_menu"
+		sequence="2" action="twilio_sms_gateway_account_action" />
+
+</odoo>
