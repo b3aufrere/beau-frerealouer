@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_territory_form" model="ir.ui.view">
+            <field name="name">territory.form</field>
+            <field name="model">territory</field>
+            <field name="arch" type="xml">
+                <form string="Territoire">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="entreprise_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+
+                        <notebook>
+                            <page string="Map">
+                                <field name="map_image" widget="image" options="{'size': [1200, 1200]}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_territory_tree" model="ir.ui.view">
+            <field name="name">territory.tree</field>
+            <field name="model">territory</field>
+            <field name="arch" type="xml">
+                <tree string="Territoires">
+                    <field name="name"/>
+                    <field name="entreprise_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="action_territory_form" model="ir.actions.act_window">
+            <field name="name">Territoires</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">territory</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   action="action_territory_form" 
+                    name="Territoires"
+                    id="menu_territory" 
+                    parent="contacts.res_partner_menu_config"/>
+    </data>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+entreprise_access,entreprise_access,model_entreprise,base.group_erp_manager,1,1,1,1
+entreprise_access_others,entreprise_access_others,model_entreprise,,1,0,0,0
+territory_access,territory_access,model_territory,base.group_system,1,1,1,1
+territory_access_others,territory_access_others,model_territory,,1,0,0,0

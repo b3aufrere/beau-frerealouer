@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="add_bfal_changes_crm_lead_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_crm_lead_view_form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"></field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="territory_id"/>
+            </xpath>
+
+            <!-- <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="domain">['&amp;', ('share', '=', False), 
+                                          '&amp;', ('company_ids', 'in', user_company_ids), 
+                                          '&amp;', ('user_id', '!=', False),
+                                          '&amp;', ('user_id.employee_id', '!=', False),
+                                          '&amp;', ('user_id.employee_id.territory_id', '!=', False), ('user_id.employee_id.territory_id', '=', territory_id)]</attribute>
+            </xpath> -->
+        </field>
+    </record>
+</odoo>
