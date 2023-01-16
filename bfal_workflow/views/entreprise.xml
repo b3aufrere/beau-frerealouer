@@ -17,6 +17,7 @@
                         <page string="Information Générale" name="general_info">
                             <group>
                                 <group>
+                                    <field name="division_id" />
                                     <field name="partner_id" string="Contact" readonly="1" required="0" groups="base.group_no_one"/>
                                     <label for="street" string="Address"/>
                                     <div class="o_address_format">
@@ -114,6 +115,7 @@
         <menuitem   action="action_entreprise_form"
                     name="Entreprises" 
                     id="menu_entreprise" 
+                    sequence="30"
                     parent="base.menu_users"/>
     </data>
 </odoo>

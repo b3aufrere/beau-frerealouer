@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_division_form" model="ir.ui.view">
+            <field name="name">division.form</field>
+            <field name="model">division</field>
+            <field name="arch" type="xml">
+                <form string="Division">
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name"/>
+                            <h1>
+                                <field name="name" placeholder="par exemple : ma division"/>
+                            </h1>
+                        </div>
+                        <notebook colspan="4">
+                            <page string="Entreprises">
+                                <field name="entreprise_ids" nolabel="1"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_division_tree" model="ir.ui.view">
+            <field name="name">division.tree</field>
+            <field name="model">division</field>
+            <field name="arch" type="xml">
+                <tree string="Divisions">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_division" model="ir.actions.act_window">
+            <field name="name">Divisions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">division</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Créer nouveau Division
+                </p>
+            </field>
+        </record>
+
+        <menuitem   action="action_division"
+                    name="Divisions" 
+                    id="menu_division" 
+                    sequence="20"
+                    parent="base.menu_users"/>
+    </data>
+</odoo>

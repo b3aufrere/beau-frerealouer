@@ -8,6 +8,7 @@ class Entreprise(models.Model):
 
     name = fields.Char(related='partner_id.name', string="Nom de l'entreprise", required=True, store=True, readonly=False)
     active = fields.Boolean(default=True)
+    division_id = fields.Many2one('division', string='Division', required=True)
     partner_id = fields.Many2one('res.partner', string='Contact', required=True)
     street = fields.Char(compute='_compute_address', inverse='_inverse_street', string="Rue")
     street2 = fields.Char(compute='_compute_address', inverse='_inverse_street2', string="Rue 2")

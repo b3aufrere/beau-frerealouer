@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
 
         'views/entreprise.xml',
+        'views/division.xml',
         'views/territory.xml',
         'views/hr_employee.xml',
         'views/crm_lead.xml'
