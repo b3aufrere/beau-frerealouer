@@ -7,6 +7,26 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="territory_id"/>
+                <field name="state_name" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
+                <attribute name="attrs">{'invisible':[('state_name', 'not in', ('Assigné', 'Interne'))]}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
+                <attribute name="attrs">{'invisible':[('state_name', '!=', 'Assigné')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_crm_case_form_view_oppor" model="ir.ui.view">
+        <field name="name">add_bfal_changes_crm_case_form_view_oppor</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+                <attribute name="attrs">{'invisible':[('state_name', '!=', 'Assigné')]}</attribute>
             </xpath>
         </field>
     </record>

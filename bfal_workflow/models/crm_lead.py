@@ -15,6 +15,8 @@ class CrmLead(models.Model):
         domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]",
         check_company=True, index=True, tracking=True)
     
+    state_name = fields.Char(related='stage_id.name', store=True, readonly=False, string="Nom d'état")
+    
     @api.onchange('territory_id')
     def onchange_territory_id(self):
         for lead in self:
