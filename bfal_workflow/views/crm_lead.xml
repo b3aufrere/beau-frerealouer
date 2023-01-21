@@ -231,7 +231,7 @@
                         type="object" 
                         class="oe_highlight" 
                         title="Envoyer un mail au travailleur pour demande d'acceptation" 
-                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/>
             </xpath>
         </field>
     </record>
