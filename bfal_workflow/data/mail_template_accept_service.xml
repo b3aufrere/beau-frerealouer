@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="0">
+        <record id="mail_template_accept_service" model="mail.template">
+            <field name="name">Mail template pour demander au travailleur d'accepter le service</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="partner_to">{{ object.user_id.partner_id != False and object.user_id.partner_id.id }}</field>
+            <field name="email_to">{{ object.user_id.login }}</field>
+            <field name="subject">Demande de service - {{ object.name }}</field>
+            <field name="body_html" type="html">
+                <table border="0" cellpadding="0" cellspacing="0" style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;"><tr><td align="center">
+                <table border="0" cellpadding="0" cellspacing="0" width="590" style="padding: 24px; background-color: white; color: #454748; border-collapse:separate;">
+                <tbody>
+                    <!-- HEADER -->
+                    <tr>
+                        <td align="center" style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: white; padding: 0; border-collapse:separate;">
+                                <tr><td valign="middle">
+                                    <span style="font-size: 10px;">Demande de service</span><br/>
+                                    <span style="font-size: 20px; font-weight: bold;" t-out="object.name or ''">Intéressé par vos produits</span>
+                                </td><td valign="middle" align="right">
+                                    <img t-attf-src="/logo.png?company={{ object.company_id.id }}" style="padding: 0px; margin: 0px; height: 48px;" t-att-alt="object.company_id.name"/>
+                                </td></tr>
+                                <tr><td colspan="2" style="text-align:center;">
+                                    <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:4px 0px 32px 0px;"/>
+                                </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- CONTENT -->
+                    <tr>
+                        <td style="min-width: 590px;">
+                            <table border="0" cellpadding="0" cellspacing="0" width="590" style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                <tr>
+                                    <td valign="top" style="font-size: 13px;">
+                                        <div>
+                                            Bonjour <t t-out="object.user_id.partner_id and object.partner_id.name or '/'"/>,<br/><br/>
+                                            Nous avons une nouvelle demande de service de la part de <t t-out="object.partner_id.name or '/'"/> pour <t t-out="object.name or '/'"/>. 
+                                            <br/>
+                                            <br/>
+                                            Les détails de la demande sont les suivants :
+                                            <ul>
+                                                <li>Addresse du client : <t t-out="object.partner_id.contact_address or '/'"/></li>
+                                                <li>Date et heure de la demande : <t t-out="object.create_date.strftime('%Y-%m-%d %H:%M:%S') or '/'"/></li>
+                                                <li>Description des travaux à effectuer : <t t-out="object.description or '/'"/></li>
+                                            </ul>
+                                            Nous aimerions savoir si vous êtes disponible pour prendre en charge cette demande. 
+                                            <br/>
+                                            <div style="text-align: center; padding: 16px 0px 16px 0px;">
+                                                <a t-attf-href="https://b3aufrere-beau-frerealouer.odoo.com/web#id={{object.id}}&amp;cids=1&amp;menu_id=158&amp;action=539&amp;model=crm.lead&amp;view_type=form"
+                                                    style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+                                                    >Voir la demande</a>
+                                            </div>
+                                            Important : Votre réponse doit être transmise dans le délais habituel de 3 heures
+                                            <br/>
+                                            <br/>
+                                            Si vous avez des questions ou des préoccupations, n'hésitez pas à nous contacter.
+                                            Merci,
+                                            <br/>
+                                            <br/>
+                                            Envoyé par : <t t-out="object.env.user.name"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <!-- FOOTER -->
+                    <tr>
+                        <td align="center" style="min-width: 590px; padding: 0 8px 0 8px; font-size:11px;">
+                            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>
+                            <b t-out="object.company_id.name or ''">My Company (San Francisco)</b><br/>
+                            <div style="color: #999999;">
+                                <t t-out="object.company_id.phone or ''">+1 650-123-4567</t>
+                                <t t-if="object.company_id.email">
+                                    | <a t-attf-href="'mailto:%s' % {{ object.company_id.email }}" style="text-decoration:none; color: #999999;" t-out="object.company_id.email or ''">info@yourcompany.com</a>
+                                </t>
+                                <t t-if="object.company_id.website">
+                                    | <a t-attf-href="'%s' % {{ object.company_id.website }}" style="text-decoration:none; color: #999999;" t-out="object.company_id.website or ''">http://www.example.com</a>
+                                </t>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                </td></tr>
+                <!-- POWERED BY -->
+                <tr><td align="center" style="min-width: 590px;">
+                    Généré par <a target="_blank" href="https://www.odoo.com?utm_source=db&amp;utm_medium=email" style="color: #875A7B;">Odoo</a>
+                </td></tr>
+                </table>
+            </field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

@@ -16,9 +16,51 @@ class CrmLead(models.Model):
         check_company=True, index=True, tracking=True)
     
     state_name = fields.Char(related='stage_id.name', store=True, readonly=False, string="Nom d'état")
+
+    is_worker = fields.Boolean(default=False, compute="compute_is_worker")
+
+    is_accepted = fields.Boolean(default=False, compute="compute_is_accepted", string="Est accepté ?")
+
+    @api.onchange('sale_order_count')
+    def compute_is_accepted(self):
+        self.is_accepted = True if self.order_ids else False
+
+    @api.onchange('user_id')
+    def compute_is_worker(self):
+        self.is_worker = True if self.user_id and self.user_id.id == self.env.user.id else False
     
     @api.onchange('territory_id')
     def onchange_territory_id(self):
         for lead in self:
             if not lead.territory_id:
                 lead.user_id = False
+    
+    def action_accept_lead(self):
+        return self.action_sale_quotations_new()
+
+    def _prepare_opportunity_quotation_context(self):
+        """ Prepares the context for a new quotation (sale.order) by sharing the values of common fields """
+        self.ensure_one()
+        quotation_context = {
+            'default_opportunity_id': self.id,
+            'default_partner_id': self.partner_id.id,
+            'default_campaign_id': self.campaign_id.id,
+            'default_medium_id': self.medium_id.id,
+            'default_origin': self.name,
+            'default_source_id': self.source_id.id,
+            'default_internal_note': self.description,
+            'default_company_id': self.company_id.id or self.env.company.id,
+            'default_tag_ids': [(6, 0, self.tag_ids.ids)]
+        }
+        if self.team_id:
+            quotation_context['default_team_id'] = self.team_id.id
+        if self.user_id:
+            quotation_context['default_user_id'] = self.user_id.id
+        return quotation_context
+    
+    def action_service_send(self):
+        self.ensure_one()
+        mail_template = self.env.ref('bfal_workflow.mail_template_accept_service', raise_if_not_found=False)
+        
+        if mail_template:
+            mail_template.send_mail(self.id, force_send=True)
