@@ -34,7 +34,7 @@
                                 <tr>
                                     <td valign="top" style="font-size: 13px;">
                                         <div>
-                                            Bonjour <t t-out="object.user_id.partner_id and object.partner_id.name or '/'"/>,<br/><br/>
+                                            Bonjour <t t-out="object.user_id.partner_id and object.user_id.partner_id.name or '/'"/>,<br/><br/>
                                             Nous avons une nouvelle demande de service de la part de <t t-out="object.partner_id.name or '/'"/> pour <t t-out="object.name or '/'"/>. 
                                             <br/>
                                             <br/>
