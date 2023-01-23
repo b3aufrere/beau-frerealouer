@@ -77,6 +77,7 @@ class CrmLead(models.Model):
         if stage_id:
             res = True
             self.stage_id = stage_id.id
+            self.user_id = False
             if additional_values:
                 self.write(dict(additional_values))
         
