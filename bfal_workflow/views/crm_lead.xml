@@ -17,7 +17,15 @@
                             class="oe_highlight" 
                             title="Accepter l'opportunité" 
                             confirm="Si vous accepter, vous devez créer un devis"
-                            attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                            attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                    
+                    <button string="Non accepté" 
+                            name="action_not_accept_lead" 
+                            type="object" 
+                            class="btn-warning"
+                            context="{'not_accept': True}"
+                            attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+
                     <field name="stage_id" widget="statusbar" class="o_field_statusbar" options="{'clickable': '0'}" />
                 </header>
                 <sheet>
@@ -51,8 +59,10 @@
                                 </div>
                             </button> -->
                         </div>
-                        <widget name="web_ribbon" title="Perdu" bg_color="bg-danger" attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>
-                        <widget name="web_ribbon" title="Gagné" attrs="{'invisible': [('probability', '&lt;', 100)]}"/>
+                        <widget name="web_ribbon" title="Rejeté" bg_color="bg-danger" attrs="{'invisible': ['|', ('state_name', '!=', 'Rejeté'), ('active', '=', False)]}"/>
+                        <widget name="web_ribbon" title="Non Accepté" bg_color="bg-warning" attrs="{'invisible': ['|', ('is_accepted', '=', True), '|', ('state_name', '!=', 'Non accepté'), ('active', '=', False)]}"/>
+                        <widget name="web_ribbon" title="Accepté" attrs="{'invisible': ['|', ('probability', '!=', 100), '|', ('is_accepted', '=', False), ('active', '=', False)]}"/>
+                        <widget name="web_ribbon" title="Assigné" attrs="{'invisible': ['|', ('probability', '!=', 100), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
                         <div class="oe_title">
                             <h1><field class="text-break" readonly="1" name="name" placeholder="e.g. Product Pricing"/></h1>
                         </div>
@@ -199,7 +209,7 @@
             </xpath>
 
             <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
-                <attribute name="attrs">{'invisible':[('state_name', '!=', 'Assigné')]}</attribute>
+                <attribute name="attrs">{'invisible':[('state_name', 'in', ('Assigné', 'Interne', 'Rejeté'))]}</attribute>
                 <!-- <attribute name="invisible">1</attribute> -->
             </xpath>
         </field>
@@ -224,7 +234,14 @@
                         class="oe_highlight" 
                         title="Accepter l'opportunité" 
                         confirm="Si vous accepter, vous devez créer un devis"
-                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+
+                <button string="Non accepté" 
+                        name="action_not_accept_lead" 
+                        type="object" 
+                        class="btn-warning"
+                        context="{'not_accept': True}"
+                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
                 <button string="Envoyer un mail au travailleur" 
                         name="action_service_send" 

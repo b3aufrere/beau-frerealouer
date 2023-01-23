@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.tools.mail import is_html_empty
 
 
 class CrmLead(models.Model):
@@ -64,3 +65,22 @@ class CrmLead(models.Model):
         
         if mail_template:
             mail_template.send_mail(self.id, force_send=True)
+
+    def action_set_lost(self, **additional_values):
+        """ Lost semantic: probability = 0 or active = False """
+        stage_id = self.env['crm.stage'].search([('name', '=', 'Rejeté')])
+        if 'not_accept' in self._context:
+            stage_id = self.env['crm.stage'].search([('name', '=', 'Non accepté')])
+        
+        res = False
+
+        if stage_id:
+            res = True
+            self.stage_id = stage_id.id
+            if additional_values:
+                self.write(dict(additional_values))
+        
+        return res
+    
+    def action_not_accept_lead(self):
+        return self.env["ir.actions.actions"]._for_xml_id("crm.crm_lead_lost_action")

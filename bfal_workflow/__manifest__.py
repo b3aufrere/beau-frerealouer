@@ -7,7 +7,16 @@
     'author': 'Kamel Benchehida',
     'website': 'https://www.fiverr.com/kamelbenchehida',
 
-    'depends': ['base', 'contacts', 'hr', 'crm', 'sale_project', 'sale_crm', 'sales_team'],
+    'depends': [
+        'base', 
+        'contacts', 
+        'hr', 
+        'crm', 
+        'sale_project', 
+        'sale_crm', 
+        'sales_team',
+        'calendar',
+    ],
     
     'data': [ 
         'security/ir.model.access.csv',
@@ -18,6 +27,7 @@
         'views/territory.xml',
         'views/hr_employee.xml',
         'views/crm_lead.xml',
+        'views/sale_order.xml'
     ],
     
     'installable': True,

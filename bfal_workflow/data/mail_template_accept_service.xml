@@ -50,6 +50,9 @@
                                                 <a t-attf-href="https://b3aufrere-beau-frerealouer-dev001-7008990.dev.odoo.com/web#id={{object.id}}&amp;cids=1&amp;menu_id=222&amp;action=543&amp;model=crm.lead&amp;view_type=form"
                                                     style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
                                                     >Voir la demande</a>
+                                                <!-- <a t-attf-href="http://localhost:8096/web#id={{object.id}}&amp;cids=1&amp;menu_id=214&amp;action=422&amp;model=crm.lead&amp;view_type=form"
+                                                    style="padding: 5px 10px; color: #FFFFFF; text-decoration: none; background-color: #875A7B; border: 1px solid #875A7B; border-radius: 3px"
+                                                    >Voir la demande</a> -->
                                             </div>
                                             Important : Votre réponse doit être transmise dans le délais habituel de 3 heures
                                             <br/>
