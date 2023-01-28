@@ -22,7 +22,12 @@ class ProjectTask(models.Model):
                         'default_partner_id': self.partner_id.id if self.partner_id else False,
                         'default_company_id': self.company_id.id if self.company_id else False,
                         'default_parent_id': self.id,
-                        'default_is_fsm': True   
+                        'default_is_fsm': True,
+                        'fsm_mode': True,            
+                        'search_default_my_tasks': True,            
+                        'search_default_planned_future': True,            
+                        'search_default_planned_today': True,            
+                        'default_scale': 'day',          
                     },
                     'target': 'current',
                 }
