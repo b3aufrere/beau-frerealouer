@@ -20,6 +20,11 @@
                     <field name="meeting_count" widget="statinfo" string="Rendez-vous"/>
                 </button>
             </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="division_id"/>
+                <field name="entreprise_id"/>
+            </xpath>
         </field>
     </record>
 
