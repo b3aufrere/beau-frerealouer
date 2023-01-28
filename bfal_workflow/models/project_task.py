@@ -3,7 +3,7 @@ from odoo import models, fields, api, _
 
 
 class ProjectTask(models.Model):
-    _inherit = 'project_task'
+    _inherit = 'project.task'
 
     def create_sub_task(self):
         action = self.env["ir.actions.actions"]._for_xml_id("industry_fsm.project_task_action_fsm")
