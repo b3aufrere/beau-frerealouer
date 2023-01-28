@@ -6,7 +6,7 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     def create_sub_task(self):
-        view_id = self.env["ir.ui.view"]._for_xml_id("project.view_task_form2")
+        view_id = self.env.ref("project.view_task_form2")
 
         if view_id:
             return {
