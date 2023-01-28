@@ -5,6 +5,13 @@ from odoo import models, fields, api, _
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    is_sub_task = fields.Boolean(defaul=False, compute="_compute_is_sub_task")
+
+    @api.depends('parent_id')
+    def _compute_is_sub_task(self):
+        for task in self:
+            task.is_sub_task = True if task.parent_id else False
+
     def create_sub_task(self):
         view_id = self.env.ref("project.view_task_form2")
 

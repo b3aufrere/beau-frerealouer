@@ -6,15 +6,16 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
+                <field name="is_sub_task" invisible="1"/>
                 <button string="Créer sous-tâche" 
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': [('is_fsm','=',False), ('parent_id', '!=', False)]}"/>
+                        attrs="{'invisible': [('is_fsm','=',False), ('is_sub_task', '=', True)]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
-                <attribute name="attrs">{'invisible': [('allow_subtasks', '=', False), ('parent_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'invisible': [('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
