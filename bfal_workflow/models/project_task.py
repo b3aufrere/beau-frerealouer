@@ -16,5 +16,7 @@ class ProjectTask(models.Model):
                 'default_company_id': self.company_id.id if self.company_id else False,
                 'default_parent_id': self.id,                     
             }
+
+            action['view_mode'] = 'form'
             
             return action
