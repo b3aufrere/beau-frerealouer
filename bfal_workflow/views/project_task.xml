@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="add_bfal_changes_view_task_form2" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='stage_id']" position="before">
+                <button string="Créer sous-tâche" 
+                        name="create_sub_task" 
+                        type="object" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('is_fsm','=',False), ('parent_id', '=', False)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

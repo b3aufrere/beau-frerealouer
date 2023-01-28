@@ -16,6 +16,7 @@
         'sale_crm', 
         'sales_team',
         'calendar',
+        'industry_fsm'
     ],
     
     'data': [ 
@@ -27,7 +28,8 @@
         'views/territory.xml',
         'views/hr_employee.xml',
         'views/crm_lead.xml',
-        'views/sale_order.xml'
+        'views/sale_order.xml',
+        'views/project_task.xml'
     ],
     
     'installable': True,
