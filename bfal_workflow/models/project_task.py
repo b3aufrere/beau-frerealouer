@@ -21,7 +21,8 @@ class ProjectTask(models.Model):
                         'default_project_id': self.project_id.id if self.project_id else False,
                         'default_partner_id': self.partner_id.id if self.partner_id else False,
                         'default_company_id': self.company_id.id if self.company_id else False,
-                        'default_parent_id': self.id,   
+                        'default_parent_id': self.id,
+                        'default_is_fsm': True   
                     },
                     'target': 'current',
                 }
