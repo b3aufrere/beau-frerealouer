@@ -11,11 +11,11 @@
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': [('is_fsm','=',False), ('is_sub_task', '=', True)]}"/>
+                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('is_sub_task', '=', True)]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
-                <attribute name="attrs">{'invisible': [('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
