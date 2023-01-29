@@ -16,7 +16,8 @@ class ProjectTask(models.Model):
     @api.onchange('territory_id')
     def onchange_territory_id(self):
         for task in self:
-            task.user_ids = False
+            if not isinstance(self.id, models.NewId):
+                task.user_ids = False
 
     def create_sub_task(self):
         view_id = self.env.ref("project.view_task_form2")
