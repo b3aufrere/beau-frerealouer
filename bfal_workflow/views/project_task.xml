@@ -27,4 +27,27 @@
             </xpath>
         </field>
     </record>
+
+    <record id="add_bfal_changes_project_task_view_search_fsm" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_search_fsm</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.project_task_view_search_fsm" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='planned_today']" position="before">
+                <filter string="Non planifiée" name="tasks_not_planned" domain="['|',('planned_date_begin','=',False), ('planned_date_end','=',False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="industry_fsm.project_task_action_fsm" model="ir.actions.act_window">
+        <field name="context">{            
+            'fsm_mode': True,            
+            'search_default_my_tasks': True, 
+            'search_default_tasks_not_planned': True,
+            'search_default_planned_future': True,            
+            'search_default_planned_today': True,            
+            'default_user_ids': [(4, uid)],            
+            'default_scale': 'day',        
+        }</field>
+    </record>
 </odoo>
