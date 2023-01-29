@@ -16,7 +16,7 @@ class ProjectTask(models.Model):
     @api.onchange('territory_id')
     def onchange_territory_id(self):
         for task in self:
-            if not isinstance(self.id, models.NewId):
+            if not isinstance(self.id, models.NewId) or self._origin:
                 task.user_ids = False
 
     def create_sub_task(self):
