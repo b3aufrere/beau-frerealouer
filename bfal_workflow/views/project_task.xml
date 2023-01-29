@@ -19,7 +19,7 @@
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="before">
-                <field name="territory_id"/>
+                <field name="territory_id" required="1"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
