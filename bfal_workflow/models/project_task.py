@@ -6,6 +6,7 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     is_sub_task = fields.Boolean(defaul=False, compute="_compute_is_sub_task")
+    territory_id = fields.Many2one('territory', string='Territoire de travail')
 
     @api.depends('parent_id')
     def _compute_is_sub_task(self):
@@ -27,6 +28,7 @@ class ProjectTask(models.Model):
                         'default_sale_order_id': self.sale_order_id.id if self.sale_order_id else False,
                         'default_partner_id': self.partner_id.id if self.partner_id else False,
                         'default_company_id': self.company_id.id if self.company_id else False,
+                        'default_territory_id': self.territory_id.id if self.territory_id else False,
                         'default_parent_id': self.id,
                         'default_is_fsm': True,
                         'fsm_mode': True,            

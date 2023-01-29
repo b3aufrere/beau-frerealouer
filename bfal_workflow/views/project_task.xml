@@ -17,6 +17,14 @@
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', ('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
             </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="before">
+                <field name="territory_id"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="attributes">
+                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
