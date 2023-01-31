@@ -5,7 +5,6 @@
     'license': 'OPL-1',
     
     'author': 'Kamel Benchehida',
-    'website': 'https://www.fiverr.com/kamelbenchehida',
 
     'depends': [
         'base', 
@@ -21,7 +20,10 @@
     
     'data': [ 
         'security/ir.model.access.csv',
+        
         'data/mail_template_accept_service.xml',
+
+        # 'reports/report_saleorder.xml',
 
         'views/entreprise.xml',
         'views/division.xml',
@@ -29,7 +31,7 @@
         'views/hr_employee.xml',
         'views/crm_lead.xml',
         'views/sale_order.xml',
-        'views/project_task.xml'
+        'views/project_task.xml',
     ],
     
     'installable': True,

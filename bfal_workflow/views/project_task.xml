@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <field name="is_sub_task" invisible="1"/>
-                <button string="Créer sous-tâche" 
+                <button string="Créer une visite" 
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
