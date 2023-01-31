@@ -11,7 +11,7 @@
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('is_sub_task', '=', True)]}"/>
+                        attrs="{'invisible': ['|', ('is_fsm','=',False)]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
@@ -46,6 +46,25 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_view_so']" position="attributes">
                 <attribute name="groups">sales_team.group_sale_salesman</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_task_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_enterprise.project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='planned_date_begin']" position="before">
+                <label for="date_start_expected" string="Date planifié désiré"/>
+                <div class="w-100">
+                    <div class="o_row">
+                        <field name="date_start_expected" widget="daterange" options="{'related_end_date': 'date_end_expected'}" attrs="{'required': [('date_end_expected', '!=', False)]}"/>
+                        <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"/>
+                        <i class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow"/>
+                        <field name="date_end_expected" widget="daterange" options="{'related_start_date': 'date_start_expected'}" attrs="{'required': [('date_start_expected', '!=', False)]}"/>
+                    </div>
+                </div>
             </xpath>
         </field>
     </record>

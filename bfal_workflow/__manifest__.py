@@ -15,7 +15,8 @@
         'sale_crm', 
         'sales_team',
         'calendar',
-        'industry_fsm'
+        'industry_fsm',
+        'project_enterprise'
     ],
     
     'data': [ 
