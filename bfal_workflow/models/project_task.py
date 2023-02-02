@@ -11,7 +11,7 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
-    @api.onchange('stage_id')
+    @api.depends('stage_id')
     def _compute_color(self):
         """
             colors :
@@ -25,15 +25,15 @@ class ProjectTask(models.Model):
         """
         for task in self:
             if task.stage_id:
-                if task.stage_id == "Planned":
+                if task.stage_id.name == "Planned":
                     task.color = 4
-                elif task.stage_id == "In Progress":
+                elif task.stage_id.name == "In Progress":
                     task.color = 10
-                elif task.stage_id == "Done":
+                elif task.stage_id.name == "Done":
                     task.color = 1
-                elif task.stage_id == "Not accepted":
+                elif task.stage_id.name == "Not accepted":
                     task.color = 3
-                elif task.stage_id == "Canceled":
+                elif task.stage_id.name == "Canceled":
                     task.color = 5
 
 
