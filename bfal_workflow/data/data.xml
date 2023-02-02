@@ -6,5 +6,11 @@
             <field name="sequence">22</field>
             <field name="fold" eval="True"/>
         </record>
+
+        <record id="mt_task_not_accepted" model="mail.message.subtype">
+            <field name="name">Tache non accepté</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="False"/>
+        </record>
     </data>
 </odoo>
