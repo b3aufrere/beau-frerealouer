@@ -5,8 +5,8 @@ from odoo import models, fields, api, _
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
-    @api.depends('stage_id')
-    def _compute_ticket_color(self):
+    @api.depends('stage_id', 'kanban_state')
+    def _compute_kanban_state_label(self):
         """
             colors :
                 0  : none 
@@ -17,6 +17,8 @@ class HelpdeskTicket(models.Model):
                 4  : Blue
                 5  : Dark Purple
         """
+        super(HelpdeskTicket, self)._compute_kanban_state_label()
+
         for ticket in self:
             if ticket.stage_id:
                 if ticket.stage_id.id == self.env.ref("helpdesk.stage_on_hold").id:
