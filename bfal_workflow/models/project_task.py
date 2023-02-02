@@ -13,13 +13,13 @@ class ProjectTask(models.Model):
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
     def action_no_accept_task(self):
-        view_id = self.env.ref("project.view_task_form2")
+        view_id = self.env.ref("mail.mail_activity_view_form_popup")
 
         if view_id:
             return {
                     'name': "Planifier une activité",
                     'type': 'ir.actions.act_window',
-                    'res_model': 'mail.mail_activity_view_form_popup',
+                    'res_model': 'mail.activity',
                     'view_mode': 'form',
                     'view_id': view_id.id,
                     'context': {
