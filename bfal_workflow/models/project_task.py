@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from datetime import date
 
 
 class ProjectTask(models.Model):
@@ -10,6 +11,23 @@ class ProjectTask(models.Model):
     territory_id = fields.Many2one('territory', string='Territoire de travail')
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
+
+    def action_no_accept_task(self):
+        view_id = self.env.ref("project.view_task_form2")
+
+        if view_id:
+            return {
+                    'name': "Planifier une activité",
+                    'type': 'ir.actions.act_window',
+                    'res_model': 'mail.mail_activity_view_form_popup',
+                    'view_mode': 'form',
+                    'view_id': view_id.id,
+                    'context': {
+                        'default_date_deadline': date.today(),
+                        'default_user_id': self.create_uid.id       
+                    },
+                    'target': 'new',
+                }
 
     @api.depends('stage_id', 'kanban_state')
     def _compute_kanban_state_label(self):

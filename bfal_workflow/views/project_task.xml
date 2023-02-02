@@ -13,6 +13,12 @@
                         type="object" 
                         class="oe_highlight" 
                         attrs="{'invisible': [('is_fsm','=',False)]}"/>
+
+                <button string="Non accepté" 
+                        name="action_no_accept_task" 
+                        type="object" 
+                        class="btn-warning"
+                        attrs="{'invisible': [('is_sub_task','=',False)]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
