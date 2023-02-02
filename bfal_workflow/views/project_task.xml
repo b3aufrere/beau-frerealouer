@@ -18,7 +18,7 @@
                     <footer>
                         <field name="id" invisible="1"/>
                         <button id="mail_activity_schedule" string="soumettre" name="action_close_dialog" type="object" class="btn-primary" attrs="{'invisible': [('id', '!=', False)]}" data-hotkey="q"/>
-                        <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                        <button string="Annuler" class="btn-secondary" special="cancel" data-hotkey="z"/>
                     </footer>
                 </sheet>
             </form>
