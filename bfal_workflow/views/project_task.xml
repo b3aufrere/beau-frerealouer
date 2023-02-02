@@ -55,7 +55,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_report.project_task_view_form_fsm_quick_create" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
+            <xpath expr="//form" position="inside">
                 <field name="is_user_readonly" invisible="1"/>
             </xpath>
 
@@ -70,7 +70,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_report.view_task_form2_inherit" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
+            <xpath expr="//form" position="inside">
                 <field name="is_user_readonly" invisible="1"/>
             </xpath>
 
@@ -85,7 +85,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_report.project_sharing_quick_create_task_form_inherit" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
+            <xpath expr="//form" position="inside">
                 <field name="is_user_readonly" invisible="1"/>
             </xpath>
 
@@ -100,7 +100,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_report.project_sharing_project_task_inherit_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//header" position="inside">
+            <xpath expr="//form" position="inside">
                 <field name="is_user_readonly" invisible="1"/>
             </xpath>
 
