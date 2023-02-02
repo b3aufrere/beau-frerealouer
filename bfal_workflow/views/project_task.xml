@@ -2,7 +2,7 @@
 <odoo>
     <record id="mail_activity_view_task_not_accepted" model="ir.ui.view">
         <field name="name">mail_activity_view_task_not_accepted</field>
-        <field name="model">project.task</field>
+        <field name="model">mail.activity</field>
         <field name="arch" type="xml">
             <form string="Non Acceptation" create="false">
                 <sheet>
