@@ -29,11 +29,11 @@
             </xpath>
 
             <xpath expr="//field[@name='project_id']" position="attributes">
-                <attribute name="attrs">{'invisible':[('parent_id', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+                <attribute name="attrs">{'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
-                <attribute name="attrs">{'invisible':[('parent_id', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+                <attribute name="attrs">{'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
