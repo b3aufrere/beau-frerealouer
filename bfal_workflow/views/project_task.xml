@@ -28,14 +28,6 @@
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
-            <xpath expr="//field[@name='partner_phone']" position="attributes">
-                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
-            </xpath>
-
-            <xpath expr="//field[@name='partner_id']" position="attributes">
-                <attribute name="attrs">{'required':[('is_fsm', '=', True)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
-            </xpath>
-
             <xpath expr="//field[@name='project_id']" position="attributes">
                 <attribute name="attrs">{'invisible':[('parent_id', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
@@ -46,6 +38,25 @@
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
                 <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherit_sale_timesheet" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherit_sale_timesheet</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_sale.view_task_form2_inherit_sale_timesheet" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_phone']" position="attributes">
+                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="attrs">{'required':[('is_fsm', '=', True)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
