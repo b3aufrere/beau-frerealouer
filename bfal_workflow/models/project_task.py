@@ -13,6 +13,15 @@ class ProjectTask(models.Model):
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
     def action_no_accept_task(self):
+        self.env['mail.activity'].sudo().create({
+            'summary': "J ai pas de temps, merci",
+            'activity_type_id': self.env.ref("bfal_workflow.activity_type_task_not_accepted"),
+            'date_deadline': date.today(),
+            'user_id': self.create_uid.id,
+            'res_model_id': self.env.ref("mail.model_mail_activity").id,
+            'res_id': self.id 
+        })
+        return True
         view_id = self.env.ref("bfal_workflow.mail_activity_view_task_not_accepted")
 
         if view_id:
