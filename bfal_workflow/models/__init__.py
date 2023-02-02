@@ -9,3 +9,4 @@ from . import calendar_event
 from . import sale_order
 from . import project_task
 from . import helpdesk_ticket
+from . import mail_activity
