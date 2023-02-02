@@ -36,6 +36,7 @@ class ProjectTask(models.Model):
                 elif task.stage_id == "Canceled":
                     task.color = 5
 
+
     @api.depends('parent_id')
     def _compute_is_sub_task(self):
         for task in self:
