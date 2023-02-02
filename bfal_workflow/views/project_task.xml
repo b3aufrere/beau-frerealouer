@@ -7,6 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <field name="is_sub_task" invisible="1"/>
+                <field name="is_user_readonly" invisible="1"/>
                 <button string="Créer une visite" 
                         name="create_sub_task" 
                         type="object" 
@@ -24,6 +25,7 @@
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute>
+                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>

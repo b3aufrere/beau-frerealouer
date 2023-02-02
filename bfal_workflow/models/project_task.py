@@ -6,6 +6,7 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     is_sub_task = fields.Boolean(defaul=False, compute="_compute_is_sub_task")
+    is_user_readonly = fields.Boolean(defaul=False, compute="_computes_is_user_readonly")
     territory_id = fields.Many2one('territory', string='Territoire de travail')
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
@@ -15,6 +16,11 @@ class ProjectTask(models.Model):
         for task in self:
             task.is_sub_task = True if task.parent_id else False
     
+    @api.depends('user_ids')
+    def _computes_is_user_readonly(self):
+        for task in self:
+            task.is_user_readonly = not self.env.user.sudo().has_group('industry_fsm.group_fsm_manager')
+
     @api.onchange('territory_id')
     def onchange_territory_id(self):
         for task in self:
