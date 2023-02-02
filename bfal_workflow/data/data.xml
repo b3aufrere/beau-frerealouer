@@ -7,7 +7,7 @@
             <field name="fold" eval="True"/>
         </record>
 
-        <record id="mt_task_not_accepted" model="mail.activity.type">
+        <record id="activity_type_task_not_accepted" model="mail.activity.type">
             <field name="name">Non accepté</field>
             <field name="icon">fa-calendar-times"</field>
             <field name="sequence">3</field>

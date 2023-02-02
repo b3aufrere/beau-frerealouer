@@ -23,7 +23,7 @@ class ProjectTask(models.Model):
                     'view_mode': 'form',
                     'view_id': view_id.id,
                     'context': {
-                        'default_activity_type_id': self.env.ref("bfal_workflow.mt_task_not_accepted"),
+                        'default_activity_type_id': self.env.ref("bfal_workflow.activity_type_task_not_accepted"),
                         'default_date_deadline': date.today(),
                         'default_user_id': self.create_uid.id,
                         'default_res_model_id': self.env.ref("mail.model_mail_activity").id,
