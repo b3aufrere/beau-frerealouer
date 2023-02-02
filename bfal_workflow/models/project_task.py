@@ -11,6 +11,31 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
+    @api.depends('stage_id')
+    def _compute_color(self):
+        """
+            colors :
+                0  : none 
+                1  : red
+                10 : green
+                2  : Orange
+                3  : Yellow
+                4  : Blue
+                5  : Dark Purple
+        """
+        for task in self:
+            if task.stage_id:
+                if task.stage_id == "Planned":
+                    task.color = 4
+                elif task.stage_id == "In Progress":
+                    task.color = 10
+                elif task.stage_id == "Done":
+                    task.color = 1
+                elif task.stage_id == "Not accepted":
+                    task.color = 3
+                elif task.stage_id == "Canceled":
+                    task.color = 5
+
     @api.depends('parent_id')
     def _compute_is_sub_task(self):
         for task in self:
