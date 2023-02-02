@@ -11,8 +11,8 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
-    @api.onchange('stage_id')
-    def onchange_stage_id(self):
+    @api.depends('stage_id', 'kanban_state')
+    def _compute_kanban_state_label(self):
         """
             colors :
                 0  : none 
@@ -23,6 +23,8 @@ class ProjectTask(models.Model):
                 4  : Blue
                 5  : Dark Purple
         """
+        super(ProjectTask, self)._compute_kanban_state_label()
+
         for task in self:
             if task.stage_id:
                 if task.stage_id.name == "Planned":
