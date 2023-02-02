@@ -11,7 +11,7 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
 
-    @api.depends('stage_id')
+    @api.onchange('stage_id')
     def _compute_color(self):
         """
             colors :
