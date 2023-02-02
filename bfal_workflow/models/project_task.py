@@ -27,15 +27,15 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
-                if task.stage_id.id == 492:
+                if task.stage_id.id == self.env.ref("industry_fsm.planning_project_stage_1").id:
                     task.color = 4
-                elif task.stage_id.id == 2:
+                elif task.stage_id.id == self.env.ref("project.project_stage_1").id:
                     task.color = 10
-                elif task.stage_id.id == 3:
+                elif task.stage_id.id == self.env.ref("project.project_stage_2").id:
                     task.color = 1
-                elif task.stage_id.id == 534:
+                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_not_accepted").id:
                     task.color = 3
-                elif task.stage_id.id == 4:
+                elif task.stage_id.id == self.env.ref("project.project_stage_3").id:
                     task.color = 5
                 else:
                     task.color = 0

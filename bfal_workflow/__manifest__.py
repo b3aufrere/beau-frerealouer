@@ -25,6 +25,7 @@
         'security/ir.model.access.csv',
         
         'data/mail_template_accept_service.xml',
+        'data/data.xml',
 
         # 'reports/report_saleorder.xml',
 
