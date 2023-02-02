@@ -27,15 +27,15 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
-                if task.stage_id.name == _("Planned"):
+                if task.stage_id.id == 492:
                     task.color = 4
-                elif task.stage_id.name == _("In Progress"):
+                elif task.stage_id.id == 2:
                     task.color = 10
-                elif task.stage_id.name == _("Done"):
+                elif task.stage_id.id == 3:
                     task.color = 1
-                elif task.stage_id.name == _("Not accepted"):
+                elif task.stage_id.id == 534:
                     task.color = 3
-                elif task.stage_id.name == _("Canceled"):
+                elif task.stage_id.id == 4:
                     task.color = 5
                 else:
                     task.color = 0
