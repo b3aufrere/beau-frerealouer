@@ -28,7 +28,7 @@ class HelpdeskTicket(models.Model):
                 elif ticket.stage_id.id == self.env.ref("helpdesk.stage_done").id \
                         or ticket.stage_id.id == self.env.ref("helpdesk.stage_solved").id:
                     ticket.color = 1
-                elif ticket.stage_id.id == self.env.ref("	helpdesk.stage_cancelled").id:
+                elif ticket.stage_id.id == self.env.ref("helpdesk.stage_cancelled").id:
                     ticket.color = 5
                 else:
                     ticket.color = 0
