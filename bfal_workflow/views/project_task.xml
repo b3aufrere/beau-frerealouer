@@ -44,12 +44,68 @@
                 <attribute name="attrs">{'invisible':[('parent_id', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
-            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
-                <attribute name="attrs">{'invisible':[('allow_worksheet', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
-            </xpath>
-
             <xpath expr="//page[@name='extra_info']" position="attributes">
                 <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_task_view_form_fsm_quick_create" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_form_fsm_quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_task_view_form_fsm_quick_create" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.view_task_form2_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_sharing_quick_create_task_form_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_sharing_quick_create_task_form_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_sharing_quick_create_task_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_sharing_project_task_inherit_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_sharing_project_task_inherit_view_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_sharing_project_task_inherit_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
