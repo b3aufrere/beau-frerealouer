@@ -18,7 +18,7 @@
                         name="action_no_accept_task" 
                         type="object" 
                         class="btn-warning"
-                        attrs="{'invisible': [('is_sub_task','=',False)]}"/>
+                        attrs="{'invisible': [('is_sub_task','=',True)]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
