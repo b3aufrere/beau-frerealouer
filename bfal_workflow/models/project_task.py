@@ -27,7 +27,7 @@ class ProjectTask(models.Model):
                         'default_date_deadline': date.today(),
                         'default_user_id': self.create_uid.id,
                         'default_res_model_id': self.env.ref("mail.model_mail_activity").id,
-                        'default_res_id': self     
+                        'default_res_id': self.id     
                     },
                     'target': 'new',
                 }
