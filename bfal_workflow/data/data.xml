@@ -7,10 +7,10 @@
             <field name="fold" eval="True"/>
         </record>
 
-        <record id="mt_task_not_accepted" model="mail.message.subtype">
-            <field name="name">Tache non accepté</field>
-            <field name="res_model">project.task</field>
-            <field name="default" eval="False"/>
+        <record id="mt_task_not_accepted" model="mail.activity.type">
+            <field name="name">Non accepté</field>
+            <field name="icon">fa-calendar-times"</field>
+            <field name="sequence">3</field>
         </record>
     </data>
 </odoo>
