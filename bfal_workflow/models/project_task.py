@@ -29,7 +29,7 @@ class ProjectTask(models.Model):
             if task.stage_id:
                 if task.stage_id.name == "Planned":
                     task.color = 4
-                elif task.stage_id.name == "In Progress":
+                elif task.stage_id.id == 2:
                     task.color = 10
                 elif task.stage_id.name == "Done":
                     task.color = 1
