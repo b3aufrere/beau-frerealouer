@@ -20,12 +20,36 @@
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="before">
-                <field name="territory_id" required="1"/>
+                <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_phone']" position="attributes">
+                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="attrs">{'required':[('is_fsm', '=', True)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='project_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('parent_id', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='display_project_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('parent_id', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheet', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='extra_info']" position="attributes">
+                <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
@@ -61,10 +85,10 @@
                 <label for="date_start_expected" string="Date planifié désiré"/>
                 <div class="w-100">
                     <div class="o_row">
-                        <field name="date_start_expected" widget="daterange" options="{'related_end_date': 'date_end_expected'}" attrs="{'required': [('date_end_expected', '!=', False)]}"/>
+                        <field name="date_start_expected" widget="daterange" options="{'related_end_date': 'date_end_expected'}" attrs="{'required': [('date_end_expected', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}"/>
                         <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"/>
                         <i class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow"/>
-                        <field name="date_end_expected" widget="daterange" options="{'related_start_date': 'date_start_expected'}" attrs="{'required': [('date_start_expected', '!=', False)]}"/>
+                        <field name="date_end_expected" widget="daterange" options="{'related_start_date': 'date_start_expected'}" attrs="{'required': [('date_start_expected', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}"/>
                     </div>
                 </div>
             </xpath>
