@@ -19,7 +19,8 @@
         'project_enterprise',
         'industry_fsm_sale',
         'industry_fsm_report',
-        'helpdesk'
+        'helpdesk',
+        'mail'
     ],
     
     'data': [ 
