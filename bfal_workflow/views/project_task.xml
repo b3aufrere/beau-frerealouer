@@ -45,6 +45,10 @@
             <xpath expr="//page[@name='extra_info']" position="attributes">
                 <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
+
+            <xpath expr="//field[@name='stage_id']" position="attributes">
+                <attribute name="options">{'clickable': '0', 'fold_field': 'fold'}</attribute>
+            </xpath>
         </field>
     </record>
 
