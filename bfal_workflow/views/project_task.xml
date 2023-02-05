@@ -12,13 +12,13 @@
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': [('is_fsm','=',False)]}"/>
+                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_id','!=',%(project.project_stage_2)d)]}"/>
 
                 <button string="Non accepté" 
                         name="action_no_accept_task" 
                         type="object" 
                         class="btn-warning"
-                        attrs="{'invisible': [('is_sub_task','=',True)]}"/>
+                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_id','not in',[%(project.project_stage_0)d, %(industry_fsm.planning_project_stage_1)d])]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
@@ -48,6 +48,14 @@
 
             <xpath expr="//field[@name='stage_id']" position="attributes">
                 <attribute name="options">{'clickable': False, 'fold_field': 'fold'}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_assign_to_me'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_assign_to_me'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
             </xpath>
         </field>
     </record>
