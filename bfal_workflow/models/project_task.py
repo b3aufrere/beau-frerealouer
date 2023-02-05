@@ -118,3 +118,9 @@ class ProjectTask(models.Model):
                 task.stage_id =  task_in_progress_id.id
 
         return res 
+
+    def action_schedule_task(self):
+        for task in self:
+            task_planned_id = self.env.ref("industry_fsm.planning_project_stage_1")
+            if task_planned_id:
+                task.stage_id =  task_planned_id.id
