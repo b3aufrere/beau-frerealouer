@@ -187,6 +187,14 @@
                     </div>
                 </div>
             </xpath>
+
+            <xpath expr="//field[@name='planned_date_begin']" position="before">
+                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'required': [('planned_date_end', '!=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='planned_date_end']" position="before">
+                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'required': [('planned_date_begin', '!=', False)]}</attribute>
+            </xpath>
         </field>
     </record>
 
