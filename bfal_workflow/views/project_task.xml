@@ -41,11 +41,11 @@
             </xpath>
 
             <xpath expr="//field[@name='project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), '|', ('is_user_readonly', '=', True), ('is_sub_task','=',True)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), '|', ('is_user_readonly', '=', True), ('is_sub_task','=',True)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
@@ -65,7 +65,7 @@
             </xpath>
 
             <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), '|', ('is_user_readonly', '=', True), ('is_sub_task','=',True)]}</attribute>
+                <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
     </record>
