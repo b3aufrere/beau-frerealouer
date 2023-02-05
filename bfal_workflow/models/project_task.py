@@ -63,6 +63,68 @@ class ProjectTask(models.Model):
                     task.color = 0
             else:
                 task.color = 0
+        
+            if task.helpdesk_ticket_id:
+                self._compute_stage_id_of_helpdesk_ticket_id(task.helpdesk_ticket_id)
+
+    def _compute_stage_id_of_helpdesk_ticket_id(self, ticket):
+        if not ticket.fsm_task_ids:
+            stage_new_id = self.env.ref("helpdesk.stage_new")
+            if stage_new_id:
+                ticket.stage_id =  stage_new_id.id
+        
+        else:
+            # all fsm tasks are done
+            stage_done_task_id = self.env.ref('project.project_stage_2')
+            stage_cancelled_task_id = False
+            stage_done_ticket_id = self.env.ref('helpdesk.stage_done')
+            check_other_cases = True
+            
+            if stage_done_task_id and stage_done_ticket_id:
+                nb_tasks_done = 0
+                nb_task_other = 0
+
+                for task in ticket.fsm_task_ids:
+                    if task.stage_id.id == stage_done_task_id.id:
+                        nb_tasks_done += 1
+                    else:
+                        if not stage_cancelled_task_id:
+                            stage_cancelled_task_id = self.env.ref('project.project_stage_3')
+                        elif task.stage_id.id != stage_cancelled_task_id.id:
+                            nb_task_other += 1
+                
+                if nb_task_other == 0 and nb_tasks_done > 0:
+                    ticket.stage_id = stage_done_ticket_id.id
+                    check_other_cases = False
+            
+            if check_other_cases:
+                # all fsm tasks are cancelled
+                stage_cancelled_task_id = self.env.ref('project.project_stage_3')
+                stage_cancelled_ticket_id = self.env.ref('helpdesk.stage_cancelled')
+                
+                if stage_cancelled_task_id and stage_cancelled_ticket_id and all(task.stage_id and task.stage_id.id == stage_cancelled_task_id.id for task in ticket.fsm_task_ids):
+                    ticket.stage_id = stage_cancelled_ticket_id.id
+                
+                else:
+                    # one of fsm tasks is in progress
+                    stage_in_progress_task_id = self.env.ref('project.project_stage_1')
+                    stage_in_progress_ticket_id = self.env.ref('helpdesk.stage_in_progress')
+                    
+                    if stage_in_progress_task_id and stage_in_progress_ticket_id and any(task.stage_id and task.stage_id.id == stage_in_progress_task_id.id for task in ticket.fsm_task_ids):
+                        ticket.stage_id = stage_in_progress_ticket_id.id
+                    
+                    else:
+                        # one of fsm tasks is new or planned or not accepted
+                        stage_new_task_id = self.env.ref('project.project_stage_0')
+                        stage_planned_task_id = self.env.ref('industry_fsm.planning_project_stage_1')
+                        stage_not_accepted_task_id = self.env.ref('bfal_workflow.project_stage_not_accepted')
+                        stage_on_hold_ticket_id = self.env.ref('helpdesk.stage_on_hold')
+                        
+                        if ((stage_new_task_id and any(task.stage_id and task.stage_id.id == stage_new_task_id.id for task in ticket.fsm_task_ids))\
+                                or (stage_planned_task_id and any(task.stage_id and task.stage_id.id == stage_planned_task_id.id for task in ticket.fsm_task_ids)) \
+                                    or (stage_not_accepted_task_id and any(task.stage_id and task.stage_id.id == stage_not_accepted_task_id.id for task in ticket.fsm_task_ids))) \
+                                        and stage_on_hold_ticket_id:
+                            ticket.stage_id = stage_on_hold_ticket_id.id
 
 
     @api.depends('parent_id')
