@@ -113,14 +113,14 @@ class ProjectTask(models.Model):
         res = super(ProjectTask, self).action_timer_start()
         
         for task in self:
-            task_in_progress_id = self.env.ref("project.project_stage_1")
-            if task_in_progress_id and task.stage_id and task.stage_id.id != task_in_progress_id.id:
-                task.stage_id =  task_in_progress_id.id
+            stage_in_progress_id = self.env.ref("project.project_stage_1")
+            if stage_in_progress_id and task.stage_id and task.stage_id.id != stage_in_progress_id.id:
+                task.stage_id =  stage_in_progress_id.id
 
         return res 
 
     def action_schedule_task(self):
         for task in self:
-            task_planned_id = self.env.ref("industry_fsm.planning_project_stage_1")
-            if task_planned_id:
-                task.stage_id =  task_planned_id.id
+            stage_planned_id = self.env.ref("industry_fsm.planning_project_stage_1")
+            if stage_planned_id:
+                task.stage_id =  stage_planned_id.id
