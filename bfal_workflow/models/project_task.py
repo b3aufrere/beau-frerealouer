@@ -64,8 +64,10 @@ class ProjectTask(models.Model):
             else:
                 task.color = 0
         
-            if task.helpdesk_ticket_id:
+            if not task.parent_id and task.helpdesk_ticket_id:
                 self._compute_stage_id_of_helpdesk_ticket_id(task.helpdesk_ticket_id)
+            elif task.parent_id and task.parent_id.helpdesk_ticket_id:
+                self._compute_stage_id_of_helpdesk_ticket_id(task.parent_id.helpdesk_ticket_id)
 
     def _compute_stage_id_of_helpdesk_ticket_id(self, ticket):
         if not ticket.fsm_task_ids:
@@ -74,6 +76,13 @@ class ProjectTask(models.Model):
                 ticket.stage_id =  stage_new_id.id
         
         else:
+            fsm_tasks_ids = ticket.fsm_task_ids.ids
+            fsm_sub_tasks_ids = self.env['project.task'].sudo().search([('parent_id', 'in', fsm_tasks_ids)])
+            if fsm_sub_tasks_ids:
+                fsm_tasks_ids += fsm_sub_tasks_ids.ids
+            
+            fsm_tasks_ids = self.env['project.task'].sudo().browse(fsm_tasks_ids)
+            
             # all fsm tasks are done
             stage_done_task_id = self.env.ref('project.project_stage_2')
             stage_cancelled_task_id = False
@@ -84,7 +93,7 @@ class ProjectTask(models.Model):
                 nb_tasks_done = 0
                 nb_task_other = 0
 
-                for task in ticket.fsm_task_ids:
+                for task in fsm_tasks_ids:
                     if task.stage_id.id == stage_done_task_id.id:
                         nb_tasks_done += 1
                     else:
@@ -102,7 +111,7 @@ class ProjectTask(models.Model):
                 stage_cancelled_task_id = self.env.ref('project.project_stage_3')
                 stage_cancelled_ticket_id = self.env.ref('helpdesk.stage_cancelled')
                 
-                if stage_cancelled_task_id and stage_cancelled_ticket_id and all(task.stage_id and task.stage_id.id == stage_cancelled_task_id.id for task in ticket.fsm_task_ids):
+                if stage_cancelled_task_id and stage_cancelled_ticket_id and all(task.stage_id and task.stage_id.id == stage_cancelled_task_id.id for task in fsm_tasks_ids):
                     ticket.stage_id = stage_cancelled_ticket_id.id
                 
                 else:
@@ -110,7 +119,7 @@ class ProjectTask(models.Model):
                     stage_in_progress_task_id = self.env.ref('project.project_stage_1')
                     stage_in_progress_ticket_id = self.env.ref('helpdesk.stage_in_progress')
                     
-                    if stage_in_progress_task_id and stage_in_progress_ticket_id and any(task.stage_id and task.stage_id.id == stage_in_progress_task_id.id for task in ticket.fsm_task_ids):
+                    if stage_in_progress_task_id and stage_in_progress_ticket_id and any(task.stage_id and task.stage_id.id == stage_in_progress_task_id.id for task in fsm_tasks_ids):
                         ticket.stage_id = stage_in_progress_ticket_id.id
                     
                     else:
@@ -120,9 +129,9 @@ class ProjectTask(models.Model):
                         stage_not_accepted_task_id = self.env.ref('bfal_workflow.project_stage_not_accepted')
                         stage_on_hold_ticket_id = self.env.ref('helpdesk.stage_on_hold')
                         
-                        if ((stage_new_task_id and any(task.stage_id and task.stage_id.id == stage_new_task_id.id for task in ticket.fsm_task_ids))\
-                                or (stage_planned_task_id and any(task.stage_id and task.stage_id.id == stage_planned_task_id.id for task in ticket.fsm_task_ids)) \
-                                    or (stage_not_accepted_task_id and any(task.stage_id and task.stage_id.id == stage_not_accepted_task_id.id for task in ticket.fsm_task_ids))) \
+                        if ((stage_new_task_id and any(task.stage_id and task.stage_id.id == stage_new_task_id.id for task in fsm_tasks_ids))\
+                                or (stage_planned_task_id and any(task.stage_id and task.stage_id.id == stage_planned_task_id.id for task in fsm_tasks_ids)) \
+                                    or (stage_not_accepted_task_id and any(task.stage_id and task.stage_id.id == stage_not_accepted_task_id.id for task in fsm_tasks_ids))) \
                                         and stage_on_hold_ticket_id:
                             ticket.stage_id = stage_on_hold_ticket_id.id
 
