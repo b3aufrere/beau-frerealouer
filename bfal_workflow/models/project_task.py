@@ -113,7 +113,7 @@ class ProjectTask(models.Model):
         res = super(ProjectTask, self).action_timer_start()
         
         for task in self:
-            task_in_progress_id = self.env.ref("bfal_workflow.project_stage_not_accepted")
+            task_in_progress_id = self.env.ref("project.project_stage_1")
             if task_in_progress_id and task.stage_id and task.stage_id.id != task_in_progress_id.id:
                 task.stage_id =  task_in_progress_id.id
 
