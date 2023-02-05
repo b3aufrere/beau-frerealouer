@@ -99,7 +99,8 @@ class ProjectTask(models.Model):
                     else:
                         if not stage_cancelled_task_id:
                             stage_cancelled_task_id = self.env.ref('project.project_stage_3')
-                        elif task.stage_id.id != stage_cancelled_task_id.id:
+                        
+                        if task.stage_id.id != stage_cancelled_task_id.id:
                             nb_task_other += 1
                 
                 if nb_task_other == 0 and nb_tasks_done > 0:
