@@ -35,11 +35,11 @@
             </xpath>
 
             <xpath expr="//field[@name='project_id']" position="attributes">
-                <attribute name="attrs">{'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': ('stage_id','!=',%(project.project_stage_0)d), 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
-                <attribute name="attrs">{'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': ('stage_id','!=',%(project.project_stage_0)d), 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
@@ -56,6 +56,10 @@
 
             <xpath expr="//button[@name='action_assign_to_me'][2]" position="attributes">
                 <attribute name="attrs">{'invisible': True}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="attrs">{'readonly': ('stage_id','!=',%(project.project_stage_0)d)}</attribute>
             </xpath>
         </field>
     </record>
