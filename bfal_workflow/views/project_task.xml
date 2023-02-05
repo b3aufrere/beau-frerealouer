@@ -195,6 +195,20 @@
         </field>
     </record>
 
+    <record id="add_bfal_changes_industry_fsm_view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_industry_fsm_view_task_form2_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.view_task_form2_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_fsm_validate'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_primary', '=', False), ('stage_id','!=',%(industry_fsm.planning_project_stage_1)d)]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_fsm_validate'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
     <record id="industry_fsm.project_task_action_fsm" model="ir.actions.act_window">
         <field name="context">{            
             'fsm_mode': True,            
