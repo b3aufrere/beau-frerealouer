@@ -178,10 +178,10 @@
         <field name="inherit_id" ref="timesheet_grid.project_task_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_timer_start'][1]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','not in',[ref('industry_fsm.planning_project_stage_1'), ref('project.project_stage_1')])]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%('industry_fsm.planning_project_stage_1'))]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_start'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','=',ref('industry_fsm.planning_project_stage_1'))]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%('project.project_stage_1'))]}</attribute>
             </xpath>
         </field>
     </record>
