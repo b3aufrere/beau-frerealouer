@@ -20,7 +20,8 @@
         'industry_fsm_sale',
         'industry_fsm_report',
         'helpdesk',
-        'mail'
+        'mail',
+        'timesheet_grid'
     ],
     
     'data': [ 
