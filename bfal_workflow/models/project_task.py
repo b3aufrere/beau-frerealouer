@@ -108,3 +108,13 @@ class ProjectTask(models.Model):
                     },
                     'target': 'current',
                 }
+
+    def action_timer_start(self):
+        res = super(ProjectTask, self).action_timer_start()
+        
+        for task in self:
+            task_in_progress_id = self.env.ref("bfal_workflow.project_stage_not_accepted")
+            if task_in_progress_id and task.stage_id and task.stage_id.id != task_in_progress_id.id:
+                task.stage_id =  task_in_progress_id.id
+
+        return res 
