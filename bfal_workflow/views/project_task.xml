@@ -12,7 +12,7 @@
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_id','!=',%(project.project_stage_2)d)]}"/>
+                        attrs="{'invisible': [('is_fsm','=',False)]}"/>
 
                 <button string="Planifier" 
                         name="action_schedule_task" 
@@ -40,13 +40,13 @@
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
-            <xpath expr="//field[@name='project_id']" position="attributes">
+            <!-- <xpath expr="//field[@name='project_id']" position="attributes">
                 <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
                 <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
-            </xpath>
+            </xpath> -->
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
                 <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
@@ -64,9 +64,9 @@
                 <attribute name="attrs">{'invisible': True}</attribute>
             </xpath>
 
-            <xpath expr="//field[@name='name']" position="attributes">
+            <!-- <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="attrs">{'readonly': ['|', ('stage_id','!=',%(project.project_stage_0)d), ('is_user_readonly', '=', True)]}</attribute>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
 
