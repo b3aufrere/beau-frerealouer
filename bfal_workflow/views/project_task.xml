@@ -172,6 +172,7 @@
             <xpath expr="//header" position="inside">
                 <button type="object" 
                         name="action_view_so" 
+                        class="oe_highlight"
                         icon="fa-dollar" 
                         attrs="{'invisible': [('sale_order_id', '=', False)]}" 
                         string="Voir bon de commande" 
