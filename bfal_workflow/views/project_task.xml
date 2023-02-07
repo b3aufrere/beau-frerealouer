@@ -199,11 +199,11 @@
             </xpath>
 
             <xpath expr="//field[@name='planned_date_begin']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'required': [('planned_date_end', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(project.project_stage_0)d, %(	industry_fsm.planning_project_stage_1)d])], 'required': [('planned_date_end', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='planned_date_end']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'required': [('planned_date_begin', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(project.project_stage_0)d, %(	industry_fsm.planning_project_stage_1)d])], 'required': [('planned_date_begin', '!=', False)]}</attribute>
             </xpath>
         </field>
     </record>
