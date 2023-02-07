@@ -10,10 +10,11 @@
                 <field name="is_user_readonly" invisible="1"/>
                 <button string="Réassigner" 
                         name="action_reassign_task" 
+                        icon="fa-undo"
                         type="object" 
                         class="oe_highlight" 
                         groups="industry_fsm.group_fsm_manager"
-                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_id', '!=', %(bfal_workflow.project_stage_not_accepted))]}"/>
+                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_id', '!=', %(bfal_workflow.project_stage_not_accepted)d)]}"/>
 
                 <button string="Créer une visite" 
                         name="create_sub_task" 
