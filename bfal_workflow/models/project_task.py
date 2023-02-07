@@ -257,3 +257,7 @@ class ProjectTask(models.Model):
             billable_tasks._prepare_materials_delivery()
 
         return True
+    
+    def action_reassign_task(self):
+        for task in self:
+            task.stage_id = self.env.ref("project.project_stage_0").id

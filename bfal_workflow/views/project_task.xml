@@ -8,6 +8,13 @@
             <xpath expr="//header" position="inside">
                 <field name="is_sub_task" invisible="1"/>
                 <field name="is_user_readonly" invisible="1"/>
+                <button string="Réassigner" 
+                        name="action_reassign_task" 
+                        type="object" 
+                        class="oe_highlight" 
+                        groups="industry_fsm.group_fsm_manager"
+                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_id', '!=', %(bfal_workflow.project_stage_not_accepted))]}"/>
+
                 <button string="Créer une visite" 
                         name="create_sub_task" 
                         type="object" 
