@@ -175,7 +175,7 @@
                         icon="fa-dollar" 
                         attrs="{'invisible': [('sale_order_id', '=', False)]}" 
                         string="Voir bon de commande" 
-                        groups="sales_team.group_sale_salesman_all_leads,sales_team.group_sale_salesman"/>
+                        groups="sales_team.group_sale_salesman"/>
             </xpath>
         </field>
     </record>
