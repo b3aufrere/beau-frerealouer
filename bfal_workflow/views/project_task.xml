@@ -26,13 +26,13 @@
                         name="action_schedule_task" 
                         type="object" 
                         class="btn-success"
-                        attrs="{'invisible': ['|', ('stage_id','!=',%(project.project_stage_0)d), '|', ('planned_date_begin', '=', False), ('planned_date_end', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('stage_id','!=',%(bfal_workflow.project_stage_0)d), '|', ('planned_date_begin', '=', False), ('planned_date_end', '=', False)]}"/>
 
                 <button string="Non accepté" 
                         name="action_no_accept_task" 
                         type="object" 
                         class="btn-warning"
-                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_id','not in',[%(project.project_stage_0)d, %(industry_fsm.planning_project_stage_1)d])]}"/>
+                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_id','not in',[%(bfal_workflow.project_stage_0)d, %(bfal_workflow.planning_project_stage_1)d])]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
@@ -49,11 +49,11 @@
             </xpath>
 
             <xpath expr="//field[@name='project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//page[@name='extra_info']" position="attributes">
@@ -73,7 +73,7 @@
             </xpath>
 
             <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(project.project_stage_0)d)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)]}</attribute>
             </xpath>
         </field>
     </record>
@@ -207,11 +207,11 @@
             </xpath>
 
             <xpath expr="//field[@name='planned_date_begin']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(project.project_stage_0)d, %(industry_fsm.planning_project_stage_1)d])], 'required': [('planned_date_end', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(bfal_workflow.project_stage_0)d, %(bfal_workflow.planning_project_stage_1)d])], 'required': [('planned_date_end', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='planned_date_end']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(project.project_stage_0)d, %(industry_fsm.planning_project_stage_1)d])], 'required': [('planned_date_begin', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','not in',[%(bfal_workflow.project_stage_0)d, %(bfal_workflow.planning_project_stage_1)d])], 'required': [('planned_date_begin', '!=', False)]}</attribute>
             </xpath>
         </field>
     </record>
@@ -222,19 +222,19 @@
         <field name="inherit_id" ref="timesheet_grid.project_task_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_timer_start'][1]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(industry_fsm.planning_project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.planning_project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_start'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_stop']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_pause']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_pause', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_pause', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_resume']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_resume', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_resume', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
             </xpath>
         </field>
     </record>
@@ -245,10 +245,10 @@
         <field name="inherit_id" ref="industry_fsm.view_task_form2_inherit" />
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_fsm_validate'][1]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_primary', '=', False), ('stage_id','!=',%(industry_fsm.planning_project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_primary', '=', False), ('stage_id','!=',%(bfal_workflow.planning_project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_fsm_validate'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_id','!=',%(project.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
             </xpath>
         </field>
     </record>
