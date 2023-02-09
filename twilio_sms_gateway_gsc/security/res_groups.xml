@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+	<data noupdate="1">
+		<!-- Odoo User Setting Access Rights -->
+		<record model="ir.module.category"
+			id="module_twilio_sms_gateway_gsc">
+			<field name="name">Twilio SMS Gateway</field>
+			<field name="description">Twilio SMS Gateway User Access Rights</field>
+			<field name="sequence">100</field>
+		</record>
+
+		<record model="res.groups" id="group_twilio_sms_gateway_gsc_user">
+			<field name="name">User</field>
+			<field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+			<field name="category_id" ref="module_twilio_sms_gateway_gsc" />
+			<field name="users"
+				eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]" />
+		</record>
+
+		<record model="res.groups"
+			id="group_twilio_sms_gateway_gsc_manager">
+			<field name="name">Manager</field>
+			<field name="category_id" ref="module_twilio_sms_gateway_gsc" />
+			<field name="implied_ids"
+				eval="[(4,ref('twilio_sms_gateway_gsc.group_twilio_sms_gateway_gsc_user')), (4,ref('base.group_erp_manager'))]" />
+			<field name="users"
+				eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]" />
+		</record>
+	</data>
+
+	<data noupdate="1">
+		<!-- Update Manager Rights to Give Twilio SMS App Rights -->
+		<record id="base.default_user" model="res.users">
+			<field name="groups_id"
+				eval="[(4,ref('twilio_sms_gateway_gsc.group_twilio_sms_gateway_gsc_manager'))]" />
+		</record>
+	</data>
+</odoo>

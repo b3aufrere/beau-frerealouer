@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="0">
+        <record id="project_stage_not_accepted" model="project.task.type">
+            <field name="name">Non accepté</field>
+            <field name="sequence">22</field>
+            <field name="fold" eval="True"/>
+        </record>
+
+        <record id="activity_type_task_not_accepted" model="mail.activity.type">
+            <field name="name">Non accepté</field>
+            <field name="icon">fa-calendar-times</field>
+            <field name="sequence">3</field>
+        </record>
+    </data>
+</odoo>
