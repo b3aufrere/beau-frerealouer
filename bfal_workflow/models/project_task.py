@@ -49,15 +49,15 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
-                if task.stage_id.id == self.env.ref("industry_fsm.planning_project_stage_1").id:
+                if task.stage_id.id == self.env.ref("bfal_workflow.planning_project_stage_1").id:
                     task.color = 4
-                elif task.stage_id.id == self.env.ref("project.project_stage_1").id:
+                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_1").id:
                     task.color = 10
-                elif task.stage_id.id == self.env.ref("project.project_stage_2").id:
+                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_2").id:
                     task.color = 1
                 elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_not_accepted").id:
                     task.color = 3
-                elif task.stage_id.id == self.env.ref("project.project_stage_3").id:
+                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_2").id:
                     task.color = 5
                 else:
                     task.color = 0
@@ -84,9 +84,9 @@ class ProjectTask(models.Model):
             fsm_tasks_ids = self.env['project.task'].sudo().browse(fsm_tasks_ids)
             
             # all fsm tasks are done
-            stage_done_task_id = self.env.ref('project.project_stage_2')
+            stage_done_task_id = self.env.ref('bfal_workflow.project_stage_2')
             stage_cancelled_task_id = False
-            stage_done_ticket_id = self.env.ref('helpdesk.stage_done')
+            stage_done_ticket_id = self.env.ref('bfal_workflow.stage_done')
             check_other_cases = True
             
             if stage_done_task_id and stage_done_ticket_id:
@@ -98,7 +98,7 @@ class ProjectTask(models.Model):
                         nb_tasks_done += 1
                     else:
                         if not stage_cancelled_task_id:
-                            stage_cancelled_task_id = self.env.ref('project.project_stage_3')
+                            stage_cancelled_task_id = self.env.ref('bfal_workflow.project_stage_2')
                         
                         if task.stage_id.id != stage_cancelled_task_id.id:
                             nb_task_other += 1
@@ -109,7 +109,7 @@ class ProjectTask(models.Model):
             
             if check_other_cases:
                 # all fsm tasks are cancelled
-                stage_cancelled_task_id = self.env.ref('project.project_stage_3')
+                stage_cancelled_task_id = self.env.ref('bfal_workflow.project_stage_2')
                 stage_cancelled_ticket_id = self.env.ref('helpdesk.stage_cancelled')
                 
                 if stage_cancelled_task_id and stage_cancelled_ticket_id and all(task.stage_id and task.stage_id.id == stage_cancelled_task_id.id for task in fsm_tasks_ids):
@@ -117,7 +117,7 @@ class ProjectTask(models.Model):
                 
                 else:
                     # one of fsm tasks is in progress
-                    stage_in_progress_task_id = self.env.ref('project.project_stage_1')
+                    stage_in_progress_task_id = self.env.ref('bfal_workflow.project_stage_1')
                     stage_in_progress_ticket_id = self.env.ref('helpdesk.stage_in_progress')
                     
                     if stage_in_progress_task_id and stage_in_progress_ticket_id and any(task.stage_id and task.stage_id.id == stage_in_progress_task_id.id for task in fsm_tasks_ids):
@@ -125,8 +125,8 @@ class ProjectTask(models.Model):
                     
                     else:
                         # one of fsm tasks is new or planned or not accepted
-                        stage_new_task_id = self.env.ref('project.project_stage_0')
-                        stage_planned_task_id = self.env.ref('industry_fsm.planning_project_stage_1')
+                        stage_new_task_id = self.env.ref('bfal_workflow.project_stage_0')
+                        stage_planned_task_id = self.env.ref('bfal_workflow.planning_project_stage_1')
                         stage_not_accepted_task_id = self.env.ref('bfal_workflow.project_stage_not_accepted')
                         stage_on_hold_ticket_id = self.env.ref('helpdesk.stage_on_hold')
                         
@@ -185,7 +185,7 @@ class ProjectTask(models.Model):
         res = super(ProjectTask, self).action_timer_start()
         
         for task in self:
-            stage_in_progress_id = self.env.ref("project.project_stage_1")
+            stage_in_progress_id = self.env.ref("bfal_workflow.project_stage_1")
             if stage_in_progress_id and task.stage_id and task.stage_id.id != stage_in_progress_id.id:
                 task.stage_id =  stage_in_progress_id.id
 
@@ -193,7 +193,7 @@ class ProjectTask(models.Model):
 
     def action_schedule_task(self):
         for task in self:
-            stage_planned_id = self.env.ref("industry_fsm.planning_project_stage_1")
+            stage_planned_id = self.env.ref("bfal_workflow.planning_project_stage_1")
             if stage_planned_id:
                 task.stage_id =  stage_planned_id.id
     
@@ -260,4 +260,4 @@ class ProjectTask(models.Model):
     
     def action_reassign_task(self):
         for task in self:
-            task.stage_id = self.env.ref("project.project_stage_0").id
+            task.stage_id = self.env.ref("bfal_workflow.project_stage_0").id
