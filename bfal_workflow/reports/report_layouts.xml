@@ -29,7 +29,7 @@
         </style>
 
         <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
-            <div style="padding-top:30px">
+            <div style="padding-top:10px">
                 <div class="float-start text-start">
                     <div>
                         <span t-esc="company.name" style="font-size:22px; font-weight:bold;"/>
