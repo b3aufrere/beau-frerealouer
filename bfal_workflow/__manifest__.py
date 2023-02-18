@@ -42,7 +42,8 @@
         'views/crm_lead.xml',
         'views/sale_order.xml',
         'views/project_task.xml',
-        'views/mail_activity.xml'
+        'views/mail_activity.xml',
+        'views/account_move.xml'
     ],
     
     'installable': True,
