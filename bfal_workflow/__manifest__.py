@@ -22,7 +22,8 @@
         'industry_fsm_report',
         'helpdesk',
         'mail',
-        'timesheet_grid'
+        'timesheet_grid',
+        'helpdesk_ticket_sale_order_ent'
     ],
     
     'data': [ 
