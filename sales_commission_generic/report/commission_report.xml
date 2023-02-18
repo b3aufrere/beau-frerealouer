@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report 
+            id="report_pdf"
+            string="Commission Report"
+            model="invoice.sale.commission" 
+            report_type="qweb-pdf"
+            file="sales_commission_generic.sale_inv_comm_template" 
+            name="sales_commission_generic.sale_inv_comm_template" 
+	    menu="False"
+        />
+
+    </data>
+</odoo>
