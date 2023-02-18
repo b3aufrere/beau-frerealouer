@@ -1,0 +1,1588 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_website_support_ticket
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-02-19 11:48+0000\n"
+"PO-Revision-Date: 2021-02-19 11:48+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_website_support_ticket
+#: model:mail.template,body_html:bi_website_support_ticket.email_template_support_ticket
+msgid ""
+"\n"
+"                    <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, Verdana, sans-serif; font-size: 12px; color: rgb(34, 34, 34); background-color: #FFF; \">\n"
+"                        <p>Dear ${object.partner_id.name}</p>\n"
+"                        <p> We received your Support Ticket.</p>\n"
+"                        <p> Support Ticket Subject : ${object.name} </p>\n"
+"                        <p> Description : ${object.description} </p>\n"
+"                    </div>\n"
+"                        \n"
+"\t\t"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:mail.template,subject:bi_website_support_ticket.email_template_support_ticket
+msgid "${object.name} "
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.header
+msgid ""
+"<span class=\"Text\">\n"
+"\t\t\t\t\t\t\t\tSupport\n"
+"\t\t\t\t\t\t\t</span>\n"
+"\t\t\t\t\t\t\t<span class=\"caret\"/>"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.header
+msgid ""
+"<span class=\"Text\">\n"
+"\t\t\t\t\t\t\tSupport\n"
+"\t\t\t\t\t\t</span>\n"
+"\t\t\t\t\t\t<span class=\"caret\"/>"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_message_thank_you
+msgid ""
+"<span class=\"fa fa-long-arrow-left\"/>\n"
+"\t\t\t\t\t\t\t\t\tGo Back"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Analytic Account</span>"
+msgstr "<span> Compte analytique </span>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Category</span>"
+msgstr "<span> Catégorie </span>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Description</span>"
+msgstr "<span> Description </span>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Priority</span>"
+msgstr "<span> Priorité </ span"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Project</span>"
+msgstr "<span> Projet </span>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "<span>Support Team</span>"
+msgstr "<span> Équipe d'assistance </ span"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Assigned to : </strong>"
+msgstr "<strong> Attribué à: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Category : </strong>"
+msgstr "<strong> Catégorie: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Close Date : </strong>"
+msgstr "<strong> Date de clôture: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Create Date : </strong>"
+msgstr "<strong> Date de création: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Customer : </strong>"
+msgstr "<strong> Client: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Email : </strong>"
+msgstr "<strong> E-mail: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Is Ticket Closed? : </strong>"
+msgstr "<strong> Le billet est-il fermé? : </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Message and communication history</strong>"
+msgstr "<strong> Historique des messages et des communications </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Phone</strong>"
+msgstr "<strong> Téléphone </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Priority : </strong>"
+msgstr "<strong> Priorité: </ strong"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Project : </strong>"
+msgstr "<strong> Projet: </strong>"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "<strong>Support Team : </strong>"
+msgstr "<strong> Équipe d'assistance: </strong>"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_defaults
+msgid ""
+"A Python dictionary that will be evaluated to provide default values when "
+"creating new records for this alias."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__access_warning
+msgid "Access warning"
+msgstr "Avertissement d'accès"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_needaction
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_needaction
+msgid "Action Needed"
+msgstr "Action nécessaire"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_ids
+msgid "Activities"
+msgstr "Activités"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Décoration d'exception d'activité"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_state
+msgid "Activity State"
+msgstr "État de l'activité"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Add an internal note..."
+msgstr "Ajouter une note interne ..."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_id
+msgid "Alias"
+msgstr "Alias"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_contact
+msgid "Alias Contact Security"
+msgstr "Sécurité des contacts d'alias"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_name
+msgid "Alias Name"
+msgstr "Surnom"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_domain
+msgid "Alias domain"
+msgstr "Domaine d'alias"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_model_id
+msgid "Aliased Model"
+msgstr "Modèle aliasé"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__analytic_id
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Analytic Account"
+msgstr "Compte analytique"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Ligne analytique"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage1
+msgid "Assigned"
+msgstr "Attribué"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__user_id
+msgid "Assigned To"
+msgstr "Assigné à"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid ""
+"Attach\n"
+"\t\t\t\t\t\t\t\t\t\tFiles"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_ir_attachment
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Attachment"
+msgstr "Pièce jointe"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_attachment_count
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_attachment_count
+msgid "Attachment Count"
+msgstr "Nombre de pièces jointes"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__attachment_count
+msgid "Attachments"
+msgstr "Pièces jointes"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__customer_rating__2
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Average"
+msgstr "Moyenne"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__campaign_id
+msgid "Campaign"
+msgstr "Campagne"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_create_task_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__category
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Category"
+msgstr "Catégorie"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.actions.act_window,help:bi_website_support_ticket.support_ticket_stage_act
+msgid ""
+"Click to setup a new stage in the processing of the\n"
+"\t\t\t\tSupport Ticket."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__date_close
+msgid "Close Date"
+msgstr "Date de clôture"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Close Date :"
+msgstr "Date de clôture:"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Close Date must be greater than Create Date"
+msgstr "La date de clôture doit être supérieure à la date de création"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage7
+msgid "Closed"
+msgstr "Fermée"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_closed_support_ticket
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_closed_ticket
+msgid "Closed Tickets"
+msgstr "Billets fermés"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__comment
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Comment"
+msgstr "Commenter"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__case_default
+msgid "Common to All Teams"
+msgstr "Commun à toutes les équipes"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__company_id
+msgid "Company"
+msgstr "Entreprise"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Company :"
+msgstr "Entreprise :"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de config"
+
+#. module: bi_website_support_ticket
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_configuration
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_team_form_view
+msgid "Configure domain name"
+msgstr "Configurer le nom de domaine"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_create_task_wizard_form
+msgid "Create"
+msgstr "Créer"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__date_create
+msgid "Create Date"
+msgstr "créer un rendez-vous"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Create Date :"
+msgstr "Créer un rendez-vous :"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Create Invoice"
+msgstr "Créer une facture"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_create_task_wizard
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Create Task"
+msgstr "Créer une tâche"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Create a new lead"
+msgstr "Créer un nouveau prospect"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Create an opportunity in your pipeline"
+msgstr "Créez une opportunité dans votre pipeline"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Created Date"
+msgstr "Date de création"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__create_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__create_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__partner_id
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Customer :"
+msgstr "Client :"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__access_url
+msgid "Customer Portal URL"
+msgstr "URL du portail client"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__customer_rating
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "Customer Rating"
+msgstr "Évaluation du client"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Customer Ratings"
+msgstr "Évaluations des clients"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Customer Ticket"
+msgstr "Ticket client"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Customer Ticket Email"
+msgstr "E-mail du ticket client"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Date"
+msgstr "Date"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__deadline_date
+msgid "Deadline Date"
+msgstr "Date limite"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_res_config_settings__support_team_id
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.bi_website_support_ticket_config
+msgid "Default Support Team"
+msgstr "Équipe d'assistance par défaut"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_defaults
+msgid "Default Values"
+msgstr "Les valeurs par défaut"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__description
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__description
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_create_task_wizard_form
+msgid "Description"
+msgstr "Description"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__email_from
+msgid "Destination email for email gateway."
+msgstr "E-mail de destination pour la passerelle de messagerie."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__display_name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "Edit Ticket"
+msgstr "Modifier le ticket"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__email_from
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Email"
+msgstr "E-mail"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Email :"
+msgstr "Email :"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_team_form_view
+msgid "Email Alias"
+msgstr "Alias ​​de messagerie"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Employee"
+msgstr "Employée"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__emp_timesheet_cost__employee_cost
+msgid "Employee Cost"
+msgstr "Coût des employés"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Escalate Team"
+msgstr "Escalade de l'équipe"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__customer_rating__4
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Excellent"
+msgstr "Excellent"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__fold
+msgid "Folded in Form"
+msgstr "Plié en forme"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_follower_ids
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_follower_ids
+msgid "Followers"
+msgstr "Suiveuses"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_channel_ids
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Abonnés (canaux)"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_partner_ids
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Abonnés (partenaires)"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__customer_rating__3
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Good"
+msgstr "Bon"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Group By"
+msgstr "Par groupe"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid ""
+"Helpdesk\n"
+"\t\t\t\t\t\t\t\t\t\tTeam"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_support_stage
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_stage
+msgid "Helpdesk Stages"
+msgstr "Étapes du Helpdesk"
+
+#. module: bi_website_support_ticket
+#: model:ir.module.category,name:bi_website_support_ticket.module_helpdesk_support
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_support_ticket
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_support_ticket
+msgid "Helpdesk Support"
+msgstr "Un service d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_support_team
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__support_team_id
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_team
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Helpdesk Team"
+msgstr "Équipe Helpdesk"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_support_ticket_type
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_ticket_type
+msgid "Helpdesk Ticket Type"
+msgstr "Type de ticket Helpdesk"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__priority__2
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "High"
+msgstr "Haut"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_parent_thread_id
+msgid ""
+"ID of the parent record holding the alias (example: project holding the task"
+" creation alias)"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_exception_icon
+msgid "Icon"
+msgstr "Icône"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icône pour indiquer une activité d'exception."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_needaction
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_unread
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_needaction
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si coché, les nouveaux messages nécessitent votre attention."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_has_error
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_has_sms_error
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_has_error
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si coché, certains messages ont une erreur de livraison."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__support_invoice_id
+msgid "Invoice"
+msgstr "Facture d'achat"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Invoice Lines"
+msgstr "Lignes de facture"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__invoice_option
+msgid "Invoice Policy"
+msgstr "Politique de facturation"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Invoices"
+msgstr "Les factures"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__invoice_count
+msgid "Invoices Count"
+msgstr "Nombre de factures"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__is_assigned
+msgid "Is Assigned"
+msgstr "Est assigné"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_is_follower
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_is_follower
+msgid "Is Follower"
+msgstr "Est un suiveur"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__is_ticket_closed
+msgid "Is Ticket Closed"
+msgstr "Le billet est-il fermé"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_account_move
+msgid "Journal Entries"
+msgstr "Pièces comptables"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type____last_update
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__write_uid
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__write_date
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__level
+msgid "Level"
+msgstr "Niveau"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_team__level__s_level_1
+msgid "Level 1"
+msgstr "Niveau 1"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_team__level__s_level_2
+msgid "Level 2"
+msgstr "Niveau 2"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_team__level__s_level_3
+msgid "Level 3"
+msgstr "Niveau 3"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__priority__0
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Low"
+msgstr "Faible"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_main_attachment_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Pièce jointe principale"
+
+#. module: bi_website_support_ticket
+#: model:res.groups,name:bi_website_support_ticket.group_support_manager
+msgid "Manager"
+msgstr "Directrice"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__invoice_option__manual
+msgid "Manual"
+msgstr "Manuel"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__manual_cost
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__emp_timesheet_cost__manual_cost
+msgid "Manual Employee Cost"
+msgstr "Coût manuel des employés"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__medium_id
+msgid "Medium"
+msgstr "Moyen"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_has_error
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_has_error
+msgid "Message Delivery error"
+msgstr "Erreur de livraison de message"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_ids
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_ids
+msgid "Messages"
+msgstr "messages"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "My Ticket"
+msgstr "Mon billet"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage3
+msgid "Needs More Info"
+msgstr "Besoin de plus d'informations"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage4
+msgid "Needs Reply"
+msgstr "Besoin de réponse"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage
+msgid "New"
+msgstr "Nouvelle"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Date limite de la prochaine activité"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_summary
+msgid "Next Activity Summary"
+msgstr "Résumé de l'activité suivante"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_type_id
+msgid "Next Activity Type"
+msgstr "Type d'activité suivant"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__priority__1
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Normal"
+msgstr "Normale"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_needaction_counter
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Nombre d'actions"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_has_error_counter
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_has_error_counter
+msgid "Number of errors"
+msgstr "Nombre d'erreurs"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_needaction_counter
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Nombre de messages nécessitant une action"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_has_error_counter
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Nombre de messages avec erreur de livraison"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__message_unread_counter
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Nombre de m Nombre de messages non lus messages avec erreur de livraison"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_force_thread_id
+msgid ""
+"Optional ID of a thread (record) to which all incoming messages will be "
+"attached, even if they did not reply to it. If set, this will disable the "
+"creation of new records completely."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_user_id
+msgid "Owner"
+msgstr "Propriétaire"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_parent_model_id
+msgid "Parent Model"
+msgstr "Modèle parent"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_parent_thread_id
+msgid "Parent Record Thread ID"
+msgstr "ID de thread d'enregistrement parent"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__parent_team_id
+msgid "Parent Team"
+msgstr "Équipe de parents"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_parent_model_id
+msgid ""
+"Parent model holding the alias. The model holding the alias reference is not"
+" necessarily the model given by alias_model_id (example: project "
+"(parent_model) and task (model))"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__phone
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Phone"
+msgstr "Téléphone"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Phone :"
+msgstr "Téléphone :"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__planned_hours
+msgid "Planned Hours"
+msgstr "Heures planifiées"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Please Add Employee Timesheet..."
+msgstr "Veuillez ajouter la feuille de temps des employés ..."
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Please select Invoice Policy..."
+msgstr "Veuillez sélectionner la politique de facturation ..."
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Please select Timesheet Cost..."
+msgstr "Veuillez sélectionner Coût de la feuille de temps ..."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_contact
+msgid ""
+"Policy to post a message on the document using the mailgateway.\n"
+"- everyone: everyone can post\n"
+"- partners: only authenticated partners\n"
+"- followers: only followers of the related document or members of following channels\n"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__customer_rating__1
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Poor"
+msgstr "Pauvre"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__access_url
+msgid "Portal Access URL"
+msgstr "URL d'accès au portail"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__priority
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_tree_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Priority"
+msgstr "Priorité"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__project_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__project_id
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Project"
+msgstr "Projet"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__quantity
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_ids
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Rating"
+msgstr "Notation"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_avg
+msgid "Rating Average"
+msgstr "Note moyenne"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_last_feedback
+msgid "Rating Last Feedback"
+msgstr "Note Dernier commentaire"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_last_image
+msgid "Rating Last Image"
+msgstr "Noter la dernière image"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_last_value
+msgid "Rating Last Value"
+msgstr "Note Dernière valeur"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__rating_count
+msgid "Rating count"
+msgstr "Nombre de notes"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__rating_last_feedback
+msgid "Reason of the rating"
+msgstr "Raison de l'évaluation"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__alias_force_thread_id
+msgid "Record Thread ID"
+msgstr "Enregistrer l'ID de fil"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__user_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__user_id
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Responsible :"
+msgstr "Responsable:"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__activity_user_id
+msgid "Responsible User"
+msgstr "Utilisateur responsable"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_has_sms_error
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Erreur de livraison SMS"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_graph
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_pivot
+msgid "Sales Orders"
+msgstr "Commandes"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Salesperson"
+msgstr "Vendeuse"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Search Support Ticket"
+msgstr "Rechercher un ticket d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__access_token
+msgid "Security Token"
+msgstr "Jeton de sécurité"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Select one"
+msgstr "Sélectionnez un"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__sequence
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__sequence
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Set To Close"
+msgstr "Définir pour fermer"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Set To Reset"
+msgstr "Définir pour réinitialiser"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage6
+msgid "Solution Suggested"
+msgstr "Solution suggérée"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__source_id
+msgid "Source"
+msgstr "La source"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__stage_id
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Stage"
+msgstr "Organiser"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_stage__name
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__name
+msgid "Stage Name"
+msgstr "Nom de scène"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "State"
+msgstr "Organiser"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__name
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Subject"
+msgstr "Sujette"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Submit"
+msgstr "Nous faire parvenir"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.header
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Submit Support Ticket"
+msgstr "Soumettre un ticket de support"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.submit_support_ticket
+msgid "Submit Ticket"
+msgstr "Envoyer le ticket"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_support_invoice
+msgid "Support Invoice"
+msgstr "Facture de support"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__invoice_id
+msgid "Support Invoices"
+msgstr "Factures de support"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_support_stage
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_stage_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_stage_tree_view
+msgid "Support Stage"
+msgstr "Étape de soutien"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_support_team
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_team_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_team_tree_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Support Team"
+msgstr "Équipe de soutien"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.report,name:bi_website_support_ticket.support_ticket_report_id
+#: model:ir.model,name:bi_website_support_ticket.model_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_account_analytic_line__ticket_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_account_move__invoice_support_ticket_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_ir_attachment__support_ticket_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_project_task__ticket_id
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_res_config_settings__support_ticket_visible
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_tree_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_calendar
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_support_ticket_filter
+msgid "Support Ticket"
+msgstr "Ticket de support"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_comment
+msgid "Support Ticket Customer Rating"
+msgstr "Évaluation des clients du ticket d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__res_config_settings__support_ticket_visible__public_user_ticket
+msgid "Support Ticket For All Public User"
+msgstr "Ticket d'assistance pour tous les utilisateurs publics"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__res_config_settings__support_ticket_visible__login_user_ticket
+msgid "Support Ticket For Login User"
+msgstr "Ticket d'assistance pour l'utilisateur connecté"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Support Ticket Info"
+msgstr "Informations sur le ticket d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__support_invoice_id
+msgid "Support Ticket Invoice"
+msgstr "Ticket d'assistance InSupport Ticket Invoicefo"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_support_ticket_stage
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_project_task_type__ticket_stage
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_stage_form
+msgid "Support Ticket Stage"
+msgstr "Étape du ticket de support"
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.support_ticket_stage_act
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_stage_tree
+msgid "Support Ticket Stages"
+msgstr "Étapes du ticket d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_support_ticket_type
+msgid "Support Ticket Type"
+msgstr "Type de ticket d'assistance"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Support Ticket..."
+msgstr "Ticket de support ..."
+
+#. module: bi_website_support_ticket
+#: model:ir.actions.act_window,name:bi_website_support_ticket.action_support_ticket
+#: model:ir.ui.menu,name:bi_website_support_ticket.menu_sub_ticket
+msgid "Support Tickets"
+msgstr "Billets d'assistance"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__tag_ids
+msgid "Tag"
+msgstr "Étiqueter"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__tag_ids
+msgid "Tags"
+msgstr "Mots clés"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_project_task
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Task"
+msgstr "Tâche"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_create_task_wizard_form
+msgid "Task Create"
+msgstr "Créer une tâche"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_task_website_wizard__name
+msgid "Task Name"
+msgstr "Task Name"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_project_task_type
+msgid "Task Stage"
+msgstr "Étape de tâche"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_task_website_wizard
+msgid "Task Wizard"
+msgstr "Assistant de tâches"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__task_count
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Tasks"
+msgstr "Tâches"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__invoice_line_tax_ids
+msgid "Taxes"
+msgstr "Les impôts"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__team_leader
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__team_leader_id
+msgid "Team Leader"
+msgstr "Chef d'équipe"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__team_member
+msgid "Team Member"
+msgstr "Membre de l'équipe"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_team_form_view
+msgid "Team Members"
+msgstr "Membres de l'équipe"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_stage__team_ids
+msgid "Teams"
+msgstr "Les équipes"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_message_thank_you
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_rating_thank_you
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_thank_you
+msgid "Thank You"
+msgstr "Merci"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_rating_thank_you
+msgid ""
+"Thank you for giving review for Helpdesk Support\n"
+"\t\t\t\t\t\t\t\t\tTicket."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_id
+msgid ""
+"The email address associated with this channel. New emails received will "
+"automatically create new leads assigned to the channel."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_model_id
+msgid ""
+"The model (Odoo Document Kind) to which this alias corresponds. Any incoming"
+" email that does not reply to an existing record will cause the creation of "
+"a new record of this model (e.g. a Project Task)"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_name
+msgid ""
+"The name of the email alias, e.g. 'jobs' if you want to catch emails for "
+"<jobs@example.odoo.com>"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__alias_user_id
+msgid ""
+"The owner of records created upon receiving emails on this alias. If this "
+"field is not set the system will attempt to find the right owner based on "
+"the sender (From) address, or will use the Administrator account if no "
+"system user is found for that address."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+msgid "There are currently no Support Tickets for your account."
+msgstr "Il n'y a actuellement aucun ticket de support pour votre compte."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__campaign_id
+msgid ""
+"This is a name that helps you keep track of your different campaign efforts,"
+" e.g. Fall_Drive, Christmas_Special"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__medium_id
+msgid "This is the method of delivery, e.g. Postcard, Email, or Banner Ad"
+msgstr "C'est la méthode de livraison, par ex. Carte postale, e-mail ou bannière publicitaire"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__source_id
+msgid ""
+"This is the source of the link, e.g. Search Engine, another domain, or name "
+"of email list"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "Ticket"
+msgstr "Billet"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_view
+msgid "Ticket :"
+msgstr "Billet :"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Ticket Invoice"
+msgstr "Facture de billet"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket_type__name
+msgid "Ticket Name"
+msgstr "Nom du ticket"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Ticket No"
+msgstr "Numéro de billet"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_type_form_view
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_type_tree_view
+msgid "Ticket Type"
+msgstr "Type de billet"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_home_menu_ticket
+msgid "Tickets"
+msgstr "Des billets"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Time (Hours)"
+msgstr "Temps (heures)"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields.selection,name:bi_website_support_ticket.selection__support_ticket__invoice_option__timesheet
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_template_view
+msgid "Timesheet"
+msgstr "Emploi du temps"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__emp_timesheet_cost
+msgid "Timesheet Cost"
+msgstr "Coût de la feuille de temps"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__timesheet_ids
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_ticket_form_view
+msgid "Timesheets"
+msgstr "Feuilles de temps"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__spend_hours
+msgid "Total Spend Hours"
+msgstr "Total des heures passées"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Type d'activité d'exception enregistrée."
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__price_unit
+msgid "Unit Price"
+msgstr "Prix ​​unitaire"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_invoice__uom_id
+msgid "Unit of Measure"
+msgstr "Unité de mesure"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_unread
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_unread
+msgid "Unread Messages"
+msgstr "Messages non lus"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__message_unread_counter
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Compteur de messages non lus"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_stage__sequence
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket_stage__sequence
+msgid "Used to order stages. Lower is better."
+msgstr "Utilisé pour commander les étapes. Plus bas c'est mieux."
+
+#. module: bi_website_support_ticket
+#: model:res.groups,name:bi_website_support_ticket.group_support_user
+msgid "User"
+msgstr "Utilisatrice"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.bi_website_support_ticket_config
+msgid "Visible Support Ticket"
+msgstr "Ticket d'assistance visible"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_thank_you
+msgid "We will get back to you shortly"
+msgstr "Nous vous répondrons sous peu"
+
+#. module: bi_website_support_ticket
+#: model:ir.model,name:bi_website_support_ticket.model_website
+msgid "Website"
+msgstr "Site Web"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_team__website_message_ids
+#: model:ir.model.fields,field_description:bi_website_support_ticket.field_support_ticket__website_message_ids
+msgid "Website Messages"
+msgstr "Messages du site Web"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.bi_website_support_ticket_config
+msgid "Website Support Ticket Configuration"
+msgstr "Configuration du ticket de support du site Web"
+
+#. module: bi_website_support_ticket
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_team__website_message_ids
+#: model:ir.model.fields,help:bi_website_support_ticket.field_support_ticket__website_message_ids
+msgid "Website communication history"
+msgstr "Historique des communications sur le site Web"
+
+#. module: bi_website_support_ticket
+#: model:support.stage,name:bi_website_support_ticket.support_stage2
+msgid "Work In Progress"
+msgstr "Travail en cours"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "You are already in Parent Team...!!"
+msgstr "Vous êtes déjà dans l'équipe des parents ... !!"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.actions.act_window,help:bi_website_support_ticket.support_ticket_stage_act
+msgid ""
+"You can create Support Ticket stages to categorize the status of\n"
+"\t\t\t\tevery\n"
+"\t\t\t\tSupport Ticket entered in the system. The stages define all the\n"
+"\t\t\t\tsteps\n"
+"\t\t\t\trequired for the resolution of a Support Ticket."
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.support_message_thank_you
+msgid ""
+"Your Message/Attachments have been send successfully.\n"
+"\t\t\t\t\t\t\t\t\t<br/>"
+msgstr ""
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.ticket_view_list
+msgid "Your Support Ticket"
+msgstr "Votre ticket de support"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_ticket
+msgid "Your Support Tickets"
+msgstr "Vos tickets de support"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.portal_my_home_support_ticket
+msgid "Your Tickets"
+msgstr "Vos billets"
+
+#. module: bi_website_support_ticket
+#: model_terms:ir.ui.view,arch_db:bi_website_support_ticket.view_create_task_wizard_form
+msgid "or"
+msgstr "ou"
+
+#. module: bi_website_support_ticket
+#: code:addons/bi_website_support_ticket/models/support_ticket.py:0
+#, python-format
+msgid "or send an email to %s"
+msgstr "or send an email to %s"

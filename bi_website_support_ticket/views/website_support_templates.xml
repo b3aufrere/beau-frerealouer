@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Website Top Menu For Helpdesk Support Ticket -->
+    <template id="header_support_menu" name="Header Support Ticket Link">
+        <t t-if="website.get_website_config() == 'public_user_ticket'">
+            <li class="nav-item dropdown">
+                <a href="#" role="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                    Support
+                </a>
+                <div class="dropdown-menu js_usermenu ticket1" role="menu" style="padding: 14px 5px;">
+                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="/support_ticket">
+                        Submit Support Ticket
+                    </a>
+                </div>
+            </li>
+        </t>
+        <t t-if="website.user_id != user_id">
+            <t t-if="website.get_website_config() == 'login_user_ticket'">
+                <li class="nav-item dropdown">
+                    <a href="#" role="button" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+                        Support
+                    </a>
+                    <div class="dropdown-menu js_usermenu ticket1" role="menu" style="padding: 14px 5px;">
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                           href="/support_ticket">
+                            Submit Support Ticket
+                        </a>
+                    </div>
+                </li>
+            </t>
+        </t>
+    </template>
+
+    <!-- Add Support menu in all header styles-->
+    <template id="support_menu_template_header_default" inherit_id="website.template_header_default">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_hamburger" inherit_id="website.template_header_hamburger">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_vertical" inherit_id="website.template_header_vertical">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_sidebar" inherit_id="website.template_header_sidebar">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_slogan" inherit_id="website.template_header_slogan">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_contact" inherit_id="website.template_header_contact">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_boxed" inherit_id="website.template_header_boxed">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="before">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_centered_logo" inherit_id="website.template_header_centered_logo">
+        <xpath expr="//t[@t-call='portal.placeholder_user_sign_in']" position="before">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_image" inherit_id="website.template_header_image">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_hamburger_full" inherit_id="website.template_header_hamburger_full">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="support_menu_template_header_magazine" inherit_id="website.template_header_magazine">
+        <xpath expr="//t[@t-foreach='website.menu_id.child_id']" position="after">
+            <t t-call="bi_website_support_ticket.header_support_menu"></t>
+        </xpath>
+    </template>
+
+    <template id="submit_support_ticket" name="Submit Support Ticket">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Submit Support Ticket</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <form action="/support_ticket/thanks" method="POST"
+                      class="form-horizontal mt32 container" enctype="multipart/form-data">
+                    <div class="justify-content-around o_portal_details row">
+                    <!--                        <div class="col-lg-10">-->
+                    <div class='row w-auto'>
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+
+
+                        <div class="col-xl-6">
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'name' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="name">Subject</label>
+                                <input type="text" class="form-control" name="name" required="True"
+                                       t-attf-value="#{name or ''}"/>
+                            </div>
+
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'partner_id' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="partner_id">Customer
+                                </label>
+                                <input type="text" class="form-control" name="partner_id"
+                                       t-attf-value="#{partner_id or ''}"/>
+                            </div>
+
+                            <div class="form-group col-xl-10 p-2">
+                                <label class="col-form-label" for="email_from">Email
+                                </label>
+                                <input type="text" class="form-control" name="email_from"
+                                       t-attf-value="#{email or ''}"/>
+                            </div>
+
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'phone' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="phone">Phone
+                                </label>
+                                <input type="text" class="form-control" name="phone"
+                                       t-attf-value="#{phone or ''}"/>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'category' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="category">Category
+                                </label>
+                                <t t-set="website_ticket_type" t-value="website.get_ticket_type()"/>
+                                <select name="ticket_id" class="form-control">
+                                    <option value="">Category</option>
+                                    <t t-foreach="website_ticket_type or []" t-as="t_type">
+                                        <option t-att-value="t_type.id">
+                                            <t t-esc="t_type.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group col-xl-10 p-2">
+                                <label class="col-form-label" for="priority">priority
+                                </label>
+                                <select name="priority" class="form-control">
+                                    <option value="">Select one</option>
+                                    <option value="0">Low</option>
+                                    <option value="1">Normal</option>
+                                    <option value="2">High</option>
+                                </select>
+                            </div>
+
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'support_team_id' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="support_team_id">Helpdesk
+                                    Team
+                                </label>
+                                <t t-set="website_support_team" t-value="website.get_support_team_list()"/>
+                                <select name="support_team_id" class="form-control">
+                                    <option value="">Helpdesk Team</option>
+                                    <t t-foreach="website_support_team or []" t-as="team">
+                                        <option t-att-value="team.id">
+                                            <t t-esc="team.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+
+                            <div
+                                    t-attf-class="form-group col-xl-10 p-2 #{error and 'description' in error and 'has-error' or ''}">
+                                <label class="col-form-label" for="description">Description
+                                </label>
+                                <textarea class="form-control" name="description" style="min-height: 120px"
+                                          required="True" t-attf-value="#{name or ''}"></textarea>
+                            </div>
+                        </div>
+
+                        <div t-attf-class="form-group col-xl-6 p-2 #{error and 'file' in error and 'has-error' or ''}">
+                            <label class="col-form-label" for="file">Attach
+                                Files
+                            </label>
+                            <input name="upload" type="file" value="Choose images"
+                                   multiple="multiple" accept="image/*"/>
+                        </div>
+
+                        <div t-attf-class="form-group col-xl-6 p-2 p-sm-3">
+                            <label class="col-form-label">
+                            </label>
+
+                            <button class="btn btn-primary btn-lg">Submit Ticket</button>
+						</div>
+                        </div>
+                        <!--                        </div>-->
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="support_thank_you" name="Support Ticket Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">We will get back to you shortly</h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Customeer Rating Thankyou -->
+    <template id="support_rating_thank_you" name="Support Ticket Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">Thank you for giving review for Helpdesk Support
+                                    Ticket.
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <!-- Message Send -->
+    <template id="support_message_thank_you" name="Support Ticket Message Thank You">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Thank You</h1>
+                                <h3 class="text-muted text-center">
+                                    Your Message/Attachments have been send successfully.
+                                    <br/>
+                                </h3>
+                                <a href="/my/ticket" class="btn btn-info">
+                                    <span class="fa fa-long-arrow-left"/>
+                                    Go Back
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="support_ticket_comment" name="Support Ticket Comment/Rating">
+        <t t-call="website.layout">
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 class="text-center">Support Ticket Customer Rating</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <form action="/support_ticket/comment/send" method="POST"
+                      class="form-horizontal mt32 container">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input name="ticket_id" t-att-value="ticket.id" type="hidden"/>
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="customer_rating">Rating</label>
+                        <div class="col-lg-7 col-md-8">
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="1" name="customer_rating" checked="checked"/>
+                                Poor
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="2" name="customer_rating"/>
+                                Average
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="3" name="customer_rating"/>
+                                Good
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" t-att-value="4" name="customer_rating"/>
+                                Excellent
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <label class="col-lg-3 col-md-4 col-form-label" for="comment">Comment
+                        </label>
+                        <div class="col-lg-7 col-md-8">
+                            <input type="text" class="form-control o_website_form_input" name="comment"
+                                   required="True" t-attf-value="#{comment or ''}"/>
+                        </div>
+                    </div>
+                    <div class="form-group row form-field o_website_form_required_custom">
+                        <div class="col-lg-7 col-md-8">
+                            <button class="btn btn-primary btn-lg">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <template id="ticket_view_list" name="My Support Ticket">
+        <t t-call="website.layout">
+            <div class="container mb64">
+                <div class="col-md-8">
+
+                    <h3 class="page-header">
+                        Your Support Ticket
+                        <div class="dropdown pull-right mr8">
+                        </div>
+                        <div class="dropdown pull-right mr8">
+                        </div>
+                    </h3>
+                    <div class="panel panel-default">
+                        <t t-set="website_ticket" t-value="website.get_ticket_details()"/>
+                        <div class="table-responsive">
+                            <table class="table table-hover o_portal_my_doc_table">
+                                <thead>
+                                    <tr class="active">
+                                        <th>Ticket No</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Priority</th>
+                                        <th>Stage</th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="website_ticket" t-as="s_ticket">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a t-attf-href="/ticket/view/detail/#{s_ticket.id}">
+                                                    <t t-esc="s_ticket.sequence"/>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span t-esc="s_ticket.name"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="s_ticket.date_create"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="s_ticket.priority"/>
+                                            </td>
+                                            <td>
+                                                <span t-esc="s_ticket.stage_id.name"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </t>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="o_portal_pager text-center">
+
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="support_ticket_view" name="Ticket View">
+        <t t-call="website.layout">
+
+            <div class="container">
+                <t t-foreach="ticket_data_list" t-as="items">
+                    <div class="oe_structure">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <ol class="breadcrumb mt8">
+                                    <li class="breadcrumb-item active">
+                                        <a href="/my/home">
+                                            <i class="fa fa-home"/>
+                                        </a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        <a href="/my/ticket">My Ticket</a>
+                                    </li>
+                                    <li class="breadcrumb-item active">
+                                        Ticket :
+                                        <span t-field="items.sequence"/>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <span t-field="items.sequence"/>
+                                            -
+                                            <span t-field="items.name"/>
+                                            <t t-if="portal">
+
+                                                <a class="btn btn-info pull-right label label-info"
+                                                   t-att-href="'/web#return_label=Website&amp;model=support.ticket&amp;id=%s&amp;view_type=form' % (items.id)">
+                                                    Edit Ticket
+                                                </a>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-if="items.stage_id.name!='Closed'">
+                                                    <a class="btn btn-info pull-right label label-info"
+                                                       t-attf-href="/edit_ticket/#{items.id}">Edit Ticket
+                                                    </a>
+                                                </t>
+                                            </t>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb8" t-if="items.user_id">
+                                            <strong>Assigned to :</strong>
+                                            <span t-field="items.user_id"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Email :</strong>
+                                            <span t-field="items.email_from"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Support Team :</strong>
+                                            <span t-field="items.support_team_id"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Project :</strong>
+                                            <span t-field="items.project_id"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Create Date :</strong>
+                                            <span t-field="items.date_create"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Is Ticket Closed? :</strong>
+                                            <span t-field="items.is_ticket_closed"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="mb8">
+                                            <strong>Customer :</strong>
+                                            <span t-field="items.partner_id"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Phone :</strong>
+                                            <span t-field="items.phone"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Priority :</strong>
+                                            <span t-field="items.priority"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Close Date :</strong>
+                                            <span t-field="items.date_close"/>
+                                        </div>
+
+                                        <div class="mb8">
+                                            <strong>Category :</strong>
+                                            <span t-field="items.category"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <span t-field="items.description"/>
+                            </div>
+                        </div>
+                        <div t-if="items.stage_id.name == 'Closed'" class="row mt32">
+                            <form t-attf-action="/ticket/comment/#{items.id}" method="POST">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input name="ticket_id" t-att-value="items.id" type="hidden"/>
+                                <div class="col-md-12">
+                                    <button style="margin-top:20px;" class="btn btn-primary btn-lg">Customer Rating
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="row mt32">
+                            <div class="col-md-12">
+                                <h4>
+                                    <strong>Message and communication history</strong>
+                                </h4>
+                            </div>
+                            <div class="col-md-10 col-md-offset-1 mt16">
+                                <t t-call="portal.message_thread">
+                                    <t t-set="object" t-value="items"/>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <template id="bi_portal_edit_ticket" name="Edit Timesheets">
+
+        <t t-call="website.layout">
+
+            <div id="wrap" class="container">
+                <h1 class="text-center">
+                    Edit Ticket
+                </h1>
+
+                <hr/>
+
+                <form action="/my/save_edit_ticket" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="row">
+
+                        <input type="hidden" name="ticket_id" t-att-value="ticket.id" class="ticket_id"/>
+                        <input type="hidden" name="priority_value" t-att-value="ticket.priority" id="priority_value"/>
+
+                        <t t-set="ticket_id" t-value="ticket.id"/>
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div t-if="error_message" class="alert alert-danger">
+                                    <t t-foreach="error_message" t-as="err">
+                                        <t t-esc="err"/>
+                                        <br/>
+                                    </t>
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'name' in error and 'has-error' or ''} col-lg-12 pull-left">
+
+                                    <label class="control-label" for="name">Subject</label>
+                                    <input type="text" name="name" t-att-value="ticket.name" class="form-control"
+                                           required="required"/>
+
+                                </div>
+
+
+                                <div t-attf-class="form-group #{error and 'email' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="email">Email</label>
+                                    <input type="text" name="email_from" t-att-value="ticket.email_from"
+                                           class="form-control"/>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'customer' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="customer">Customer</label>
+                                    <t t-set="customer_ids" t-value="website.get_partner_details()"/>
+                                    <select class="form-control" name="customer">
+                                        <option value="">select...</option>
+                                        <t t-foreach="customer_ids" t-as="customer">
+                                            <option t-att-value="customer.id"
+                                                    t-att-selected="customer.id == int(partner_id) if partner_id else customer.id == ticket.partner_id.id">
+                                                <t t-esc="customer.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'team' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="support_team">Helpdesk Team</label>
+                                    <t t-set="team_ids" t-value="website.get_team_details()"/>
+                                    <select class="form-control" name="team">
+                                        <option value="">select...</option>
+                                        <t t-foreach="team_ids" t-as="team">
+                                            <option t-att-value="team.id"
+                                                    t-att-selected="team.id == int(support_team_id) if support_team_id else team.id == ticket.support_team_id.id">
+                                                <t t-esc="team.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'phone' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="phone">Phone</label>
+                                    <input type="text" name="phone" t-att-value="ticket.phone" class="form-control"/>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'project' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="project">Project</label>
+                                    <t t-set="project_ids" t-value="website.get_project_details()"/>
+                                    <select class="form-control" name="project">
+                                        <option value="">select...</option>
+                                        <t t-foreach="project_ids" t-as="project">
+                                            <option t-att-value="project.id"
+                                                    t-att-selected="project.id == int(project_id) if project_id else project.id == ticket.project_id.id">
+                                                <t t-esc="project.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'priority' in error and 'has-error' or ''} col-lg-6 pull-left">
+                                    <label class="col-md-1 col-sm-4 control-label" for="priority">Priority
+                                    </label>
+                                    <select name="priority" class="form-control" id="ticket_priority">
+                                        <option value="">Select one</option>
+                                        <option value="0">Low</option>
+                                        <option value="1">Normal</option>
+                                        <option value="2">High</option>
+                                    </select>
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'desc' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="desc">Description</label>
+                                    <textarea name="desc" cols="40" rows="5" class="form-control"
+                                              style="white-space: inherit;">
+                                        <t t-esc="ticket.description"/>
+                                    </textarea>
+
+                                </div>
+
+                                <div t-attf-class="form-group #{error and 'category' in error and 'has-error' or ''} col-lg-6 pull-left">
+
+                                    <label class="control-label" for="category">Category</label>
+                                    <t t-set="category_ids" t-value="website.get_category_details()"/>
+                                    <select class="form-control" name="category">
+                                        <option value="">select...</option>
+                                        <t t-foreach="category_ids" t-as="categories">
+                                            <option t-att-value="categories.id"
+                                                    t-att-selected="categories.id == int(category) if category else categories.id == ticket.category.id">
+                                                <t t-esc="categories.name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group  col-lg-12 pull-left">
+                                    <button type="submit" class="btn btn-default btn-primary mb32 a-submit">
+                                        Save
+                                    </button>
+                                    <a href="/my/ticket" class="btn btn-default btn-primary mb32 a-submit"
+                                       style="display: inline-block;vertical-align: top;">
+                                        Back
+                                    </a>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+
+    <!-- Support ticket in My Account -->
+    <template id="portal_my_home_support_ticket" name="Portal My Home: Support Tickets entries"
+              inherit_id="portal.portal_my_home" priority="40">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <a class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"
+               t-if="ticket_count" href="/my/ticket"
+               groups='bi_website_support_ticket.group_support_user,bi_website_support_ticket.group_support_manager,base.group_portal'>
+                Your Tickets
+                <span class="badge text-bg-secondary rounded-pill" t-esc="ticket_count"/>
+            </a>
+        </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_ticket" name="Portal layout : ticket menu entries"
+              inherit_id="portal.portal_breadcrumbs" priority="30">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'ticket'" class="breadcrumb-item active">
+                <a t-if="ticket" t-attf-href="/my/ticket?{{ keep_query() }}">Tickets</a>
+                <t t-else="">Tickets</t>
+            </li>
+            <li t-if="ticket">
+                <t t-esc="ticket.sequence"/>
+            </li>
+        </xpath>
+    </template>
+
+    <template id="portal_my_ticket" name="My Support Ticket">
+        <t t-call="portal.portal_layout">
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Your Support Tickets</t>
+            </t>
+            <t t-if="not supports">
+                <p>There are currently no Support Tickets for your account.</p>
+            </t>
+            <div t-if="supports" class="panel panel-default">
+                <t t-set="website_ticket" t-value="website.get_ticket_details()"/>
+                <div class="table-responsive">
+                    <table class="table table-hover o_portal_my_doc_table">
+                        <thead>
+                            <tr class="active">
+                                <th>Ticket No</th>
+                                <th>Subject</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th>Stage</th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="website_ticket" t-as="support">
+                            <tr>
+                                <td>
+                                    <a t-attf-href="/ticket/view/detail/#{support.id}">
+                                        <t t-esc="support.sequence"/>
+                                    </a>
+                                </td>
+                                <td>
+                                    <span t-field="support.name"/>
+                                </td>
+                                <td>
+                                    <span t-field="support.date_create"/>
+                                </td>
+                                <td>
+                                    <span t-field="support.priority"/>
+                                </td>
+                                <td>
+                                    <span t-field="support.stage_id.name"/>
+                                </td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
+                <div t-if="pager" class="o_portal_pager text-center">
+                    <t t-call="portal.pager"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>
