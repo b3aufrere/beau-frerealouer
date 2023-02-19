@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_payment_register_form_inherit_commission_ext_user" model="ir.ui.view">
+        <field name="name">account.payment.register.form.inherit.commission.ext.user</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='communication']" position="after">
+                <field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>
+                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+            </xpath>
+            <xpath expr='//group' position="after">
+                <group string="Sales Commission User Settings" name="sales_commission_user_setting"  attrs="{'invisible': [('is_apply', '!=', True)]}">
+                    <field name="sale_commission_user_ids" nolabel="1">
+                        <tree string="sale_commission_user_setting" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="user_id"/>
+                        </tree>
+                    </field>
+                </group>
+                <group string="Sales Commission Settings" name="sales_commission_setting" attrs="{'invisible': [('is_apply', '!=', True)]}">
+                    <field name="is_apply" invisible="1"/>
+                    <field name="sale_commission_percentage_ids" nolabel="1">
+                        <tree string="sale_commission_setting" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

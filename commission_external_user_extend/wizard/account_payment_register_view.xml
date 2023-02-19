@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_payment_register_form_inherit_commission_ext_user_extnd" model="ir.ui.view">
+        <field name="name">payment.register.form.inherit.commission.ext.user.extnd</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="account.view_account_payment_register_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//group' position="after">
+                <group>
+                    <field name="is_product_commission" invisible="1"/>
+                </group>
+                <group string="Product Lines" name="product_lines" attrs="{'invisible': [('is_product_commission', '=', False)]}">
+                    <field name="commission_product_line_ids" nolabel="0">
+                        <tree string="commission_product_line_ids" editable="bottom" >
+                            <field name="product_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="amount_total"/>
+                        </tree>
+                        <form string="commission_product_line_ids">
+                            <group>
+                                <group>
+                                    <field name="product_id" options="{'no_create': True, 'no_open': True}"/>
+                                </group>
+                                <group>
+                                    <field name="amount_total"/>
+                                </group>
+                            </group>
+                        </form>
+                    </field>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_payment_register_form_inherit_comm_ext_user_extnd" model="ir.ui.view">
+        <field name="name">view.payment.form.inherit.sale_comm_user.extnd.attr</field>
+        <field name="model">account.payment.register</field>
+        <field name="inherit_id" ref="sales_commission_external_user.view_account_payment_register_form_inherit_commission_ext_user"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sales_commission_setting']" position="before">
+                <field name="is_team_commission" invisible="0"/>
+            </xpath>
+            <xpath expr="//group[@name='sales_commission_setting']" position="attributes">
+                <attribute name="attrs">{'invisible': [('is_team_commission', '=', False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
