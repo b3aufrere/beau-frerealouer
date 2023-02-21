@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    <record id="view_account_payment_form_inherit_commission" model="ir.ui.view">-->
+<!--        <field name="name">account.payment.form</field>-->
+<!--        <field name="model">account.payment</field>-->
+<!--        <field name="inherit_id" ref="payment.view_account_payment_form_inherit_payment"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--             <xpath expr="//field[@name='payment_transaction_id']" position="after">-->
+<!--                 <field name="is_apply" invisible="1"/>-->
+<!--                 <field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>-->
+<!--                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>-->
+<!--                <field name="sales_user_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}" OLDDDDDDDD/>
+                <field name="commission_manager_id" invisible='1' OLDDDDDDDD/>
+                <field name="commission_person_id" invisible='1' OLDDDDDDDD/>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+    
+<!--    <record id="view_account_payment_invoice_inherit_commission" model="ir.ui.view">-->
+<!--        <field name="name">account.payment.form</field>-->
+<!--        <field name="model">account.payment</field>-->
+<!--        <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//form/sheet/group/field[@name='payment_type']" position="after">-->
+<!--                <field name="is_apply" invisible="1"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//field[@name='payment_method_id']" position="after">-->
+<!--                <field name="is_apply" invisible="0"/>-->
+<!--            </xpath>-->
+<!--            <xpath expr="//form/sheet/group" position="after">-->
+<!--                <group string="Sales Commission User Settings" name="sales_commission_user_setting" attrs="{'invisible': [('is_apply', '!=', True)]}">-->
+<!--                    <field name="sale_commission_user_ids" nolabel="1">-->
+<!--                        <tree string="sale_commission_user_setting" editable="bottom" >-->
+<!--                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>-->
+<!--                            <field name="user_id"/>-->
+<!--                        </tree>-->
+<!--                    </field>-->
+<!--                </group>-->
+<!--                <group string="Sales Commission Settings" name="sales_commission_setting" attrs="{'invisible': [('is_apply', '!=', True)]}">-->
+<!--                    <field name="sale_commission_percentage_ids" nolabel="1">-->
+<!--                        <tree string="sale_commission_setting" editable="bottom" >-->
+<!--                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>-->
+<!--                            <field name="percentage"/>-->
+<!--                        </tree>-->
+<!--                    </field>-->
+<!--                </group>-->
+<!--            </xpath>-->
+<!--             <field name="communication" position="after">-->
+<!--                <field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>-->
+<!--                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>-->
+<!--                <field name="sales_user_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}" OLDDDDDDDD/>-->
+<!--                <field name="commission_manager_id" invisible='1' OLDDDDDDDD/>-->
+<!--                <field name="commission_person_id" invisible='1' OLDDDDDDDD/>-->-->
+<!--            </field>-->
+<!--        </field>-->
+<!--    </record>-->
+    
+    <record id="view_account_payment_form_inherit_sale_commission_user" model="ir.ui.view">
+        <field name="name">view.account.payment.form.inherit.sale_commission_user</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+<!--            <xpath expr="//field[@name='communication']" position="after">-->
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="sales_commission_apply" attrs="{'invisible': [('partner_type', '!=', 'customer')]}"/>
+                <field name="sales_team_id" attrs="{'invisible': [('sales_commission_apply', '!=', True)]}"/>
+            </xpath>
+            <xpath expr='//form/sheet/group' position="after">
+                <!-- <group string="Sales Commission User Settings" name="sales_commission_user_setting"  attrs="{'invisible': [('is_apply', '!=', True)]}"> -->
+                <div class="o_horizontal_separator mt-4 mb-3 text-uppercase fw-bolder small" attrs="{'invisible': [('is_apply', '!=', True)]}">Sales Commission User Settings</div>
+                    <field name="sale_commission_user_ids" nolabel="1">
+                        <tree string="sale_commission_user_setting" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="user_id"/>
+                        </tree>
+                    </field>
+                <!-- </group> -->
+                <!-- <group string="Sales Commission Settings" name="sales_commission_setting" attrs="{'invisible': [('is_apply', '!=', True)]}"> -->
+                <div class="o_horizontal_separator mt-4 mb-3 text-uppercase fw-bolder small" attrs="{'invisible': [('is_apply', '!=', True)]}">Sales Commission Settings</div>
+                    <field name="is_apply" invisible="1"/>
+                    <field name="sale_commission_percentage_ids" nolabel="1">
+                        <tree string="sale_commission_setting" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                <!-- </group> -->
+            </xpath>
+        </field>
+    </record>
+    
+    
+</odoo>

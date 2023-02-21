@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+account_payment_product_lines_account,account.payment.product.lines.account_user,model_account_payment_product_lines,account.group_account_invoice,1,1,1,1
+account_payment_product_lines_employee,account.payment.product.lines.employee,model_account_payment_product_lines,base.group_user,1,0,0,0
+
+account_payment_product_lines_wiz_account,account.payment.product.lines.wiz.account_user,model_account_payment_product_lines_wiz,account.group_account_invoice,1,1,1,0

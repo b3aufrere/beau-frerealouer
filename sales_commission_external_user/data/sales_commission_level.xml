@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="sales_commission_level_manager" model="sale.commission.level">
+            <field name="name">Sales Manager</field>
+        </record>
+        <record id="sales_commission_level_man" model="sale.commission.level">
+            <field name="name">Sales Man</field>
+        </record>
+        <record id="sales_commission_level_callcenter_agent" model="sale.commission.level">
+            <field name="name">Callcenter Agent</field>
+        </record>
+
+    </data>
+</openerp>

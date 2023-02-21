@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="sales_commission_form_view">
+        <field name="name">Sales Commission</field>
+        <field name="model">sales.commission.line</field>
+        <field name="arch" type="xml">
+            <form string="Sales Commission Form" create='false' edit='false'>
+                <header>
+                 <!--   <button string="Create Invoice" type="object" name="action_create_invoice"
+                            states="draft" class="oe_highlight"/>
+                    <button string="Cancel" type="object" name="action_cancel"
+                            states="draft"/>-->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,invoice,paid"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sales_commission_id"/>
+                            <field name="product_id" invisible='1'/>
+                            <field name="date"/>
+                            <field name="commission_user_id"/>
+                            <field name="sales_team_id"/>
+                            <field name="amount" widget="monetary" options="{'currency_field': 'source_currency'}"/>
+                            <field name="source_currency"/>
+                        </group>
+                        <group>
+                            <field name="type" invisible='1' />
+                            <field name="origin" />
+<!--                            <field name="name_origin" attrs="{'invisible': [('name_origin', '!=', True)]}" /-->
+                            <field name="invoice_id" attrs="{'invisible': [('invoice_id', '!=', True)]}"/>
+                            <field name="src_invoice_id" attrs="{'invisible': [('src_invoice_id', '!=', True)]}"/>
+                            <field name="src_order_id" attrs="{'invisible': [('src_order_id', '!=', True)]}"/>
+                            <field name="src_payment_id" attrs="{'invisible': [('src_payment_id', '!=', True)]}"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="currency_id"/>
+                            <field name="amount_company_currency" widget="monetary"/>
+                            <field name="is_paid" />
+                        </group>
+                        <field name="notes" placeholder="Description..."/>
+                        <group/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                 </div>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="sales_commission_tree_view">
+        <field name="name">Sales Commission List</field>
+        <field name="model">sales.commission.line</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Commission List" create='false' edit='false'>
+                <field name="sales_commission_id"/>
+                <field name="sales_team_id"/>
+                <field name="commission_user_id"/>
+                <field name="product_id"/>
+                <field name="origin" />
+<!--                <field name="name_origin" nolabel='1' attrs="{'invisible': [('name_origin', '!=', True)]}" /-->
+                <field name="amount" options="{'currency_field': 'source_currency'}" widget="monetary" />
+                <field name="source_currency"/>
+                <field name="amount_company_currency" widget="monetary"/>
+                <field name="currency_id"/>
+                <field name="type" invisible='1'/>
+                <field name="company_id" invisible='1' groups="base.group_multi_company"/>
+                <field name="is_paid" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="sales_commission_search_view">
+        <field name="name">Sales Commission Search</field>
+        <field name="model">sales.commission.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="product_id"/>
+                <field name="sales_team_id"/>
+                <field name="commission_user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <group string="Group By">
+                    <filter name="by_product_id" string="Product" 
+                            context="{'group_by': 'product_id'}" />
+                    <filter name="by_sales_team_id" string="Sales Team"
+                            context="{'group_by': 'sales_team_id'}"/>
+                    <filter name="by_sales_user_id" string="Sales User"
+                            context="{'group_by': 'commission_user_id'}"/>
+                    <filter name="by_company_id" string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="sales_commission_action">
+    <field name="name">Sales Commission</field>
+    <field name="res_model">sales.commission.line</field>
+<!--    <field name="view_type">form</field>-->
+    <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="sales_commission_menu_main" groups="sales_team.group_sale_salesman,account.group_account_invoice" name="Commissions" parent="sale.sale_menu_root"
+               />
+
+<menuitem id="sales_commission_menu_main_invoice" groups="sales_team.group_sale_salesman,account.group_account_invoice" name="Commissions" parent="account.menu_finance"
+               />
+
+    <menuitem id="sales_commission_menu" sequence="1000"  name="Sales Commissions Lines" groups="sales_team.group_sale_salesman,account.group_account_invoice"  parent="sales_commission_menu_main"
+              action="sales_commission_action"/>
+<menuitem id="sales_commission_menu_invoice" sequence="1000"  name="Sales Commissions Lines" groups="sales_team.group_sale_salesman,account.group_account_invoice"  parent="sales_commission_menu_main_invoice"
+              action="sales_commission_action"/>
+              
+    
+    <record model="ir.ui.view" id="sales_commission_worksheet_form_view">
+        <field name="name">Sales Commission</field>
+        <field name="model">sales.commission</field>
+        <field name="arch" type="xml">
+            <form string="Sales Commission Form" create='false' edit='false'>
+                <header>
+                    <button string="Create Invoice" type="object" name="action_create_invoice"
+                            states="draft" class="oe_highlight" groups="account.group_account_invoice"/>
+                    <button string="Cancel" type="object" name="action_cancel"
+                            states="draft" groups="account.group_account_invoice"/>
+                    <button string="Reset to Draft" groups="account.group_account_invoice" type="object" name="action_draft"
+                            states="cancel"/>
+                    <field name="state" widget="statusbar"  statusbar_visible="draft,invoice,paid,cancel"/>
+                </header>
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="commission_user_id" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                        </group>
+                        <group>
+                            <field name="product_id" />
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="amount" widget="monetary"/>
+                            <field name="currency_id"/>
+                            <field name="invoice_id" readonly='1'/>
+                            <field name="is_paid" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sales Commission Lines">
+                            <group>
+                                <field name="sales_commission_line" nolabel='1' colspan="2">
+                                    <tree colors="black:state=='draft';red:state in ('cancel', 'exception')">
+                                        <field name="date" />
+                                        <field name="type" invisible='1'/>
+                                        <field name="commission_user_id" />
+                                        <field name="origin" />
+                                        <field name="amount" options="{'currency_field': 'source_currency'}" sum='amount' widget="monetary"/>
+                                        <field name="source_currency"/>
+                                        <field name="amount_company_currency" sum='amount_company_currency'/>
+                                        <field name="currency_id"/>
+                                        <field name="state" />
+                                        <field name="is_paid" />
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <group>
+                            <field name="notes" placeholder="Description..."/>
+                        </group>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                 </div>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="sales_commission_worksheet_tree_view">
+        <field name="name">Sales Commission List</field>
+        <field name="model">sales.commission</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Commission List" create='false' edit='false'>
+                <field name="name"/>
+                <field name="commission_user_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="amount" widget="monetary"/>
+                <field name="currency_id"/>
+                <field name="state" />
+                <field name="company_id" invisible='1' groups="base.group_multi_company"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="sales_commission_worksheet_search_view">
+        <field name="name">Sales Commission Search</field>
+        <field name="model">sales.commission</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="commission_user_id"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+                <group string="Group By">
+                    <filter name="by_sales_user_id" string="Sales User"
+                            context="{'group_by': 'commission_user_id'}"/>
+                    <filter name="by_company_id" string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="sales_commission_worksheet_action">
+    <field name="name">Sales Commission Worksheet</field>
+    <field name="res_model">sales.commission</field>
+<!--    <field name="view_type">form</field>-->
+    <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="sales_commission_worksheet_menu" sequence="1" name="Commission Worksheets" parent="sales_commission_menu_main"
+              action="sales_commission_worksheet_action"/>
+    <menuitem id="sales_commission_worksheet_menu_invoice" sequence="1" name="Commission Worksheets" parent="sales_commission_menu_main_invoice"
+              action="sales_commission_worksheet_action"/>
+    </data>
+</openerp>

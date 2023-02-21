@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+         <!-- QWeb Reports For Sales Commission Worksheet-->
+<!--        <report-->
+<!--            id="sales_commission_worksheet_report"-->
+<!--            model="sales.commission"-->
+<!--            menu="True"-->
+<!--            report_type="qweb-pdf"-->
+<!--            string="Sales Commission Worksheets"-->
+<!--            name="sales_commission_external_user.sales_commission_worksheet_id"-->
+<!--            file="sales_commission_external_user.sales_commission_worksheet_id"-->
+<!--           />-->
+        <record id="sales_commission_worksheet_report" model="ir.actions.report">
+            <field name="name">Sales Commission Worksheets</field>
+            <field name="model">sales.commission</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">sales_commission_external_user.sales_commission_worksheet_id</field>
+            <field name="report_file">sales_commission_external_user.sales_commission_worksheet_id</field>
+            <field name="binding_model_id" ref="model_sales_commission"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="sales_commission_worksheet_id">
+                <t t-foreach="docs.sudo()" t-as="doc">
+                    <t t-call="web.internal_layout">
+                        <t t-call="web.html_container">
+                         <div class="page">
+                             <div>
+                                 <h3><strong>
+                                      <p align="center">Sales Commission Worksheet Details</p>
+                                     <span t-field="doc.name"/> - <span t-field="doc.state"/></strong>
+                                 </h3>
+                             </div>
+                             <table class="table table-responsive">
+                                 <tr>
+                                     <td><strong>Sales Member</strong></td><td><span t-field="doc.commission_user_id.name"/></td>
+                                     <td><strong>Commission Product</strong></td><td><span t-field="doc.product_id.name"/></td>
+                                 </tr>
+                                 <tr>
+                                     <td><strong>Start Date</strong></td><td><span t-field="doc.start_date"/></td>
+                                     <td><strong>End Date</strong></td><td><span t-field="doc.end_date"/></td>
+                                 </tr>
+                                 <tr>
+                                    <td><strong>Total Commision Amount</strong></td><td><span t-field="doc.amount" t-options='{"widget": "monetary", "display_currency": doc.company_id.currency_id}'/></td>
+                                    <td><strong>Company</strong></td><td><span t-field="doc.company_id.name"/></td>
+                                 </tr>
+                                 <tr>
+                                     <td><strong>Commission Invoice</strong></td><td><span t-field="doc.invoice_id"/></td>
+                                     <td><strong>Is Commission Paid</strong></td><td><span t-field="doc.is_paid"/></td>
+                                 </tr>
+                             </table>
+                             <h3>
+                                 <strong><p>Sales Commission Lines</p></strong>
+                                 <table class="table table-responsive">
+                                <tr>
+                                    <td><strong>Commission Date</strong></td>
+                                    <td><strong>User</strong></td>
+                                    <td><strong>Source Document</strong></td>
+                                    <td><strong>Amount</strong></td>
+                                    <td><strong>Amount in Company Currency</strong></td>
+                                    <td><strong>Status</strong></td>
+                                    <td><strong>Is Commision Line Paid</strong></td>
+                                </tr>
+                                <t t-foreach="doc.sales_commission_line" t-as="line">
+                                    <tr>
+                                        <td><span t-field="line.date"/></td>
+                                        <td><span t-field="line.commission_user_id"/></td>
+                                        <td><span t-field="line.origin"/></td>
+                                        <td class="text-right"><span t-field="line.amount" t-options='{"widget": "monetary", "display_currency": line.source_currency}'/></td>
+                                        <td class="text-right"><span t-field="line.amount_company_currency" t-options='{"widget": "monetary", "display_currency": line.currency_id}'/></td>
+                                        <td><span t-field="line.state"/></td>
+                                        <td><span t-field="line.is_paid"/></td>
+                                    </tr>
+                                </t>
+                             </table>
+                             </h3>
+                             
+                        </div>
+                        </t>
+                </t>
+               </t>
+        </template>
+        
+    </data>
+</openerp>

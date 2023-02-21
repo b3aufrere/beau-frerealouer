@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_order_form_inherit_commission" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+             <!--<field name="payment_term_id" position="after">
+                <field name="commission_manager_id" invisible="1"/>
+                <field name="commission_person_id" invisible="1"/>
+            </field>    -->
+             <xpath expr="//form/sheet/group/group/field[@name='payment_term_id']" position="after">
+                 <field name="is_apply" invisible="1"/>
+             </xpath>
+              <xpath expr="//form/sheet/notebook/page[last()]" position="after">
+                <page string="Sales Commission User Setting" >
+                    <field name="sale_commission_user_ids">
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="user_id"/>
+                        </tree>
+                    </field>
+                </page>
+                <page string="Sale Commission Level" attrs="{'invisible': [('is_apply', '!=', True)]}">
+                    <field name="sale_commission_percentage_ids" >
+                        <tree string="sale_commission Percentage" editable="bottom">
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <!-- <xpath expr="//form/sheet/notebook/page[1]/field[1]/form[last()]"> -->
+            <xpath expr="//form/sheet/notebook/page[@name='order_lines']//field[@name='order_line']//form" position="inside">
+                <field name="is_apply" invisible="1"/>
+                <group string="Sales Commission Settings" name="sales_commission_setting" attrs="{'invisible': [('is_apply', '!=', True)]}">
+                    <field name="commission_percentage_ids" nolabel="1">
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </group>
+                <!--<group string="Sales Commission Settings" name="sales_commission_setting" attrs="{'invisible': [('is_apply', '!=', True)]}">
+                <field name="sale_commission_percentage_ids" nolabel="1">
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" widget="selection"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </group>-->
+            </xpath>
+            <!-- <xpath expr="//form/sheet/notebook/page[1]/field[1]/tree/field[@name='product_id']" position="after"> -->
+            <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field[@name='order_line']/tree/field[@name='product_id']" position="after">
+                <field name="sale_commission_percentage_ids" invisible="1">
+                    <tree string="sale_commission Percentage" editable="bottom">
+                        <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="percentage"/>
+                    </tree>
+                </field>
+                <field name="commission_percentage_ids" invisible="1"><!--NEW-->
+                    <tree string="sale_commission Percentage" editable="bottom" >
+                        <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="percentage"/>
+                    </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>
