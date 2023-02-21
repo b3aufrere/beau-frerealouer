@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_backup_process,backup.process,model_backup_process,,1,1,1,1
+access_backup_process_detail,backup.process.detail,model_backup_process_detail,,1,1,1,1

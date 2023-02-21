@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<odoo>
+    <data>
+        <record id="backup_process_ignite_crone" model="ir.cron">
+            <field name="name">Backup Process Ignite Cron</field>
+            <field name="model_id" ref="model_backup_process"/>
+            <field name="state">code</field>
+            <field name="code">model.ignite_backup_server_crone()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

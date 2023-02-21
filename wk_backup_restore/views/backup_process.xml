@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2016-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- License URL : <https://store.webkul.com/license.html/> -->
+
+<odoo>
+    <data>
+        <record id="backup_process_form_view" model="ir.ui.view">
+            <field name="name">Backup Process Form View</field>
+            <field name="model">backup.process</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="confirm_process" class="oe_highlight" string="Confirm" type="object" attrs="{'invisible': [('state', '!=', 'draft')]}" />
+                        <button name="remove_attached_cron" class="oe_highlight" string="Cancel Process" type="object" attrs="{'invisible': [('state', '!=', 'running')]}" />
+                        <field name="state" widget="statusbar" />
+                    </header>
+                    <sheet>
+                            <div class="" style="width: 500px;">
+                                <div class="oe_title" style="width: 500px;">
+                                    <label class="oe_edit_only" for="name" string="Name"/>
+                                    <h1><field name="name" class="oe_inline" readonly="1"/></h1>
+                                </div>
+                            </div>
+
+                            <group>
+
+                            </group>
+
+                            <group>
+                                <group>
+                                    <field name="frequency_cycle" required="1"/>
+                                    <field name="backup_starting_time" required="1" attrs="{'readonly': [('state', '!=' , 'draft')]}"/>
+                                    <field name="storage_path" required="1" attrs="{'readonly': [('state', '!=' , 'draft')]}"/>
+                                    <field name="db_name" required="1" attrs="{'readonly': [('state', '!=' , 'draft')]}"/>
+                                    <field name="backup_location" required="1" readonly="1"/>
+                                    <!-- <field name="retention" attrs="{'readonly': [('state', '!=' , 'draft')]}"/> -->
+                                    <field name="master_pass" required="1" password="1" />
+                                </group>
+                            </group>
+
+                            <group>
+
+                            </group>
+
+                            <group>
+                                <group>
+                                    <field name="backup_details_ids">
+                                        <tree no_edit='true' no_create='true'>
+                                            <field name="backup_date_time" />
+                                            <field name="file_name" />
+                                            <button name="download_db_file" type="object" string="Download" class="oe_highlight"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="backup_process_tree_view" model="ir.ui.view">
+            <field name="name">Backup Process Tree View</field>
+            <field name="model">backup.process</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="frequency_cycle" />
+                    <field name="storage_path" />
+                    <field name="backup_location" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="backup_process_action_view" model="ir.actions.act_window">
+            <field name="name">Backup Process</field>
+            <field name="res_model">backup.process</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="backup_process_tree_view"/>
+        </record>
+
+    </data>
+</odoo>
