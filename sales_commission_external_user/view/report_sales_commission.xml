@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+         <!-- QWeb Reports --><!--
+        <report
+            id="sales_commission_report"
+            model="sales.commission.line"
+            menu="True"
+            report_type="qweb-pdf"
+            string="Sales Commission"
+            name="sales_commission_calculation.sales_commission_id"
+            file="sales_commission_calculation.sales_commission_id"
+           />
+        -->
+        <template id="sales_commission_id">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.internal_layout">
+                         <div class="page">
+                             <div>
+                                 <h3><strong>
+                                      <p align="center">Sales Commission Details</p>
+                                     <span t-field="doc.name"/> - <span t-field="doc.state"/></strong>
+                                 </h3>
+                             </div>
+                             <table class="table table-responsive">
+                                 <tr>
+                                     <td><strong>Product</strong></td><td><span t-field="doc.product_id.name"/></td>
+                                     <td><strong>User Type</strong></td><td><span t-field="doc.type"/></td>
+                                 </tr>
+                                 <tr>
+                                     <td><strong>Commission User</strong></td><td><span t-field="doc.commission_user_id.name"/></td>
+                                     <td><strong>Account Invoice</strong></td><td><span t-field="doc.invoice_id.name"/></td>
+                                 </tr>
+                                 <tr>
+                                     <td><strong>Sales Team</strong></td><td><span t-field="doc.sales_team_id.name"/></td>
+                                     <td><strong>Amount</strong></td><td><span t-field="doc.amount"/></td>
+                                 </tr>
+                                 <tr>
+                                     <td><strong>Description</strong></td><td colspan="3"><span t-field="doc.notes"/></td>
+                                 </tr>
+                             </table>
+                        </div>
+                </t>
+               </t>
+        </template>
+    </data>
+</openerp>

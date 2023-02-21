@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_team_view_form_inherit_commission" model="ir.ui.view">
+        <field name="name">crm.team.form</field>
+        <field name="model">crm.team</field>
+        <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//form/sheet/group/group[@name='right']" position="inside">
+                <field name="is_apply" invisible="1"/>
+            </xpath>
+             <xpath expr="//form/sheet/notebook" position="inside">
+<!--                <field name="sales_manager_commission" attrs="{'invisible': [('is_apply', '!=', True)]}"/>
+                <field name="sales_person_commission" attrs="{'invisible': [('is_apply', '!=', True)]}"/>
+                <field name="is_apply" invisible="1"/>      -->
+                <page string="Sales Commission Setting" attrs="{'invisible': [('is_apply', '!=', True)]}">
+                    <field name="sale_commission_percentage_ids" >
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

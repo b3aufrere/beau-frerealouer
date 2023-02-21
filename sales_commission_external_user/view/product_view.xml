@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="product_normal_form_view_inherit_commission" model="ir.ui.view">
+        <field name="name">product.product.form</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+             <xpath expr="//form/sheet/group/group[@name='right']" position="inside">
+<!--                <field name="sales_manager_commission" />    -->
+<!--                <field name="sales_person_commission" />    -->
+                <field name="is_commission_product" />
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

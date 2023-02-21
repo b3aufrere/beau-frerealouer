@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="support_stage_form_view" model="ir.ui.view">
+		<field name="name">support.stage.form.view</field>
+		<field name="model">support.stage</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet string="Support Stage">
+					<group>
+						<group>
+							<field name="name" />
+							<field name="sequence" />
+							<field name="fold" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="support_stage_tree_view" model="ir.ui.view">
+		<field name="name">support.stage.tree.view</field>
+		<field name="model">support.stage</field>
+		<field name="arch" type="xml">
+			<tree string="Support Stage">
+				<field name="name" />
+				<field name="sequence" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_support_stage" model="ir.actions.act_window">
+		<field name="name">Helpdesk Stages</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">support.stage</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+</odoo>

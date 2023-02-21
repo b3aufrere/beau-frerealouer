@@ -15,13 +15,15 @@
         'sale_crm', 
         'sales_team',
         'calendar',
+        'sale_timesheet',
         'industry_fsm',
         'project_enterprise',
         'industry_fsm_sale',
         'industry_fsm_report',
         'helpdesk',
         'mail',
-        'timesheet_grid'
+        'timesheet_grid',
+        'helpdesk_ticket_sale_order_ent'
     ],
     
     'data': [ 
@@ -29,8 +31,10 @@
         
         'data/mail_template_accept_service.xml',
         'data/data.xml',
-
-        # 'reports/report_saleorder.xml',
+        
+        'reports/report_layouts.xml',
+        'reports/report_saleorder.xml',
+        'reports/report_invoice.xml',
 
         'views/entreprise.xml',
         'views/division.xml',
@@ -39,7 +43,8 @@
         'views/crm_lead.xml',
         'views/sale_order.xml',
         'views/project_task.xml',
-        'views/mail_activity.xml'
+        'views/mail_activity.xml',
+        'views/account_move.xml'
     ],
     
     'installable': True,

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_sales_config_inherit_commission_external_user" model="ir.ui.view">
+        <field name="name">sale settings</field>
+<!--        <field name="model">sale.config.settings</field-->
+        <field name="model">res.config.settings</field> <!-- odoo11 -->
+<!--        <field name="inherit_id" ref="sale.view_sales_config"/-->
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/> <!-- odoo11 -->
+        <field name="arch" type="xml">
+<!--             <xpath expr="//div[@id='main']" position="inside"-->
+            <!--<xpath expr="//div/h2[2]" position="before">-->
+            <xpath expr="//div[@data-key='sale_management']" position="inside">
+                    <h2>Sales Commission</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="when_to_pay"/>
+                                <div class="text-muted">
+                                    Allow manual pay commission
+                                </div>
+                                <field name="when_to_pay" class="o_light_label mt16" widget="radio"/>
+                            </div>
+                        </div>
+                   </div>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-xs-12 col-md-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="commission_based_on"/>
+                                <div class="text-muted">
+                                    Allow manual calculation
+                                </div>
+                                <field name="commission_based_on" class="o_light_label mt16" widget="radio"/>
+                            </div>
+                        </div>
+                   </div>
+                   <!-- <group string="Sales Commission" name="commission_based_on">
+                    <field name="when_to_pay" widget="radio"/>
+                    <field name="commission_based_on" widget="radio"/>
+                </group> -->
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

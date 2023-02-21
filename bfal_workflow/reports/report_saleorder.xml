@@ -6,111 +6,10 @@
         </xpath>
     </template>
 
-    <!-- <template id="contact" inherit_id="base.contact">
-        <xpath expr="//address/div" position="after">
-            <div t-if="object.my_field and 'my_field' in fields" 
-                class='css_editable_mode_hidden'>
-                <div itemprop="my_field" t-esc="object.my_field" 
-                    style="margin-top:4px;margin-bottom:4px;font-size:10px;"/>
-            </div>
-        </xpath>
-    </template> -->
-
-    <template id="external_layout_bfal">
-        <t t-if="not o" t-set="o" t-value="doc"/>
-
-        <t t-if="not company">
-            <!-- Multicompany -->
-            <t t-if="company_id">
-                <t t-set="company" t-value="company_id"/>
-            </t>
-            <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
-                <t t-set="company" t-value="o.company_id.sudo()"/>
-            </t>
-            <t t-else="else">
-                <t t-set="company" t-value="res_company"/>
-            </t>
-        </t>
-
-        <t t-call="bfal_workflow.external_layout_bfal_striped">
-            <t t-out="0"/>
-        </t>
-    </template>
-
-    <template id="external_layout_bfal_striped">
-        <style>
-            body {
-                font-size: 14px !important;
-            }
-        </style>
-
-        <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
-            <div style="padding-top:30px">
-                <div class="float-start text-start">
-                    <div>
-                        <span t-esc="company.name" style="font-size:22px; font-weight:bold;"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-map-marker fa-fw" role="img"/>
-                        <span t-esc="company.street"/>, <span t-esc="company.city"/> <span t-esc="company.state_id.code"/>, <span t-esc="company.zip"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-registered fa-fw" role="img"/>
-                        <span>RBQ-<t t-esc="company.company_registry"/></span>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class='fa fa-phone fa-fw' role="img"/>
-                        <span t-esc="company.phone"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-map-marker fa-fw" role="img"/>
-                        <a t-att-href="company.website and '%s%s' % ('http://' if '://' not in company.website else '',company.website)"><span t-esc="company.website"/></a>
-                    </div>
-                </div>
-                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-end" style="width: 370px; height: 120px;" alt="Logo"/>
-            </div>
-        </div>
-
-        <div t-attf-class="o_company_#{company.id}_layout article o_report_layout_striped {{  'o_report_layout_background' if company.layout_background in ['Geometric', 'Custom']  else  '' }}" t-attf-style="background-image: url({{ 'data:image/png;base64,%s' % company.layout_background_image.decode('utf-8') if company.layout_background_image and company.layout_background == 'Custom' else '/base/static/img/bg_background_template.jpg' }});" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
-            <t t-call="web.address_layout"/>
-            <t t-out="0"/>
-            
-        </div>
-
-        <div t-attf-class="o_company_#{company.id}_layout footer o_background_footer">
-            <div class="text-center">
-                <div t-if="report_type == 'pdf'" class="text-muted">
-                    Page:
-                    <span class="page"/>
-                    /
-                    <span class="topage"/>
-                </div>
-            </div>
-        </div>
-    </template>
-
     <template id="report_saleorder_document_bfal">
         <t t-call="bfal_workflow.external_layout_bfal">
             <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
-            <!-- <t t-set="forced_vat" t-value="doc.fiscal_position_id.foreign_vat"/>
-            <t t-if="doc.partner_invoice_id">
-                <t t-set="address">
-                    <strong>Invoicing address:</strong>
-                    <div>
-                        <div t-field="doc.partner_invoice_id"
-                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}' name="purchase_shipping_address"/>
-                    </div>
-                </t>
-            </t>
-            <t t-if="doc.partner_shipping_id">
-                <t t-set="information_block">
-                    <strong>Shipping address:</strong>
-                    <div>
-                        <div t-field="doc.partner_shipping_id"
-                            t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}' name="purchase_shipping_address"/>
-                    </div>
-                </t>
-            </t> -->
+
             <div class="page">
                 <!-- <div class="oe_structure"/> -->
 
@@ -137,32 +36,34 @@
                                 </div>
                             </td>
                             <td style="width:45%; background-color:white;">
-                                <table style="width:100%; border-color:#5a97e8;">
-                                    <tr style="background-color: #5a97e8; font-size:24px; font-weight:bold; height:40px; padding:auto;">
-                                        <td style="width:50%;">
-                                            <span style="color:white; padding-left:8px;">N°</span>
+                                <table style="width:100%; border-color:#4697C9;">
+                                    <tr style="background-color: #4697C9; font-size:22px; font-weight:bold; height:40px; padding:auto;">
+                                        <td style="width:60%;">
+                                            <span style="color:white; padding-left:8px;" t-if="env.context.get('proforma', False) or is_pro_forma">Facture Proforma N°</span>
+                                            <span style="color:white; padding-left:8px;" t-elif="doc.state in ['draft','sent']">Devis N°</span>
+                                            <span style="color:white; padding-left:8px;" t-else="">Bon de commande N°</span>
                                         </td>
-                                        <td style="width:50%;">
+                                        <td style="width:40%;">
                                             <div style="text-align: right;">
                                                 <span t-field="doc.name" style="color:white; padding-right:8px;"/>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr style="background-color: #5a97e8; font-size:24px; font-weight:bold; height:40px; padding:auto;">
-                                        <td style="width:50%;">
+                                    <tr style="background-color: #4697C9; font-size:22px; font-weight:bold; height:40px; padding:auto;">
+                                        <td style="width:60%;">
                                             <span style="color:white; padding-left:8px;">Envoyé le</span>
                                         </td>
-                                        <td style="width:50%;">
+                                        <td style="width:40%;">
                                             <div style="text-align: right;">
                                                 <span t-esc="doc.date_order.strftime('%d-%m-%Y')" style="color:white; padding-right:8px;"/>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr style="background-color: #5a97e8; font-size:24px; font-weight:bold; height:40px; padding:auto;">
-                                        <td style="width:50%;">
+                                    <tr style="background-color: #4697C9; font-size:22px; font-weight:bold; height:40px; padding:auto;">
+                                        <td style="width:60%;">
                                             <span style="color:white; padding-left:8px;">Total</span>
                                         </td>
-                                        <td style="width:50%;">
+                                        <td style="width:40%;">
                                             <div style="text-align: right;">
                                                 <span t-field="doc.amount_total" t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}' style="color:white; padding-right:8px;"/>
                                             </div>
@@ -177,19 +78,19 @@
                 <t t-set="lines_to_report" t-value="doc._get_order_lines_to_report()"/>
                 <t t-set="display_discount" t-value="any(l.discount for l in lines_to_report)"/>
 
-                <div style="padding-top:40px;">
-                    <table style="width:100%">
+                <div style="padding-top:50px;">
+                    <table style="width:100%;">
                         <!-- In case we want to repeat the header, remove "display: table-row-group" -->
-                        <thead style="display: table-row-group; background-color: #5a97e8; border-color: #5a97e8;">
-                            <tr style="height:40px; padding:auto; font-size:18px; font-weight:bold;">
-                                <th name="th_product" style="color:white;" class="text-start">Article / Service</th>
-                                <th name="th_description" style="color:white;" class="text-start">Description</th>
-                                <th name="th_quantity" style="color:white;" class="text-end">Qté</th>
-                                <th name="th_priceunit" style="color:white;" class="text-end">PU</th>
-                                <th name="th_amount_untaxed" style="color:white;" class="text-end">Total</th>
+                        <thead style="background-color: #4697C9; border-color: #4697C9;">
+                            <tr style="height:40px;  font-size:20px; font-weight:bold;">
+                                <th name="th_product" style="color:white; padding-left:5px; padding-top:8px;" class="text-start">Article / Service</th>
+                                <th name="th_description" style="color:white; padding-left:5px; padding-top:8px;" class="text-start">Description</th>
+                                <th name="th_quantity" style="min-width:100px; color:white; padding-right:5px; padding-top:8px;" class="text-end">Qté</th>
+                                <th name="th_priceunit" style="color:white; padding-right:5px; padding-top:8px;" class="text-end">PU</th>
+                                <th name="th_amount_untaxed" style="color:white; padding-right:5px; padding-top:8px;" class="text-end">Total</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="background-color: #ffffff; border-color: #ffffff;">
                             <t t-set="current_subtotal" t-value="0"/>
 
                             <t t-foreach="lines_to_report" t-as="line">
@@ -197,30 +98,31 @@
                                 <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
                                 <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
 
-                                <tr >
+                                <tr style="background-color: #ffffff;">
                                     <t t-if="not line.display_type">
-                                        <td name="td_product"><span t-field="line.product_id"/></td>
-                                        <td name="td_name"><span t-field="line.name"/></td>
-                                        <td name="td_quantity" class="text-end">
-                                            <span t-field="line.product_uom_qty"/>
+                                        <td name="td_product" style="padding:5px;"><span t-field="line.product_id"/></td>
+                                        <td name="td_name" style="padding:5px;"><span t-field="line.name"/></td>
+                                        <td name="td_quantity" style="padding:5px;" class="text-end">
+                                            <span t-if="line.product_uom_qty.is_integer()" t-esc="int(line.product_uom_qty)"/>
+                                            <span t-if="not line.product_uom_qty.is_integer()" t-esc="line.product_uom_qty"/>
                                             <span t-field="line.product_uom"/>
                                         </td>
-                                        <td name="td_priceunit" class="text-end">
+                                        <td name="td_priceunit" style="padding:5px;" class="text-end">
                                             <span t-field="line.price_unit"/>
                                         </td>
-                                        <td t-if="not line.is_downpayment" name="td_subtotal" class="text-end o_price_total">
+                                        <td t-if="not line.is_downpayment" style="padding:5px;" name="td_subtotal" class="text-end o_price_total">
                                             <span t-field="line.price_subtotal"/>
                                         </td>
                                     </t>
                                     <t t-elif="line.display_type == 'line_section'">
-                                        <td name="td_section_line" colspan="99">
+                                        <td name="td_section_line" style="padding:5px;" colspan="99">
                                             <span t-field="line.name"/>
                                         </td>
                                         <t t-set="current_section" t-value="line"/>
                                         <t t-set="current_subtotal" t-value="0"/>
                                     </t>
                                     <t t-elif="line.display_type == 'line_note'">
-                                        <td name="td_note_line" colspan="99">
+                                        <td name="td_note_line" style="padding:5px;" colspan="99">
                                             <span t-field="line.name"/>
                                         </td>
                                     </t>
@@ -237,6 +139,81 @@
                             </t>
                         </tbody>
                     </table>
+                </div>
+
+                <div class="clearfix" name="so_total_summary" style="padding-top:30px;">
+                    <div id="total" class="row" name="total">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ms-auto">
+                            <table class="table table-sm table-borderless" style="page-break-inside: avoid;">
+                                <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                                <t t-call="account.document_tax_totals"/>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="page-break-before:always; padding-top: 10px;">
+                    <div>
+                        <p style="font-size:16px; font-weight:bold;">NORMES APPLICABLES AUX TRAVAUX</p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. doit respecter la réglementation et les codes en vigueur, les
+                            règles de l’art et les conditions du présent contrat. Il est aussi responsable des
+                            travaux effectués par ses ouvriers et de ceux effectués par les sous-traitants qu’il
+                            engage
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:16px; font-weight:bold;">SÉCURITÉ ET ENTRETIEN DES LIEUX</p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. doit assurer la sécurité des lieux, garder les lieux raisonnablement propres et prévenir toute accumulation de
+                            matériaux inutilisables ou autres nuisances. Beau-frère à louer Inc. doit protéger les travaux, les biens du Client et les biens adja- cents à
+                            l’emplacement des travaux contre tout dommage. Dès la fin des travaux, Beau-frère à louer Inc. s'assure que l'endroit soit propre avant de
+                            quitter les lieux en effectuant un nettoyage léger. Des frais peuvent s'appliquer pour le retrait des rebuts suite au travaux réalisé.
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:16px; font-weight:bold;">ASSURANCES</p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. confirme qu’il détient une assurance de responsabilité civile adéquate pour l’exécution des travaux prévus au contrat
+                            et que cette assurance couvre les sous-traitants et le Client.
+                            <ul style="list-style-type: square;">
+                                <li>Nom de la compagnie d’assurances : La Capital Assurance General.</li>
+                                <li>Numéro de la police : 39574451-001</li>
+                            </ul>
+                        </p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. confirme qu’il détient une assurance de dommages protégeant adéquatement la valeur de ses biens, matériaux et
+                            équipements. 
+                            <ul style="list-style-type: square;">
+                                <li>Nom de la compagnie d’assurances : La Capital Assurance General.</li>
+                                <li>Numéro de la police : 39574451-001</li>
+                            </ul>
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:16px; font-weight:bold;">SÉCURITÉ SUR LES LIEUX DE TRAVAIL </p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. déclare se conformer à la Loi sur les accidents du travail et les maladies professionnelles et à la Loi sur la santé et la
+                            sécurité du travail, et respecter toutes les dispositions de ces lois et de leurs règlements; il doit émettre tous les avis requis, y compris à
+                            l’ouverture et à la fermeture du chantier et faire toutes les déclarations de salaires des ouvriers requises. Il doit remplir, en lieu et place du
+                            Client, les obligations imposées par ces lois au «maître d’œuvre». On trouvera davantage d’information à ce sujet sur le site Web de la
+                            Commission des normes, de l’équité, de la santé et de la sécurité du travail. 
+                        </p>
+                    </div>
+
+                    <div>
+                        <p style="font-size:16px; font-weight:bold;">GARANTIES </p>
+                        <p style="text-align: justify;">
+                            Beau-frère à louer Inc. s’engage à remettre au Client, à la fin des travaux, les documents faisant état des garanties des fabricants et des
+                            vendeurs en lien avec les produits ou matériaux installés. En plus des garanties légales, le Client bénéficie des garanties suivantes :
+                            <ul style="list-style-type: square;">
+                                <li>Garantie offerte par : Beau-frère à louer Inc</li>
+                            </ul>
+                        </p>
+                    </div>
                 </div>
 
                 <!-- <div style="padding-top:50px;">

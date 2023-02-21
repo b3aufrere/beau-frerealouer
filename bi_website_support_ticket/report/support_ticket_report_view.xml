@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <template id="support_ticket_template_view">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})" />
+            <div class="clearfix"/>
+            <div class="page">
+                <div class="oe_structure"/>
+                <div class="row"> 
+                    <h3 style="margin-top: 30px; font-weight: bold;">
+                        <span t-field="o.sequence"/> -
+                        <span t-field="o.name"/>
+                    </h3>
+                </div>
+                
+                <div class="row">
+                    <table style="margin-bottom:30px;">
+                        <thead>
+                            <tr class="active">
+                                <th style="font-weight: bold;text-align:left;">Responsible :</th>
+                                <th style="font-weight: bold;text-align:left;">Customer :</th>
+                                <th style="font-weight: bold;text-align:left;">Email :</th>
+                                <th/>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            <tr>
+                                <td t-if="o.user_id" style="width: 45%;">
+                                    <span t-field="o.user_id"/>
+                                </td>
+                                <td t-if="o.partner_id" style="width: 45%;">
+                                    <span t-field="o.partner_id.name"/>
+                                </td>
+                                <td style="width: 45%;">
+                                    <t t-if = "o.partner_id.email">
+                                        <span t-field="o.partner_id.email"/>
+                                    </t>
+                                    <t t-else = "">
+                                        <span t-field="o.email_from"/>
+                                    </t>
+                                </td>
+                                <td/>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="row">
+                    <table style="margin-bottom:30px;">
+                        <thead>
+                            <tr class="active">
+                                <th style="font-weight: bold;text-align:left;">Company :</th>
+                                <th style="font-weight: bold;text-align:left;">Phone :</th>
+                                <th style="font-weight: bold;text-align:left;">Create Date :</th>
+                                <th style="font-weight: bold;text-align:left;">Close Date :</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            <tr>
+                                <td t-if="o.user_id.company_id.name" style="width: 30%;">
+                                    <span t-field="o.user_id.company_id.name"/>
+                                </td>
+                                <td style="width: 30%;">
+                                    <t t-if="o.partner_id.phone">
+                                        <span t-field="o.partner_id.phone"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span t-field="o.phone"/>
+                                    </t>
+                                </td>
+                                <td style="width: 30%;">
+                                    <span t-field="o.date_create"/>
+                                </td>
+                                <td style="width: 30%;">
+                                    <span t-field="o.date_close"/>
+                                </td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="table-responsive">
+                    <table width="100%" class="table table-striped oe_import_grid bg-white">
+                        <tr>
+                            <th width="20%" align="left" style=" border-top:solid grey 1px;">
+                                <span>Support Team</span>
+                            </th>
+                            <td width="80%" align="left" style=" border-top:solid grey 1px;">
+                                <span t-field="o.support_team_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="20%" align="left" style=" border-top:solid grey 1px;">
+                               <span>Category</span>
+                            </th>
+                            <td width="80%" align="left" style=" border-top:solid grey 1px;">
+                                <span t-field="o.category.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="20%" align="left" style=" border-top:solid grey 1px;">
+                               <span>Priority</span>
+                            </th>
+                            <td width="80%" align="left" style=" border-top:solid grey 1px;">
+                                <span t-field="o.priority"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="20%" align="left" style=" border-top:solid grey 1px;">
+                               <span>Analytic Account</span>
+                            </th>
+                            <td width="80%" align="left" style=" border-top:solid grey 1px;">
+                                <span t-field="o.analytic_id.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="20%" align="left" style=" border-top:solid grey 1px;">
+                               <span>Project</span>
+                            </th>
+                            <td width="80%" align="left" style=" border-top:solid grey 1px;">
+                                <span t-field="o.project_id.name"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                <div class="row" style="margin-top: 25px;margin-bottom:40px;">
+                    <h3 style="font-weight: bold;">
+                        <span style="margin-left:15px">Description</span>
+                    </h3>
+                    <div t-field="o.description" style="margin-top:25px;padding-top:20px;padding-left:0px;margin-left:-75px;"/>
+                </div>
+                
+                <h2>Timesheet</h2><br/>
+                <table class="table table-sm" style="width:100%;
+                border-top-style: solid;border-top-color: #eeeeee;border-top-width: 1px;
+                border-bottom-style: solid;border-bottom-color: #eeeeee;border-bottom-width: 1px;
+                border-left-style: solid;border-left-color: #eeeeee;border-left-width: 1px;
+                border-right-style: solid;border-right-color: #eeeeee;border-right-width: 1px;">
+                    <thead>
+                        <tr>
+                            <th align="left" style="padding: 5px">Date</th>
+                            <th align="left" style="padding: 5px">Employee</th>
+                            <th align="left" style="padding: 5px">Project</th>
+                            <th align="left" style="padding: 5px">Task</th>
+                            <th align="left" style="padding: 5px">Time (Hours)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="sale_tbody">
+                        <t t-foreach="o.timesheet_ids" t-as="timesheet">
+                            <tr>
+                                <td style="padding: 5px">
+                                    <span t-field="timesheet.date" />
+                                </td>
+                                <td style="padding: 5px">
+                                    <span t-field="timesheet.employee_id.name" />
+                                </td>
+                                <td style="padding: 5px">
+                                    <span t-field="timesheet.project_id.name" />
+                                </td>
+                                <td style="padding: 5px" >
+                                    <span t-field="timesheet.task_id.name" />
+                                </td>
+                                <td style="padding: 5px">
+                                    <span t-field="timesheet.unit_amount" />
+                                </td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>    
+        </t>
+    </template>
+    
+    <template id="support_ticket_temp_id">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="bi_website_support_ticket.support_ticket_template_view" t-lang="o.user_id.lang"/>
+            </t>
+        </t>
+    </template>
+    
+    <record id="paperformat_lowmargin_top_growinga" model="report.paperformat">
+        <field name="name">European A4 low margin</field>
+        <field name="default" eval="True" />
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">8</field>
+        <field name="margin_right">8</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">40</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="support_ticket_report_id" model="ir.actions.report">
+            <field name="name">Support Ticket</field>
+            <field name="model">support.ticket</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">bi_website_support_ticket.support_ticket_temp_id</field>
+            <field name="report_file">bi_website_support_ticket.support_ticket_temp_id</field>
+            <!-- <field name="print_report_name">'PRO-FORMA - %s' % (object.name)</field> -->
+            <field name="binding_type">report</field>
+            <field name="binding_model_id" ref="model_support_ticket"/>
+
+
+
+
+
+
+        </record>
+            
+</odoo>
