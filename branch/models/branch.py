@@ -8,7 +8,7 @@ class ResBranch(models.Model):
     _description = 'Branch'
 
     name = fields.Char(required=True)
-    company_id = fields.Many2one('res.company', required=True)
+    company_id = fields.Many2one('res.company', string="Société", required=True)
 
     active = fields.Boolean(default=True)
     division_id = fields.Many2one('division', string='Division', required=True)
