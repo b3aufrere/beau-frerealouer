@@ -15,7 +15,8 @@
                         </div>
                         <notebook colspan="4">
                             <page string="Entreprises">
-                                <field name="entreprise_ids" nolabel="1"/>
+                                <field name="entreprise_ids" nolabel="1" invisible="1"/>
+                                <field name="branch_ids" nolabel="1"/>
                             </page>
                         </notebook>
                     </sheet>

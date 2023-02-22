@@ -50,7 +50,7 @@
         </record>
 
         <!-- This Menu Item Must have a parent -->
-        <menuitem id="branch_menu_res_branch" name="Branch"  parent="base.menu_users" action="branch_action_res_branch" />
+        <menuitem id="branch_menu_res_branch" name="Entreprises"  parent="base.menu_users" action="branch_action_res_branch" sequence="40"/>
 
     </data>
 </odoo>
