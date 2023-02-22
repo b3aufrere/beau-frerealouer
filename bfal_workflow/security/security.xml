@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <record id="hr.hr_employee_comp_rule" model="ir.rule">
-            <field name="domain_force">['|',('branch_id','=',False),('branch_id','=',user.branch_ids)]</field>
+            <field name="domain_force">['|',('branch_id','=',False),('branch_id','in',user.branch_ids)]</field>
         </record>
     </data>
 </odoo>
