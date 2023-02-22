@@ -31,29 +31,31 @@
         <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
             <div style="padding-top:10px">
                 <div class="float-start text-start">
-                    <div>
-                        <span t-esc="o.branch_id.name"  style="font-size:22px; font-weight:bold;"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-map-marker fa-fw" role="img"/>
-                        <span t-esc="company.street"/>, <span t-esc="company.city"/> <span t-esc="company.state_id.code"/>, <span t-esc="company.zip"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-registered fa-fw" role="img"/>
-                        <span>RBQ-<t t-esc="company.company_registry"/></span>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class='fa fa-phone fa-fw' role="img"/>
-                        <span t-esc="company.phone"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class='fa fa-envelope fa-fw' role="img"/>
-                        <span t-esc="company.email"/>
-                    </div>
-                    <div class="d-flex align-items-baseline">
-                        <i class="fa fa-globe fa-fw" role="img"/>
-                        <a t-att-href="company.website and '%s%s' % ('http://' if '://' not in company.website else '',company.website)"><span t-esc="company.website"/></a>
-                    </div>
+                    <t t-if="o.branch_id">
+                        <div>
+                            <span t-esc="o.branch_id.name"  style="font-size:22px; font-weight:bold;"/>
+                        </div>
+                        <div class="d-flex align-items-baseline">
+                            <i class="fa fa-map-marker fa-fw" role="img"/>
+                            <span t-esc="o.branch_id.street"/>, <span t-esc="o.branch_id.city"/> <span t-esc="o.branch_id.state_id.code"/>, <span t-esc="o.branch_id.zip"/>
+                        </div>
+                        <div t-if="o.branch_id.company_registry" class="d-flex align-items-baseline">
+                            <i class="fa fa-registered fa-fw" role="img"/>
+                            <span>RBQ-<t t-esc="o.branch_id.company_registry"/></span>
+                        </div>
+                        <div t-if="o.branch_id.phone" class="d-flex align-items-baseline">
+                            <i class='fa fa-phone fa-fw' role="img"/>
+                            <span t-esc="o.branch_id.phone"/>
+                        </div>
+                        <div t-if="o.branch_id.email" class="d-flex align-items-baseline">
+                            <i class='fa fa-envelope fa-fw' role="img"/>
+                            <span t-esc="o.branch_id.email"/>
+                        </div>
+                        <div t-if="o.branch_id.website" class="d-flex align-items-baseline">
+                            <i class="fa fa-globe fa-fw" role="img"/>
+                            <a t-att-href="o.branch_id.website and '%s%s' % ('http://' if '://' not in o.branch_id.website else '',o.branch_id.website)"><span t-esc="o.branch_id.website"/></a>
+                        </div>
+                    </t>
                 </div>
                 <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-end" style="width: 370px; height: 120px;" alt="Logo"/>
             </div>

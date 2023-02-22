@@ -25,6 +25,7 @@ class ResBranch(models.Model):
     phone = fields.Char(related='partner_id.phone', store=True, readonly=False, string="Téléphone")
     mobile = fields.Char(related='partner_id.mobile', store=True, readonly=False, string="Mobile")
     website = fields.Char(related='partner_id.website', readonly=False, string="Site Web")
+    company_registry = fields.Char(related='partner_id.company_registry', readonly=False, string="ID de la société")
 
     def _inverse_street(self):
         for branch in self:
@@ -81,6 +82,7 @@ class ResBranch(models.Model):
                     'phone': vals.get('phone'),
                     'website': vals.get('website'),
                     'country_id': vals.get('country_id'),
+                    'company_registry': vals.get('company_registry')
                 }
                 for vals in no_partner_vals_list
             ])

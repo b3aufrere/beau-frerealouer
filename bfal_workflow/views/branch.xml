@@ -32,6 +32,7 @@
                                     </div>
                                 </group>
                                 <group>
+                                    <field name="company_registry" />
                                     <field name="phone" class="o_force_ltr"/>
                                     <field name="mobile" class="o_force_ltr"/>
                                     <field name="email"/>
