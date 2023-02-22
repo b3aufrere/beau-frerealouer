@@ -11,3 +11,4 @@ from . import project_task
 from . import helpdesk_ticket
 from . import mail_activity
 from . import account_move
+from . import branch
