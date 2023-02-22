@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="template_task_form">
+            <field name="name">template_task_form</field>
+            <field name="model">template.task</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Template Task">
+                    <sheet>
+                    <group>
+
+                    <field name="task_check" />
+                    <field name="name"/>
+                    <field name="sequence" />
+                    <field name="description"/>
+
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="template_task_tree">
+            <field name="name">template_task_tree</field>
+            <field name="model">template.task</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Template Task">
+                    
+                    <field name="task_check" />
+                    <field name="name" />
+                    <field name="sequence" />
+                    <field name="description"/>
+                
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_template_task_tree">
+            <field name="name">Template Task</field>
+            <field name="res_model">template.task</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="template_task_tree" />
+        </record>
+
+        <menuitem name="Template Task" 
+                    id="template_task_menu"
+                    parent="project.menu_project_config" 
+                    action="action_template_task_tree"
+                    sequence="9"/>
+
+    </data>
+</odoo>
