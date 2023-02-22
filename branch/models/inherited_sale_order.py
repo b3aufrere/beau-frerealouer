@@ -30,7 +30,7 @@ class SaleOrder(models.Model):
 
         return res
 
-    branch_id = fields.Many2one('res.branch', string="Branch")
+    branch_id = fields.Many2one('res.branch', string="Entreprise")
 
     
     def _prepare_invoice(self):

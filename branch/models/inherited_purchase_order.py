@@ -27,7 +27,7 @@ class purchase_order(models.Model):
         res.update({'branch_id': branch_id})
         return res
 
-    branch_id = fields.Many2one('res.branch', string="Branch")
+    branch_id = fields.Many2one('res.branch', string="Entreprise")
 
     def _prepare_stock_moves(self, picking):
         result = super(purchase_order, self)._prepare_stock_moves(picking)
@@ -71,7 +71,7 @@ class PurchaseOrder(models.Model):
 
         return res
 
-    branch_id = fields.Many2one('res.branch', string='Branch')
+    branch_id = fields.Many2one('res.branch', string='Entreprise')
 
     @api.model_create_multi
     def create(self, vals_list):

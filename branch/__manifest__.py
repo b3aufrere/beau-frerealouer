@@ -1,37 +1,37 @@
 # Part of BrowseInfo. See LICENSE file for full copyright and licensing details.
 
 {
-    'name': 'Multiple Branch Unit Operation Setup for All Applications Odoo',
+    'name': 'Multiple Entreprise Unit Operation Setup for All Applications Odoo',
     'version': '16.0.0.1',
     'category': 'Sales',
-    'summary': 'Multiple Branch Management Multi Branch app Multiple Unit multiple Operating unit sales branch Sales Purchase branch Invoicing branch billing Voucher branch warehouse branch Payment branch Accounting Reports for single company Multi Branches multi company',
+    'summary': 'Multiple Entreprise Management Multi Entreprise app Multiple Unit multiple Operating unit sales branch Sales Purchase branch Invoicing branch billing Voucher branch warehouse branch Payment branch Accounting Reports for single company Multi Branches multi company',
     "description": """
-       Multiple Unit operation management for single company Multiple Branch management for single company
+       Multiple Unit operation management for single company Multiple Entreprise management for single company
       multiple operation for single company branching company in odoo multiple store multiple company in odoo
-    Branch for POS Branch for Sales Branch for Purchase Branch for all Branch for Accounting Branch for invoicing Branch for Payment order Branch for point of sales Branch for voucher
-    Branch for All Accounting reports Branch Accounting filter Branch for warehouse branch for sale stock branch for location
+    Entreprise for POS Entreprise for Sales Entreprise for Purchase Entreprise for all Entreprise for Accounting Entreprise for invoicing Entreprise for Payment order Entreprise for point of sales Entreprise for voucher
+    Entreprise for All Accounting reports Entreprise Accounting filter Entreprise for warehouse branch for sale stock branch for location
   Unit for POS Unit for Sales Unit for Purchase Unit for all Unit for Accounting Unit for invoicing Unit for Payment order Unit for point of sales Unit for voucher Unit 
   unit All Accounting reports Unit Accounting filter branch unit for warehouse branch unit for sale stock branch unit for location
   Unit Operation for POS Unit Operation for Sales Unit operation for Purchase Unit operation for all Unit operation for Accounting Unit Operation for invoicing Unit operation for Payment order Unit operation for point of sales Unit operation for voucher Unit operation for All Accounting reports Unit operation Accounting filter.
-  Branch Operation for POS Branch Operation for Sales Branch operation for Purchase Branch operation for all Branch operation for Accounting Branch Operation for invoicing Branch operation for Payment order Branch operation for point of sales Branch operation for voucher Branch operation for All Accounting reports Branch operation Accounting filter.
+  Entreprise Operation for POS Entreprise Operation for Sales Entreprise operation for Purchase Entreprise operation for all Entreprise operation for Accounting Entreprise Operation for invoicing Entreprise operation for Payment order Entreprise operation for point of sales Entreprise operation for voucher Entreprise operation for All Accounting reports Entreprise operation Accounting filter.
   Odoo pos multi branch POS odoo point of sale multi branch point of sales
   odoo point of sales multi branch on POS
   Odoo pos multiple branch POS odoo point of sale multiple branch point of sales
   odoo point of sales multiple branch on POS
   Odoo pos multiple-branch POS odoo point of sale multiple-branch point of sales
   odoo point of sales multiple-branch on POS
-    odoo Multiple Unit operation management for single company Multiple Branch management for single company
+    odoo Multiple Unit operation management for single company Multiple Entreprise management for single company
     odoo multiple operation for single company. branching company in odoo multiple store multiple company in odoo
-    odoo Branch for POS Branch for Sales Branch for Purchase Branch for all Branch for Accounting Branch for invoicing Branch for Payment order Branch for point of sales Branch for voucher 
-    odoo Branch for All Accounting reports Branch Accounting filter Branch for warehouse branch for sale stock branch for location
+    odoo Entreprise for POS Entreprise for Sales Entreprise for Purchase Entreprise for all Entreprise for Accounting Entreprise for invoicing Entreprise for Payment order Entreprise for point of sales Entreprise for voucher 
+    odoo Entreprise for All Accounting reports Entreprise Accounting filter Entreprise for warehouse branch for sale stock branch for location
     odoo Unit for POS Unit for Sales Unit for Purchase Unit for all Unit for Accounting Unit for invoicing Unit for Payment order
     odoo Unit for point of sales Unit for voucher Unit for All Accounting reports Unit Accounting filter
     odoo branch unit for warehouse branch unit for sale stock branch unit for location
   odoo Unit Operation for POS Unit Operation for Sales Unit operation for Purchase Unit operation for all Unit operation for Accounting 
   odoo Unit Operation for invoicing Unit operation for Payment order Unit operation for point of sales Unit operation for voucher Unit operation for All Accounting reports
-  odoo Unit operation Accounting filter Branch Operation for POS Branch Operation for Sales 
-  odoo Branch operation for Purchase Branch operation for all Branch operation for Accounting Branch Operation for invoicing
-  odoo Branch operation for Payment order Branch operation for point of sales Branch operation for voucher Branch operation for All Accounting reports Branch operation Accounting filter.
+  odoo Unit operation Accounting filter Entreprise Operation for POS Entreprise Operation for Sales 
+  odoo Entreprise operation for Purchase Entreprise operation for all Entreprise operation for Accounting Entreprise Operation for invoicing
+  odoo Entreprise operation for Payment order Entreprise operation for point of sales Entreprise operation for voucher Entreprise operation for All Accounting reports Entreprise operation Accounting filter.
   odoo branch helpdesk and support branch support and helpdesk
   odoo helpdesk branch helpdesk unit helpdek multiple unit helpdesk operation unit
   odoo branch crm odoo crm branch crm operating unit crm unit operation management crm multiple unit operating unit crm

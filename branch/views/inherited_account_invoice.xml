@@ -121,7 +121,7 @@
             <field name="inherit_id" ref="account.view_account_move_line_filter" />
             <field name="arch" type="xml">
                 <xpath expr="//group" position="inside">
-                    <filter string="Branch" name="branch" domain="[]" context="{'group_by':'branch_id'}" />
+                    <filter string="Entreprise" name="branch" domain="[]" context="{'group_by':'branch_id'}" />
                 </xpath>
             </field>
         </record>

@@ -7,8 +7,8 @@ from odoo.exceptions import ValidationError
 class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    branch_ids = fields.Many2many('res.branch', string="Allowed Branch")
-    branch_id = fields.Many2one('res.branch', string= 'Branch')
+    branch_ids = fields.Many2many('res.branch', string="Allowed Entreprise")
+    branch_id = fields.Many2one('res.branch', string= 'Entreprise')
 
     def write(self, values):
         if 'branch_id' in values or 'branch_ids' in values:
@@ -22,7 +22,7 @@ class ResUsers(models.Model):
             for user in self.filtered(lambda u: u.active):
                 if user.branch_id not in user.branch_ids:
                     raise ValidationError(
-                        _('Branch %(branch_name)s is not in the allowed branches for user %(user_name)s (%(branch_allowed)s).',
+                        _('Entreprise %(branch_name)s is not in the allowed branches for user %(user_name)s (%(branch_allowed)s).',
                         branch_name=user.branch_id.name,
                         user_name=user.name,
                         branch_allowed=', '.join(user.mapped('branch_ids.name')))

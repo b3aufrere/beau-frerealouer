@@ -22,7 +22,7 @@ class AccountMove(models.Model):
         })
         return res
 
-    branch_id = fields.Many2one('res.branch', string="Branch")
+    branch_id = fields.Many2one('res.branch', string="Entreprise")
 
     @api.onchange('branch_id')
     def _onchange_branch_id(self):
@@ -52,4 +52,4 @@ class AccountMoveLine(models.Model):
         res.update({'branch_id' : branch_id})
         return res
 
-    branch_id = fields.Many2one('res.branch', string="Branch",related="move_id.branch_id",store=True)
+    branch_id = fields.Many2one('res.branch', string="Entreprise",related="move_id.branch_id",store=True)

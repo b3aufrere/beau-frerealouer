@@ -21,5 +21,5 @@ class account_bank_statement_line(models.Model):
         })
         return res
 
-    branch_id = fields.Many2one('res.branch', string='Branch')
+    branch_id = fields.Many2one('res.branch', string='Entreprise')
 

@@ -16,4 +16,4 @@ class ResPartnerIn(models.Model):
             })
         return res
 
-    branch_id = fields.Many2one('res.branch', string="Branch")
+    branch_id = fields.Many2one('res.branch', string="Entreprise")

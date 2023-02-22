@@ -7,7 +7,7 @@
             <field name="name">branch.res.branch.view.form</field>
             <field name="model">res.branch</field>
             <field name="arch" type="xml">
-                <form string="Branch">
+                <form string="Entreprise">
                     <sheet>
                         <group>
                             <group>
@@ -29,7 +29,7 @@
             <field name="name">branch.res.branch.view.tree</field>
             <field name="model">res.branch</field>
             <field name="arch" type="xml">
-                <tree string="Branch">
+                <tree string="Entreprise">
                     <field name="name"/>
                     <field name="company_id"/>
                 </tree>
@@ -38,7 +38,7 @@
 
         <!--View action for branch form view and tree view-->
         <record id="branch_action_res_branch" model="ir.actions.act_window">
-            <field name="name">Branch</field>
+            <field name="name">Entreprise</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">res.branch</field>
             <field name="view_mode">tree,form</field>

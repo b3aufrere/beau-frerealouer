@@ -5,7 +5,7 @@ from odoo.osv import expression
 
 class ResBranch(models.Model):
     _name = 'res.branch'
-    _description = 'Branch'
+    _description = 'Entreprise'
 
     name = fields.Char(required=True)
     company_id = fields.Many2one('res.company', required=True)

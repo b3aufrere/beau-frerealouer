@@ -28,7 +28,7 @@ msgstr "يجب معالجة جميع سطور إدخالات الحساب لإغ
 
 #. module: branch
 #: model:ir.model.fields,field_description:branch.field_res_users__branch_ids
-msgid "Allowed Branch"
+msgid "Allowed Entreprise"
 msgstr "الفرع المسموح به"
 
 #. module: branch
@@ -73,7 +73,7 @@ msgstr "خط كشف الحساب المصرفي"
 #: model_terms:ir.ui.view,arch_db:branch.view_order_form_inherit_branch
 #: model_terms:ir.ui.view,arch_db:branch.view_purchase_order_filter_inherit_branch
 #: model_terms:ir.ui.view,arch_db:branch.view_sales_order_filter_inherit_branch
-msgid "Branch"
+msgid "Entreprise"
 msgstr "فرع شجرة"
 
 #. module: branch
