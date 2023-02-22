@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- template Stages -->
+
+    <record id="template_task_stage_1" model="template.task">
+        <field name="name">New</field>
+    </record>
+
+    <record id="template_task_stage_2" model="template.task">
+        <field name="name">In Progress</field>
+    </record>
+
+    <record id="template_task_stage_4" model="template.task">
+        <field name="name">Canceled</field>
+    </record>
+
+    <record id="template_task_stage_5" model="template.task">
+        <field name="name">Template</field>
+    </record>
+</odoo>
