@@ -32,7 +32,7 @@
             <div style="padding-top:10px">
                 <div class="float-start text-start">
                     <div>
-                        <span t-esc="o.branch_id.name" style="font-size:22px; font-weight:bold;"/>
+                        <span t-esc="o.branch_id.name"  style="font-size:22px; font-weight:bold;"/>
                     </div>
                     <div class="d-flex align-items-baseline">
                         <i class="fa fa-map-marker fa-fw" role="img"/>
