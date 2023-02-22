@@ -24,7 +24,6 @@
         'mail',
         'timesheet_grid',
         'helpdesk_ticket_sale_order_ent',
-        'branch'
     ],
     
     'data': [ 
