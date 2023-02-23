@@ -24,7 +24,8 @@
         'mail',
         'timesheet_grid',
         'helpdesk_ticket_sale_order_ent',
-        'branch'
+        'branch',
+        'product'
     ],
     
     'data': [ 
@@ -47,7 +48,8 @@
         'views/project_task.xml',
         'views/mail_activity.xml',
         'views/account_move.xml',
-        'views/branch.xml'
+        'views/branch.xml',
+        'views/product.xml'
     ],
     
     'installable': True,
