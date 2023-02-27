@@ -9,7 +9,7 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     is_sub_task = fields.Boolean(defaul=False, compute="_compute_is_sub_task")
-    is_user_readonly = fields.Boolean(defaul=False, store=True, compute="_computes_is_user_readonly")
+    is_user_readonly = fields.Boolean(defaul=False, compute="_computes_is_user_readonly")
     territory_id = fields.Many2one('territory', string='Territoire de travail')
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
@@ -168,10 +168,10 @@ class ProjectTask(models.Model):
                         message = html2plaintext(message) #plaintext2html(html2plaintext(message))
                         w(f"message >> {message}")
                         
-                        if task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.mobile:
+                        if task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.phone:
                             datas = {
                                 "From": twilio_sms_account.account_from_mobile_number,
-                                "To": (task.user_ids[0].partner_id.mobile or "").replace(" ", ""),
+                                "To": (task.user_ids[0].partner_id.phone or "").replace(" ", ""),
                                 "Body": message
                             }
                             w(f"datas >> {datas}")
