@@ -175,7 +175,7 @@ class ProjectTask(models.Model):
                         }
                         w(f"datas >> {datas}")
                         twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
-                        task.message_post(body="<p>SMS ENVOYÉ : </p>" + plaintext2html(html2plaintext(message)),)
+                        task.message_post(body=plaintext2html(html2plaintext(message)), message_type='sms')
 
     @api.onchange('territory_id')
     def onchange_territory_id(self):
