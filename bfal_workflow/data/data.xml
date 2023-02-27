@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <odoo>
     <data noupdate="0">
+        <record id="notify_worker_abt_his_new_task_twilio_sms_template" model="twilio.sms.template">
+            <field name="name">Informer le travailleur de sa nouvelle visite</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="body">Cher {{ object.user_ids[0].name }} vous avez été assigné à la visite : {{ object.name }}, Planifiée du {{ object.planned_date_begin or '/'}} au {{ object.planned_date_end or '/'}}</field>
+        </record>
+
         <record id="project_stage_0" model="project.task.type">
             <field name="sequence">1</field>
             <field name="name">Nouveau</field>
