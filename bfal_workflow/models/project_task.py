@@ -161,20 +161,21 @@ class ProjectTask(models.Model):
             if twilio_sms_account and twilio_sms_account.is_notify_worker_abt_his_new_task and twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id:
                 w(">> _computes_is_user_readonly 2")
                 for task in self:
-                    message = task._message_sms_with_template_twilio(
-                            template=twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id,
-                        )
-                    message = html2plaintext(message) #plaintext2html(html2plaintext(message))
-                    w(f"message >> {message}")
-                    
-                    if task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.mobile:
-                        datas = {
-                            "From": twilio_sms_account.account_from_mobile_number,
-                            "To": (task.user_ids[0].partner_id.mobile or "").replace(" ", ""),
-                            "Body": message
-                        }
-                        w(f"datas >> {datas}")
-                        twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
+                    if task.id:
+                        message = task._message_sms_with_template_twilio(
+                                template=twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id,
+                            )
+                        message = html2plaintext(message) #plaintext2html(html2plaintext(message))
+                        w(f"message >> {message}")
+                        
+                        if task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.mobile:
+                            datas = {
+                                "From": twilio_sms_account.account_from_mobile_number,
+                                "To": (task.user_ids[0].partner_id.mobile or "").replace(" ", ""),
+                                "Body": message
+                            }
+                            w(f"datas >> {datas}")
+                            twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
 
     @api.onchange('territory_id')
     def onchange_territory_id(self):
