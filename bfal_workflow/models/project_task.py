@@ -146,36 +146,39 @@ class ProjectTask(models.Model):
     
     @api.depends('user_ids')
     def _computes_is_user_readonly(self):
-        w(">> _computes_is_user_readonly 1")
         for task in self:
             task.is_user_readonly = not self.env.user.sudo().has_group('industry_fsm.group_fsm_manager')
+    
+    @api.depends('planned_date_begin', 'planned_date_end', 'user_ids')
+    def _compute_planning_overlap(self):
+        super(ProjectTask, self)._compute_planning_overlap()
 
-            twilio_sms_accounts = self.env['twilio.sms.gateway.account'].sudo().search([('state', '=', 'confirmed')], order="id asc")
-            tobe_twilio_sms_accounts = twilio_sms_accounts.filtered(lambda x: x.is_default_sms_account)
-            twilio_sms_account = False
-            if tobe_twilio_sms_accounts:
-                twilio_sms_account = tobe_twilio_sms_accounts[0]
-            elif twilio_sms_accounts:
-                twilio_sms_account = twilio_sms_accounts[0]
-            
-            if twilio_sms_account and twilio_sms_account.is_notify_worker_abt_his_new_task and twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id:
-                w(">> _computes_is_user_readonly 2")
-                for task in self:
-                    if task.id and task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.phone:
-                        message = task._message_sms_with_template_twilio(
-                                template=twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id,
-                            )
-                        message = html2plaintext(message) #plaintext2html(html2plaintext(message))
-                        w(f"message >> {message}")
-                        
-                        datas = {
-                            "From": twilio_sms_account.account_from_mobile_number,
-                            "To": (task.user_ids[0].partner_id.phone or "").replace(" ", ""),
-                            "Body": message
-                        }
-                        w(f"datas >> {datas}")
-                        twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
-                        task.message_post(body=plaintext2html(html2plaintext(message)), message_type='sms')
+        twilio_sms_accounts = self.env['twilio.sms.gateway.account'].sudo().search([('state', '=', 'confirmed')], order="id asc")
+        tobe_twilio_sms_accounts = twilio_sms_accounts.filtered(lambda x: x.is_default_sms_account)
+        twilio_sms_account = False
+        if tobe_twilio_sms_accounts:
+            twilio_sms_account = tobe_twilio_sms_accounts[0]
+        elif twilio_sms_accounts:
+            twilio_sms_account = twilio_sms_accounts[0]
+        
+        if twilio_sms_account and twilio_sms_account.is_notify_worker_abt_his_new_task and twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id:
+            for task in self:
+                if task.id and task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.phone:
+                    message = task._message_sms_with_template_twilio(
+                            template=twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id,
+                        )
+                    message = html2plaintext(message) #plaintext2html(html2plaintext(message))
+                    w(f"message >> {message}")
+                    
+                    datas = {
+                        "From": twilio_sms_account.account_from_mobile_number,
+                        "To": (task.user_ids[0].partner_id.phone or "").replace(" ", ""),
+                        "Body": message
+                    }
+                    w(f"datas >> {datas}")
+                    twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
+                    task.message_post(body="SMS ENVOYÉ" + plaintext2html(html2plaintext(message)), message_type='sms')
+
 
     @api.onchange('territory_id')
     def onchange_territory_id(self):
