@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="add_bfal_changes_twilio_sms_gateway_account_form_view" model="ir.ui.view">
+        <field name="name">add_bfal_changes_twilio_sms_gateway_account_form_view</field>
+        <field name="model">twilio.sms.gateway.account</field>
+        <field name="inherit_id" ref="twilio_sms_gateway_gsc.twilio_sms_gateway_account_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='advanced_features']" position="inside">
+                <group>
+                    <field  name="is_notify_worker_abt_his_new_task"/>
+                    <field  name="sms_notify_worker_abt_his_new_task_template_id"
+                            options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                            attrs="{'required': [('is_validate_do_to_send_sms', '=', True)], 'invisible': [('is_notify_worker_abt_his_new_task', '=', False)] }" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

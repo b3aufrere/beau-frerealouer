@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _, Command
 from datetime import date
+from odoo.tools import html2plaintext, plaintext2html
 
+from logging import warning as w
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
@@ -144,8 +146,35 @@ class ProjectTask(models.Model):
     
     @api.depends('user_ids')
     def _computes_is_user_readonly(self):
+        w(">> _computes_is_user_readonly 1")
         for task in self:
             task.is_user_readonly = not self.env.user.sudo().has_group('industry_fsm.group_fsm_manager')
+
+            twilio_sms_accounts = self.env['twilio.sms.gateway.account'].sudo().search([('state', '=', 'confirmed')], order="id asc")
+            tobe_twilio_sms_accounts = twilio_sms_accounts.filtered(lambda x: x.is_default_sms_account)
+            twilio_sms_account = False
+            if tobe_twilio_sms_accounts:
+                twilio_sms_account = tobe_twilio_sms_accounts[0]
+            elif twilio_sms_accounts:
+                twilio_sms_account = twilio_sms_accounts[0]
+            
+            if twilio_sms_account and twilio_sms_account.is_notify_worker_abt_his_new_task and twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id:
+                w(">> _computes_is_user_readonly 2")
+                for task in self:
+                    message = task._message_sms_with_template_twilio(
+                            template=twilio_sms_account.sms_notify_worker_abt_his_new_task_template_id,
+                        )
+                    message = html2plaintext(message) #plaintext2html(html2plaintext(message))
+                    w(f"message >> {message}")
+                    
+                    if task.user_ids and task.user_ids[0].partner_id and task.user_ids[0].partner_id.mobile:
+                        datas = {
+                            "From": twilio_sms_account.account_from_mobile_number,
+                            "To": (task.user_ids[0].partner_id.mobile or "").replace(" ", ""),
+                            "Body": message
+                        }
+                        w(f"datas >> {datas}")
+                        twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
 
     @api.onchange('territory_id')
     def onchange_territory_id(self):

@@ -25,7 +25,8 @@
         'timesheet_grid',
         'helpdesk_ticket_sale_order_ent',
         'branch',
-        'product'
+        'product',
+        'twilio_sms_gateway_gsc'
     ],
     
     'data': [ 
@@ -49,7 +50,8 @@
         'views/mail_activity.xml',
         'views/account_move.xml',
         'views/branch.xml',
-        'views/product.xml'
+        'views/product.xml',
+        'views/twilio_sms_gateway_account.xml'
     ],
     
     'installable': True,
