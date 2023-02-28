@@ -6,10 +6,10 @@ from odoo.tools.mail import is_html_empty
 class CrmLead(models.Model):
     _inherit = 'crm.lead'
 
-    territory_id = fields.Many2one(
-        'territory',
-        string='Territoire de travail'
-    )
+    # territory_id = fields.Many2one(
+    #     'territory',
+    #     string='Territoire de travail'
+    # )
 
     branch_id = fields.Many2one(
         'res.branch',
