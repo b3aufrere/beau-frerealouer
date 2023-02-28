@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="add_bfal_changes_product_template_only_form_view" model="ir.ui.view">
+            <field name="name">add_bfal_changes_product_template_only_form_view</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view" />
+            <field name="arch" type="xml">
+                <field name="currency_id" position="before">
+                    <field name="division_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="add_bfal_changes_product_normal_form_view" model="ir.ui.view">
+            <field name="name">add_bfal_changes_product_normal_form_view</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="currency_id" position="after">
+                    <field name="division_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

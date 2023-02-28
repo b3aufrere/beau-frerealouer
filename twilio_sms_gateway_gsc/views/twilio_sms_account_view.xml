@@ -102,20 +102,20 @@
 						</group>
 					</group>
 					
-					<group string="Advanced Features">
+					<group string="Advanced Features" name="advanced_features">
 						<group>
 							<field name="is_confirm_so_to_send_sms"
 								attrs="{'readonly': [('state', '!=', 'new')]}" />
 							<field name="sms_so_confirm_template_id"
 								options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
-								attrs="{'readonly': [('state', '!=', 'new')], 'required': [('is_confirm_so_to_send_sms', '=', True)], 'invisible': [('is_confirm_so_to_send_sms', '=', False)] }" />
+								attrs="{'required': [('is_confirm_so_to_send_sms', '=', True)], 'invisible': [('is_confirm_so_to_send_sms', '=', False)] }" />
 						</group>
 						<group>
 							<field name="is_validate_do_to_send_sms"
 								attrs="{'readonly': [('state', '!=', 'new')]}" />
 							<field name="sms_do_validate_template_id"
 								options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
-								attrs="{'readonly': [('state', '!=', 'new')], 'required': [('is_validate_do_to_send_sms', '=', True)], 'invisible': [('is_validate_do_to_send_sms', '=', False)] }" />
+								attrs="{'required': [('is_validate_do_to_send_sms', '=', True)], 'invisible': [('is_validate_do_to_send_sms', '=', False)] }" />
 						</group>
 					</group>
 				</sheet>

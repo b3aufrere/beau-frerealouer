@@ -59,9 +59,9 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem   action="action_territory_form" 
+        <!-- <menuitem   action="action_territory_form" 
                     name="Territoires"
                     id="menu_territory" 
-                    parent="contacts.res_partner_menu_config"/>
+                    parent="contacts.res_partner_menu_config"/> -->
     </data>
 </odoo>

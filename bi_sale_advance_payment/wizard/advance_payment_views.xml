@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="advance_payment_wizard_form">
+            <field name="name">advacnce.payment.form</field>
+            <field name="model">advance.payment</field>
+            <field name="arch" type="xml">
+                <form string="Advance payment">
+                    <group>
+                        <group>
+                            <field name="journal_id" widget="selection" domain="[('type','in',['bank','cash'])]"/>
+                            <field name="pay_amount"/>
+                        </group>
+                        <group>
+                            <field name="date_planned" date="date_order"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="make_payment" string="Make Payment" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Cancel" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_advance_payment_wizard_form" model="ir.actions.act_window">
+            <field name="name">Advance Payment</field>
+            <field name="res_model">advance.payment</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>
