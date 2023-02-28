@@ -10,9 +10,9 @@
                 <field name="branch_id" />
             </xpath>
 
-            <xpath expr="//field[@name='work_location_id']" position="after">
+            <!-- <xpath expr="//field[@name='work_location_id']" position="after">
                 <field name="territory_id"/>
-            </xpath>
+            </xpath> -->
         </field>
     </record>
 
@@ -24,7 +24,7 @@
             <xpath expr="//searchpanel/field[@name='company_id']" position="after">
                 <!-- <field name="entreprise_id" icon="fa-university"/> -->
                 <field name="branch_id" icon="fa-university"/>
-                <field name="territory_id" icon="fa-map-marker"/>
+                <!-- <field name="territory_id" icon="fa-map-marker"/> -->
             </xpath>
         </field>
     </record>

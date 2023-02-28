@@ -40,11 +40,13 @@
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="before">
-                <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
+                <!-- <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/> -->
+                <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
-                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute>
+                <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
+                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
