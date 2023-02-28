@@ -40,11 +40,13 @@
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="before">
-                <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
+                <!-- <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/> -->
+                <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
-                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute>
+                <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
+                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
@@ -248,7 +250,7 @@
                 <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_primary', '=', False), ('stage_id','!=',%(bfal_workflow.planning_project_stage_1)d)]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_fsm_validate'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_id','not in',[%(bfal_workflow.project_stage_0)d, %(bfal_workflow.project_stage_1)d])]}</attribute>
             </xpath>
         </field>
     </record>

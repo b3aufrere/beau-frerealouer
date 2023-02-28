@@ -203,7 +203,7 @@
         <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
     </record>
 
-    <record id="product_template_branch_manager_rule" model="ir.rule">
+    <!-- <record id="product_template_branch_manager_rule" model="ir.rule">
         <field name="name">Product Template Entreprise Manager</field>
         <field name="model_id" ref="model_product_template"/>
         <field name="global" eval="True"/>
@@ -233,7 +233,7 @@
         <field name="global" eval="True"/>
         <field name="domain_force">['|',('product_tmpl_id.branch_id','=',False),('product_tmpl_id.branch_id','=',user.branch_id.id)]</field>
         <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
-    </record>
+    </record> -->
 
 <!--     <record id="res_users_branch_user_rule" model="ir.rule">
         <field name="name">Res Users Entreprise User</field>

@@ -23,7 +23,8 @@
 
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="division_id"/>
-                <field name="entreprise_id"/>
+                <!-- <field name="entreprise_id"/> -->
+                <field name="branch_id"/>
             </xpath>
         </field>
     </record>

@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='invoice_user_id']" position="before">
                 <field name="division_id"/>
-                <field name="entreprise_id"/>
+                <!-- <field name="entreprise_id"/> -->
             </xpath>
         </field>
     </record>
