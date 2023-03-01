@@ -17,9 +17,9 @@ class HrEmployee(models.Model):
         groups="hr.group_hr_user"
     )
 
-    # territory_id = fields.Many2one(
-    #     'territory',
-    #     string='Territoire de travail',
-    #     groups="hr.group_hr_user",
-    #     domain="[('branch_ids', 'in', branch_id)]"
-    # )
+    territory_id = fields.Many2one(
+        'territory',
+        string='Territoire de travail',
+        groups="hr.group_hr_user",
+        domain="[('branch_ids', 'in', branch_id)]"
+    )
