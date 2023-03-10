@@ -245,12 +245,12 @@
                         context="{'not_accept': True}"
                         attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
-                <button string="Envoyer un mail au travailleur" 
+                <!-- <button string="Envoyer un mail au travailleur" 
                         name="action_service_send" 
                         type="object" 
                         class="oe_highlight" 
                         title="Envoyer un mail au travailleur pour demande d'acceptation" 
-                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/> -->
             </xpath>
         </field>
     </record>

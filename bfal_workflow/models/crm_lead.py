@@ -90,3 +90,11 @@ class CrmLead(models.Model):
     
     def action_not_accept_lead(self):
         return self.env["ir.actions.actions"]._for_xml_id("crm.crm_lead_lost_action")
+    
+    @api.depends('stage_id')
+    def _compute_date_last_stage_update(self):
+        super(CrmLead, self)._compute_date_last_stage_update()
+
+        for lead in self:
+            if lead.stage_id and lead.stage_id.name == 'Assigné':
+                lead.action_service_send()
