@@ -14,7 +14,7 @@
                     <group>
                         <group>
                             <field name="project_id" domain="[('active', '=', True)]" context="{'default_use_tasks':1}"/>
-                            <field name="user_ids" class="o_task_user_field" options="{'no_open': True}" readonly="1" widget="many2many_avatar_user"/>
+                            <!-- <field name="user_ids" class="o_task_user_field" options="{'no_open': True}" readonly="1" widget="many2many_avatar_user"/> -->
                         </group>
                         <group>
                             <label for="planned_date_begin" string="Date planifié désiré"/>
