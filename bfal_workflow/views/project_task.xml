@@ -32,7 +32,7 @@
                         name="action_no_accept_task" 
                         type="object" 
                         class="btn-warning"
-                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_id.name','not in',[('Nouveau', 'Planifié']]}"/>
+                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_id.name','not in',['Nouveau', 'Planifié']]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
