@@ -96,5 +96,5 @@ class CrmLead(models.Model):
         super(CrmLead, self)._compute_date_last_stage_update()
 
         for lead in self:
-            if lead.stage_id and lead.stage_id.name == 'Assigné':
+            if lead.stage_id and lead.stage_id.name in ['Assigné', 'Interne']:
                 lead.action_service_send()
