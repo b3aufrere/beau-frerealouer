@@ -29,7 +29,7 @@
                         </group>
                     </group>
                     <footer>
-                    	<button name="create_task" string="Create Task" type="object"/>
+                    	<button name="create_task" string="Créer une tâche" type="object"/>
                     </footer>
                 </form>
             </field>

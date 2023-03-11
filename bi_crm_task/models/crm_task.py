@@ -36,11 +36,11 @@ class crm_task_wizard(models.TransientModel):
         return name
     
     
-    project_id = fields.Many2one('project.project','Project')
+    project_id = fields.Many2one('project.project','Projet')
     # dead_line = fields.Date('Deadline')
     planned_date_begin = fields.Datetime(string="Date de début")
     planned_date_end = fields.Datetime(string="Date de fin")
-    name = fields.Char('Task Name',default = get_name)
+    name = fields.Char('Nom de la tâche',default = get_name)
     # user_ids = fields.Many2many('res.users',string='Assignés')
     # user_ids = fields.Many2many('res.users', relation='project_task_assignee_rel', column1='task_id', column2='user_id',
     #     string='Assignees', default=lambda self: self.env.user)
