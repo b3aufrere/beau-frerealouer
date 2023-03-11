@@ -231,13 +231,13 @@
                 <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_stop']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_pause']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_pause', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_pause', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_resume']" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_resume', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_id','!=',%(bfal_workflow.project_stage_1)d)]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_resume', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
             </xpath>
         </field>
     </record>
