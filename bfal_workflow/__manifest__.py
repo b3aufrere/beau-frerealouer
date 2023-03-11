@@ -26,7 +26,8 @@
         'helpdesk_ticket_sale_order_ent',
         'branch',
         'product',
-        'twilio_sms_gateway_gsc'
+        'twilio_sms_gateway_gsc',
+        'bi_crm_task'
     ],
     
     'data': [ 

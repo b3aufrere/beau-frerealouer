@@ -2,6 +2,7 @@
 from odoo import models, fields, api, _, Command
 from datetime import date
 from odoo.tools import html2plaintext, plaintext2html
+from odoo.exceptions import UserError
 
 from logging import warning as w
 
@@ -14,6 +15,7 @@ class ProjectTask(models.Model):
     branch_id = fields.Many2one('res.branch', string='Entreprise')
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
+    stage_name = fields.Char(string="Nom d'état", related="stage_id.name", store=True)
 
     def action_no_accept_task(self):
         view_id = self.env.ref("bfal_workflow.mail_activity_view_task_not_accepted")
@@ -52,15 +54,15 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
-                if task.stage_id.id == self.env.ref("bfal_workflow.planning_project_stage_1").id:
+                if task.stage_id.name == 'Planifié':
                     task.color = 4
-                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_1").id:
+                elif task.stage_id.name == 'En cours':
                     task.color = 10
-                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_2").id:
+                elif task.stage_id.name == 'Fait':
                     task.color = 1
-                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_not_accepted").id:
+                elif task.stage_id.name == 'Non accepté':
                     task.color = 3
-                elif task.stage_id.id == self.env.ref("bfal_workflow.project_stage_2").id:
+                elif task.stage_id.name == 'Annulé':
                     task.color = 5
                 else:
                     task.color = 0
@@ -217,17 +219,32 @@ class ProjectTask(models.Model):
         res = super(ProjectTask, self).action_timer_start()
         
         for task in self:
-            stage_in_progress_id = self.env.ref("bfal_workflow.project_stage_1")
-            if stage_in_progress_id and task.stage_id and task.stage_id.id != stage_in_progress_id.id:
-                task.stage_id =  stage_in_progress_id.id
+            stage_in_progress_id = False
+            if not self.parent_id and self.project_id:
+                stage_in_progress_id = self.env['project.task.type'].search([('name', '=', 'En cours'), ('project_ids', 'in', self.project_id.id)], limit=1)
+            elif self.display_project_id:
+                stage_in_progress_id = self.env['project.task.type'].search([('name', '=', 'En cours'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
+            
+            if stage_in_progress_id:
+                if task.stage_id and task.stage_id.id != stage_in_progress_id.id:
+                    task.stage_id =  stage_in_progress_id.id
+            else:
+                raise UserError("Il faut ajouté une étape En cours a ce projet")
 
         return res 
 
     def action_schedule_task(self):
         for task in self:
-            stage_planned_id = self.env.ref("bfal_workflow.planning_project_stage_1")
+            stage_planned_id = False
+            if not self.parent_id and self.project_id:
+                stage_planned_id = self.env['project.task.type'].search([('name', '=', 'Planifié'), ('project_ids', 'in', self.project_id.id)], limit=1)
+            elif self.display_project_id:
+                stage_planned_id = self.env['project.task.type'].search([('name', '=', 'Planifié'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
+            
             if stage_planned_id:
-                task.stage_id =  stage_planned_id.id
+                task.stage_id = stage_planned_id.id
+            else:
+                raise UserError("Il faut ajouté une étape Planifié a ce projet")
     
     def action_fsm_validate(self, stop_running_timers=False):
         """ Moves Task to next stage.
@@ -292,4 +309,13 @@ class ProjectTask(models.Model):
     
     def action_reassign_task(self):
         for task in self:
-            task.stage_id = self.env.ref("bfal_workflow.project_stage_0").id
+            new_stage_id = False
+            if not self.parent_id and self.project_id:
+                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.project_id.id)], limit=1)
+            elif self.display_project_id:
+                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
+            
+            if new_stage_id:
+                task.stage_id = new_stage_id.id
+            else:
+                raise UserError("Il faut ajouté une étape Nouveau a ce projet")
