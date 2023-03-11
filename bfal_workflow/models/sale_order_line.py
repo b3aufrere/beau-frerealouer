@@ -10,6 +10,7 @@ class SaleOrderLine(models.Model):
 
         if self.order_id.opportunity_id:
             values['description'] = self.order_id.opportunity_id.description
+            values['branch_id'] = self.order_id.branch_id.id if self.order_id.branch_id else False
 
             if self.order_id.opportunity_id.user_id:
                 values['user_ids'] = [(6, 0, [self.order_id.opportunity_id.user_id.id])]
@@ -18,11 +19,11 @@ class SaleOrderLine(models.Model):
                 if stage_id:
                     values['stage_id'] = stage_id.id
         
-        if self.order_id.task_id:
-            values['branch_id'] = self.order_id.task_id.branch_id.id if self.order_id.task_id.branch_id else False
-            values['user_ids'] = [(6, 0, self.order_id.task_id.user_ids.ids)] if self.order_id.task_id.user_ids else False
-            values['parent_id'] = self.order_id.task_id.id
-            values['display_project_id'] = self.product_id.project_id.id if self.product_id.project_id else False
+        # if self.order_id.task_id:
+        #     values['branch_id'] = self.order_id.task_id.branch_id.id if self.order_id.task_id.branch_id else False
+        #     values['user_ids'] = [(6, 0, self.order_id.task_id.user_ids.ids)] if self.order_id.task_id.user_ids else False
+        #     values['parent_id'] = self.order_id.task_id.id
+        #     values['display_project_id'] = self.product_id.project_id.id if self.product_id.project_id else False
 
         return values
     
