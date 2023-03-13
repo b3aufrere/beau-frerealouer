@@ -101,10 +101,10 @@ class CrmLead(models.Model):
 
         for lead in self:
             if lead.stage_id:
-                if lead.mail_template_id:
-                    lead.mail_template_id.send_mail(lead.id, force_send=True)
+                if lead.stage_id.mail_template_id:
+                    lead.stage_id.mail_template_id.send_mail(lead.id, force_send=True)
                 
-                if lead.sms_template_id:
+                if lead.stage_id.sms_template_id:
                     twilio_sms_accounts = self.env['twilio.sms.gateway.account'].sudo().search([('state', '=', 'confirmed')], order="id asc")
                     tobe_twilio_sms_accounts = twilio_sms_accounts.filtered(lambda x: x.is_default_sms_account)
                     twilio_sms_account = False
@@ -117,7 +117,7 @@ class CrmLead(models.Model):
                     if twilio_sms_account:
                         if lead.id and lead.user_id and lead.user_id.partner_id and lead.user_id.partner_id.phone:
                             message = lead._message_sms_with_template_twilio(
-                                    template=lead.sms_template_id,
+                                    template=lead.stage_id.sms_template_id,
                                 )
                             message = html2plaintext(message) #plaintext2html(html2plaintext(message))
                             
