@@ -52,7 +52,8 @@
         'views/account_move.xml',
         'views/branch.xml',
         'views/product.xml',
-        'views/twilio_sms_gateway_account.xml'
+        'views/twilio_sms_gateway_account.xml',
+        'views/crm_stage.xml'
     ],
     
     'installable': True,

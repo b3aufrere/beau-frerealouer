@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
-from odoo.tools.mail import is_html_empty
+from odoo import models, fields, api, _, Command
+from datetime import date
+from odoo.tools import html2plaintext, plaintext2html
+from odoo.exceptions import UserError
+
+from logging import warning as w
 
 
 class CrmLead(models.Model):
@@ -96,5 +100,32 @@ class CrmLead(models.Model):
         super(CrmLead, self)._compute_date_last_stage_update()
 
         for lead in self:
-            if lead.stage_id and lead.stage_id.name in ['Assigné', 'Interne']:
-                lead.action_service_send()
+            if lead.stage_id:
+                if lead.stage_id.mail_template_id:
+                    lead.stage_id.mail_template_id.send_mail(lead.id, force_send=True)
+                
+                if lead.stage_id.sms_template_id:
+                    twilio_sms_accounts = self.env['twilio.sms.gateway.account'].sudo().search([('state', '=', 'confirmed')], order="id asc")
+                    tobe_twilio_sms_accounts = twilio_sms_accounts.filtered(lambda x: x.is_default_sms_account)
+                    twilio_sms_account = False
+                    
+                    if tobe_twilio_sms_accounts:
+                        twilio_sms_account = tobe_twilio_sms_accounts[0]
+                    elif twilio_sms_accounts:
+                        twilio_sms_account = twilio_sms_accounts[0]
+                    
+                    if twilio_sms_account:
+                        if lead.id and lead.user_id and lead.user_id.partner_id and lead.user_id.partner_id.phone:
+                            message = lead._message_sms_with_template_twilio(
+                                    template=lead.stage_id.sms_template_id,
+                                )
+                            message = html2plaintext(message) #plaintext2html(html2plaintext(message))
+                            
+                            datas = {
+                                "From": twilio_sms_account.account_from_mobile_number,
+                                "To": (lead.user_id.partner_id.phone or "").replace(" ", ""),
+                                "Body": message
+                            }
+                            twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
+                            lead.message_post(body="SMS ENVOYÉ" + plaintext2html(html2plaintext(message)), message_type='sms')
+                
