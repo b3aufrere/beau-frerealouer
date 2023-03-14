@@ -140,6 +140,6 @@ class CrmLead(models.Model):
                     })
 
                     if activity_id:
-                        activity_id._calculate_date_deadline(activity_id.activity_type_id)
+                        activity_id.date_deadline = activity_id._calculate_date_deadline(activity_id.activity_type_id)
                         activity_id.action_close_dialog()
                 
