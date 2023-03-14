@@ -133,8 +133,8 @@ class CrmLead(models.Model):
                     activity_id = self.env['mail.activity'].create({
                         'activity_type_id': lead.stage_id.mail_activity_type_id.id,
                         'user_id': lead.user_id.id,
-                        # 'summary': "test activity",
-                        'date_deadline': date.today(),
+                        'summary': lead.stage_id.mail_activity_type_id.summary,
+                        # 'date_deadline': date.today(),
                         'res_id': lead.id,
                         'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'crm.lead')]).id
                     })
