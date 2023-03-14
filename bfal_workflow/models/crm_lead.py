@@ -129,3 +129,14 @@ class CrmLead(models.Model):
                             twilio_sms_account.send_sms_to_recipients_from_another_src(datas)
                             lead.message_post(body="SMS ENVOYÉ" + plaintext2html(html2plaintext(message)), message_type='sms')
                 
+                if lead.stage_id.mail_activity_type_id and lead.user_id:
+                    activity_id = self.env['mail.activity'].create({
+                        'action_type_id': lead.stage_id.mail_activity_type_id.id,
+                        'user_id': lead.user_id.id,
+                        'summary': "test activity",
+                        'date_deadline': date.today()
+                    })
+
+                    if activity_id:
+                        activity_id.action_close_dialog()
+                
