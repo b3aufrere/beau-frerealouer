@@ -136,7 +136,7 @@ class CrmLead(models.Model):
                         'summary': "test activity",
                         'date_deadline': date.today(),
                         'res_id': lead.id,
-                        'res_model_id': self.env['ir.model'].sudo().search('crm.lead').id
+                        'res_model_id': self.env['ir.model'].sudo().search([('model', '=', 'crm.lead')]).id
                     })
 
                     if activity_id:
