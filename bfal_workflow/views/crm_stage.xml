@@ -8,6 +8,7 @@
             <xpath expr="//field[@name='team_id']" position="after">
                 <field name="sms_template_id"/>
                 <field name="mail_template_id"/>
+                <field name="mail_activity_type_id"/>
             </xpath>
         </field>
     </record>
