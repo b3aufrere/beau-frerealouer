@@ -24,14 +24,14 @@
         'mail',
         'timesheet_grid',
         'helpdesk_ticket_sale_order_ent',
-        'branch',
+        # 'branch',
         'product',
         'twilio_sms_gateway_gsc',
         'bi_crm_task'
     ],
     
     'data': [ 
-        'security/security.xml',
+        # 'security/security.xml',
         'security/ir.model.access.csv',
         
         'data/mail_template_accept_service.xml',
@@ -44,13 +44,13 @@
         'views/entreprise.xml',
         'views/division.xml',
         'views/territory.xml',
-        'views/hr_employee.xml',
+        # 'views/hr_employee.xml',
         'views/crm_lead.xml',
         'views/sale_order.xml',
         'views/project_task.xml',
         'views/mail_activity.xml',
-        'views/account_move.xml',
-        'views/branch.xml',
+        # 'views/account_move.xml',
+        # 'views/branch.xml',
         'views/product.xml',
         'views/twilio_sms_gateway_account.xml',
         'views/crm_stage.xml'
