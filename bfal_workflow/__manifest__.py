@@ -49,7 +49,7 @@
         'views/sale_order.xml',
         'views/project_task.xml',
         'views/mail_activity.xml',
-        'views/account_move.xml',
+        # 'views/account_move.xml',
         # 'views/branch.xml',
         'views/product.xml',
         'views/twilio_sms_gateway_account.xml',
