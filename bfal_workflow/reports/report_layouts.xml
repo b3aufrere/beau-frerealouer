@@ -31,7 +31,7 @@
         <div t-attf-class="o_company_#{company.id}_layout header" t-att-style="report_header_style">
             <div style="padding-top:10px">
                 <div class="float-start text-start" style="width:50%">
-                    <t t-if="o.branch_id">
+                    <!-- <t t-if="o.branch_id">
                         <div>
                             <span t-esc="o.branch_id.name"  style="font-size:22px; font-weight:bold;"/>
                         </div>
@@ -55,7 +55,7 @@
                             <i class="fa fa-globe fa-fw" role="img"/>
                             <a t-att-href="o.branch_id.website and '%s%s' % ('http://' if '://' not in o.branch_id.website else '',o.branch_id.website)"><span t-esc="o.branch_id.website"/></a>
                         </div>
-                    </t>
+                    </t> -->
                 </div>
                 <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" class="float-end" style="width: 300px; height: 100px;" alt="Logo"/>
             </div>

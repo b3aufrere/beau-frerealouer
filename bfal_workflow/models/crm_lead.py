@@ -15,14 +15,15 @@ class CrmLead(models.Model):
     #     string='Territoire de travail'
     # )
 
-    branch_id = fields.Many2one(
-        'res.branch',
-        string='Entreprise'
-    )
+    # branch_id = fields.Many2one(
+    #     'res.branch',
+    #     string='Entreprise'
+    # )
 
     user_id = fields.Many2one(
         'res.users', string='Salesperson', default=lambda self: self.env.user,
-        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
+        # domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
+        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
     state_name = fields.Char(related='stage_id.name', store=True, readonly=False, string="Nom d'état")
@@ -39,11 +40,11 @@ class CrmLead(models.Model):
     def compute_is_worker(self):
         self.is_worker = True if self.user_id and self.user_id.id == self.env.user.id else False
     
-    @api.onchange('branch_id')
-    def onchange_branch_id(self):
-        for lead in self:
-            if not lead.branch_id:
-                lead.user_id = False
+    # @api.onchange('branch_id')
+    # def onchange_branch_id(self):
+    #     for lead in self:
+    #         if not lead.branch_id:
+    #             lead.user_id = False
     
     def action_accept_lead(self):
         return self.action_sale_quotations_new()

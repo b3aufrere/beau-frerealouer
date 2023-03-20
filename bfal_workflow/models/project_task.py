@@ -12,7 +12,7 @@ class ProjectTask(models.Model):
     is_sub_task = fields.Boolean(defaul=False, compute="_compute_is_sub_task")
     is_user_readonly = fields.Boolean(defaul=False, compute="_computes_is_user_readonly")
     # territory_id = fields.Many2one('territory', string='Territoire de travail')
-    branch_id = fields.Many2one('res.branch', string='Entreprise')
+    # branch_id = fields.Many2one('res.branch', string='Entreprise')
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
     stage_name = fields.Char(string="Nom d'état", related="stage_id.name", store=True)
@@ -181,11 +181,11 @@ class ProjectTask(models.Model):
                     task.message_post(body="SMS ENVOYÉ" + plaintext2html(html2plaintext(message)), message_type='sms')
 
 
-    @api.onchange('branch_id')
-    def onchange_branch_id(self):
-        for task in self:
-            if not isinstance(self.id, models.NewId) or self._origin:
-                task.user_ids = False
+    # @api.onchange('branch_id')
+    # def onchange_branch_id(self):
+    #     for task in self:
+    #         if not isinstance(self.id, models.NewId) or self._origin:
+    #             task.user_ids = False
 
     def create_sub_task(self):
         view_id = self.env.ref("project.view_task_form2")
@@ -202,7 +202,7 @@ class ProjectTask(models.Model):
                         'default_sale_order_id': self.sale_order_id.id if self.sale_order_id else False,
                         'default_partner_id': self.partner_id.id if self.partner_id else False,
                         'default_company_id': self.company_id.id if self.company_id else False,
-                        'default_branch_id': self.branch_id.id if self.branch_id else False,
+                        # 'default_branch_id': self.branch_id.id if self.branch_id else False,
                         'default_parent_id': self.parent_id.id if self.parent_id else self.id,
                         'default_is_fsm': True,
                         'fsm_mode': True,            

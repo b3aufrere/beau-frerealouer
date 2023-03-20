@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
 
         if self.order_id.opportunity_id:
             values['description'] = self.order_id.opportunity_id.description
-            values['branch_id'] = self.order_id.branch_id.id if self.order_id.branch_id else False
+            # values['branch_id'] = self.order_id.branch_id.id if self.order_id.branch_id else False
 
             if self.order_id.opportunity_id.user_id:
                 values['user_ids'] = [(6, 0, [self.order_id.opportunity_id.user_id.id])]

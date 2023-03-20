@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <record id="hr.hr_employee_comp_rule" model="ir.rule">
+        <!-- <record id="hr.hr_employee_comp_rule" model="ir.rule">
             <field name="domain_force">['|', ('branch_id', '=', False), ('branch_id', 'in', [branch.id for branch in user.branch_ids])]</field>
-        </record>
+        </record> -->
 
         <record id="bfal_product_template_branch_manager_rule" model="ir.rule">
         <field name="name">Product Template Entreprise Manager</field>
@@ -13,13 +13,13 @@
         <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
     </record>
 
-    <record id="bfal_product_template_branch_rule" model="ir.rule">
+    <!-- <record id="bfal_product_template_branch_rule" model="ir.rule">
         <field name="name">Product Template Entreprise</field>
         <field name="model_id" ref="model_product_template"/>
         <field name="global" eval="True"/>
         <field name="domain_force">['|',('division_id','=',False),('division_id','=',user.branch_id.division_id.id)]</field>
         <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
-    </record>
+    </record> -->
 
     <record id="bfal_product_product_branch_manager_rule" model="ir.rule">
         <field name="name">Product Product Entreprise Manager</field>
@@ -29,12 +29,12 @@
         <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
     </record>
     
-    <record id="bfal_product_product_branch_rule" model="ir.rule">
+    <!-- <record id="bfal_product_product_branch_rule" model="ir.rule">
         <field name="name">Product Product Entreprise</field>
         <field name="model_id" ref="product.model_product_product"/>
         <field name="global" eval="True"/>
         <field name="domain_force">['|',('product_tmpl_id.division_id','=',False),('product_tmpl_id.division_id','=',user.branch_id.division_id.id)]</field>
         <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
-    </record>
+    </record> -->
     </data>
 </odoo>
