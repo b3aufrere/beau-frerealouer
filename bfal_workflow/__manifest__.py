@@ -31,7 +31,7 @@
     ],
     
     'data': [ 
-        'security/security.xml',
+        # 'security/security.xml',
         'security/ir.model.access.csv',
         
         'data/mail_template_accept_service.xml',
