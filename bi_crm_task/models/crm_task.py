@@ -63,7 +63,7 @@ class crm_task_wizard(models.TransientModel):
             'planned_date_end':  self.planned_date_end,
             'partner_id': crm_brw.partner_id.id or False,
             'lead_id': crm_brw.id or False,
-            'branch_id': crm_brw.branch_id.id or False,
+            # 'branch_id': crm_brw.branch_id.id or False,
             'user_ids': [(6, 0, [crm_brw.user_id.id])] if crm_brw.user_id else False
         }
         

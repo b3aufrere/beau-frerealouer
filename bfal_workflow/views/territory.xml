@@ -22,7 +22,7 @@
                             </group>
                             <group>
                                 <field name="entreprise_ids" widget="many2many_tags" invisible="1"/>
-                                <field name="branch_ids" widget="many2many_tags"/>
+                                <!-- <field name="branch_ids" widget="many2many_tags"/> -->
                                 <field name="link" widget="url"/>
                             </group>
                         </group>
@@ -47,7 +47,7 @@
                     <field name="index" />
                     <field name="unit" />
                     <field name="entreprise_ids" widget="many2many_tags" invisible="1"/>
-                    <field name="branch_ids" widget="many2many_tags"/>
+                    <!-- <field name="branch_ids" widget="many2many_tags"/> -->
                 </tree>
             </field>
         </record>
