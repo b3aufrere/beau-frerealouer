@@ -202,7 +202,12 @@
             <xpath expr="//field[@name='user_id']" position="before">
                 <!-- <field name="territory_id"/> -->
                 <!-- <field name="branch_id"/> -->
+                <field name="salesperson_id" readonly="1"/>
                 <field name="state_name" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Partenaire assignée</attribute>
             </xpath>
 
             <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
