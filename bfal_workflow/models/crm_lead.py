@@ -21,7 +21,7 @@ class CrmLead(models.Model):
     # )
 
     user_id = fields.Many2one(
-        'res.users', string='Salesperson',
+        'res.users', string='Salesperson',default=False,
         # domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
         domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
