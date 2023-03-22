@@ -23,11 +23,11 @@ class CrmLead(models.Model):
     user_id = fields.Many2one(
         'res.users', string='Salesperson',default=False,
         # domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
-        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids)]",
+        domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
     salesperson_id = fields.Many2one('res.users', string='Vendeur', default=lambda self: self.env.user,
-        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids)]",
+        domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
     state_name = fields.Char(related='stage_id.name', store=True, readonly=False, string="Nom d'état")
