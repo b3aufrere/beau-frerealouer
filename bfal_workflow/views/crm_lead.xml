@@ -205,6 +205,10 @@
                 <field name="state_name" invisible="1"/>
             </xpath>
 
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Partenaire assignée</attribute>
+            </xpath>
+
             <xpath expr="//button[@name='action_set_won_rainbowman']" position="attributes">
                 <!-- <attribute name="attrs">{'invisible':[('state_name', 'not in', ('Assigné', 'Interne'))]}</attribute> -->
                 <attribute name="invisible">1</attribute>
