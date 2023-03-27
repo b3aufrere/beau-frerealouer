@@ -259,11 +259,11 @@
                         attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/> -->
             </xpath>
 
-            <xpath expr="//field[@name='company_id']" position="attributes">
-                <attribute name="invisible">1</attribute>
+            <xpath expr="//group[@name='lead_partner']/field[@name='partner_id']" position="after">
+                <field name="company_id" string="Société/Franchise"/>
             </xpath>
 
-            <xpath expr="//field[@name='phone']" position="after">
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='lost_reason_id']" position="before">
                 <field name="company_id" string="Société/Franchise"/>
             </xpath>
         </field>
