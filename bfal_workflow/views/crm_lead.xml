@@ -258,6 +258,14 @@
                         title="Envoyer un mail au travailleur pour demande d'acceptation" 
                         attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/> -->
             </xpath>
+
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='phone']" position="after">
+                <field name="company_id" string="Société/Franchise"/>
+            </xpath>
         </field>
     </record>
 
