@@ -260,4 +260,15 @@
             </xpath>
         </field>
     </record>
+
+    <record id="add_bfal_changes_view_crm_case_opportunities_filter" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_crm_case_opportunities_filter</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
+                <attribute name="domain">['|', ('user_id', '=', uid), ('salesperson_id', '=', uid)]</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
