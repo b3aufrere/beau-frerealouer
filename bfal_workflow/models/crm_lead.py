@@ -32,6 +32,8 @@ class CrmLead(models.Model):
     
     state_name = fields.Char(related='stage_id.name', store=True, readonly=False, string="Nom d'état")
 
+    is_decision_stage = fields.Boolean(related='stage_id.is_decision_stage', store=True, readonly=False, string="Est l'étape de la décision")
+
     is_worker = fields.Boolean(default=False, compute="compute_is_worker")
 
     is_accepted = fields.Boolean(default=False, compute="compute_is_accepted", string="Est accepté ?")
@@ -51,6 +53,14 @@ class CrmLead(models.Model):
     #             lead.user_id = False
     
     def action_accept_lead(self):
+        for lead in self:
+            stage_assigned_id = self.env['crm.stage'].search([('is_assign_stage', '=', True)], limit=1)
+            
+            if stage_assigned_id:
+                if lead.stage_id and lead.stage_id.id != stage_assigned_id.id:
+                    lead.stage_id =  stage_assigned_id.id
+            else:
+                raise UserError("Il faut ajouté une étape d'attribution")
         return self.action_sale_quotations_new()
 
     def _prepare_opportunity_quotation_context(self):

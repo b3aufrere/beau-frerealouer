@@ -183,12 +183,12 @@
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
     </record>
 
-    <menuitem   id="menu_crm_opportunities_worker"
+    <!-- <menuitem   id="menu_crm_opportunities_worker"
                 name="Mon Pipeline"
                 action="crm_lead_action_pipeline_worker"
                 groups="sales_team.group_sale_salesman"
                 parent="crm.crm_menu_sales"
-                sequence="1"/>
+                sequence="1"/> -->
     
     <record id="crm.menu_crm_opportunities" model="ir.ui.menu">
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
@@ -202,7 +202,7 @@
             <xpath expr="//field[@name='user_id']" position="before">
                 <!-- <field name="territory_id"/> -->
                 <!-- <field name="branch_id"/> -->
-                <field name="salesperson_id" readonly="1"/>
+                <field name="salesperson_id" readonly="0"/>
                 <field name="state_name" invisible="1"/>
             </xpath>
 
@@ -235,20 +235,21 @@
             <xpath expr="//button[@name='action_sale_quotations_new']" position="before">
                 <field name="is_worker" invisible="1"/>
                 <field name="is_accepted" invisible="1"/>
+                <field name="is_decision_stage" invisible="1"/>
                 <button string="Accepté" 
                         name="action_accept_lead" 
                         type="object" 
                         class="oe_highlight" 
                         title="Accepter l'opportunité" 
                         confirm="Si vous accepter, vous devez créer un devis"
-                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
                 <button string="Non accepté" 
                         name="action_not_accept_lead" 
                         type="object" 
                         class="btn-warning"
                         context="{'not_accept': True}"
-                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
                 <!-- <button string="Envoyer un mail au travailleur" 
                         name="action_service_send" 
@@ -256,6 +257,25 @@
                         class="oe_highlight" 
                         title="Envoyer un mail au travailleur pour demande d'acceptation" 
                         attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('state_name', 'not in', ('Assigné', 'Interne')), '|', ('is_accepted', '=', True), '|', ('user_id', '=', False), ('active', '=', False)]}"/> -->
+            </xpath>
+
+            <xpath expr="//group[@name='lead_partner']/field[@name='partner_id']" position="after">
+                <field name="company_id" string="Société/Franchise"/>
+            </xpath>
+
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='lost_reason_id']" position="before">
+                <field name="company_id" string="Société/Franchise"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_crm_case_opportunities_filter" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_crm_case_opportunities_filter</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
+                <attribute name="domain">['|', ('user_id', '=', uid), ('salesperson_id', '=', uid)]</attribute>
             </xpath>
         </field>
     </record>
