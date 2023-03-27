@@ -54,9 +54,7 @@ class CrmLead(models.Model):
     
     def action_accept_lead(self):
         for lead in self:
-            stage_assigned_id = False
-            if not self.parent_id and self.project_id:
-                stage_assigned_id = self.env['crm.stage'].search([('is_assign_stage', '=', True)], limit=1)
+            stage_assigned_id = self.env['crm.stage'].search([('is_assign_stage', '=', True)], limit=1)
             
             if stage_assigned_id:
                 if lead.stage_id and lead.stage_id.id != stage_assigned_id.id:
