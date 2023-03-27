@@ -9,6 +9,8 @@
                 <field name="sms_template_id"/>
                 <field name="mail_template_id"/>
                 <field name="mail_activity_type_id"/>
+                <field name="is_decision_stage" />
+                <field name="is_assign_stage" />
             </xpath>
         </field>
     </record>
