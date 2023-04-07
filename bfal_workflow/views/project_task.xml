@@ -40,23 +40,23 @@
                 <attribute name="attrs">{'invisible': ['|', ('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
             </xpath>
 
-            <!-- <xpath expr="//field[@name='user_ids']" position="before">
-                <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
+            <xpath expr="//field[@name='user_ids']" position="before">
+                <!-- <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/> -->
                 <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
-            </xpath> -->
+            </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
-                <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute> -->
+                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='display_project_id']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//page[@name='extra_info']" position="attributes">

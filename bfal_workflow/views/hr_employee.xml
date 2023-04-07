@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <xpath expr="//searchpanel/field[@name='company_id']" position="after">
                 <!-- <field name="entreprise_id" icon="fa-university"/> -->
-                <!-- <field name="branch_id" icon="fa-university"/> -->
+                <field name="branch_id" icon="fa-university"/>
                 <!-- <field name="territory_id" icon="fa-map-marker"/> -->
             </xpath>
         </field>
