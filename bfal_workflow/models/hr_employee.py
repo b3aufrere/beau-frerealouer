@@ -11,11 +11,11 @@ class HrEmployee(models.Model):
         groups="hr.group_hr_user"
     )
 
-    # branch_id = fields.Many2one(
-    #     'res.branch',
-    #     string='Entreprise',
-    #     groups="hr.group_hr_user"
-    # )
+    branch_id = fields.Many2one(
+        'res.branch',
+        string='Entreprise',
+        groups="hr.group_hr_user"
+    )
 
     territory_id = fields.Many2one(
         'territory',
