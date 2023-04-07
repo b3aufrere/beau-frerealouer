@@ -8,4 +8,4 @@ class Division(models.Model):
 
     name = fields.Char(string="Nom", required=True)
     entreprise_ids = fields.One2many('entreprise', 'division_id', string='Entreprise(s)')
-    # branch_ids = fields.One2many('res.branch', 'division_id', string='Entreprise(s)')
+    branch_ids = fields.One2many('res.branch', 'division_id', string='Entreprise(s)')
