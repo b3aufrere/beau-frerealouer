@@ -64,6 +64,20 @@ class CrmLead(models.Model):
 
     is_accepted = fields.Boolean(default=False, compute="compute_is_accepted", string="Est accepté ?")
 
+    state_role = fields.Selection(
+        [
+            ('new', 'Nouveau'),
+            ('to_assign', 'À assigner'),
+            ('assigned', 'Assigné'),
+            ('in_progress', 'En cours'),
+            ('done', 'Fait'),
+            ('rejected', 'Rejeté'),
+            ('service_not_available', 'Service non disponible'),
+        ],
+        string="Rôle",
+        related='stage_id.role'
+    )
+
     @api.onchange('sale_order_count')
     def compute_is_accepted(self):
         self.is_accepted = True if self.order_ids else False

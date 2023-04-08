@@ -70,9 +70,9 @@
                         <field  string="Tâches" name="task_number" widget="statinfo"/>
                     </button>
                   </div>
-				<button name="%(crm.action_crm_lead2opportunity_partner)d" position="after">
+				<!-- <button name="%(crm.action_crm_lead2opportunity_partner)d" position="after">
 					<button name="%(action_view_crm_task_form)d" string="Créer une tâche" type="action"/>
-				</button>
+				</button> -->
 			</field>
 		</record>
 	</data>

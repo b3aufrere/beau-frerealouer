@@ -206,6 +206,7 @@
                 <field name="branch_id"/>
                 <field name="salesperson_id" readonly="0"/>
                 <field name="state_name" invisible="1"/>
+                <field name="state_role" invisible="1"/>
             </xpath>
 
             <xpath expr="//field[@name='user_id']" position="after">
@@ -223,7 +224,7 @@
             </xpath>
 
             <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
-                <attribute name="attrs">{'invisible':[('state_name', 'in', ('Assigné', 'Interne', 'Rejeté'))]}</attribute>
+                <attribute name="attrs">{'invisible':[('state_role', '!=', 'new')]}</attribute>
                 <!-- <attribute name="invisible">1</attribute> -->
             </xpath>
         </field>
