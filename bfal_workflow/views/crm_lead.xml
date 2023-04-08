@@ -284,6 +284,13 @@
             <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
                 <attribute name="domain">['|', ('user_id', '=', uid), ('salesperson_id', '=', uid)]</attribute>
             </xpath>
+
+            <xpath expr="//filter[@name='salesperson']" position="before">
+                <filter string="Division" name="division" context="{'group_by':'division_id'}"/>
+                <filter string="Entreprise" name="entreprise" context="{'group_by':'branch_id'}"/>
+            </xpath>
+
+            
         </field>
     </record>
 </odoo>
