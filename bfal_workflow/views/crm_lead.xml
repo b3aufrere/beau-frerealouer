@@ -210,6 +210,7 @@
 
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="task_type" widget="radio"/>
+                <field name="request_src" widget="radio"/>
             </xpath>
 
             <xpath expr="//field[@name='user_id']" position="attributes">
@@ -266,11 +267,11 @@
             </xpath>
 
             <xpath expr="//group[@name='lead_partner']/field[@name='partner_id']" position="after">
-                <field name="company_id" string="Société/Franchise"/>
+                <field name="company_id" string="Société"/>
             </xpath>
 
             <xpath expr="//group[@name='opportunity_partner']/field[@name='lost_reason_id']" position="before">
-                <field name="company_id" string="Société/Franchise"/>
+                <field name="company_id" string="Société"/>
             </xpath>
         </field>
     </record>

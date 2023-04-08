@@ -24,6 +24,16 @@ class CrmLead(models.Model):
         default=""
     )
 
+    request_src = fields.Selection(
+        [
+            ('email', 'Email'),
+            ('call', 'Appel'),
+            ('website', 'Site web')
+        ],
+        string="Source de demande",
+        default=""
+    )
+
     division_id = fields.Many2one(
         'division',
         string='Division'
