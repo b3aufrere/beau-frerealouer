@@ -183,12 +183,12 @@
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
     </record>
 
-    <menuitem   id="menu_crm_opportunities_worker"
+    <!-- <menuitem   id="menu_crm_opportunities_worker"
                 name="Mon Pipeline"
                 action="crm_lead_action_pipeline_worker"
                 groups="sales_team.group_sale_salesman"
                 parent="crm.crm_menu_sales"
-                sequence="1"/>
+                sequence="1"/> -->
     
     <record id="crm.menu_crm_opportunities" model="ir.ui.menu">
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
