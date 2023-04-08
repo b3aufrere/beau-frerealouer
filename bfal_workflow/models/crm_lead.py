@@ -15,6 +15,15 @@ class CrmLead(models.Model):
     #     string='Territoire de travail'
     # )
 
+    task_type = fields.Selection(
+        [
+            ('single', 'Une seule tâche'),
+            ('multi', 'Plusieurs tâches')
+        ],
+        string="Type de travail",
+        default=""
+    )
+
     division_id = fields.Many2one(
         'division',
         string='Division'

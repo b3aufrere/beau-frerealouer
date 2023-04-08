@@ -208,6 +208,10 @@
                 <field name="state_name" invisible="1"/>
             </xpath>
 
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="task_type" widget="radio"/>
+            </xpath>
+
             <xpath expr="//field[@name='user_id']" position="attributes">
                 <attribute name="string">Partenaire assignée</attribute>
             </xpath>
