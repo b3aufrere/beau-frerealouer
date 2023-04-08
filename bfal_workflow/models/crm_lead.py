@@ -15,9 +15,15 @@ class CrmLead(models.Model):
     #     string='Territoire de travail'
     # )
 
+    division_id = fields.Many2one(
+        'division',
+        string='Division'
+    )
+
     branch_id = fields.Many2one(
         'res.branch',
-        string='Entreprise'
+        string='Entreprise',
+        domain="[('division_id', '=', division_id)]"
     )
 
     user_id = fields.Many2one(

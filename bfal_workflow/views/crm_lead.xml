@@ -86,6 +86,7 @@
                             <group>
                                 <field name="user_id" readonly="1" widget="many2one_avatar_user"/>
                                 <!-- <field name="territory_id" readonly="1" /> -->
+                                <!-- <field name="division_id" /> -->
                                 <!-- <field name="branch_id" readonly="1" /> -->
                                 <field name="state_name" invisible="1"/>
                                 <label for="date_deadline">Expected Closing</label>
@@ -201,6 +202,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="before">
                 <!-- <field name="territory_id"/> -->
+                <field name="division_id" />
                 <field name="branch_id"/>
                 <field name="salesperson_id" readonly="0"/>
                 <field name="state_name" invisible="1"/>
