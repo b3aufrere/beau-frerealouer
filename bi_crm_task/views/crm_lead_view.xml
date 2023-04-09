@@ -47,7 +47,7 @@
 		<record id="action_view_task_id" model="ir.actions.act_window">
             <field name="name">Tasks</field>
             <field name="res_model">project.task</field>
-            <field name="view_mode">kanban,tree,form,calendar,pivot,graph</field>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
              <field name="domain">[('lead_id', '=', active_id)]</field>
             <field name="context">{'search_default_lead_id': active_id, 'default_lead_id': active_id}</field>
             <field name="help" type="html">
