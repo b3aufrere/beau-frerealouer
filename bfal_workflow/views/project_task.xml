@@ -17,7 +17,6 @@
                 <field name="partner_id"/>
                 <field name="parent_id" optional="hide" attrs="{'invisible': [('allow_subtasks', '=', False)]}" groups="base.group_no_one"/>
                 <field name="user_ids" widget="many2many_avatar_user" domain="[('share', '=', False), ('active', '=', True)]" options='{"no_quick_create": True}'/>
-                <field name="progress" widget="progressbar"/>
                 <field name="branch_id" />
                 <field name="company_id" groups="base.group_multi_company" optional="show" readonly="True"/>
                 <field name="company_id" invisible="1"/>
@@ -32,6 +31,7 @@
                 <field name="legend_blocked" invisible="1"/>
                 <field name="kanban_state" widget="state_selection" optional="show" options="{'hide_label': True}" nolabel="1" required="0"/>
                 <field name="stage_id" invisible="context.get('set_visible',False)" optional="show" readonly="not context.get('default_project_id')"/>
+                <field name="progress" widget="progressbar"/>
                 <field name="recurrence_id" invisible="1" />
             </tree>
         </field>
