@@ -234,7 +234,7 @@ class CrmLead(models.Model):
         res = super(CrmLead, self)._compute_sale_data()
 
         for lead in self:
-            if (lead.quotation_count or lead.sale_order_count) and lead.state_role != 'assigned':
+            if (lead.quotation_count > 0 or lead.sale_order_count > 0) and lead.state_role != 'assigned':
                 stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
                 if stage_assigned_id:
