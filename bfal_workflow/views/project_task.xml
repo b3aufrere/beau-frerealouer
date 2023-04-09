@@ -38,7 +38,7 @@
     </record>
 
     <record id="bi_crm_task.action_view_task_id" model="ir.actions.act_window">
-        <field name="view_id" eval="ref(bfal_view_task_tree)"/>
+        <field name="view_id" ref="bfal_view_task_tree"/>
     </record>
 
     <record id="add_bfal_changes_view_task_form2" model="ir.ui.view">
