@@ -218,14 +218,11 @@ class CrmLead(models.Model):
         res = super(CrmLead, self).write(vals)
         
         for lead in self:
-            if lead.division_id and lead.branch_id: 
+            if lead.division_id and lead.branch_id and lead.state_role != 'to_assign': 
                 stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                 if stage_to_assign_id:
-                    lead.update({
-                        'stage_id' : stage_to_assign_id.id
-                    })
-                    # lead.stage_id = stage_to_assign_id.id
+                    lead.stage_id = stage_to_assign_id.id
                 else:
                     raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")
 
