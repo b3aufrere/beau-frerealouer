@@ -132,11 +132,17 @@ class CrmLead(models.Model):
 
     def action_set_lost(self, **additional_values):
         """ Lost semantic: probability = 0 or active = False """
-        stage_id = self.env['crm.stage'].search([('name', '=', 'Rejeté')])
+        stage_id = self.env['crm.stage'].search([('role', '=', 'rejected')], limit=1)
+
+        if stage_id:
+            self.stage_id = stage_id.id
+        else:
+            raise UserError("Il faut ajouté une étape avec le rôle 'Rejeté'")
+        
         if 'not_accept' in self._context:
             stage_id = self.env['crm.stage'].search([('name', '=', 'Non accepté')])
         
-        res = False
+        res = False 
 
         if stage_id:
             res = True
