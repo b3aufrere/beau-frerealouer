@@ -219,7 +219,7 @@ class CrmLead(models.Model):
         res = super(CrmLead).write(vals)
         
         for lead in self:
-            if lead.division_id and lead.branch_id:
+            if lead.division_id and lead.branch_id: 
                 stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                 if stage_to_assign_id:
