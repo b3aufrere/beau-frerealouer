@@ -280,4 +280,19 @@
         }</field>
         <field name="domain">[('is_fsm', '=', True)]</field>
     </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherited" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@id='timesheets_tab']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('allow_timesheets', '=', False), ('stage_name', '=', 'Nouveau')]}</attribute>
+            </xpath>
+
+            <xpath expr="//page[@id='timesheets_tab']/field[@name='timesheet_ids']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
