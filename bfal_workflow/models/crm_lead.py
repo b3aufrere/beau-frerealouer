@@ -198,3 +198,12 @@ class CrmLead(models.Model):
                         activity_id.date_deadline = activity_id._calculate_date_deadline(activity_id.activity_type_id)
                         activity_id.action_close_dialog()
                 
+
+    def action_service_not_available(self):
+        for lead in self:
+            stage_service_not_available_id = self.env['lead.stage'].search([('role', '=', 'service_not_available_id')], limit=1)
+
+            if stage_service_not_available_id:
+                lead.stage_id = stage_service_not_available_id.id
+            else:
+                raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")

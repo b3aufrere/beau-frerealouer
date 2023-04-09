@@ -259,6 +259,12 @@
                         context="{'not_accept': True}"
                         attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
+                <button string="Service non disponible" 
+                        name="action_service_not_available" 
+                        type="object" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('state_role', '!=', 'new')]}"/>
+
                 <!-- <button string="Envoyer un mail au travailleur" 
                         name="action_service_send" 
                         type="object" 
