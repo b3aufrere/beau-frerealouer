@@ -214,7 +214,6 @@ class CrmLead(models.Model):
             else:
                 raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")
     
-    @api.multi
     def write(self, vals):
         res = super(CrmLead).write(vals)
         
