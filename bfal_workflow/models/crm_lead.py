@@ -215,7 +215,7 @@ class CrmLead(models.Model):
                 raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")
     
     def write(self, vals):
-        res = super(CrmLead).write(vals)
+        res = super(CrmLead, self).write(vals)
         
         for lead in self:
             if lead.division_id and lead.branch_id: 
