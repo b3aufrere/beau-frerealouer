@@ -226,7 +226,7 @@
                         name="action_view_so" 
                         class="oe_highlight"
                         icon="fa-dollar" 
-                        attrs="{'invisible': [('sale_order_id', '=', False)]}" 
+                        attrs="{'invisible': ['|', ('sale_order_id', '=', False), ('stage_name', '!=', 'Fait')]}" 
                         string="Voir bon de commande" 
                         groups="sales_team.group_sale_salesman"/>
             </xpath>
