@@ -86,6 +86,7 @@
                             <group>
                                 <field name="user_id" readonly="1" widget="many2one_avatar_user"/>
                                 <!-- <field name="territory_id" readonly="1" /> -->
+                                <!-- <field name="division_id" /> -->
                                 <!-- <field name="branch_id" readonly="1" /> -->
                                 <field name="state_name" invisible="1"/>
                                 <label for="date_deadline">Expected Closing</label>
@@ -183,12 +184,12 @@
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
     </record>
 
-    <menuitem   id="menu_crm_opportunities_worker"
+    <!-- <menuitem   id="menu_crm_opportunities_worker"
                 name="Mon Pipeline"
                 action="crm_lead_action_pipeline_worker"
                 groups="sales_team.group_sale_salesman"
                 parent="crm.crm_menu_sales"
-                sequence="1"/>
+                sequence="1"/> -->
     
     <record id="crm.menu_crm_opportunities" model="ir.ui.menu">
         <field name="groups_id" eval="[(4, ref('sales_team.group_sale_salesman_all_leads')), (4, ref('sales_team.group_sale_manager'))]"/>
@@ -201,9 +202,16 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="before">
                 <!-- <field name="territory_id"/> -->
+                <field name="division_id" />
                 <field name="branch_id"/>
                 <field name="salesperson_id" readonly="0"/>
                 <field name="state_name" invisible="1"/>
+                <field name="state_role" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="task_type" widget="radio"/>
+                <field name="request_src" widget="radio"/>
             </xpath>
 
             <xpath expr="//field[@name='user_id']" position="attributes">
@@ -216,7 +224,7 @@
             </xpath>
 
             <xpath expr="//button[@name='%(crm.crm_lead_lost_action)d']" position="attributes">
-                <attribute name="attrs">{'invisible':[('state_name', 'in', ('Assigné', 'Interne', 'Rejeté'))]}</attribute>
+                <attribute name="attrs">{'invisible':[('state_role', '!=', 'new')]}</attribute>
                 <!-- <attribute name="invisible">1</attribute> -->
             </xpath>
         </field>
@@ -251,6 +259,12 @@
                         context="{'not_accept': True}"
                         attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
 
+                <button string="Service non disponible" 
+                        name="action_service_not_available" 
+                        type="object" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('state_role', '!=', 'new')]}"/>
+
                 <!-- <button string="Envoyer un mail au travailleur" 
                         name="action_service_send" 
                         type="object" 
@@ -260,11 +274,11 @@
             </xpath>
 
             <xpath expr="//group[@name='lead_partner']/field[@name='partner_id']" position="after">
-                <field name="company_id" string="Société/Franchise"/>
+                <field name="company_id" string="Société"/>
             </xpath>
 
             <xpath expr="//group[@name='opportunity_partner']/field[@name='lost_reason_id']" position="before">
-                <field name="company_id" string="Société/Franchise"/>
+                <field name="company_id" string="Société"/>
             </xpath>
         </field>
     </record>
@@ -277,6 +291,13 @@
             <xpath expr="//filter[@name='assigned_to_me']" position="attributes">
                 <attribute name="domain">['|', ('user_id', '=', uid), ('salesperson_id', '=', uid)]</attribute>
             </xpath>
+
+            <xpath expr="//filter[@name='salesperson']" position="before">
+                <filter string="Division" name="division" context="{'group_by':'division_id'}"/>
+                <filter string="Entreprise" name="entreprise" context="{'group_by':'branch_id'}"/>
+            </xpath>
+
+            
         </field>
     </record>
 </odoo>
