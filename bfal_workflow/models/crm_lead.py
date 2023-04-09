@@ -225,7 +225,6 @@ class CrmLead(models.Model):
                     lead.with_context({'update_stage':True}).write({
                         'stage_id':stage_to_assign_id.id 
                     })
-                    # lead.stage_id = stage_to_assign_id.id  
                 else:
                     raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")
 
