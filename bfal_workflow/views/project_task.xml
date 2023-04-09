@@ -210,7 +210,7 @@
             </xpath>
 
             <xpath expr="//field[@name='planned_date_begin']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','not in',['Nouveau', 'Planifié'], 'required': [('planned_date_end', '!=', False)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_id','not in',['Nouveau', 'Planifié']), 'required': [('planned_date_end', '!=', False)]}</attribute>
             </xpath>
 
             <xpath expr="//field[@name='planned_date_end']" position="attributes">
