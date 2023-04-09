@@ -228,13 +228,18 @@ class CrmLead(models.Model):
 
         return res
     
-    @api.depends('order_ids')
-    def onchange_order_ids(self):
+
+    @api.depends('order_ids.state', 'order_ids.currency_id', 'order_ids.amount_untaxed', 'order_ids.date_order', 'order_ids.company_id')
+    def _compute_sale_data(self):
+        res = super(CrmLead, self)._compute_sale_data()
+
         for lead in self:
-            if lead.order_ids and lead.state_role != 'assigned':
+            if (lead.quotation_count or lead.sale_order_count) and lead.state_role != 'assigned':
                 stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
                 if stage_assigned_id:
                     lead.stage_id = stage_assigned_id.id  
                 else:
-                    raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'")
+                    raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'")        
+
+        return res
