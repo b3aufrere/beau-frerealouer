@@ -219,6 +219,7 @@
         <field name="arch" type="xml">
             <xpath expr="//button[@name='action_view_so']" position="attributes">
                 <attribute name="groups">sales_team.group_sale_salesman</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('sale_order_id', '=', False), ('stage_name', '!=', 'Fait')]}</attribute>
             </xpath>
 
             <xpath expr="//header" position="inside">
