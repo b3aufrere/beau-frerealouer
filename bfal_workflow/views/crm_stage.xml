@@ -11,6 +11,7 @@
                 <field name="mail_activity_type_id"/>
                 <field name="is_decision_stage" />
                 <field name="is_assign_stage" />
+                <field name="role" widget="radio" required="1"/>
             </xpath>
         </field>
     </record>

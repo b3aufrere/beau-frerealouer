@@ -15,9 +15,34 @@ class CrmLead(models.Model):
     #     string='Territoire de travail'
     # )
 
+    task_type = fields.Selection(
+        [
+            ('single', 'Une seule tâche'),
+            ('multi', 'Plusieurs tâches')
+        ],
+        string="Type de travail",
+        default=""
+    )
+
+    request_src = fields.Selection(
+        [
+            ('email', 'Email'),
+            ('call', 'Appel'),
+            ('website', 'Site web')
+        ],
+        string="Source de demande",
+        default=""
+    )
+
+    division_id = fields.Many2one(
+        'division',
+        string='Division'
+    )
+
     branch_id = fields.Many2one(
         'res.branch',
-        string='Entreprise'
+        string='Entreprise',
+        domain="[('division_id', '=', division_id)]"
     )
 
     user_id = fields.Many2one(
@@ -38,6 +63,20 @@ class CrmLead(models.Model):
     is_worker = fields.Boolean(default=False, compute="compute_is_worker")
 
     is_accepted = fields.Boolean(default=False, compute="compute_is_accepted", string="Est accepté ?")
+
+    state_role = fields.Selection(
+        [
+            ('new', 'Nouveau'),
+            ('to_assign', 'À assigner'),
+            ('assigned', 'Assigné'),
+            ('in_progress', 'En cours'),
+            ('done', 'Fait'),
+            ('rejected', 'Rejeté'),
+            ('service_not_available', 'Service non disponible'),
+        ],
+        string="Rôle",
+        related='stage_id.role'
+    )
 
     @api.onchange('sale_order_count')
     def compute_is_accepted(self):
@@ -93,11 +132,17 @@ class CrmLead(models.Model):
 
     def action_set_lost(self, **additional_values):
         """ Lost semantic: probability = 0 or active = False """
-        stage_id = self.env['crm.stage'].search([('name', '=', 'Rejeté')])
+        stage_id = self.env['crm.stage'].search([('role', '=', 'rejected')], limit=1)
+
+        if stage_id:
+            self.stage_id = stage_id.id
+        else:
+            raise UserError("Il faut ajouté une étape avec le rôle 'Rejeté'")
+        
         if 'not_accept' in self._context:
             stage_id = self.env['crm.stage'].search([('name', '=', 'Non accepté')])
         
-        res = False
+        res = False 
 
         if stage_id:
             res = True
@@ -159,3 +204,44 @@ class CrmLead(models.Model):
                         activity_id.date_deadline = activity_id._calculate_date_deadline(activity_id.activity_type_id)
                         activity_id.action_close_dialog()
                 
+
+    def action_service_not_available(self):
+        for lead in self:
+            stage_service_not_available_id = self.env['crm.stage'].search([('role', '=', 'service_not_available')], limit=1)
+
+            if stage_service_not_available_id:
+                lead.stage_id = stage_service_not_available_id.id
+            else:
+                raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")
+    
+    def write(self, vals):
+        res = super(CrmLead, self).write(vals)
+        
+        for lead in self:
+            if lead.division_id and lead.branch_id and lead.state_role == 'new': 
+                stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
+
+                if stage_to_assign_id:
+                    lead.with_context({'update_stage':True}).write({
+                        'stage_id':stage_to_assign_id.id 
+                    })
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")
+
+        return res
+    
+
+    @api.depends('order_ids.state', 'order_ids.currency_id', 'order_ids.amount_untaxed', 'order_ids.date_order', 'order_ids.company_id')
+    def _compute_sale_data(self):
+        res = super(CrmLead, self)._compute_sale_data()
+
+        for lead in self:
+            if (lead.quotation_count > 0 or lead.sale_order_count > 0) and lead.state_role != 'assigned':
+                stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
+
+                if stage_assigned_id:
+                    lead.stage_id = stage_assigned_id.id   
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'")        
+
+        return res
