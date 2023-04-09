@@ -213,3 +213,18 @@ class CrmLead(models.Model):
                 lead.stage_id = stage_service_not_available_id.id
             else:
                 raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")
+    
+    @api.multi
+    def write(self, vals):
+        res = super(CrmLead).write(vals)
+        
+        for lead in self:
+            if lead.division_id and lead.branch_id:
+                stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
+
+                if stage_to_assign_id:
+                    lead.stage_id = stage_to_assign_id.id
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")
+
+        return res
