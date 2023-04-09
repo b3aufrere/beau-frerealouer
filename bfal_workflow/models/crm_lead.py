@@ -207,7 +207,7 @@ class CrmLead(models.Model):
 
     def action_service_not_available(self):
         for lead in self:
-            stage_service_not_available_id = self.env['crm.stage'].search([('role', '=', 'service_not_available_id')], limit=1)
+            stage_service_not_available_id = self.env['crm.stage'].search([('role', '=', 'service_not_available')], limit=1)
 
             if stage_service_not_available_id:
                 lead.stage_id = stage_service_not_available_id.id
