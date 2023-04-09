@@ -227,3 +227,14 @@ class CrmLead(models.Model):
                     raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")
 
         return res
+    
+    @api.depends('order_ids')
+    def onchange_order_ids(self):
+        for lead in self:
+            if lead.order_ids and lead.state_role != 'assigned':
+                stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
+
+                if stage_assigned_id:
+                    lead.stage_id = stage_assigned_id.id  
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'")
