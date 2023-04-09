@@ -218,7 +218,7 @@ class CrmLead(models.Model):
         res = super(CrmLead, self).write(vals)
         
         for lead in self:
-            if lead.division_id and lead.branch_id and 'update_stage' not in self._context and 'stage_id' not in vals: 
+            if lead.division_id and lead.branch_id and lead.state_role == 'new': 
                 stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                 if stage_to_assign_id:
