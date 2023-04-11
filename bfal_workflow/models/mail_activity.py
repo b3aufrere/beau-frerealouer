@@ -12,7 +12,7 @@ class MailActivity(models.Model):
         if 'is_from_task' in self._context:
             task = self.env[self.res_model].browse(self.res_id)
             task.user_ids = False
-            new_stage_id = self.env['project.task.type'].search([('name', '=', 'Non accepté'), ('project_ids', 'in', self.project_id.id)], limit=1)
+            new_stage_id = self.env['project.task.type'].search([('name', '=', 'Non accepté'), ('project_ids', 'in', task.project_id.id)], limit=1)
             
             if new_stage_id:
                 task.stage_id = new_stage_id.id
