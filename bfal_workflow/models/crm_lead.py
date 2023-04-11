@@ -15,6 +15,8 @@ class CrmLead(models.Model):
     #     string='Territoire de travail'
     # )
 
+    extra_notes = fields.Html(string='Extra notes')
+
     task_type = fields.Selection(
         [
             ('hourly_service', "Service à l'heure"),
