@@ -282,7 +282,7 @@
             </xpath>
 
             <xpath expr="//notebook" position="inside">
-                <page name="extra_notes" string="Extra notes">
+                <page name="extra_notes" string="Définition">
                     <field name="extra_notes" placeholder="Dans le cas de travaux à l'heur ou bien dans le cas d'une demande de grand projet."/>
                 </page>
             </xpath>
