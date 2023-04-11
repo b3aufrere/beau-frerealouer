@@ -17,8 +17,8 @@ class CrmLead(models.Model):
 
     task_type = fields.Selection(
         [
-            ('single', 'Une seule tâche'),
-            ('multi', 'Plusieurs tâches')
+            ('hourly_service', "Service à l'heure"),
+            ('quote_request', 'Demande de soumission')
         ],
         string="Type de travail",
         default=""
@@ -28,7 +28,8 @@ class CrmLead(models.Model):
         [
             ('email', 'Email'),
             ('call', 'Appel'),
-            ('website', 'Site web')
+            ('website', 'Site web'),
+            ('chatbox', 'Chatbox'),
         ],
         string="Source de demande",
         default=""
