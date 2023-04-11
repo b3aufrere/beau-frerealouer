@@ -265,24 +265,23 @@ class CrmLead(models.Model):
         res = super(CrmLead, self)._compute_kanban_state()
 
         for lead in self:
-            if lead.state_role != 'assigned':
-                if lead.sale_order_count > 0:
-                    stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
+            if lead.sale_order_count > 0 and self.state_role in ('new', 'to_assign'):
+                stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
-                    if stage_assigned_id:
-                        lead.stage_id = stage_assigned_id.id   
-                    else:
-                        raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'") 
-                    
-                elif lead.quotation_count > 0:
-                    stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
+                if stage_assigned_id:
+                    lead.stage_id = stage_assigned_id.id   
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'") 
+                
+            elif lead.quotation_count > 0 and self.state_role == 'new':
+                stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
-                    if stage_to_assign_id:
-                        lead.with_context({'update_stage':True}).write({
-                            'stage_id':stage_to_assign_id.id 
-                        })
-                    else:
-                        raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")  
+                if stage_to_assign_id:
+                    lead.with_context({'update_stage':True}).write({
+                        'stage_id':stage_to_assign_id.id 
+                    })
+                else:
+                    raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")  
         
         return res
     
