@@ -270,7 +270,7 @@
                 <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_start'][2]" position="attributes">
-                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
             </xpath>
             <xpath expr="//button[@name='action_timer_stop']" position="attributes">
                 <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
