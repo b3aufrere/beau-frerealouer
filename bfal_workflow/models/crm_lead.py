@@ -278,7 +278,7 @@ class CrmLead(models.Model):
 
     #     return res
     
-    @api.depends('sale_order_count', 'quotation_count')
+    @api.onchange('sale_order_count', 'quotation_count')
     def _compute_stage(self):
         w("lead >>>>>>>> _compute_stage")
 
