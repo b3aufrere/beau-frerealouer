@@ -268,7 +268,7 @@ class CrmLead(models.Model):
                     else:
                         raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'") 
                     
-                elif lead.quotation_count > 0 and lead.state_role == 'new':
+                elif lead.quotation_count > 0 and lead.state_role != 'to_assign':
                     stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                     if stage_to_assign_id:
