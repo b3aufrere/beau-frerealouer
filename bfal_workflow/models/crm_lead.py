@@ -264,9 +264,7 @@ class CrmLead(models.Model):
                     stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
                     if stage_assigned_id:
-                        lead.with_context({'update_stage':True}).write({
-                            'stage_id':stage_assigned_id.id 
-                        }) 
+                        lead.stage_id = stage_assigned_id.id 
                     else:
                         raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'") 
                     
@@ -274,9 +272,7 @@ class CrmLead(models.Model):
                     stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                     if stage_to_assign_id:
-                        lead.with_context({'update_stage':True}).write({
-                            'stage_id':stage_to_assign_id.id 
-                        })
+                        lead.stage_id = stage_to_assign_id.id 
                     else:
                         raise UserError("Il faut ajouté une étape avec le rôle 'À assigner'")      
 
