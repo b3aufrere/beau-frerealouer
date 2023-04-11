@@ -218,10 +218,15 @@ class CrmLead(models.Model):
                 raise UserError("Il faut ajouté une étape avec le rôle 'Service non disponible'")
     
     def write(self, vals):
+        w(">>>>>>>> write lead")
         res = super(CrmLead, self).write(vals)
 
         if 'update_stage' not in self._context:
             for lead in self:
+                w(f"sale_order_count >> {lead.sale_order_count}")
+                w(f"quotation_count >> {lead.quotation_count}")
+                w(f"state_role >> {lead.state_role}")
+
                 if lead.sale_order_count > 0 and lead.state_role in ('new', 'to_assign'):
                     stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
