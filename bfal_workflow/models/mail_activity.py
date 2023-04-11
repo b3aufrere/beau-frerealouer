@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 class MailActivity(models.Model):
@@ -11,6 +12,11 @@ class MailActivity(models.Model):
         if 'is_from_task' in self._context:
             task = self.env[self.res_model].browse(self.res_id)
             task.user_ids = False
-            task.stage_id = self.env.ref("bfal_workflow.project_stage_not_accepted").id
+            new_stage_id = self.env['project.task.type'].search([('name', '=', 'Non accepté'), ('project_ids', 'in', self.project_id.id)], limit=1)
+            
+            if new_stage_id:
+                task.stage_id = new_stage_id.id
+            else:
+                raise UserError("Il faut ajouté une étape Non accepté a ce projet")
 
         return res

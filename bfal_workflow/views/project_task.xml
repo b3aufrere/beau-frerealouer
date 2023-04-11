@@ -333,4 +333,15 @@
             </xpath>
         </field>
     </record>
+
+    <record id="add_bfal_changes_sh_create_expense_project_task_button" model="ir.ui.view">
+        <field name="name">add_bfal_changes_sh_create_expense_project_task_button</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="sh_create_expense_from_task.sh_create_expense_project_task_button" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='create_expense']" position="attributes">
+                <attribute name="attrs">{'invisible': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
 </odoo>
