@@ -222,7 +222,7 @@ class CrmLead(models.Model):
 
         if 'update_stage' not in self._context:
             for lead in self:
-                if lead.sale_order_count > 0 and self.state_role in ('new', 'to_assign'):
+                if lead.sale_order_count > 0 and lead.state_role in ('new', 'to_assign'):
                     stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
 
                     if stage_assigned_id:
@@ -232,7 +232,7 @@ class CrmLead(models.Model):
                     else:
                         raise UserError("Il faut ajouté une étape avec le rôle 'Assigné'") 
                     
-                elif lead.quotation_count > 0 and self.state_role == 'new':
+                elif lead.quotation_count > 0 and lead.state_role == 'new':
                     stage_to_assign_id = self.env['crm.stage'].search([('role', '=', 'to_assign')], limit=1)
 
                     if stage_to_assign_id:
