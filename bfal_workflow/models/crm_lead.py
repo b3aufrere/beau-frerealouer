@@ -252,13 +252,13 @@ class CrmLead(models.Model):
 
     @api.depends('order_ids.state', 'order_ids.currency_id', 'order_ids.amount_untaxed', 'order_ids.date_order', 'order_ids.company_id')
     def _compute_sale_data(self):
-        w("lead >>>>>>>> _compute_sale_data")
+        # w("lead >>>>>>>> _compute_sale_data")
         res = super(CrmLead, self)._compute_sale_data()
 
         for lead in self:
-                w(f"sale_order_count >> {lead.sale_order_count}")
-                w(f"quotation_count >> {lead.quotation_count}")
-                w(f"state_role >> {lead.state_role}")
+                # w(f"sale_order_count >> {lead.sale_order_count}")
+                # w(f"quotation_count >> {lead.quotation_count}")
+                # w(f"state_role >> {lead.state_role}")
 
                 if lead.sale_order_count > 0 and lead.state_role in ('new', 'to_assign'):
                     stage_assigned_id = self.env['crm.stage'].search([('role', '=', 'assigned')], limit=1)
