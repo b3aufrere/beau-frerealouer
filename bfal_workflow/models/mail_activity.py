@@ -19,10 +19,10 @@ class MailActivity(models.Model):
             if new_stage_id:
                 task.stage_id = new_stage_id.id
                 
-                if task.project_sale_order_id:
+                if task.sale_order_id:
                     w("mail >>>>>>>> action_close_dialog 2")
                     self.env['project.task.type'].create({
-                        'order_id': task.project_sale_order_id.id,
+                        'order_id': task.sale_order_id.id,
                         'task_id': task.id,
                         'motif': self.summary,
                         'user_ids': [(6, 0, [user.id for user in task.user_ids])] if task.user_ids else False
