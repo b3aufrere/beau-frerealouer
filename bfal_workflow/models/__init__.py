@@ -15,3 +15,4 @@ from . import branch
 from . import product
 from . import twilio_sms_gateway_account
 from . import crm_stage
+from . import task_assignment_history

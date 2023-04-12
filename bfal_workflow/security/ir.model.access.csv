@@ -5,3 +5,4 @@ division_access,division_access,model_division,base.group_erp_manager,1,1,1,1
 division_access_others,division_access_others,model_division,,1,0,0,0
 territory_access,territory_access,model_territory,base.group_system,1,1,1,1
 territory_access_others,territory_access_others,model_territory,,1,0,0,0
+task_assignment_history_access,task_assignment_history_access,model_task_assignment_history,base.group_user,1,1,1,1

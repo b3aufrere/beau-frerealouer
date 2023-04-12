@@ -11,6 +11,7 @@ class SaleOrder(models.Model):
     division_id = fields.Many2one('division', related='user_id.employee_id.branch_id.division_id', string='Division')
     # entreprise_id = fields.Many2one('entreprise', related='user_id.employee_id.entreprise_id', string='Entreprise')
     branch_id = fields.Many2one('res.branch', related='user_id.employee_id.branch_id', string='Entreprise')
+    task_assignment_history_ids = fields.One2many('task.assignment.history', 'order_id', string="Historique des assignations")
 
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
