@@ -13,7 +13,6 @@ class MailActivity(models.Model):
 
         if 'is_from_task' in self._context:
             task = self.env[self.res_model].browse(self.res_id)
-            task.user_ids = False
             new_stage_id = self.env['project.task.type'].search([('name', '=', 'Non accepté'), ('project_ids', 'in', task.project_id.id)], limit=1)
             
             if new_stage_id:
@@ -27,7 +26,8 @@ class MailActivity(models.Model):
                         'motif': self.summary,
                         'user_ids': [(6, 0, [user.id for user in task.user_ids])] if task.user_ids else False
                     })
-
+                    
+                task.user_ids = False
             else:
                 raise UserError("Il faut ajouté une étape Non accepté a ce projet")
 
