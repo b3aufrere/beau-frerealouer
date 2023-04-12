@@ -21,7 +21,7 @@ class MailActivity(models.Model):
                 
                 if task.sale_order_id:
                     w("mail >>>>>>>> action_close_dialog 2")
-                    self.env['project.task.type'].create({
+                    self.env['task.assignment.history'].create({
                         'order_id': task.sale_order_id.id,
                         'task_id': task.id,
                         'motif': self.summary,
