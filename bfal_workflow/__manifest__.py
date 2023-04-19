@@ -54,7 +54,9 @@
         'views/branch.xml',
         'views/product.xml',
         'views/twilio_sms_gateway_account.xml',
-        'views/crm_stage.xml'
+        'views/crm_stage.xml',
+
+        'wizards/task_reassignment.xml'
     ],
     
     'installable': True,

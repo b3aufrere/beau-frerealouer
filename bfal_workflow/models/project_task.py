@@ -308,14 +308,26 @@ class ProjectTask(models.Model):
         return True
     
     def action_reassign_task(self):
-        for task in self:
-            new_stage_id = False
-            if not self.parent_id and self.project_id:
-                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.project_id.id)], limit=1)
-            elif self.display_project_id:
-                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
+        # for task in self:
+        #     new_stage_id = False
+        #     if not self.parent_id and self.project_id:
+        #         new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.project_id.id)], limit=1)
+        #     elif self.display_project_id:
+        #         new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
             
-            if new_stage_id:
-                task.stage_id = new_stage_id.id
-            else:
-                raise UserError("Il faut ajouté une étape Nouveau a ce projet")
+        #     if new_stage_id:
+        #         task.stage_id = new_stage_id.id
+        #     else:
+        #         raise UserError("Il faut ajouté une étape Nouveau a ce projet")
+
+        return {
+            'name':_("Products to Process"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form"),
+            'res_model': 'task.reassignment',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_task_id': self.id
+            }
+        }
