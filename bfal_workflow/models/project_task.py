@@ -323,7 +323,7 @@ class ProjectTask(models.Model):
         return {
             'name':_("Products to Process"),
             'view_mode': 'form',
-            'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form"),
+            'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form").id,
             'res_model': 'task.reassignment',
             'type': 'ir.actions.act_window',
             'target': 'new',
