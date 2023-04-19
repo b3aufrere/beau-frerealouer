@@ -321,13 +321,14 @@ class ProjectTask(models.Model):
         #         raise UserError("Il faut ajouté une étape Nouveau a ce projet")
 
         return {
-            'name':_("Products to Process"),
+            'name':_("Réassignation"),
             'view_mode': 'form',
             'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form").id,
             'res_model': 'task.reassignment',
             'type': 'ir.actions.act_window',
             'target': 'new',
             'context': {
+                'default_branch_id': self.branch_id.id,
                 'default_task_id': self.id
             }
         }

@@ -10,11 +10,17 @@ class TaskReassignment(models.Model):
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
+        domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
         )
     
     task_id = fields.Many2one(
         'project.task',
         string='Tâche',
+        )
+    
+    branch_id = fields.Many2one(
+        'res.branch',
+        string='Territoire',
         )
     
     def action_reassign_task(self):
