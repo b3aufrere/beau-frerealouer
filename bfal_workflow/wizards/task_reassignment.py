@@ -20,7 +20,7 @@ class TaskReassignment(models.Model):
         if user_ids:
             self.user_ids = [(6, 0, user_ids.ids)]
             
-    user_ids = fields.Many2many('res.users', compute="get_only_not_assigned_before")
+    user_ids = fields.Many2many('res.users', compute="get_only_not_assigned_before", store=False)
 
     user_id = fields.Many2one(
         'res.users',
