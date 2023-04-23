@@ -8,7 +8,8 @@ class TaskReassignment(models.Model):
     _description = 'Réassignation de tâche'
 
     def get_only_not_assigned_before(self):
-        self.user_id_domain = json.dumps([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])        
+        for rec in self:
+            rec.user_id_domain = json.dumps([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', rec.branch_id.id)])        
 
     user_id_domain = fields.Char(
         compute="get_only_not_assigned_before",
