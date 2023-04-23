@@ -1,24 +1,12 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-import json
 
 from logging import warning as w
 
 class TaskReassignment(models.Model):
     _name = 'task.reassignment'
     _description = 'Réassignation de tâche'
-
-    # def get_only_not_assigned_before(self):
-    #     w(">>> get_only_not_assigned_before 1")
-    #     w(f"branch_id >>> {self.branch_id}")
-        
-    #     self.user_ids = False
-    #     user_ids = self.env['res.users'].sudo().search([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])     
-        
-    #     w(f"user_ids >>> {user_ids}")
-    #     if user_ids:
-    #         self.user_ids = [(6, 0, user_ids.ids)]
             
     user_ids = fields.Many2many('res.users')
 
