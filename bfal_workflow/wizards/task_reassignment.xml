@@ -10,7 +10,8 @@
                         <group>
                             <group>
                                 <field name="branch_id" invisible="1"/>
-                                <field name="user_id" required="1"/>
+                                <field name="user_id_domain" invisible="1"/>
+                                <field name="user_id" required="1" domain="user_id_domain"/>
                             </group>
                         </group>
                     </sheet>

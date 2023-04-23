@@ -1,21 +1,25 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
-
+import json
 
 class TaskReassignment(models.Model):
     _name = 'task.reassignment'
     _description = 'Réassignation de tâche'
 
-    @api.model
     def get_only_not_assigned_before(self):
-        return [('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)]        
+        self.user_id_domain = json.dumps([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])        
+
+    user_id_domain = fields.Char(
+        compute="get_only_not_assigned_before",
+        readonly=True,
+        store=False,
+    )
 
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
         # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
-        domain=lambda self: self.get_only_not_assigned_before()
         )
     
     task_id = fields.Many2one(
