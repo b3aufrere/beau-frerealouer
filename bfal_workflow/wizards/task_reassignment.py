@@ -8,20 +8,18 @@ class TaskReassignment(models.Model):
     _description = 'Réassignation de tâche'
 
     def get_only_not_assigned_before(self):
-        for rec in self:
-            rec.user_id_domain = json.dumps([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', rec.branch_id.id)])        
-
-    user_id_domain = fields.Char(
-        compute="get_only_not_assigned_before",
-        readonly=True,
-        store=False,
-        default=""
-    )
+        self.user_ids = False
+        user_ids = self.env['res.users'].sudo().search([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])     
+        if user_ids:
+            self.user_ids = [(6, 0, user_ids.ids)]
+            
+    user_ids = fields.Many2many('res.users', compute="get_only_not_assigned_before")
 
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
         # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
+        domain="[('id', 'in', user_ids)]"
     )
     
     task_id = fields.Many2one(
