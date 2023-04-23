@@ -15,7 +15,7 @@ class TaskReassignment(models.Model):
         'res.users',
         string='Assigné',
         # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
-        doamin=get_only_not_assigned_before
+        domain=get_only_not_assigned_before
         )
     
     task_id = fields.Many2one(
