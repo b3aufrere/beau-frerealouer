@@ -15,13 +15,15 @@ class TaskReassignment(models.Model):
         compute="get_only_not_assigned_before",
         readonly=True,
         store=False,
+        default=""
     )
 
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
         # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
-        )
+        default=False
+    )
     
     task_id = fields.Many2one(
         'project.task',
