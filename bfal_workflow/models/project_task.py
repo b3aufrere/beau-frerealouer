@@ -320,6 +320,8 @@ class ProjectTask(models.Model):
         #     else:
         #         raise UserError("Il faut ajouté une étape Nouveau a ce projet")
 
+        user_ids = self.env['res.users'].sudo().search([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])     
+
         return {
             'name':_("Réassignation"),
             'view_mode': 'form',
@@ -329,6 +331,7 @@ class ProjectTask(models.Model):
             'target': 'new',
             'context': {
                 'default_branch_id': self.branch_id.id,
-                'default_task_id': self.id
+                'default_task_id': self.id,
+                'default_user_ids': [(6, 0, user_ids.ids)] if user_ids else []
             }
         }
