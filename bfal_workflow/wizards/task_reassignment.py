@@ -9,7 +9,7 @@ class TaskReassignment(models.Model):
 
     def get_only_not_assigned_before(self):
         self.user_ids = False
-        user_ids = self.env['res.users'].sudo().search([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)])     
+        user_ids = self.env['res.users'].sudo().search([('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id)])     
         if user_ids:
             self.user_ids = [(6, 0, user_ids.ids)]
             
