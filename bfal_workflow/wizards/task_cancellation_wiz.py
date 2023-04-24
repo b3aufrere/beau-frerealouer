@@ -27,6 +27,6 @@ class TaskCancellationWiz(models.TransientModel):
         
         if cancel_stage_id:
             self.task_id.stage_id = cancel_stage_id.id
-            self.task_id.user_ids = [(6, 0, [self.user_id.id])]
+            self.task_id.user_ids = False
         else:
             raise UserError("Il faut ajouté une étape Annulé a ce projet")
