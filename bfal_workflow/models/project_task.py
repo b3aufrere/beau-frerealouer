@@ -16,6 +16,7 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
     stage_name = fields.Char(string="Nom d'état", related="stage_id.name", store=True)
+    task_cancellation_reason_id = fields.Many2one('task.cancellation.reason', string="Motif d'annulation")
 
     def action_no_accept_task(self):
         view_id = self.env.ref("bfal_workflow.mail_activity_view_task_not_accepted")
@@ -308,14 +309,51 @@ class ProjectTask(models.Model):
         return True
     
     def action_reassign_task(self):
-        for task in self:
-            new_stage_id = False
-            if not self.parent_id and self.project_id:
-                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.project_id.id)], limit=1)
-            elif self.display_project_id:
-                new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
+        # for task in self:
+        #     new_stage_id = False
+        #     if not self.parent_id and self.project_id:
+        #         new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.project_id.id)], limit=1)
+        #     elif self.display_project_id:
+        #         new_stage_id = self.env['project.task.type'].search([('name', '=', 'Nouveau'), ('project_ids', 'in', self.display_project_id.id)], limit=1)
             
-            if new_stage_id:
-                task.stage_id = new_stage_id.id
-            else:
-                raise UserError("Il faut ajouté une étape Nouveau a ce projet")
+        #     if new_stage_id:
+        #         task.stage_id = new_stage_id.id
+        #     else:
+        #         raise UserError("Il faut ajouté une étape Nouveau a ce projet")
+        user_ids = []
+
+        for tah in self.env['task.assignment.history'].sudo().search([('task_id', '=', self.id)]):
+            user_ids +=  [user.id for user in tah.user_ids]
+
+        domain = [('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)]
+        if user_ids:
+            domain.append(('id', 'not in', user_ids))
+        
+        user_ids = self.env['res.users'].sudo().search(domain)     
+
+        return {
+            'name':_("Réassignation"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form").id,
+            'res_model': 'task.reassignment',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_branch_id': self.branch_id.id,
+                'default_task_id': self.id,
+                'default_user_ids': [(6, 0, user_ids.ids)] if user_ids else []
+            }
+        }
+    
+    def action_cancel_task(self):  
+        return {
+            'name':_("Annulation de tâche"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_task_cancellation_wiz_form").id,
+            'res_model': 'task.cancellation.wiz',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_task_id': self.id,
+            }
+        }

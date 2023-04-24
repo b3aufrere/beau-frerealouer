@@ -286,6 +286,10 @@
                     <field name="extra_notes" placeholder="Dans le cas de travaux à l'heur ou bien dans le cas d'une demande de grand projet."/>
                 </page>
             </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="attributes">
+                <attribute name="attrs">{'invisible':[('state_role', 'in', ('rejected', 'service_not_available'))]}</attribute>
+            </xpath>
         </field>
     </record>
 
