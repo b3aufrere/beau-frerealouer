@@ -93,7 +93,7 @@
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="after">
-                <field name="task_cancellation_reason_id" readonly="1" attrs="{'invisible':[('stage_name', '!=', 'Annulé')]}"/>
+                <field name="task_cancellation_reason_id" readonly="1" attrs="{'invisible':[('stage_name', '!=', 'Annulé')]}" options="{'no_open': True}"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
