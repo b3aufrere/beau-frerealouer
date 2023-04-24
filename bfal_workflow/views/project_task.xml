@@ -92,6 +92,10 @@
                 <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
             </xpath>
 
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="task_cancellation_reason_id" readonly="1" attrs="{'invisible':[('stage_name', '!=', 'Annulé')]}"/>
+            </xpath>
+
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
                 <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>

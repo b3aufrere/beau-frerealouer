@@ -16,6 +16,7 @@ class ProjectTask(models.Model):
     date_start_expected = fields.Datetime(string="Date de début désiré")
     date_end_expected = fields.Datetime(string="Date de fin désiré")
     stage_name = fields.Char(string="Nom d'état", related="stage_id.name", store=True)
+    task_cancellation_reason_id = fields.Many2one('task.cancellation.reason', string="Motif d'annulation")
 
     def action_no_accept_task(self):
         view_id = self.env.ref("bfal_workflow.mail_activity_view_task_not_accepted")
