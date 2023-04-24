@@ -75,6 +75,12 @@
                         type="object" 
                         class="btn-warning"
                         attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_name','not in',['Nouveau', 'Planifié'])]}"/>
+
+                <button string="Annuler" 
+                        name="action_cancel_task" 
+                        type="object" 
+                        class="btn-danger"
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">

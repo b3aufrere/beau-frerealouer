@@ -4,7 +4,7 @@ from odoo.exceptions import UserError
 
 from logging import warning as w
 
-class TaskReassignment(models.Model):
+class TaskReassignment(models.TransientModel):
     _name = 'task.reassignment'
     _description = 'Réassignation de tâche'
             

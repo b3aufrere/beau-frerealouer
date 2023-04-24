@@ -343,3 +343,16 @@ class ProjectTask(models.Model):
                 'default_user_ids': [(6, 0, user_ids.ids)] if user_ids else []
             }
         }
+    
+    def action_cancel_task(self):  
+        return {
+            'name':_("Annulation de tâche"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_task_cancellation_wiz_form").id,
+            'res_model': 'task.cancellation.wiz',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_task_id': self.id,
+            }
+        }
