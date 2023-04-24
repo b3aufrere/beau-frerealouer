@@ -5,7 +5,7 @@
             <field name="name">view_task_cancellation_wiz_form</field>
             <field name="model">task.cancellation.wiz</field>
             <field name="arch" type="xml">
-                <form string="Réassignation">
+                <form string="Annulation de tâche">
                     <sheet>
                         <group>
                             <group>

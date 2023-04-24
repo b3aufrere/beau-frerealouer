@@ -5,7 +5,7 @@
             <field name="name">view_task_reassignment_form</field>
             <field name="model">task.reassignment</field>
             <field name="arch" type="xml">
-                <form string="Réassignation">
+                <form string="Réassignation de tâche">
                     <sheet>
                         <group>
                             <group>
