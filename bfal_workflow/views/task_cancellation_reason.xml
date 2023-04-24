@@ -14,7 +14,6 @@
         <record id="task_cancellation_reason_action" model="ir.actions.act_window">
             <field name="name">Motifs d'annulation</field>
             <field name="res_model">task.cancellation.reason</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
 
