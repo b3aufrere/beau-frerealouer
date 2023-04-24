@@ -57,7 +57,8 @@
         'views/crm_stage.xml',
         'views/task_cancellation_reason.xml',
 
-        'wizards/task_reassignment.xml'
+        'wizards/task_reassignment.xml',
+        'wizards/task_cancellation_wiz.xml'
     ],
     
     'installable': True,
