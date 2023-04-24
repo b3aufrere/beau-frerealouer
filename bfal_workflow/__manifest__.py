@@ -28,7 +28,7 @@
         'product',
         'twilio_sms_gateway_gsc',
         'bi_crm_task',
-        'sh_create_expense_from_task'
+        'sh_create_expense_from_task',
     ],
     
     'data': [ 
@@ -54,7 +54,11 @@
         'views/branch.xml',
         'views/product.xml',
         'views/twilio_sms_gateway_account.xml',
-        'views/crm_stage.xml'
+        'views/crm_stage.xml',
+        'views/task_cancellation_reason.xml',
+
+        'wizards/task_reassignment.xml',
+        'wizards/task_cancellation_wiz.xml'
     ],
     
     'installable': True,

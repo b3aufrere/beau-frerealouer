@@ -75,6 +75,12 @@
                         type="object" 
                         class="btn-warning"
                         attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_name','not in',['Nouveau', 'Planifié'])]}"/>
+
+                <button string="Annuler" 
+                        name="action_cancel_task" 
+                        type="object" 
+                        class="btn-danger"
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}"/>
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
@@ -84,6 +90,10 @@
             <xpath expr="//field[@name='user_ids']" position="before">
                 <!-- <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/> -->
                 <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="task_cancellation_reason_id" readonly="1" attrs="{'invisible':[('stage_name', '!=', 'Annulé')]}" options="{'no_open': True}"/>
             </xpath>
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
@@ -117,7 +127,7 @@
             </xpath>
 
             <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="attrs">{'readonly': [('stage_id','!=',%(bfal_workflow.project_stage_0)d)]}</attribute>
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')]}</attribute>
             </xpath>
         </field>
     </record>

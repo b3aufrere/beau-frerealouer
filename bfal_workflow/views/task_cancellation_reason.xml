@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_task_cancellation_reason_tree" model="ir.ui.view">
+            <field name="name">view_task_cancellation_reason_tree</field>
+            <field name="model">task.cancellation.reason</field>
+            <field name="arch" type="xml">
+                <tree string="Motifs d'annulation" editable="top">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="task_cancellation_reason_action" model="ir.actions.act_window">
+            <field name="name">Motifs d'annulation</field>
+            <field name="res_model">task.cancellation.reason</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem   id="task_cancellation_reason_menu"
+                    name="Motifs d'annulation"
+                    action="task_cancellation_reason_action"
+                    parent="industry_fsm.fsm_menu_settings"
+                    sequence="60"/>
+    </data>
+</odoo>

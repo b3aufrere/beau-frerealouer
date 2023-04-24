@@ -49,12 +49,12 @@ class CrmLead(models.Model):
     )
 
     user_id = fields.Many2one(
-        'res.users', string='Salesperson',default=False,
+        'res.users', string='Partenaire assignée',default=False,
         domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
         # domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
-    salesperson_id = fields.Many2one('res.users', string='Vendeur', default=lambda self: self.env.user,
+    salesperson_id = fields.Many2one('res.users', string='Vendeur', default=False,
         domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
         # domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
