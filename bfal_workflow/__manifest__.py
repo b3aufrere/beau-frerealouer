@@ -55,6 +55,7 @@
         'views/product.xml',
         'views/twilio_sms_gateway_account.xml',
         'views/crm_stage.xml',
+        'views/task_cancellation_reason.xml',
 
         'wizards/task_reassignment.xml'
     ],
