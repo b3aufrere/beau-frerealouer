@@ -320,16 +320,16 @@ class ProjectTask(models.Model):
         #         task.stage_id = new_stage_id.id
         #     else:
         #         raise UserError("Il faut ajouté une étape Nouveau a ce projet")
-        user_ids = []
+        # user_ids = []
 
-        for tah in self.env['task.assignment.history'].sudo().search([('task_id', '=', self.id)]):
-            user_ids +=  [user.id for user in tah.user_ids]
+        # for tah in self.env['task.assignment.history'].sudo().search([('task_id', '=', self.id)]):
+        #     user_ids +=  [user.id for user in tah.user_ids]
 
-        domain = [('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)]
-        if user_ids:
-            domain.append(('id', 'not in', user_ids))
+        # domain = [('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', self.branch_id.id)]
+        # if user_ids:
+        #     domain.append(('id', 'not in', user_ids))
         
-        user_ids = self.env['res.users'].sudo().search(domain)     
+        # user_ids = self.env['res.users'].sudo().search(domain)     
 
         return {
             'name':_("Réassignation"),
@@ -341,7 +341,7 @@ class ProjectTask(models.Model):
             'context': {
                 'default_branch_id': self.branch_id.id,
                 'default_task_id': self.id,
-                'default_user_ids': [(6, 0, user_ids.ids)] if user_ids else []
+                # 'default_user_ids': [(6, 0, user_ids.ids)] if user_ids else []
             }
         }
     
