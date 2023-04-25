@@ -305,9 +305,13 @@
             <xpath expr="//filter[@name='salesperson']" position="before">
                 <filter string="Division" name="division" context="{'group_by':'division_id'}"/>
                 <filter string="Entreprise" name="entreprise" context="{'group_by':'branch_id'}"/>
+                <filter string="Source de demande" name="request_src" context="{'group_by':'request_src'}"/>
+                <filter string="Vendeur" name="salesperson_id" context="{'group_by':'salesperson_id'}"/>
             </xpath>
 
-            
+            <xpath expr="//filter[@name='salesperson']" position="attributes">
+                <attribute name="string">Partenaire assignée</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
