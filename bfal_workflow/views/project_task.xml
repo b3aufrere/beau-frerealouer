@@ -46,6 +46,10 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="attributes">
+                 <attribute name="attrs">{'invisible': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath>
+
             <xpath expr="//header" position="inside">
                 <field name="is_sub_task" invisible="1"/>
                 <field name="is_user_readonly" invisible="1"/>
@@ -58,11 +62,11 @@
                         groups="industry_fsm.group_fsm_manager"
                         attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_name', '!=', 'Non accepté')]}"/>
 
-                <button string="Créer une visite" 
+                <!-- <button string="Créer une visite" 
                         name="create_sub_task" 
                         type="object" 
                         class="oe_highlight" 
-                        attrs="{'invisible': [('is_fsm','=',False)]}"/>
+                        attrs="{'invisible': [('is_fsm','=',False)]}"/> -->
 
                 <button string="Planifier" 
                         name="action_schedule_task" 

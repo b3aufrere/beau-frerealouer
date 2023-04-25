@@ -13,8 +13,8 @@ class TaskReassignment(models.TransientModel):
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
-        # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
-        domain="[('id', 'in', user_ids)]"
+        domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
+        # domain="[('id', 'in', user_ids)]"
     )
     
     task_id = fields.Many2one(
