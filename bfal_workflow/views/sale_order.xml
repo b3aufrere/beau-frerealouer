@@ -24,6 +24,15 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button string="Non accepté" 
+                        name="action_not_accepted" 
+                        type="object" 
+                        class="btn-warning"
+                        confirm="êtes-vous sûr de ne pas vouloir accepter la soumission ?"
+                        attrs="{'invisible': [('state','!=','draft')]}"/>
+            </xpath>
+
             <xpath expr="//header/button[@name='action_quotation_send']" position="before">
                 <button string="Créer un rendez-vous" 
                         name="action_create_rendez_vous" 
