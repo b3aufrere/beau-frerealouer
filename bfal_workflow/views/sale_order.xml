@@ -29,6 +29,7 @@
                         name="action_not_accepted" 
                         type="object" 
                         class="btn-warning"
+                        confirm="êtes-vous sûr de ne pas vouloir accepter la soumission ?"
                         attrs="{'invisible': [('state','=','draft')]}"/>
             </xpath>
 
