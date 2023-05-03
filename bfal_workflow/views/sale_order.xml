@@ -30,7 +30,7 @@
                         type="object" 
                         class="btn-warning"
                         confirm="êtes-vous sûr de ne pas vouloir accepter la soumission ?"
-                        attrs="{'invisible': [('state','=','draft')]}"/>
+                        attrs="{'invisible': [('state','!=','draft')]}"/>
             </xpath>
 
             <xpath expr="//header/button[@name='action_quotation_send']" position="before">
