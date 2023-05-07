@@ -59,7 +59,8 @@
         'views/order_not_accept_reason.xml',
 
         'wizards/task_reassignment.xml',
-        'wizards/task_cancellation_wiz.xml'
+        'wizards/task_cancellation_wiz.xml',
+        'wizards/order_not_accept_wiz.xml'
     ],
     
     'installable': True,
