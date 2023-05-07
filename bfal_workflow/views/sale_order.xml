@@ -53,6 +53,10 @@
                 <!-- <field name="entreprise_id"/> -->
                 <field name="branch_id"/>
             </xpath>
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="order_not_accept_reason_id" attrs="{'invisible': [('state','=','not_accepted')]}" readonly="1" options="{'no_open': True}"/>
+            </xpath>
         </field>
     </record>
 
