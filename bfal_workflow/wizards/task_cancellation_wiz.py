@@ -16,6 +16,7 @@ class TaskCancellationWiz(models.TransientModel):
     task_cancellation_reason_id = fields.Many2one(
         'task.cancellation.reason',
         string="Motif d'annulation",
+        required=True
         )
     
     def action_cancel_task(self):

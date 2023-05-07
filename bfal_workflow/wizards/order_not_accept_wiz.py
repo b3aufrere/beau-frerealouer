@@ -16,6 +16,7 @@ class OrderNotAcceptWiz(models.TransientModel):
     order_not_accept_reason_id = fields.Many2one(
         'order.not.accept.reason',
         string="Motif de non acceptation",
+        required=True
         )
     
     def action_not_accept_order(self):
