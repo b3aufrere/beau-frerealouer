@@ -19,6 +19,7 @@ class CrmStage(models.Model):
             ('assigned', 'Assigné'),
             ('in_progress', 'En cours'),
             ('done', 'Fait'),
+            ('claim', 'Réclamation'),
             ('rejected', 'Rejeté'),
             ('service_not_available', 'Service non disponible'),
         ],
