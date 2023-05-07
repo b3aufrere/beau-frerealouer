@@ -65,4 +65,14 @@ class SaleOrder(models.Model):
         }
 
     def action_reassign(self):
-        pass
+        return {
+            'name':_("Réassignation"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_order_reassignment_form").id,
+            'res_model': 'reassignment',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_order_id': self.id,
+            }
+        }
