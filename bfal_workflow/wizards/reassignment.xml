@@ -27,7 +27,7 @@
             <field name="name">view_order_reassignment_form</field>
             <field name="model">reassignment</field>
             <field name="arch" type="xml">
-                <form string="Réassignation de tâche">
+                <form string="Réassignation de soumission">
                     <sheet>
                         <group>
                             <group>
