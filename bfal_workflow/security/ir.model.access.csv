@@ -10,3 +10,4 @@ task_reassignment_access,task_reassignment_access,model_task_reassignment,base.g
 task_cancellation_reason_access,task_cancellation_reason_access,model_task_cancellation_reason,base.group_user,1,1,1,1
 task_cancellation_wiz_access,task_cancellation_wiz_access,model_task_cancellation_wiz,base.group_user,1,1,1,1
 order_not_accept_reason_access,order_not_accept_reason_access,model_order_not_accept_reason,base.group_user,1,1,1,1
+order_not_accept_wiz_access,order_not_accept_wiz_access,model_order_not_accept_wiz,base.group_user,1,1,1,1

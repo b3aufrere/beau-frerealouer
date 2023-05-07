@@ -13,6 +13,7 @@ class SaleOrder(models.Model):
     branch_id = fields.Many2one('res.branch', related='user_id.employee_id.branch_id', string='Entreprise')
     task_assignment_history_ids = fields.One2many('task.assignment.history', 'order_id', string="Historique des assignations")
     state = fields.Selection(selection_add=[('not_accepted', 'Non accepté')])
+    order_not_accept_reason_id = fields.Many2one('order.not.accept.reason', string="Motif de non acceptation",)
 
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
@@ -51,5 +52,14 @@ class SaleOrder(models.Model):
                 return action
     
     def action_not_accepted(self):
-        self.state = "not_accepted"
-        self.user_id = False
+        return {
+            'name':_("Non acceptation"),
+            'view_mode': 'form',
+            'view_id': self.env.ref("bfal_workflow.view_order_not_accept_wiz_form").id,
+            'res_model': 'order.not.accept.wiz',
+            'type': 'ir.actions.act_window',
+            'target': 'new',
+            'context': {
+                'default_order_id': self.id,
+            }
+        }
