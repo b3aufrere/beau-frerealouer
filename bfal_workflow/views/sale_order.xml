@@ -30,6 +30,13 @@
                         type="object" 
                         class="btn-warning"
                         attrs="{'invisible': [('state','!=','draft')]}"/>
+                
+                <button string="Réassigner" 
+                        name="action_reassign" 
+                        type="object" 
+                        class="oe_highlight" 
+                        icon="fa-undo"
+                        attrs="{'invisible': [('state','!=','not_accepted')]}"/>
             </xpath>
 
             <xpath expr="//header/button[@name='action_quotation_send']" position="before">

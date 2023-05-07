@@ -63,3 +63,6 @@ class SaleOrder(models.Model):
                 'default_order_id': self.id,
             }
         }
+
+    def action_reassign(self):
+        pass
