@@ -50,12 +50,12 @@ class CrmLead(models.Model):
 
     user_id = fields.Many2one(
         'res.users', string='Partenaire assignée',default=False,
-        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
+        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '|', '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), ('employee_id.branch_id', '=', False)]",
         # domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
     salesperson_id = fields.Many2one('res.users', string='Vendeur', default=False,
-        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]",
+        domain="['&', ('share', '=', False), '&', ('company_ids', 'in', user_company_ids), '&', ('employee_id', '!=', False), '|', '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), ('employee_id.branch_id', '=', False)]",
         # domain="[('share', '=', False), ('company_ids', 'in', user_company_ids)]",
         check_company=True, index=True, tracking=True)
     
@@ -74,6 +74,7 @@ class CrmLead(models.Model):
             ('assigned', 'Assigné'),
             ('in_progress', 'En cours'),
             ('done', 'Fait'),
+            ('claim', 'Réclamation'),
             ('rejected', 'Rejeté'),
             ('service_not_available', 'Service non disponible'),
         ],

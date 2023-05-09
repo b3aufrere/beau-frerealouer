@@ -4,22 +4,27 @@ from odoo.exceptions import UserError
 
 from logging import warning as w
 
-class TaskReassignment(models.TransientModel):
-    _name = 'task.reassignment'
-    _description = 'Réassignation de tâche'
+class Reassignment(models.TransientModel):
+    _name = 'reassignment'
+    _description = 'Réassignation'
             
     user_ids = fields.Many2many('res.users')
 
     user_id = fields.Many2one(
         'res.users',
         string='Assigné',
-        domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
+        # domain="[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]"
         # domain="[('id', 'in', user_ids)]"
     )
     
     task_id = fields.Many2one(
         'project.task',
         string='Tâche',
+        )
+    
+    order_id = fields.Many2one(
+        'sale.order',
+        string='Soumission',
         )
     
     branch_id = fields.Many2one(
@@ -39,3 +44,7 @@ class TaskReassignment(models.TransientModel):
             self.task_id.user_ids = [(6, 0, [self.user_id.id])]
         else:
             raise UserError("Il faut ajouté une étape Nouveau a ce projet")
+    
+    def action_reassign_order(self):
+        self.order_id.state = 'draft'
+        self.order_id.user_id = self.user_id.id
