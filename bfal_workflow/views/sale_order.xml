@@ -74,4 +74,25 @@
         <field name="domain">[('order_id', '=', active_id)]</field>
         <field name="context">{'default_order_id': active_id}</field>
     </record>
+
+    <record id="action_orders_not_accepted" model="ir.actions.act_window">
+        <field name="name">Soumissions non acceptés</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'not_accepted')]</field>
+    </record>
+
+    <menuitem   id="menu_sale_order_not_accepted"
+                name="Soumissions non acceptés"
+                action="action_orders_not_accepted"
+                parent="sale.sale_order_menu"
+                groups="sales_team.group_sale_salesman_all_leads"
+                sequence="15"/>
+    
+    <record id="sale.action_orders" model="ir.actions.act_window">
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'not_accepted', 'cancel'))]</field>
+    </record>
 </odoo>
