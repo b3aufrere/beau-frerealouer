@@ -91,4 +91,8 @@
                 parent="sale.sale_order_menu"
                 groups="sales_team.group_sale_salesman_all_leads"
                 sequence="15"/>
+    
+    <record id="sale.action_orders" model="ir.actions.act_window">
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'not_accepted', 'cancel'))]</field>
+    </record>
 </odoo>
