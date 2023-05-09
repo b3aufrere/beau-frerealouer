@@ -335,7 +335,7 @@ class ProjectTask(models.Model):
             'name':_("Réassignation"),
             'view_mode': 'form',
             'view_id': self.env.ref("bfal_workflow.view_task_reassignment_form").id,
-            'res_model': 'task.reassignment',
+            'res_model': 'reassignment',
             'type': 'ir.actions.act_window',
             'target': 'new',
             'context': {
