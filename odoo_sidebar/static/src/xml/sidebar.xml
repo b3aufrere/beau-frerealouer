@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_sidebar" xml:space="preserve">
+    <t t-inherit="web.NavBar.AppsMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//Dropdown" position="replace">
+            <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                xmlns:xlink="http://www.w3.org/1999/xlink" 
+                width="24px" height="24px" viewBox="0 0 24 24" 
+                class="burger-menu d-none" version="1.1" xml:space="preserve"
+                t-on-click="(ev) => onToggleMenu(ev)"
+            >
+                <g>
+                    <g>
+                        <path d="M18,4c-0.6,0-1,0.4-1,1v14c0,0.6,0.4,1,1,1s1-0.4,1-1V5C19,4.4,18.6,4,18,4z"/>
+                        <path d="M12,4c-0.6,0-1,0.4-1,1v14c0,0.6,0.4,1,1,1s1-0.4,1-1V5C13,4.4,12.6,4,12,4z"/>
+                        <path d="M6,4C5.4,4,5,4.4,5,5v14c0,0.6,0.4,1,1,1s1-0.4,1-1V5C7,4.4,6.6,4,6,4z"/>
+                    </g>
+                </g>
+            </svg>
+            <ul class="o_menu_apps" role="menu">
+                <li class="dropdown">
+                    <a class="full" data-toggle="dropdown" data-display="static" href="#" accesskey="h">
+                        <i class="fa fa-th-large"/>
+                    </a>
+                    <div class="dropdown-menu d-block" role="menu">
+                        <div>
+                            <img src="/odoo_sidebar/static/src/img/logo.svg" class="img img-fluid p-4 mb-5"/>
+                        </div>
+                        <t 
+                            t-foreach="menuService.getApps()" 
+                            t-as="app"
+                            t-key="app.id"
+                        >
+                            <a role="menuitem" t-att-href="getMenuItemHref(app)"
+                                class="dropdown-item o_app d-flex align-items-center"
+                                t-att-class="{ active: menuService.getCurrentApp() === app }"
+                                t-att-data-menu-id="app.menuID"
+                                t-att-data-menu-xmlid="app.xmlID"
+                                t-att-data-action-id="app.actionID">
+                                <div class="p-2 me-2 o_app_icon">
+                                    <i t-attf-class="fa {{app.icon}}"/>
+                                </div>
+                                <span t-esc="app.name"/>
+                            </a>
+                        </t>
+                    </div>
+                </li>
+            </ul>
+        </xpath>
+    </t>
+</templates>
