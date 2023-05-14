@@ -86,7 +86,7 @@
                         class="btn-danger"
                         attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}"/>
                 
-                <button class="oe_stat_button" 
+                <button class="oe_highlight" 
                         type="action"
                         string="Disponibilité" 
                         name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
