@@ -16,6 +16,8 @@ class MailActivity(models.Model):
             
             if new_stage_id:
                 task.stage_id = new_stage_id.id
+                task.planned_date_begin = False
+                task.planned_date_end = False
                 
                 if task.sale_order_id:
                     self.env['task.assignment.history'].create({

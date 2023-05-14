@@ -92,7 +92,7 @@
                         name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
                         context="{'fsm_mode': 1, 'task_nameget_with_hours': 1, 'default_scale': 'week'}"
                         icon="fa-user"
-                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}">
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié', 'Non accepté'))]}">
                 </button>
             </xpath>
 
