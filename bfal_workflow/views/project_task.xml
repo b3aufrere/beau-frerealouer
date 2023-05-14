@@ -111,7 +111,7 @@
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
-                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>
+                <attribute name="domain">['&amp;', ('employee_id', '!=', False), '|', '&amp;', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), ('employee_id.branch_id', '=', False)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
