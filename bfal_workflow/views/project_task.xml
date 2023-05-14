@@ -46,9 +46,19 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <xpath expr="//div[@name='button_box']" position="attributes">
+            <!-- <xpath expr="//div[@name='button_box']" position="attributes">
                  <attribute name="attrs">{'invisible': [('stage_name', '!=', 'En cours')]}</attribute>
-            </xpath>
+            </xpath> -->
+
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" 
+                        type="action"
+                        string="Disponibilité" 
+                        name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
+                        context="{'fsm_mode': 1, 'task_nameget_with_hours': 1, 'default_scale': 'week'}"
+                        icon="fa-user">
+                </button>
+            </div>
 
             <xpath expr="//header" position="inside">
                 <field name="is_sub_task" invisible="1"/>
@@ -85,6 +95,15 @@
                         type="object" 
                         class="btn-danger"
                         attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}"/>
+                
+                <!-- <button class="oe_highlight" 
+                        type="action"
+                        string="Disponibilité" 
+                        name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
+                        context="{'fsm_mode': 1, 'task_nameget_with_hours': 1, 'default_scale': 'week'}"
+                        icon="fa-user"
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié', 'Non accepté'))]}">
+                </button> -->
             </xpath>
 
             <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
@@ -102,7 +121,7 @@
 
             <xpath expr="//field[@name='user_ids']" position="attributes">
                 <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
-                <attribute name="domain">[('employee_id', '!=', False), ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id)]</attribute>
+                <attribute name="domain">['&amp;', ('employee_id', '!=', False), '|', '&amp;', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), ('employee_id.branch_id', '=', False)]</attribute>
                 <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
 
