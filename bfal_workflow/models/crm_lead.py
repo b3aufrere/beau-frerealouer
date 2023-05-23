@@ -89,6 +89,8 @@ class CrmLead(models.Model):
         
         if self.user_id:
             action['context']['default_user_id'] = self.user_id.id
+        
+        return action
 
     @api.onchange('sale_order_count')
     def compute_is_accepted(self):
