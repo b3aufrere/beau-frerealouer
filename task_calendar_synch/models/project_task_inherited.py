@@ -50,13 +50,13 @@ class ProjectTask(models.Model):
         # if result.activity_user_id:
         #     lines.append((4,result.activity_user_id.partner_id.id))
         # if vals.get('date_assign'):
-        if vals.get('planned_date_begin') and vals.get('planned_date_end'):
+        if vals.get('date_assign') or (vals.get('planned_date_begin') and vals.get('planned_date_end')):
             meeting = self.env['calendar.event'].create({
               'name':vals['name'],
               # 'start':vals.get('date_start') or vals.get('date_assign'), # while duplicating task not pass date_start
               # 'stop': vals.get('date_start') or vals.get('date_assign'), # while duplicating task not pass date_start
-              'start': vals.get('planned_date_begin'), #odoo13 ('date_start' field remove in odoo13.)
-              'stop': vals.get('planned_date_end'),
+              'start': vals.get('planned_date_begin') if vals.get('planned_date_begin') else vals.get('date_assign'), #odoo13 ('date_start' field remove in odoo13.)
+              'stop': vals.get('planned_date_end') if vals.get('planned_date_end') else vals.get('date_assign'),
               'custom_task_id':result.id,
               'partner_ids':lines,
               # 'duration':vals['custom_planned_hours'],
