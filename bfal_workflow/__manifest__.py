@@ -30,7 +30,8 @@
         'bi_crm_task',
         'sh_create_expense_from_task',
         'documents_project',
-        'task_calendar_synch'
+        'task_calendar_synch',
+        'account'
     ],
     
     'data': [ 

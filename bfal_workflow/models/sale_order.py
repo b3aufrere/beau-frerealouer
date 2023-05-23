@@ -26,6 +26,11 @@ class SaleOrder(models.Model):
     # def onchange_branch_id(self):
     #     self.user_id = False
 
+    @api.depends('partner_id')
+    def _compute_payment_term_id(self):
+        for order in self:
+            order.payment_term_id = self.env.ref("account.account_payment_term_immediate").id
+
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
         for order in self:
