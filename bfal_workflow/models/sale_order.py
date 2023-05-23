@@ -22,9 +22,9 @@ class SaleOrder(models.Model):
             self.env.ref("sales_team.group_sale_salesman").id
         ))
 
-    @api.onchange('branch_id')
-    def onchange_branch_id(self):
-        self.user_id = False
+    # @api.onchange('branch_id')
+    # def onchange_branch_id(self):
+    #     self.user_id = False
 
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
