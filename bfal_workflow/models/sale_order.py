@@ -8,12 +8,29 @@ class SaleOrder(models.Model):
 
     meeting_ids = fields.One2many('calendar.event', 'order_id', string="Rendez-vous")
     meeting_count = fields.Integer(compute='_compute_meeting_count', string="Nombre des rendez-vous")
-    division_id = fields.Many2one('division', related='user_id.employee_id.branch_id.division_id', string='Division')
+    division_id = fields.Many2one('division', related='branch_id.division_id', string='Division')
     # entreprise_id = fields.Many2one('entreprise', related='user_id.employee_id.entreprise_id', string='Entreprise')
-    branch_id = fields.Many2one('res.branch', related='user_id.employee_id.branch_id', string='Entreprise')
+    branch_id = fields.Many2one('res.branch', string='Entreprise')
     task_assignment_history_ids = fields.One2many('task.assignment.history', 'order_id', string="Historique des assignations")
     state = fields.Selection(selection_add=[('not_accepted', 'Non accepté')])
     order_not_accept_reason_id = fields.Many2one('order.not.accept.reason', string="Motif de non acceptation",)
+    description = fields.Html(string='Description')
+    payment_term_id = fields.Many2one(default=lambda self: self.env.ref("account.account_payment_term_immediate").id)
+    user_id = fields.Many2one(
+        domain=lambda self: "['&', ('groups_id', '=', {}), '&', ('share', '=', False), '&', ('company_ids', '=', company_id), \
+                              '|', '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), \
+                              ('employee_id.branch_id', '=', False)]".format(
+            self.env.ref("sales_team.group_sale_salesman").id
+        ))
+
+    # @api.onchange('branch_id')
+    # def onchange_branch_id(self):
+    #     self.user_id = False
+
+    @api.depends('partner_id')
+    def _compute_payment_term_id(self):
+        for order in self:
+            order.payment_term_id = self.env.ref("account.account_payment_term_immediate").id
 
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
