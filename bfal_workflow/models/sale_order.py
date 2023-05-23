@@ -14,6 +14,7 @@ class SaleOrder(models.Model):
     task_assignment_history_ids = fields.One2many('task.assignment.history', 'order_id', string="Historique des assignations")
     state = fields.Selection(selection_add=[('not_accepted', 'Non accepté')])
     order_not_accept_reason_id = fields.Many2one('order.not.accept.reason', string="Motif de non acceptation",)
+    description = fields.Html(string='Description')
 
     @api.depends('meeting_ids')
     def _compute_meeting_count(self):
