@@ -3,6 +3,8 @@ from odoo import models, fields, api, _, Command
 from datetime import date
 from odoo.tools import html2plaintext, plaintext2html
 from odoo.exceptions import UserError
+import json
+
 
 from logging import warning as w
 
@@ -90,7 +92,7 @@ class CrmLead(models.Model):
         if self.user_id:
             action['context']['default_user_id'] = self.user_id.id
 
-        w(f"action >>> {action['context']}")
+        w(f"action >>> {json.dumps(action, indent=4)}")
         
         return action
     
