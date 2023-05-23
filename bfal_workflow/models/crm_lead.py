@@ -82,6 +82,14 @@ class CrmLead(models.Model):
         related='stage_id.role'
     )
 
+    def action_view_sale_quotation(self):
+        action = super(CrmLead, self).action_view_sale_quotation()
+        if self.branch_id:
+            action['context']['default_branch_id'] = self.branch_id.id
+        
+        if self.user_id:
+            action['context']['default_user_id'] = self.user_id.id
+
     @api.onchange('sale_order_count')
     def compute_is_accepted(self):
         self.is_accepted = True if self.order_ids else False
