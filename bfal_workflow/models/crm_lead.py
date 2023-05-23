@@ -91,6 +91,8 @@ class CrmLead(models.Model):
         if self.user_id:
             quotation_context['default_user_id'] = self.user_id.id
 
+        w(f"quotation_context >> {quotation_context}")
+
         return quotation_context
 
     @api.onchange('sale_order_count')
