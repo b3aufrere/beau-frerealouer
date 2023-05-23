@@ -15,6 +15,7 @@ class SaleOrder(models.Model):
     state = fields.Selection(selection_add=[('not_accepted', 'Non accepté')])
     order_not_accept_reason_id = fields.Many2one('order.not.accept.reason', string="Motif de non acceptation",)
     description = fields.Html(string='Description')
+    payment_term_id = fields.Many2one(default=lambda self: self.env.ref("account.account_payment_term_immediate").id)
     user_id = fields.Many2one(
         domain=lambda self: "['&', ('groups_id', '=', {}), '&', ('share', '=', False), '&', ('company_ids', '=', company_id), \
                               '|', '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), \
