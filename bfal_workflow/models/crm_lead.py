@@ -81,16 +81,17 @@ class CrmLead(models.Model):
         string="Rôle",
         related='stage_id.role'
     )
+    
+    def _prepare_opportunity_quotation_context(self):
+        quotation_context = super(CrmLead, self)._prepare_opportunity_quotation_context()
 
-    def action_view_sale_quotation(self):
-        action = super(CrmLead, self).action_view_sale_quotation()
         if self.branch_id:
-            action['context']['default_branch_id'] = self.branch_id.id
+            quotation_context['default_branch_id'] = self.branch_id.id
         
         if self.user_id:
-            action['context']['default_user_id'] = self.user_id.id
-        
-        return action
+            quotation_context['default_user_id'] = self.user_id.id
+
+        return quotation_context
 
     @api.onchange('sale_order_count')
     def compute_is_accepted(self):
