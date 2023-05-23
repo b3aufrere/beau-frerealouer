@@ -90,7 +90,7 @@ class CrmLead(models.Model):
         if self.user_id:
             action['context']['default_user_id'] = self.user_id.id
 
-        w(f"action >>> {action}")
+        w(f"action >>> {action['context']}")
         
         return action
     
