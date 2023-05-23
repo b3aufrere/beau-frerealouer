@@ -9,7 +9,7 @@ class SaleOrderLine(models.Model):
         values = super(SaleOrderLine, self)._timesheet_create_task_prepare_values(project)
 
         if self.order_id.opportunity_id:
-            values['description'] = self.order_id.internal_note
+            values['description'] = self.order_id.description
             values['branch_id'] = self.order_id.branch_id.id if self.order_id.branch_id else False
             values['lead_id'] = self.order_id.opportunity_id.id if self.order_id.opportunity_id else False
 
@@ -23,7 +23,7 @@ class SaleOrderLine(models.Model):
         elif self.order_id.user_id:
             values['branch_id'] = self.order_id.branch_id.id if self.order_id.branch_id else False
             values['user_ids'] = [(6, 0, [self.order_id.user_id.id])]
-            values['description'] = self.order_id.internal_note
+            values['description'] = self.order_id.description
 
         return values
     

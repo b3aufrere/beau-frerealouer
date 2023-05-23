@@ -68,6 +68,12 @@
             <xpath expr="//group[@name='partner_details']" position="inside">
                 <field name="order_not_accept_reason_id" attrs="{'invisible': [('state','!=','not_accepted')]}" readonly="1" options="{'no_open': True}"/>
             </xpath>
+
+            <page name="customer_signature" position="after">
+                <page string="Description" name="description">
+                    <field name="description" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Description ..."/>
+                </page>
+            </page>
         </field>
     </record>
 
