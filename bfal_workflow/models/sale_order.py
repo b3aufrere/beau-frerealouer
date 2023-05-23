@@ -16,7 +16,7 @@ class SaleOrder(models.Model):
     order_not_accept_reason_id = fields.Many2one('order.not.accept.reason', string="Motif de non acceptation",)
     description = fields.Html(string='Description')
     user_id = fields.Many2one(
-        domain=lambda self: "['&', ('groups_id', '=', {}), '&', ('share', '=', False), '&', ('company_ids', '=', company_id) \
+        domain=lambda self: "['&', ('groups_id', '=', {}), '&', ('share', '=', False), '&', ('company_ids', '=', company_id), \
                               '|', '&', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), \
                               ('employee_id.branch_id', '=', False)]".format(
             self.env.ref("sales_team.group_sale_salesman").id
