@@ -7,7 +7,7 @@
     'author': 'Kamel Benchehida',
 
     'depends': [
-        'base', 
+        'base',
         'contacts', 
         'hr', 
         'crm', 

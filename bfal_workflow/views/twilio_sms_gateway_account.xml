@@ -8,7 +8,9 @@
             <xpath expr="//group[@name='advanced_features']" position="inside">
                 <group>
                     <field  name="is_notify_worker_abt_his_new_task"/>
-                    <field  name="sms_notify_worker_abt_his_new_task_template_id" options="{'no_create': True,'no_create_edit': True , 'no_open': True}" attrs="{'required': [('is_validate_do_to_send_sms', '=', True)]}"/>
+                    <field  name="sms_notify_worker_abt_his_new_task_template_id"
+                            options="{'no_create': True,'no_create_edit': True , 'no_open': True}"
+                            attrs="{'required': [('is_validate_do_to_send_sms', '=', True)], 'invisible': [('is_notify_worker_abt_his_new_task', '=', False)] }"/>
                 </group>
             </xpath>
         </field>
