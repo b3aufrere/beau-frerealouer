@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="view_partner_form_inherit_commission_user" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+             <xpath expr="//form/sheet/notebook/page[last()]" position="after">
+                <page string="Sales Commission Setting">
+                    <field name="sale_commission_user_ids">
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <!--<field name="user_id"/>-->
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    
+</odoo>

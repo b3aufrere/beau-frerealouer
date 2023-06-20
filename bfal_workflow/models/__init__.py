@@ -7,3 +7,14 @@ from . import crm_lead
 from . import sale_order_line
 from . import calendar_event
 from . import sale_order
+from . import project_task
+from . import helpdesk_ticket
+from . import mail_activity
+from . import account_move
+from . import branch
+from . import product
+from . import twilio_sms_gateway_account
+from . import crm_stage
+from . import task_assignment_history
+from . import task_cancellation_reason
+from . import order_not_accept_reason

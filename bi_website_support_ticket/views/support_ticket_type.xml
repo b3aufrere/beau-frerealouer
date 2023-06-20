@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="support_ticket_type_form_view" model="ir.ui.view">
+		<field name="name">support.ticket.type.form.view</field>
+		<field name="model">support.ticket.type</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet string="Ticket Type">
+					<group>
+						<group>
+							<field name="name" />
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record id="support_ticket_type_tree_view" model="ir.ui.view">
+		<field name="name">support.ticket.type.tree.view</field>
+		<field name="model">support.ticket.type</field>
+		<field name="arch" type="xml">
+			<tree string="Ticket Type">
+				<field name="name" />
+			</tree>
+		</field>
+	</record>
+
+	<record id="action_support_ticket_type" model="ir.actions.act_window">
+		<field name="name">Helpdesk Ticket Type</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">support.ticket.type</field>
+		<field name="view_mode">tree,form</field>
+	</record>	
+</odoo>

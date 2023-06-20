@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record model="support.stage" id="support_stage">
+            <field name="name">New</field>
+            <field name="sequence">1</field>
+        </record>
+        <record model="support.stage" id="support_stage1">
+            <field name="name">Assigned</field>
+            <field name="sequence">2</field>
+        </record>
+        <record model="support.stage" id="support_stage2">
+            <field name="name">Work In Progress</field>
+            <field name="sequence">3</field>
+        </record>
+        <record model="support.stage" id="support_stage3">
+            <field name="name">Needs More Info</field>
+            <field name="sequence">4</field>
+        </record>
+        <record model="support.stage" id="support_stage4">
+            <field name="name">Needs Reply</field>
+            <field name="sequence">5</field>
+        </record>
+        <record model="support.stage" id="support_stage6">
+            <field name="name">Solution Suggested</field>
+            <field name="fold">1</field>
+            <field name="sequence">6</field>
+        </record>
+        <record model="support.stage" id="support_stage7">
+            <field name="name">Closed</field>
+            <field name="fold">1</field>
+            <field name="sequence">7</field>
+        </record>
+
+    </data>
+</odoo>

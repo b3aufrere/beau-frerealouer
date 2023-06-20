@@ -1,0 +1,809 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sales_commission_external_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-09-06 05:48+0000\n"
+"PO-Revision-Date: 2017-09-06 05:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>Account Invoice</strong>"
+msgstr "<strong>Account Invoice</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Amount in Company Currency</strong>"
+msgstr "<strong>Amount in Company Currency</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Amount</strong>"
+msgstr "<strong>Amount</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Commission Date</strong>"
+msgstr "<strong>Commission Date</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Commission Invoice</strong>"
+msgstr "<strong>Commission Invoice</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Commission Product</strong>"
+msgstr "<strong>Commission Product</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>Commission User</strong>"
+msgstr "<strong>Commission User</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Company</strong>"
+msgstr "<strong>Company</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>Description</strong>"
+msgstr "<strong>Description</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>End Date</strong>"
+msgstr "<strong>End Date</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Is Commision Line Paid</strong>"
+msgstr "<strong>Is Commision Line Paid</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Is Commission Paid</strong>"
+msgstr "<strong>Is Commission Paid</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>Product</strong>"
+msgstr "<strong>Product</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Sales Member</strong>"
+msgstr "<strong>Sales Member</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>Sales Team</strong>"
+msgstr "<strong>Sales Team</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Start Date</strong>"
+msgstr "<strong>Start Date</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Status</strong>"
+msgstr "<strong>Status</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>Total Commision Amount</strong>"
+msgstr "<strong>Total Commision Amount</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "<strong>User Type</strong>"
+msgstr "<strong>User Type</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "<strong>User</strong>"
+msgstr "<strong>User</strong>"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_account_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_account_invoice_line_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_account_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_invoice_id
+msgid "Account Invoice"
+msgstr "Account Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_account_payment_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_payment_id
+msgid "Account Payment"
+msgstr "Account Payment"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_amount
+msgid "Amount"
+msgstr "Amount"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_amount_company_currency
+msgid "Amount in Company Currency"
+msgstr "Amount in Company Currency"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_config_settings_commission_based_on
+msgid "Calculation Based On"
+msgstr "Calculation Based On"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "Cancel"
+msgstr "Cancel"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission,state:0
+#: selection:sales.commission.line,state:0
+msgid "Cancelled"
+msgstr "Cancelled"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_product_id
+msgid "Commision Product For Invoice"
+msgstr "Commision Product For Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_date
+msgid "Commission Date"
+msgstr "Commission Date"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_invoice_id
+msgid "Commission Invoice"
+msgstr "Commission Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_level_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_level_id
+msgid "Commission Level"
+msgstr "Commission Level"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sale_commission_level_percentage.py:86
+#, python-format
+msgid "Commission Levels must be unique!"
+msgstr "Commission Levels must be unique!"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_sales_commission_line
+msgid "Commission Line"
+msgstr "Commission Line"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_commission_percentage_ids
+msgid "Commission Percentage"
+msgstr "Commission Percentage"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_worksheet_menu
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_worksheet_menu_invoice
+msgid "Commission Worksheets"
+msgstr "Commission Worksheets"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_menu_main
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_menu_main_invoice
+msgid "Commissions"
+msgstr "Commissions"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_company_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_company_id
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_search_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_search_view
+msgid "Company"
+msgstr "Company"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "Create Invoice"
+msgstr "Create Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_create_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_create_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_create_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_create_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_create_uid
+msgid "Created by"
+msgstr "Created by"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_create_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_create_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_create_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_create_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_create_date
+msgid "Created on"
+msgstr "Created on"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_currency_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_currency_id
+msgid "Currency"
+msgstr "Currency"
+
+#. module: sales_commission_external_user
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Customer Payment"
+msgstr "Customer Payment"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_form_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "Description..."
+msgstr "Description..."
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_display_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_display_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_display_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_display_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_display_name
+msgid "Display Name"
+msgstr "Display Name"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission,state:0
+#: selection:sales.commission.line,state:0
+msgid "Draft"
+msgstr "Draft"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_end_date
+msgid "End Date"
+msgstr "End Date"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission.line,state:0
+msgid "Exception"
+msgstr "Exception"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_search_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_search_view
+msgid "Group By"
+msgstr "Group By"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_id
+msgid "ID"
+msgstr "ID"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_notes
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_notes
+msgid "Internal Notes"
+msgstr "Internal Notes"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_user_id
+msgid "Internal User/ External Partner"
+msgstr "Internal User/ External Partner"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_account_invoice
+msgid "Invoice"
+msgstr "Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Invoice Line"
+
+#. module: sales_commission_external_user
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Invoice Validate"
+msgstr "Invoice Validate"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission,state:0
+#: selection:sales.commission.line,state:0
+msgid "Invoiced"
+msgstr "Invoiced"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_line_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_payment_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_crm_team_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_category_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_product_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_template_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_order_is_apply
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_order_line_is_apply
+msgid "Is Apply ?"
+msgstr "Is Apply ?"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_is_paid
+msgid "Is Commision Line Paid"
+msgstr "Is Commision Line Paid"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_is_paid
+msgid "Is Commission Paid"
+msgstr "Is Commission Paid"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_product_is_commission_product
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_template_is_commission_product
+msgid "Is Commission Product ?"
+msgstr "Is Commission Product ?"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level___last_update
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage___last_update
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users___last_update
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission___last_update
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line___last_update
+msgid "Last Modified on"
+msgstr "Last Modified on"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_write_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_write_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_write_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_write_uid
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_write_uid
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_write_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_write_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_write_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_write_date
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_write_date
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_name
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_name
+msgid "Name"
+msgstr "Name"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission,state:0
+#: selection:sales.commission.line,state:0
+msgid "Paid"
+msgstr "Paid"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_res_partner
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_account_payment
+msgid "Payments"
+msgstr "Payments"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_percentage
+msgid "Percentage (%)"
+msgstr "Percentage (%)"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sale_commission_level_percentage.py:61
+#, python-format
+msgid "Percentage must be between 0.0 to 100.0!"
+msgstr "Percentage must be between 0.0 to 100.0!"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sales_commission.py:177
+#, python-format
+msgid "Please configure an accounting sale journal for this company."
+msgstr "Please configure an accounting sale journal for this company."
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sales_commission.py:125
+#, python-format
+msgid "Please define expense account for this product: \"%s\" (id:%d) - or for its category: \"%s\"."
+msgstr "Please define expense account for this product: \"%s\" (id:%d) - or for its category: \"%s\"."
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/account_payment.py:108
+#, python-format
+msgid "Please select Sales Team."
+msgstr "Please select Sales Team."
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sales_commission.py:170
+#, python-format
+msgid "Please set pricelist."
+msgstr "Please set pricelist."
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_product_id
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_search_view
+#: selection:sale.config.settings,commission_based_on:0
+msgid "Product"
+msgstr "Product"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_product_category
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_product_category_id
+#: selection:sale.config.settings,commission_based_on:0
+msgid "Product Category"
+msgstr "Product Category"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_product_template
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_commission_user_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_product_id
+msgid "Product Template"
+msgstr "Product Template"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "Reset to Draft"
+msgstr "Reset to Draft"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.invoice_form_inherit_sales_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_order_form_inherit_commission
+msgid "Sale Commission Level"
+msgstr "Sale Commission Level"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_line_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_payment_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_crm_team_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_category_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_product_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_product_template_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_order_line_sale_commission_percentage_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_order_sale_commission_percentage_ids
+msgid "Sale Commission Level Percentage"
+msgstr "Sale Commission Level Percentage"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_sale_commission_user_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_payment_sale_commission_user_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_res_partner_sale_commission_user_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_res_users_sale_commission_user_ids
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_order_sale_commission_user_ids
+msgid "Sale Commission User"
+msgstr "Sale Commission User"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_sale_order_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_users_order_id
+msgid "Sale Order"
+msgstr "Sale Order"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_sale_order_line_id
+msgid "Sale Order Line"
+msgstr "Sale Order Line"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_advance_payment_inv
+msgid "Sales Advance Payment Invoice"
+msgstr "Sales Advance Payment Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.actions.act_window,name:sales_commission_external_user.sales_commission_action
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_invoice_sale_commission_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_sales_commission_id
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_sales_config_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_template_property_form_inherit
+#: model:product.product,name:sales_commission_external_user.product_sales_commission
+#: model:product.template,name:sales_commission_external_user.product_sales_commission_product_template
+msgid "Sales Commission"
+msgstr "Sales Commission"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_payment_sales_commission_apply
+msgid "Sales Commission Apply"
+msgstr "Sales Commission Apply"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_id
+msgid "Sales Commission Details"
+msgstr "Sales Commission Details"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_form_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "Sales Commission Form"
+msgstr "Sales Commission Form"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_level_from
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_level_list
+msgid "Sales Commission Lavel"
+msgstr "Sales Commission Lavel"
+
+#. module: sales_commission_external_user
+#: model:ir.actions.act_window,name:sales_commission_external_user.sales_commission_level_config_action
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_level_config
+msgid "Sales Commission Levels"
+msgstr "Sales Commission Levels"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "Sales Commission Lines"
+msgstr "Sales Commission Lines"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_tree_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_tree_view
+msgid "Sales Commission List"
+msgstr "Sales Commission List"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.crm_team_view_form_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.product_category_form_view_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_partner_form_inherit_commission_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_template_property_form_inherit
+msgid "Sales Commission Setting"
+msgstr "Sales Commission Setting"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_form_inherit_sale_commission_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_invoice_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_invoice_line_form_sales_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_order_form_inherit_commission
+msgid "Sales Commission Settings"
+msgstr "Sales Commission Settings"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.invoice_form_inherit_sales_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_order_form_inherit_commission
+msgid "Sales Commission User Setting"
+msgstr "Sales Commission User Setting"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_form_inherit_sale_commission_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_invoice_inherit_commission
+msgid "Sales Commission User Settings"
+msgstr "Sales Commission User Settings"
+
+#. module: sales_commission_external_user
+#: model:ir.actions.act_window,name:sales_commission_external_user.sales_commission_worksheet_action
+msgid "Sales Commission Worksheet"
+msgstr "Sales Commission Worksheet"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_id
+msgid "Sales Commission Worksheet Details"
+msgstr "Sales Commission Worksheet Details"
+
+#. module: sales_commission_external_user
+#: model:ir.actions.report.xml,name:sales_commission_external_user.sales_commission_worksheet_report
+msgid "Sales Commission Worksheets"
+msgstr "Sales Commission Worksheets"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/res_config.py:26
+#, python-format
+msgid "Sales Commission: You can not have commision based on product or category if you have selected when to pay is payment."
+msgstr "Sales Commission: You can not have commision based on product or category if you have selected when to pay is payment."
+
+#. module: sales_commission_external_user
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_menu
+#: model:ir.ui.menu,name:sales_commission_external_user.sales_commission_menu_invoice
+msgid "Sales Commissions Lines"
+msgstr "Sales Commissions Lines"
+
+#. module: sales_commission_external_user
+#: selection:sale.config.settings,when_to_pay:0
+msgid "Sales Confirmation"
+msgstr "Sales Confirmation"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission.line,type:0
+msgid "Sales Manager"
+msgstr "Sales Manager"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_commission_user_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_commission_user_id
+msgid "Sales Member"
+msgstr "Sales Member"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_order
+msgid "Sales Order"
+msgstr "Sales Order"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Sales Order Line"
+
+#. module: sales_commission_external_user
+#: selection:sales.commission.line,type:0
+msgid "Sales Person"
+msgstr "Sales Person"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_crm_team
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_account_payment_sales_team_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_commission_level_percentage_team_id
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_sales_team_id
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_search_view
+#: selection:sale.config.settings,commission_based_on:0
+msgid "Sales Team"
+msgstr "Sales Team"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_search_view
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_search_view
+msgid "Sales User"
+msgstr "Sales User"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sales_commission.py:377
+#, python-format
+msgid "Sorry! You can not delete non-draft sales commission lines!"
+msgstr "Sorry! You can not delete non-draft sales commission lines!"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sales_commission.py:146
+#, python-format
+msgid "Sorry! You can not delete non-draft sales commission!"
+msgstr "Sorry! You can not delete non-draft sales commission!"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_source_currency
+msgid "Source Currency"
+msgstr "Source Currency"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_origin
+msgid "Source Document"
+msgstr "Source Document"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_src_invoice_id
+msgid "Source Invoice"
+msgstr "Source Invoice"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_src_payment_id
+msgid "Source Payment"
+msgstr "Source Payment"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_src_order_id
+msgid "Source Sale Order"
+msgstr "Source Sale Order"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_start_date
+msgid "Start Date"
+msgstr "Start Date"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_state
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_state
+msgid "Status"
+msgstr "Status"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_amount
+msgid "Total Commision Amount (Company Currency)"
+msgstr "Total Commision Amount (Company Currency)"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sales_commission_line_type
+msgid "User Type"
+msgstr "User Type"
+
+#. module: sales_commission_external_user
+#: model:ir.model.fields,field_description:sales_commission_external_user.field_sale_config_settings_when_to_pay
+msgid "When To Pay"
+msgstr "When To Pay"
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/account_invoice.py:209
+#: code:addons/sales_commission_external_user/models/account_payment.py:194
+#: code:addons/sales_commission_external_user/models/sale.py:190
+#, python-format
+msgid "You can not cancel this invoice because sales commission is invoiced/paid. Please cancel related commission lines and try again."
+msgstr "You can not cancel this invoice because sales commission is invoiced/paid. Please cancel related commission lines and try again."
+
+#. module: sales_commission_external_user
+#: code:addons/sales_commission_external_user/models/sale_commission_level_user.py:55
+#, python-format
+msgid "You can not set multiple level!"
+msgstr "You can not set multiple level!"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "amount"
+msgstr "amount"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.sales_commission_worksheet_form_view
+msgid "amount_company_currency"
+msgstr "amount_company_currency"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_commission_level
+msgid "sale.commission.level"
+msgstr "sale.commission.level"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_commission_level_percentage
+msgid "sale.commission.level.percentage"
+msgstr "sale.commission.level.percentage"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_commission_level_users
+msgid "sale.commission.level.users"
+msgstr "sale.commission.level.users"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sale_config_settings
+msgid "sale.config.settings"
+msgstr "sale.config.settings"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.crm_team_view_form_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.invoice_form_inherit_sales_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.product_category_form_view_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_invoice_line_form_sales_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_order_form_inherit_commission
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_partner_form_inherit_commission_user
+msgid "sale_commission Percentage"
+msgstr "sale_commission Percentage"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_template_property_form_inherit
+msgid "sale_commission_Percentage"
+msgstr "sale_commission_Percentage"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_form_inherit_sale_commission_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_invoice_inherit_commission
+msgid "sale_commission_setting"
+msgstr "sale_commission_setting"
+
+#. module: sales_commission_external_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_form_inherit_sale_commission_user
+#: model:ir.ui.view,arch_db:sales_commission_external_user.view_account_payment_invoice_inherit_commission
+msgid "sale_commission_user_setting"
+msgstr "sale_commission_user_setting"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sales_commission
+msgid "sales.commission"
+msgstr "sales.commission"
+
+#. module: sales_commission_external_user
+#: model:ir.model,name:sales_commission_external_user.model_sales_commission_line
+msgid "sales.commission.line"
+msgstr "sales.commission.line"
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="product_category_form_view_inherit_commission" model="ir.ui.view">
+        <field name="name">product.category.form.inherit</field>
+        <field name="model">product.category</field>
+        <field name="inherit_id" ref="product.product_category_form_view"/>
+        <field name="arch" type="xml">
+            <group name="first" position="after"> 
+                <group name="Sales Commission">
+<!--                    <field name="sales_manager_commission" attrs="{'invisible': [('is_apply', '!=', True)]}"/>-->
+<!--                    <field name="sales_person_commission" attrs="{'invisible': [('is_apply', '!=', True)]}"/>-->
+                    <field name="is_apply" invisible="1"/>
+                </group>
+             </group>       
+             <group name="first" position="after"> 
+                <!-- <group name="sales_commission" string="Sales Commission Setting" attrs="{'invisible': [('is_apply', '!=', True)]}"> -->
+                <div class="o_horizontal_separator mt-4 mb-3 text-uppercase fw-bolder small" attrs="{'invisible': [('is_apply', '!=', True)]}">Sales Commission Setting</div>
+                    <!-- <field name="sale_commission_percentage_ids" nolabel="1"> -->
+                    <field name="sale_commission_percentage_ids" nolabel="1" attrs="{'invisible': [('is_apply', '!=', True)]}">    
+                        <tree string="sale_commission Percentage" editable="bottom" >
+                            <field name="level_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="percentage"/>
+                        </tree>
+                    </field>
+                <!-- </group> -->
+             </group>
+        </field>
+    </record>
+
+    <menuitem id="menu_product_in_config_sale_commission_external_user" name="Products" parent="sale.menu_sale_config" sequence="11"/>
+    <menuitem
+        action="product.product_category_action_form" id="menu_product_category_config_sale_commission_external_user"
+        parent="menu_product_in_config_sale_commission_external_user" sequence="2"/>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="add_bfal_changes_view_move_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_move_form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_user_id']" position="before">
+                <field name="division_id"/>
+                <!-- <field name="entreprise_id"/> -->
+            </xpath>
+        </field>
+    </record>
+</odoo>

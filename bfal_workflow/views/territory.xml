@@ -21,7 +21,8 @@
                                 <field name="unit" />
                             </group>
                             <group>
-                                <field name="entreprise_ids" widget="many2many_tags" />
+                                <field name="entreprise_ids" widget="many2many_tags" invisible="1"/>
+                                <!-- <field name="branch_ids" widget="many2many_tags"/> -->
                                 <field name="link" widget="url"/>
                             </group>
                         </group>
@@ -45,7 +46,8 @@
                     <field name="number" />
                     <field name="index" />
                     <field name="unit" />
-                    <field name="entreprise_ids" widget="many2many_tags"/>
+                    <field name="entreprise_ids" widget="many2many_tags" invisible="1"/>
+                    <!-- <field name="branch_ids" widget="many2many_tags"/> -->
                 </tree>
             </field>
         </record>
@@ -57,9 +59,9 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem   action="action_territory_form" 
+        <!-- <menuitem   action="action_territory_form" 
                     name="Territoires"
                     id="menu_territory" 
-                    parent="contacts.res_partner_menu_config"/>
+                    parent="contacts.res_partner_menu_config"/> -->
     </data>
 </odoo>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="bi_inherit_view_config_settings" model="ir.ui.view">
+		<field name="name">bi_inherit_project_settings</field>
+		<field name="model">res.config.settings</field>
+		<field name="inherit_id" ref="project.res_config_settings_view_form" />
+		<field name="arch" type="xml">
+			<xpath expr="//div[hasclass('settings')]/div[@data-key='project']" position="inside">
+				<h2>Project Subtask And Delegation</h2>
+				<div class="row mt16 o_settings_container">
+                       	<div class="col-12 col-lg-6 o_setting_box">
+                           	<div class="o_setting_left_pane"/>
+                           	<div class="o_setting_right_pane">
+                               	<span class="o_form_label">Project Stages</span>
+                               	<div class="text-muted">
+                                   Prevent stage to change untill all task on same stage
+                               	</div>
+                               	<div class="text-muted">
+                                   	<field name="warning_child_task" domain="[('user_id', '=', False)]"/>
+                               	</div>
+                           	</div>
+                       	</div>
+                   	</div>
+			</xpath>
+		</field>
+	</record>
+</odoo>

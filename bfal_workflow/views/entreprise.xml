@@ -112,10 +112,10 @@
             </field>
         </record>
 
-        <menuitem   action="action_entreprise_form"
+        <!-- <menuitem   action="action_entreprise_form"
                     name="Entreprises" 
                     id="menu_entreprise" 
                     sequence="30"
-                    parent="base.menu_users"/>
+                    parent="base.menu_users"/> -->
     </data>
 </odoo>

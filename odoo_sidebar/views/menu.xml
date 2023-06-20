@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="inherit_edit_menu_access_form_view" model="ir.ui.view">
+            <field name="name">ir.ui.menu</field>
+            <field name="model">ir.ui.menu</field>
+            <field name="inherit_id" ref="base.edit_menu_access"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="after">
+                    <field name="icon"/>
+                 </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_location_form_inherit_branch" model="ir.ui.view">
+            <field name="name">view.location.form.inherit.branch</field>
+            <field name="model">stock.location</field>
+            <field name="inherit_id" ref="stock.view_location_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//group" position="before">
+                    <label for="branch_id" />
+                    <h3>
+                        <field name="branch_id" options="{'no_create': True}" />
+                    </h3>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

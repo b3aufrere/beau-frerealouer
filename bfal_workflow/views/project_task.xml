@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="bfal_view_task_tree" model="ir.ui.view">
+        <field name="name">bfal_view_task_tree</field>
+        <field name="model">project.task</field>
+        <field eval="2" name="priority"/>
+        <field name="arch" type="xml">
+            <tree string="Tasks" multi_edit="1" sample="1" js_class="project_task_list">
+                <field name="message_needaction" invisible="1" readonly="1"/>
+                <field name="is_closed" invisible="1" />
+                <field name="sequence" invisible="1" readonly="1"/>
+                <field name="allow_milestones" invisible="1"/>
+                <field name="priority" widget="priority" optional="show" nolabel="1"/>
+                <field name="allow_subtasks" invisible="1"/>
+                <field name="name" widget="name_with_subtask_count"/>
+                <field name="project_id" widget="project_private_task" optional="show" readonly="1" options="{'no_open': 1}"/>
+                <field name="partner_id"/>
+                <field name="parent_id" optional="hide" attrs="{'invisible': [('allow_subtasks', '=', False)]}" groups="base.group_no_one"/>
+                <field name="user_ids" widget="many2many_avatar_user" domain="[('share', '=', False), ('active', '=', True)]" options='{"no_quick_create": True}'/>
+                <field name="branch_id" />
+                <field name="company_id" groups="base.group_multi_company" optional="show" readonly="True"/>
+                <field name="company_id" invisible="1"/>
+                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}" optional="show" context="{'project_id': project_id}"/>
+                <field name="rating_active" invisible="1"/>
+                <field name="rating_last_text" string="Rating" decoration-danger="rating_last_text == 'ko'"
+                    decoration-warning="rating_last_text == 'ok'" decoration-success="rating_last_text == 'top'"
+                    attrs="{'invisible': ['|', ('rating_active', '=', False), ('rating_last_text', '=', 'none')]}"
+                    class="fw-bold" widget="badge" optional="hide" groups="project.group_project_rating"/>
+                <field name="legend_normal" invisible="1"/>
+                <field name="legend_done" invisible="1"/>
+                <field name="legend_blocked" invisible="1"/>
+                <field name="kanban_state" widget="state_selection" optional="show" options="{'hide_label': True}" nolabel="1" required="0"/>
+                <field name="stage_id" invisible="context.get('set_visible',False)" optional="show" readonly="not context.get('default_project_id')"/>
+                <field name="progress" widget="progressbar"/>
+                <field name="recurrence_id" invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="bi_crm_task.action_view_task_id" model="ir.actions.act_window">
+        <field name="view_id" ref="bfal_view_task_tree"/>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//div[@name='button_box']" position="attributes">
+                 <attribute name="attrs">{'invisible': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath> -->
+
+            <div name="button_box" position="inside">
+                <button class="oe_stat_button" 
+                        type="action"
+                        string="Disponibilité" 
+                        name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
+                        context="{'fsm_mode': 1, 'task_nameget_with_hours': 1, 'default_scale': 'week'}"
+                        icon="fa-user">
+                </button>
+            </div>
+
+            <xpath expr="//header" position="inside">
+                <field name="is_sub_task" invisible="1"/>
+                <field name="is_user_readonly" invisible="1"/>
+                <field name="stage_name" invisible="1"/>
+                <button string="Réassigner" 
+                        name="action_reassign_task" 
+                        icon="fa-undo"
+                        type="object" 
+                        class="oe_highlight" 
+                        groups="industry_fsm.group_fsm_manager"
+                        attrs="{'invisible': ['|', ('is_fsm','=',False), ('stage_name', '!=', 'Non accepté')]}"/>
+
+                <!-- <button string="Créer une visite" 
+                        name="create_sub_task" 
+                        type="object" 
+                        class="oe_highlight" 
+                        attrs="{'invisible': [('is_fsm','=',False)]}"/> -->
+
+                <button string="Planifier" 
+                        name="action_schedule_task" 
+                        type="object" 
+                        class="btn-success"
+                        attrs="{'invisible': ['|', ('stage_name','!=', 'Nouveau'), '|', ('planned_date_begin', '=', False), ('planned_date_end', '=', False)]}"/>
+
+                <button string="Non accepté" 
+                        name="action_no_accept_task" 
+                        type="object" 
+                        class="btn-warning"
+                        attrs="{'invisible': ['|', ('is_sub_task','=',True), ('stage_name','not in',['Nouveau', 'Planifié'])]}"/>
+
+                <button string="Annuler" 
+                        name="action_cancel_task" 
+                        type="object" 
+                        class="btn-danger"
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié'))]}"/>
+                
+                <!-- <button class="oe_highlight" 
+                        type="action"
+                        string="Disponibilité" 
+                        name="%(industry_fsm.project_task_action_fsm_planning_groupby_user)d"
+                        context="{'fsm_mode': 1, 'task_nameget_with_hours': 1, 'default_scale': 'week'}"
+                        icon="fa-user"
+                        attrs="{'invisible': [('stage_name','not in', ('Nouveau', 'Planifié', 'Non accepté'))]}">
+                </button> -->
+            </xpath>
+
+            <xpath expr="//page[@name='sub_tasks_page']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('allow_subtasks', '=', False), ('is_sub_task', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="before">
+                <!-- <field name="territory_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/> -->
+                <field name="branch_id" required="1" attrs="{'readonly':[('is_user_readonly', '=', True)]}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field name="task_cancellation_reason_id" readonly="1" attrs="{'invisible':[('stage_name', '!=', 'Annulé')]}" options="{'no_open': True}"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_ids']" position="attributes">
+                <!-- <attribute name="domain">[('employee_id', '!=', False), ('employee_id.territory_id', '!=', False), ('employee_id.territory_id', '=', territory_id)]</attribute> -->
+                <attribute name="domain">['&amp;', ('employee_id', '!=', False), '|', '&amp;', ('employee_id.branch_id', '!=', False), ('employee_id.branch_id', '=', branch_id), ('employee_id.branch_id', '=', False)]</attribute>
+                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='project_id']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')], 'invisible':[('parent_id', '!=', False)], 'required':[('parent_id', '=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='display_project_id']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')], 'invisible':[('parent_id', '=', False)], 'required':[('parent_id', '!=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//page[@name='extra_info']" position="attributes">
+                <attribute name="attrs">{'invisible':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='stage_id']" position="attributes">
+                <attribute name="options">{'clickable': False, 'fold_field': 'fold'}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_assign_to_me'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_assign_to_me'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': True}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name','!=','Nouveau')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherit_sale_timesheet" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherit_sale_timesheet</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_sale.view_task_form2_inherit_sale_timesheet" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_phone']" position="attributes">
+                <attribute name="attrs">{'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="attrs">{'required':[('is_fsm', '=', True)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_task_view_form_fsm_quick_create" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_form_fsm_quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_task_view_form_fsm_quick_create" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.view_task_form2_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_sharing_quick_create_task_form_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_sharing_quick_create_task_form_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_sharing_quick_create_task_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_sharing_project_task_inherit_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_sharing_project_task_inherit_view_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_report.project_sharing_project_task_inherit_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <field name="is_user_readonly" invisible="1"/>
+            </xpath>
+
+            <xpath expr="//field[@name='worksheet_template_id']" position="attributes">
+                <attribute name="attrs">{'invisible':[('allow_worksheets', '=', False)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_task_view_search_fsm" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_search_fsm</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.project_task_view_search_fsm" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='planned_today']" position="before">
+                <filter string="Non planifiée" name="tasks_not_planned" domain="['|',('planned_date_begin','=',False), ('planned_date_end','=',False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_sale_project_inherit_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_sale_project_inherit_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="sale_project.view_sale_project_inherit_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_so']" position="attributes">
+                <attribute name="groups">sales_team.group_sale_salesman</attribute>
+                <attribute name="attrs">{'invisible': ['|', ('sale_order_id', '=', False), ('stage_name', '!=', 'Fait')]}</attribute>
+            </xpath>
+
+            <xpath expr="//header" position="inside">
+                <button type="object" 
+                        name="action_view_so" 
+                        class="oe_highlight"
+                        icon="fa-dollar" 
+                        attrs="{'invisible': ['|', ('sale_order_id', '=', False), ('stage_name', '!=', 'Fait')]}" 
+                        string="Voir bon de commande" 
+                        groups="sales_team.group_sale_salesman"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_project_task_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_project_task_view_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_enterprise.project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='planned_date_begin']" position="before">
+                <label for="date_start_expected" string="Date planifié désiré"/>
+                <div class="w-100">
+                    <div class="o_row">
+                        <field name="date_start_expected" widget="daterange" options="{'related_end_date': 'date_end_expected'}" attrs="{'required': [('date_end_expected', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}"/>
+                        <i class="fa fa-long-arrow-right mx-2 oe_edit_only" aria-label="Arrow icon" title="Arrow"/>
+                        <i class="fa fa-long-arrow-right mx-2 oe_read_only" aria-label="Arrow icon" title="Arrow"/>
+                        <field name="date_end_expected" widget="daterange" options="{'related_start_date': 'date_start_expected'}" attrs="{'required': [('date_start_expected', '!=', False)], 'readonly':[('is_user_readonly', '=', True)]}"/>
+                    </div>
+                </div>
+            </xpath>
+
+            <xpath expr="//field[@name='planned_date_begin']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name','not in',['Nouveau', 'Planifié'])], 'required': [('planned_date_end', '!=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='planned_date_end']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name','not in',['Nouveau', 'Planifié'])], 'required': [('planned_date_begin', '!=', False)]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_timesheet_grid_project_task_view_form" model="ir.ui.view">
+        <field name="name">add_bfal_changes_timesheet_grid_project_task_view_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="timesheet_grid.project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_timer_start'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_primary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'Planifié')]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_timer_start'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_start_secondary', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_timer_stop']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_stop', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_timer_pause']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_pause', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_timer_resume']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_timer_resume', '=', False), '|', ('encode_uom_in_days', '=', True), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_industry_fsm_view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_industry_fsm_view_task_form2_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm.view_task_form2_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_fsm_validate'][1]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_primary', '=', False), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_fsm_validate'][2]" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('display_mark_as_done_secondary', '=', False), ('stage_name','!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="industry_fsm_sale.view_task_form2_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_fsm_create_quotation']" position="attributes">
+                <attribute name="attrs">{}</attribute>
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="industry_fsm.project_task_action_fsm" model="ir.actions.act_window">
+        <field name="context">{            
+            'fsm_mode': True,            
+            'search_default_my_tasks': True, 
+            'search_default_tasks_not_planned': True,
+            'search_default_planned_future': True,            
+            'search_default_planned_today': True,            
+            'default_user_ids': [(4, uid)],            
+            'default_scale': 'day',        
+        }</field>
+        <field name="domain">[('is_fsm', '=', True)]</field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_form2_inherited" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_form2_inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@id='timesheets_tab']/field[@name='timesheet_ids']" position="attributes">
+                <attribute name="attrs">{'readonly': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_sh_create_expense_project_task_button" model="ir.ui.view">
+        <field name="name">add_bfal_changes_sh_create_expense_project_task_button</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="sh_create_expense_from_task.sh_create_expense_project_task_button" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='create_expense']" position="attributes">
+                <attribute name="attrs">{'invisible': [('stage_name', '!=', 'En cours')]}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="add_bfal_changes_view_task_calendar" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_task_calendar</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_calendar" />
+        <field name="arch" type="xml">
+            <xpath expr="//calendar" position="attributes">
+                <attribute name="date_start">planned_date_begin</attribute>
+                <attribute name="date_stop">planned_date_end</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

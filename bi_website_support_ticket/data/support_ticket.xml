@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+   <!--  <record id="support_team1" model="support.team">
+        <field name="name">Customer Care</field>
+        <field name="alias_name">support</field>
+        <field name="level" eval="False"/> -->
+         <!-- eval=False to don't get the default stage. New stages are setted below-->
+       <!--  <field name="alias_model_id">support.ticket</field>
+        <field name="alias_parent_model_id">support.team</field>
+    </record> -->
+
+   	<record id="mail_alias_support_info" model="mail.alias">
+        <field name="alias_name">ujjavalpatel</field>
+        <field name="alias_model_id" ref="model_support_ticket"/>
+        <field name="alias_user_id" ref="base.user_admin"/>
+        <field name="alias_parent_model_id" ref="model_support_team"/>
+    </record>
+</odoo>

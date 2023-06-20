@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="add_bfal_changes_view_order_form_inherit_sale_project" model="ir.ui.view">
+        <field name="name">add_bfal_changes_view_order_form_inherit_sale_project</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale_project.view_order_form_inherit_sale_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="task_assignment_history" string="Historique des assignations" attrs="{'invisible': [('tasks_count', '=', 0)]}" groups="project.group_project_user">
+                    <field name="task_assignment_history_ids" readonly="1" nolable="1">
+                        <tree no_open="1">
+                            <field name="task_id" />
+                            <field name="user_ids" widget="many2many_avatar_user"/>
+                            <field name="motif" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
     <record id="add_bfal_changes_view_order_form" model="ir.ui.view">
         <field name="name">add_bfal_changes_view_order_form</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button string="Non accepté" 
+                        name="action_not_accepted" 
+                        type="object" 
+                        class="btn-warning"
+                        attrs="{'invisible': [('state','!=','draft')]}"/>
+                
+                <button string="Réassigner" 
+                        name="action_reassign" 
+                        type="object" 
+                        class="oe_highlight" 
+                        icon="fa-undo"
+                        attrs="{'invisible': [('state','!=','not_accepted')]}"/>
+            </xpath>
+
             <xpath expr="//header/button[@name='action_quotation_send']" position="before">
                 <button string="Créer un rendez-vous" 
                         name="action_create_rendez_vous" 
@@ -20,6 +54,26 @@
                     <field name="meeting_count" widget="statinfo" string="Rendez-vous"/>
                 </button>
             </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="division_id"/>
+                <!-- <field name="entreprise_id"/> -->
+                <field name="branch_id"/>
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Partenaire assignée</attribute>
+            </xpath>
+
+            <xpath expr="//group[@name='partner_details']" position="inside">
+                <field name="order_not_accept_reason_id" attrs="{'invisible': [('state','!=','not_accepted')]}" readonly="1" options="{'no_open': True}"/>
+            </xpath>
+
+            <page name="customer_signature" position="after">
+                <page string="Description" name="description">
+                    <field name="description" type="html" options="{'collaborative': true, 'resizable': false}" placeholder="Description ..."/>
+                </page>
+            </page>
         </field>
     </record>
 
@@ -29,5 +83,26 @@
         <field name="view_mode">form,calendar,tree</field>
         <field name="domain">[('order_id', '=', active_id)]</field>
         <field name="context">{'default_order_id': active_id}</field>
+    </record>
+
+    <record id="action_orders_not_accepted" model="ir.actions.act_window">
+        <field name="name">Soumissions non acceptés</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph,activity</field>
+        <field name="search_view_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'not_accepted')]</field>
+    </record>
+
+    <menuitem   id="menu_sale_order_not_accepted"
+                name="Soumissions non acceptés"
+                action="action_orders_not_accepted"
+                parent="sale.sale_order_menu"
+                groups="sales_team.group_sale_salesman_all_leads"
+                sequence="15"/>
+    
+    <record id="sale.action_orders" model="ir.actions.act_window">
+        <field name="domain">[('state', 'not in', ('draft', 'sent', 'not_accepted', 'cancel'))]</field>
     </record>
 </odoo>

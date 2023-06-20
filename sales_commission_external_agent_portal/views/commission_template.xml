@@ -1,0 +1,170 @@
+<odoo>
+    <data>
+        <template id="sales_commission_worksheet_li" 
+            name="Portal layout: Sale Commision Worksheets" 
+            inherit_id="portal.portal_breadcrumbs" priority="41">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name == 'sales_commission' or commission" t-attf-class="breadcrumb-item #{'active ' if not commission else ''}">
+                    <a t-if="commission" t-attf-href="/my/commissions?{{ keep_query() }}">Sale Commission Worksheets</a>
+                    <t t-else="">Sale Commission Worksheets</t>
+                </li>
+                <li t-if="commission" class="breadcrumb-item active">
+                    <t t-esc="commission.name"/>
+                </li>
+            </xpath>
+        </template>
+        
+        <template id="portal_my_commission" name="Portal My Commission" inherit_id="portal.portal_my_home" priority="30">
+            <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="title">Sale Commission Worksheets</t>
+                    <t t-set="url" t-value="'/my/commissions'"/>
+                    <t t-set="placeholder_count" t-value="'sales_commission_count'"/>
+                </t>
+            </xpath>
+        </template>
+        
+        <template id="display_commission_worksheets" name="My Commision Worksheets">
+            <t t-call="portal.portal_layout">
+                <t t-set="breadcrumbs_searchbar" t-value="True"/>
+                <t t-call="portal.portal_searchbar">
+                    <t t-set="title">Commision Worksheets</t>
+                </t>
+                <t t-if="not sales_commissions">
+                    <p>There are currently no Commision Worksheets for your account.</p>
+                </t>
+                <t t-if="sales_commissions" t-call="portal.portal_table">
+                    <thead>
+                        <tr class="active">
+                            <th>Commission #</th>
+                            <th class="text-center">Sales Member</th>
+                            <th class="text-center">Start Date</th>
+                            <th class="text-center">End Date</th>
+                            <th class="text-end">Total Commision Amount</th>
+                            <th class="text-center">Currency</th>
+                            <th class="text-center">State</th>
+                        </tr>
+                    </thead>
+                    <t t-foreach="sales_commissions" t-as="commission">
+                        <tr>
+                            <td><a t-attf-href="/my/commissions/#{commission.id}?#{keep_query()}"><span t-field="commission.name"/></a></td>
+                            <td class="text-center"><span t-field="commission.commission_user_id.name"/></td>
+                            <td class="text-center"><span t-field="commission.start_date"/></td>
+                            <td class="text-center"><span t-field="commission.end_date"/></td>
+                            <td class="text-end"><span t-field="commission.amount"/></td>
+                            <td class="text-center"><span t-field="commission.currency_id.name"/></td>
+                            <td class="text-center">
+                                <span class="badge badge-pill text-bg-info" title="Current Status of the Commission" t-esc="commission.state" />
+                            </td>
+                        </tr>
+                    </t>
+                </t>
+            </t>
+        </template>
+        
+        <template id="portal_my_commission_worksheets" name="My Commision Worksheet">
+            <t t-call="portal.portal_layout">
+                <t t-call="portal.portal_record_layout">
+                    <t t-set="card_header">
+                        <div class="row no-gutters">
+                            <div class="col-md">
+                                <h5 class="mb-1 mb-md-0">
+                                    <span t-field="commission.name"/>
+                                    <small class="text-muted"> (#<span t-field="commission.id"/>)</small>
+                                </h5>
+                            </div>
+                            <div class="col-md text-md-right">
+                                <small class="text-right">Status:</small>
+                                <span t-field="commission.state" class=" badge badge-pill text-bg-info" title="Current stage of this task"/>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-set="card_body">
+                        <div class="row mb-4" t-if="commission.commission_user_id">
+                            <div class="col-12 col-md-6 pb-2">
+                                <strong>Sales Member</strong>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pr-3">
+<!--                                        <img t-if="commission.commission_user_id.image" -->
+<!--                                            class="rounded-circle mt-1 o_portal_contact_img" -->
+<!--                                            t-att-src="image_data_uri(commission.commission_user_id.image)" alt="Contact"/>-->
+                                        <img t-if="commission.commission_user_id.image_1920" 
+                                            class="rounded-circle mt-1 o_portal_contact_img" 
+                                            t-att-src="image_data_uri(commission.commission_user_id.image_1920)" alt="Contact"/>
+                                        <img t-else="" 
+                                            class="rounded-circle mt-1 o_portal_contact_img" 
+                                            src="/web/static/src/img/user_menu_avatar.png" alt="Contact"/>
+                                    </div>
+                                    <div class="col pl-md-0">
+                                        <div t-field="commission.commission_user_id" t-options='{"widget": "contact", "fields": ["name", "email", "phone"]}'/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="coll-12 col-md-6 pb-2" t-if="commission.currency_id">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <strong>Currency :</strong> <span t-field="commission.currency_id.name"/>
+                                    </div>
+                                    <div class="col">
+                                        <a class='text-right' 
+                                            t-attf-href="/commission_worksheet/print/#{commission.id}?#{keep_query()}" 
+                                            title="Download" target="_blank"><i class="fa fa-download"/> Download Commision Report</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12 col-md-6 mb-1" t-if="commission.start_date">
+                                <strong>Start Date:</strong> <span t-field="commission.start_date" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="col-12 col-md-6" t-if="commission.end_date">
+                                <strong>End Date:</strong> <span t-field="commission.end_date" t-options='{"widget": "date"}'/>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12 col-md-6 mb-1" t-if="commission.start_date">
+                                <strong>Total Commision Amount:</strong> <span t-field="commission.amount"
+                                t-options='{"widget": "monetary", "display_currency": commission.currency_id}'/>
+                            </div>
+                            <div class="col-12 col-md-6" t-if="commission.end_date">
+                                <strong>Commision Product:</strong> <span t-field="commission.product_id.name"/>
+                            </div>
+                        </div>
+                        <section id="details_commission_line" style="page-break-inside: auto;" class="mt32" t-if='commission.sales_commission_line'>
+                            <h3 id="details">Commision Lines</h3>
+
+                            <table class="table table-sm" id="sales_order_table">
+                                <thead class="bg-100">
+                                    <tr>
+                                        <th class="text-center">Sales Team</th>
+                                        <th class="text-center">Sales Member</th>
+                                        <th class="text-center">Source Document</th>
+                                        <th t-attf-class="text-center">Commission Date</th>
+                                        <th t-attf-class="text-right">Amount</th>
+                                        <th t-attf-class="text-right">Amount in Company Currency</th>
+                                        <th t-attf-class="text-center">Currency</th>
+                                        <th t-attf-class="text-center">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="sale_tbody">
+                                    <t t-foreach="commission.sales_commission_line" t-as="line">
+                                        <tr>
+                                            <td class="text-center"><span t-field="line.sales_team_id.name"/></td>
+                                            <td class="text-center"><span t-field="line.commission_user_id.name"/></td>
+                                            <td class="text-center"><span t-field="line.origin"/></td>
+                                            <td class="text-center"><span t-field="line.date"/></td>
+                                            <td class="text-right"><span t-field="line.amount"/></td>
+                                            <td class="text-right"><span t-field="line.amount_company_currency"/></td>
+                                            <td class="text-center"><span t-field="line.currency_id.name"/></td>
+                                            <td class="text-center"><span class=" badge badge-pill badge-info" t-field="line.state"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </section>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

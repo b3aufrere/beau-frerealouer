@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="create_crm_lead" model="ir.ui.view">
+            <field name="name">create.crm.lead</field>
+            <field name="model">support.ticket</field>
+            <field name="inherit_id" ref="bi_website_support_ticket.support_ticket_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='create_invoice']" position="before">
+                    <button name="create_crm_lead" string="Create CRM Lead" type="object"
+                            class="btn-primary" attrs="{'invisible': [('is_ticket_closed', '=', True)]}"
+                            groups="bi_crm_helpdesk.group_crm_with_helpdesk"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="crm_lead_button_view" model="ir.ui.view">
+            <field name="name">crm.lead.button.view</field>
+            <field name="model">support.ticket</field>
+            <field name="inherit_id" ref="bi_website_support_ticket.support_ticket_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='invoice_button']" position="before">
+                    <button name="crm_lead_button"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-star"
+                            attrs="{'invisible': [('crm_lead_count', '=', 0)]}"
+                            groups="bi_crm_helpdesk.group_crm_with_helpdesk">
+                        <field name="crm_lead_count" widget="statinfo" string="CRM Lead"
+                               groups="bi_crm_helpdesk.group_crm_with_helpdesk"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="ticket_button_view" model="ir.ui.view">
+            <field name="name">ticket.button.view</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_schedule_meeting']" position="before">
+                    <button name="crm_lead_button"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            attrs="{'invisible': [('crm_lead_ticket_count', '=', 0)]}"
+                            groups="bi_crm_helpdesk.group_crm_with_helpdesk">
+                        <field name="crm_lead_ticket_count" widget="statinfo" string="Tickets"
+                               groups="bi_crm_helpdesk.group_crm_with_helpdesk"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="create_ticket_button" model="ir.ui.view">
+            <field name="name">create.ticket.button</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                    <button name="create_ticket" string="Create Ticket" type="object"
+                            class="btn-primary"
+                            groups="bi_crm_helpdesk.group_crm_with_helpdesk"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
