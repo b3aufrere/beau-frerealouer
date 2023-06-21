@@ -155,7 +155,7 @@
         </field>
     </record>
 
-    <record id="add_bfal_changes_view_task_form2_inherit_sale_timesheet" model="ir.ui.view">
+    <!-- <record id="add_bfal_changes_view_task_form2_inherit_sale_timesheet" model="ir.ui.view">
         <field name="name">add_bfal_changes_view_task_form2_inherit_sale_timesheet</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_sale.view_task_form2_inherit_sale_timesheet" />
@@ -172,7 +172,7 @@
                 <attribute name="attrs">{'required':[('is_fsm', '=', True)], 'readonly':[('is_user_readonly', '=', True)]}</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <record id="add_bfal_changes_project_task_view_form_fsm_quick_create" model="ir.ui.view">
         <field name="name">add_bfal_changes_project_task_view_form_fsm_quick_create</field>
@@ -331,7 +331,7 @@
         </field>
     </record>
 
-    <record id="add_bfal_changes_view_task_form2_inherit" model="ir.ui.view">
+    <!-- <record id="add_bfal_changes_view_task_form2_inherit" model="ir.ui.view">
         <field name="name">add_bfal_changes_view_task_form2_inherit</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="industry_fsm_sale.view_task_form2_inherit" />
@@ -341,7 +341,7 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
         </field>
-    </record>
+    </record> -->
 
     <record id="industry_fsm.project_task_action_fsm" model="ir.actions.act_window">
         <field name="context">{            
