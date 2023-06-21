@@ -6,10 +6,7 @@ from odoo import api, fields, models, _
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    @api.constrains('project_id', 'project_template_id')
-    def _check_project_and_template(self):
-        pass
-
+    
     @api.model
     def default_get(self, default_fields):
         res = super(ProductTemplate, self).default_get(default_fields)
