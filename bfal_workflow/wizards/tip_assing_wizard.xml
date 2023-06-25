@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_tip_assign_wiz_form" model="ir.ui.view">
+            <field name="name">view_tip_assign_wiz_form_wiz_form</field>
+            <field name="model">tip.assign.amount</field>
+            <field name="arch" type="xml">
+                <form string="Tip Amount">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="tip_amount" required="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_assign_tip" string="Confirm" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Annuler" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_view_tip_assign" model="ir.actions.act_window">
+            <field name="name">Tip Amount</field>
+            <field name="res_model">tip.assign.amount</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_tip_assign_wiz_form" />
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

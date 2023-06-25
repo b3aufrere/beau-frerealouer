@@ -44,7 +44,7 @@
         'reports/report_layouts.xml',
         'reports/report_saleorder.xml',
         'reports/report_invoice.xml',
-
+        'wizards/tip_assing_wizard.xml',
         'views/entreprise.xml',
         'views/division.xml',
         'views/territory.xml',
@@ -60,11 +60,18 @@
         'views/crm_stage.xml',
         'views/task_cancellation_reason.xml',
         'views/order_not_accept_reason.xml',
-
+        'views/res_config_settings.xml',
         'wizards/reassignment.xml',
         'wizards/task_cancellation_wiz.xml',
-        'wizards/order_not_accept_wiz.xml'
+        'wizards/order_not_accept_wiz.xml',
+        
     ],
+    'assets': {
+        'web.assets_backend': [
+            'bfal_workflow/static/src/js/tax.js',
+            'bfal_workflow/static/src/xml/*.xml'
+        ]
+    },
     
     'installable': True,
     'application' : True,

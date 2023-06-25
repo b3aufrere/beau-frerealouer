@@ -7,7 +7,9 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='invoice_user_id']" position="before">
                 <field name="division_id"/>
-                <!-- <field name="entreprise_id"/> -->
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="%(bfal_workflow.action_view_tip_assign)d" type="action" string="Tip" />
             </xpath>
         </field>
     </record>

@@ -18,3 +18,4 @@ from . import crm_stage
 from . import task_assignment_history
 from . import task_cancellation_reason
 from . import order_not_accept_reason
+from . import res_config_setting

@@ -405,4 +405,15 @@
                 t-call="bfal_workflow.report_invoice_document_bfal" t-lang="lang"/>
         </xpath>
     </template>
+
+    <template id="document_tax_totals" inherit_id="account.document_tax_totals">
+        <xpath expr="//tr" position="before">
+            <tr t-if="tax_totals.get('formatted_tip_value')">
+                <td><strong>Tip Amount</strong></td>
+                <td  class="text-end">
+                    <span t-esc="tax_totals['formatted_tip_value']" />
+                </td>
+            </tr>
+        </xpath>
+    </template>
 </odoo>
