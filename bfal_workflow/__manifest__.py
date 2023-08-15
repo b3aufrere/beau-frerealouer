@@ -45,6 +45,8 @@
         'reports/report_saleorder.xml',
         'reports/report_invoice.xml',
 
+        'wizards/tip_assing_wizard.xml',
+
         'views/entreprise.xml',
         'views/division.xml',
         'views/territory.xml',
@@ -66,7 +68,7 @@
         'wizards/reassignment.xml',
         'wizards/task_cancellation_wiz.xml',
         'wizards/order_not_accept_wiz.xml',
-        'wizards/tip_assing_wizard.xml'
+        
     ],
 
     'assets': {
