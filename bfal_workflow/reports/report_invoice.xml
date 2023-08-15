@@ -210,6 +210,14 @@
                                     <!--Tax totals-->
                                     <t t-set="tax_totals" t-value="o.tax_totals"/>
                                     <t t-call="account.document_tax_totals"/>
+                                    
+
+                                    <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
+                                        <td><strong>Montant du Pourboire</strong></td>
+                                        <td  class="text-end">
+                                            <span t-esc="tax_totals['formatted_tip_value']" />
+                                        </td>
+                                    </tr>
 
                                     <!--Payments-->
                                     <t t-if="print_with_payments">
@@ -408,7 +416,7 @@
         </xpath>
     </template>
 
-    <template id="document_tax_totals" inherit_id="account.document_tax_totals">
+    <!-- <template id="document_tax_totals" inherit_id="account.document_tax_totals">
         <xpath expr="//tr" position="before">
             <tr t-if="tax_totals.get('formatted_tip_value')">
                 <td><strong>Montant du Pourboire</strong></td>
@@ -417,5 +425,5 @@
                 </td>
             </tr>
         </xpath>
-    </template>
+    </template> -->
 </odoo>
