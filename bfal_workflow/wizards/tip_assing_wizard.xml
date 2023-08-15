@@ -14,7 +14,7 @@
                         </group>
                     </sheet>
                     <footer>
-                        <button name="action_assign_tip" string="Confirm" type="object" class="btn-primary"/>
+                        <button name="action_assign_tip" string="Confirmer" type="object" class="btn-primary"/>
                         <button special="cancel" string="Annuler" class="btn-secondary"/>
                     </footer>
                 </form>
@@ -22,7 +22,7 @@
         </record>
 
         <record id="action_view_tip_assign" model="ir.actions.act_window">
-            <field name="name">Tip Amount</field>
+            <field name="name">Pourboire</field>
             <field name="res_model">tip.assign.amount</field>
             <field name="view_mode">form</field>
             <field name="view_id" ref="view_tip_assign_wiz_form" />

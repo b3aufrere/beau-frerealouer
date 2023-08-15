@@ -7,7 +7,7 @@ class TipAssignAmount(models.TransientModel):
     _name = 'tip.assign.amount'
     _description = 'Tip Amount'
     
-    tip_amount = fields.Float(string="Tip Amount(%)")
+    tip_amount = fields.Float(string="Pourcentage de pourboire (%)")
    
     def action_assign_tip(self):
         move_obj = self.env['account.move']

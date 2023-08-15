@@ -4,7 +4,7 @@
         <xpath expr="//t[@t-call='portal.portal_record_sidebar']//div[hasclass('o_download_pdf')]" position="before">
             <div class="d-grid">
                 <a href="#" t-if="invoice.state == 'draft' and invoice.amount_total and invoice.move_type == 'out_invoice'" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#approve_with">
-                    <i class="fa fa-fw fa-arrow-check"/> Approve
+                    <i class="fa fa-fw fa-arrow-check"/> Approuver
                 </a>
                 <t t-call="bfal_workflow.portal_invoice_approve" />
             </div>
@@ -17,11 +17,11 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title">Approve and Tip</h3>
+                            <h3 class="modal-title">Approuver &amp; Pourboire</h3>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Tip :-
+                            Pourboire
                             <select id="tip_selecte" class="form-control">
                                 <option value="0">0%</option>
                                 <option value="5">5%</option>
@@ -31,8 +31,8 @@
                             <input type="hidden" id="inv_id" t-att-value="invoice.id" />
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary" id="approve_btn">Approve</button>
-                            <button class="btn btn-secondery" data-bs-dismiss="modal">Cancel</button>
+                            <button class="btn btn-primary" id="approve_btn">Approuver</button>
+                            <button class="btn btn-secondery" data-bs-dismiss="modal">Annuler</button>
                         </div>
                     </div>
                 </div>
