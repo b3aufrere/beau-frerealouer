@@ -8,6 +8,7 @@
             <field name="arch" type="xml">
                 <field name="currency_id" position="before">
                     <field name="division_id"/>
+                    <field name="is_tip_product" />
                 </field>
             </field>
         </record>
@@ -19,6 +20,7 @@
             <field name="arch" type="xml">
                 <field name="currency_id" position="after">
                     <field name="division_id"/>
+                    <field name="is_tip_product" />
                 </field>
             </field>
         </record>

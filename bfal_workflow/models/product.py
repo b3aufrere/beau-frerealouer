@@ -17,3 +17,5 @@ class ProductTemplate(models.Model):
         return res
 
     division_id = fields.Many2one('division', string="Division")
+
+    is_tip_product = fields.Boolean(string="Est un produit pourboire ?", default=False)
