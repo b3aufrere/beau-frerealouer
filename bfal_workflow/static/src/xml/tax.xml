@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="TaxTotalsField" t-inherit="account.TaxTotalsField" t-inherit-mode="extension" owl="1">
+        <xpath expr="//tr[2]" position="before">
+            <tr>
+                <td class="">
+                    <label class="o_form_label o_tax_total_label">Tip  Amount</label>
+                </td>
+                <td>
+                    <span name="tip_value" 
+                    t-att-class="Object.keys(totals.groups_by_subtotal).length &gt; 0 ? 'oe_subtotal_footer_separator' : '' " t-out="totals.formatted_tip_value" style="'font-size: 1.3em; font-weight: bold; white-space: nowrap;'"/>
+                </td>
+            </tr>
+        </xpath>
+    </t>
+</templates>

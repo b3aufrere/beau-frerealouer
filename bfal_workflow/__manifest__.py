@@ -60,11 +60,24 @@
         'views/crm_stage.xml',
         'views/task_cancellation_reason.xml',
         'views/order_not_accept_reason.xml',
+        'views/res_config_settings.xml',
+        'views/sale_template.xml',
 
         'wizards/reassignment.xml',
         'wizards/task_cancellation_wiz.xml',
-        'wizards/order_not_accept_wiz.xml'
+        'wizards/order_not_accept_wiz.xml',
+        'wizards/tip_assing_wizard.xml'
     ],
+
+    'assets': {
+        'web.assets_backend': [
+            'bfal_workflow/static/src/js/tax.js',
+            'bfal_workflow/static/src/xml/tax.xml'
+        ],
+        'web.assets_frontend': [
+            'bfal_workflow/static/src/js/website.js',
+        ]
+    },
     
     'installable': True,
     'application' : True,
