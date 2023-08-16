@@ -211,14 +211,16 @@
                                     <t t-set="tax_totals" t-value="o.tax_totals"/>
                                     <t t-call="account.document_tax_totals"/>
                                     
-                                    <tr style="height: 50px !important;"/>
+                                    <t t-if="tax_totals['formatted_tip_value']">
+                                        <tr style="height: 50px !important;"/>
 
-                                    <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
-                                        <td><strong>Montant du Pourboire</strong></td>
-                                        <td  class="text-end">
-                                            <span t-esc="tax_totals['formatted_tip_value']" />
-                                        </td>
-                                    </tr>
+                                        <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
+                                            <td><strong>Montant du Pourboire</strong></td>
+                                            <td  class="text-end">
+                                                <span t-esc="tax_totals['formatted_tip_value']" />
+                                            </td>
+                                        </tr>
+                                    </t>
 
                                     <!--Payments-->
                                     <t t-if="print_with_payments">
