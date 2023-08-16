@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_invoice_page_inherit_payment" name="Payment on My Invoices" inherit_id="account.portal_invoice_page">
+        <xpath expr="//t[@t-call='portal.portal_record_sidebar']//div[hasclass('o_download_pdf')]" position="before">
+            <div class="d-grid">
+                <a href="#" t-if="invoice.state == 'draft' and invoice.amount_total and invoice.move_type == 'out_invoice'" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#approve_with">
+                    <i class="fa fa-fw fa-arrow-check"/> Approuver
+                </a>
+                <t t-call="bfal_workflow.portal_invoice_approve" />
+            </div>
+        </xpath>
+    </template>
+
+     <template id="portal_invoice_approve" name="Invoice Payment">
+        <div class="row">
+            <div class="modal fade" id="approve_with" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Approuver &amp; Pourboire</h3>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Pourboire
+                            <select id="tip_selecte" class="form-control">
+                                <option value="0">0%</option>
+                                <option value="5">5%</option>
+                                <option value="10">10%</option>
+                                <option value="15">15%</option>
+                            </select>
+                            <input type="hidden" id="inv_id" t-att-value="invoice.id" />
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" id="approve_btn">Approuver</button>
+                            <button class="btn btn-secondery" data-bs-dismiss="modal">Annuler</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

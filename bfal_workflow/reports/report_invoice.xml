@@ -133,48 +133,50 @@
                                 <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
 
                                 <t t-foreach="lines" t-as="line">
+                                    <t t-if="not line.product_id.is_tip_product">
+                                        
+                                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                        <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
 
-                                    <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>
-                                    <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>
-
-                                    <tr style="background-color: #ffffff;">
-                                        <t t-if="line.display_type == 'product'">
-                                            <td name="td_product" style="padding:5px;"><span t-field="line.product_id"/></td>
-                                            <td name="td_name" style="padding:5px;"><span t-field="line.name"/></td>
-                                            <td name="td_quantity" style="padding:5px;" class="text-end">
-                                                <span t-if="line.quantity.is_integer()" t-esc="int(line.quantity)"/>
-                                                <span t-if="not line.quantity.is_integer()" t-esc="line.quantity"/>
-                                                <span t-field="line.product_uom_id"/>
-                                            </td>
-                                            <td name="td_priceunit" style="padding:5px;" class="text-end">
-                                                <span t-field="line.price_unit"/>
-                                            </td>
-                                            <td t-if="not line.is_downpayment" style="padding:5px;" name="td_subtotal" class="text-end o_price_total">
-                                                <span t-field="line.price_subtotal"/>
-                                            </td>
-                                        </t>
-                                        <t t-elif="line.display_type == 'line_section'">
-                                            <td name="td_section_line" style="padding:5px;" colspan="99">
-                                                <span t-field="line.name"/>
-                                            </td>
-                                            <t t-set="current_section" t-value="line"/>
-                                            <t t-set="current_subtotal" t-value="0"/>
-                                        </t>
-                                        <t t-elif="line.display_type == 'line_note'">
-                                            <td name="td_note_line" style="padding:5px;" colspan="99">
-                                                <span t-field="line.name"/>
-                                            </td>
-                                        </t>
-                                    </tr>
-
-                                    <!-- <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section') and not line.is_downpayment">
-                                        <tr class="is-subtotal text-end">
-                                            <td name="td_section_subtotal" colspan="99">
-                                                <strong class="mr16">Subtotal</strong>
-                                                <span t-out="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
-                                            </td>
+                                        <tr style="background-color: #ffffff;">
+                                            <t t-if="line.display_type == 'product'">
+                                                <td name="td_product" style="padding:5px;"><span t-field="line.product_id"/></td>
+                                                <td name="td_name" style="padding:5px;"><span t-field="line.name"/></td>
+                                                <td name="td_quantity" style="padding:5px;" class="text-end">
+                                                    <span t-if="line.quantity.is_integer()" t-esc="int(line.quantity)"/>
+                                                    <span t-if="not line.quantity.is_integer()" t-esc="line.quantity"/>
+                                                    <span t-field="line.product_uom_id"/>
+                                                </td>
+                                                <td name="td_priceunit" style="padding:5px;" class="text-end">
+                                                    <span t-field="line.price_unit"/>
+                                                </td>
+                                                <td t-if="not line.is_downpayment" style="padding:5px;" name="td_subtotal" class="text-end o_price_total">
+                                                    <span t-field="line.price_subtotal"/>
+                                                </td>
+                                            </t>
+                                            <t t-elif="line.display_type == 'line_section'">
+                                                <td name="td_section_line" style="padding:5px;" colspan="99">
+                                                    <span t-field="line.name"/>
+                                                </td>
+                                                <t t-set="current_section" t-value="line"/>
+                                                <t t-set="current_subtotal" t-value="0"/>
+                                            </t>
+                                            <t t-elif="line.display_type == 'line_note'">
+                                                <td name="td_note_line" style="padding:5px;" colspan="99">
+                                                    <span t-field="line.name"/>
+                                                </td>
+                                            </t>
                                         </tr>
-                                    </t> -->
+
+                                        <!-- <t t-if="current_section and (line_last or doc.order_line[line_index+1].display_type == 'line_section') and not line.is_downpayment">
+                                            <tr class="is-subtotal text-end">
+                                                <td name="td_section_subtotal" colspan="99">
+                                                    <strong class="mr16">Subtotal</strong>
+                                                    <span t-out="current_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.pricelist_id.currency_id}"/>
+                                                </td>
+                                            </tr>
+                                        </t> -->
+                                    </t>
                                 </t>
                             </tbody>
                         </table>
@@ -208,6 +210,17 @@
                                     <!--Tax totals-->
                                     <t t-set="tax_totals" t-value="o.tax_totals"/>
                                     <t t-call="account.document_tax_totals"/>
+                                    
+                                    <t t-if="tax_totals['tip_value']">
+                                        <tr style="height: 50px !important;"/>
+
+                                        <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
+                                            <td><strong>Montant du Pourboire</strong></td>
+                                            <td  class="text-end">
+                                                <span t-esc="tax_totals['formatted_tip_value']" />
+                                            </td>
+                                        </tr>
+                                    </t>
 
                                     <!--Payments-->
                                     <t t-if="print_with_payments">
@@ -230,10 +243,10 @@
                                                         <span t-field="o.amount_residual"/>
                                                     </td>
                                                 </tr>
-                                                </t>
                                             </t>
                                         </t>
-                                    </table>
+                                    </t>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -405,4 +418,15 @@
                 t-call="bfal_workflow.report_invoice_document_bfal" t-lang="lang"/>
         </xpath>
     </template>
+
+    <!-- <template id="document_tax_totals" inherit_id="account.document_tax_totals">
+        <xpath expr="//tr" position="before">
+            <tr t-if="tax_totals.get('formatted_tip_value')">
+                <td><strong>Montant du Pourboire</strong></td>
+                <td  class="text-end">
+                    <span t-esc="tax_totals['formatted_tip_value']" />
+                </td>
+            </tr>
+        </xpath>
+    </template> -->
 </odoo>
