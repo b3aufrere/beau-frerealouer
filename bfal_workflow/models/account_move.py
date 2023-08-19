@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from odoo.tools.misc import formatLang
 
+from logging import warning as w
 
 class AccountMove(models.Model):
     _inherit = "account.move"
@@ -86,6 +87,7 @@ class AccountMove(models.Model):
 
     @api.model
     def _compute_tax_totals(self):
+        w(">>> _compute_tax_totals")
         rec = super()._compute_tax_totals()
         for res in self:
             if res.tax_totals is not None:
@@ -97,11 +99,17 @@ class AccountMove(models.Model):
                     'formatted_amount_untaxed': formatLang(self.env, vals['amount_untaxed'] - res.tip_value, currency_obj=res.currency_id),
                 })
                 for data in vals.get('subtotals'):
+                    w(">>> _compute_tax_totals 2")
                     if data.get('name') in ['Untaxed Amount', 'Montant HT']:
+                        w(">>> _compute_tax_totals 3")
                         # data['amount'] -= res.tip_value
                         # value = data['amount']
                         # data['formatted_amount'] = formatLang(self.env, value, currency_obj=res.currency_id),
+
+                        w(f"amount_untaxed >>> {res.amount_untaxed}")
+                        w(f"tip_value >>> {res.tip_value}")
+                        w(f"amount_untaxed_display >>> {res.amount_untaxed_display}")
                 
-                        data['formatted_amount'] = formatLang(self.env, res.amount_untaxed_display, currency_obj=res.currency_id),
+                        data['formatted_amount'] = formatLang(self.env, res.amount_untaxed - res.tip_value, currency_obj=res.currency_id),
                 res.tax_totals = vals
         return rec
