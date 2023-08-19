@@ -97,7 +97,7 @@ class AccountMove(models.Model):
                     'formatted_amount_untaxed': formatLang(self.env, vals['amount_untaxed'] - res.tip_value, currency_obj=res.currency_id),
                 })
                 for data in vals.get('subtotals'):
-                    if data.get('name') == 'Untaxed Amount':
+                    if data.get('name') in ['Untaxed Amount', 'Montant HT']:
                         data['amount'] -= res.tip_value
                         value = data['amount']
                         data['formatted_amount'] = formatLang(self.env, value, currency_obj=res.currency_id),
