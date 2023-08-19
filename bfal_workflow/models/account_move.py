@@ -84,6 +84,7 @@ class AccountMove(models.Model):
                 move.amount_total) if move.move_type == 'entry' else -(sign * move.amount_total)
             move.tip_value = tip_value
             move.amount_untaxed_display = sign * total_untaxed_currency - tip_value
+            move.amount_untaxed = move.amount_untaxed_display
 
     @api.model
     def _compute_tax_totals(self):
@@ -98,18 +99,18 @@ class AccountMove(models.Model):
                     'formatted_tip_value': formatLang(self.env, res.tip_value, currency_obj=res.currency_id),
                     'formatted_amount_untaxed': formatLang(self.env, vals['amount_untaxed'] - res.tip_value, currency_obj=res.currency_id),
                 })
-                for data in vals.get('subtotals'):
-                    w(">>> _compute_tax_totals 2")
-                    if data.get('name') in ['Untaxed Amount', 'Montant HT']:
-                        w(">>> _compute_tax_totals 3")
-                        # data['amount'] -= res.tip_value
-                        # value = data['amount']
-                        # data['formatted_amount'] = formatLang(self.env, value, currency_obj=res.currency_id),
+                # for data in vals.get('subtotals'):
+                #     w(">>> _compute_tax_totals 2")
+                #     if data.get('name') in ['Untaxed Amount', 'Montant HT']:
+                #         w(">>> _compute_tax_totals 3")
+                #         # data['amount'] -= res.tip_value
+                #         # value = data['amount']
+                #         # data['formatted_amount'] = formatLang(self.env, value, currency_obj=res.currency_id),
 
-                        w(f"amount_untaxed >>> {res.amount_untaxed}")
-                        w(f"tip_value >>> {res.tip_value}")
-                        w(f"amount_untaxed_display >>> {res.amount_untaxed_display}")
+                #         w(f"amount_untaxed >>> {res.amount_untaxed}")
+                #         w(f"tip_value >>> {res.tip_value}")
+                #         w(f"amount_untaxed_display >>> {res.amount_untaxed_display}")
                 
-                        data['formatted_amount'] = formatLang(self.env, res.amount_untaxed - res.tip_value, currency_obj=res.currency_id),
+                #         data['formatted_amount'] = formatLang(self.env, res.amount_untaxed_display, currency_obj=res.currency_id),
                 res.tax_totals = vals
         return rec
