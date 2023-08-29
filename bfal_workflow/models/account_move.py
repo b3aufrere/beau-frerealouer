@@ -116,3 +116,6 @@ class AccountMove(models.Model):
                         # data['formatted_amount'] = formatLang(self.env, res.amount_untaxed_display, currency_obj=res.currency_id),
                 res.tax_totals = vals
         return rec
+    
+
+    
