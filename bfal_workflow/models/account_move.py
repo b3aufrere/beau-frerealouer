@@ -84,7 +84,7 @@ class AccountMove(models.Model):
                 move.amount_total) if move.move_type == 'entry' else -(sign * move.amount_total)
             move.tip_value = tip_value
             move.amount_untaxed_display = sign * total_untaxed_currency - tip_value
-            move.amount_untaxed = move.amount_untaxed_display
+            # move.amount_untaxed = move.amount_untaxed_display
 
     @api.model
     def _compute_tax_totals(self):
