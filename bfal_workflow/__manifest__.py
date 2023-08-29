@@ -18,7 +18,7 @@
         'sale_timesheet',
         'industry_fsm',
         'project_enterprise',
-        # 'industry_fsm_sale',
+        'industry_fsm_sale',
         'industry_fsm_report',
         'helpdesk',
         'mail',
