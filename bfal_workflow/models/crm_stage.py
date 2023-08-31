@@ -15,6 +15,7 @@ class CrmStage(models.Model):
     role = fields.Selection(
         [
             ('new', 'Nouveau'),
+            ('qualified', 'Qualifié'),
             ('to_assign', 'À assigner'),
             ('assigned', 'Assigné'),
             ('in_progress', 'En cours'),
