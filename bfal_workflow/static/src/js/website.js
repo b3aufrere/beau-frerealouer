@@ -20,7 +20,7 @@ odoo.define('bfal_workflow.website', function (require) {
             location.reload();
         },
 
-        onchangeTipSelecte(ev) {
+        _onchangeTipSelecte : function(ev) {
             if ($("#tip_selecte").val()  != "enter_amount") {
                 $("#tip_amount").hide();
             }
