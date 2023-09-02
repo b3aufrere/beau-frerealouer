@@ -18,6 +18,15 @@ odoo.define('bfal_workflow.website', function (require) {
                 inv_id: inv_id 
             });
             location.reload();
+        },
+
+        onchangeTipSelecte(ev) {
+            if ($("#tip_selecte").val()  != "enter_amount") {
+                $("#tip_amount").hide();
+            }
+            else {
+                $("#tip_amount").show();
+            } 
         }
     });
 
