@@ -14,6 +14,10 @@ odoo.define('bfal_workflow.website', function (require) {
             var tip_amount = $('#tip_selecte').val()
             var inv_id = $('#inv_id').val()
 
+            if (tip_amount == "enter_amount"){
+                tip_amount = $('#tip_amount').val()
+            }
+
             const token = await ajax.jsonRpc('/invoice/tip', 'call', {
                 tip_amount: tip_amount,
                 inv_id: inv_id 
