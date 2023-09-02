@@ -11,14 +11,12 @@ odoo.define('bfal_workflow.website', function (require) {
             'change #tip_selecte': '_onchangeTipSelecte',
         },
         _on_approve_btn : async function(ev) {
-            var tip_amount = $('#tip_selecte').val()
+            var tip_percent = $('#tip_selecte').val()
             var inv_id = $('#inv_id').val()
-
-            if (tip_amount == "enter_amount"){
-                tip_amount = $('#tip_amount').val()
-            }
+            var tip_amount = $('#tip_amount').val()
 
             const token = await ajax.jsonRpc('/invoice/tip', 'call', {
+                tip_percent: tip_percent,
                 tip_amount: tip_amount,
                 inv_id: inv_id 
             });
@@ -26,8 +24,9 @@ odoo.define('bfal_workflow.website', function (require) {
         },
 
         _onchangeTipSelecte : function(ev) {
-            if ($("#tip_selecte").val()  != "enter_amount") {
+            if ($("#tip_selecte").val()  != "-1") {
                 $("#tip_amount").hide();
+                $("#tip_amount").reset();
             }
             else {
                 $("#tip_amount").show();

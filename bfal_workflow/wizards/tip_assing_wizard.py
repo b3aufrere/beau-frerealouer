@@ -8,6 +8,7 @@ class TipAssignAmount(models.TransientModel):
     _description = 'Tip Amount'
     
     tip_amount = fields.Float(string="Pourcentage de pourboire (%)")
+    tip_value = fields.Float(string="Montant de pourboire")
    
     def action_assign_tip(self):
         move_obj = self.env['account.move']
@@ -17,7 +18,7 @@ class TipAssignAmount(models.TransientModel):
         if self.env.context.get('active_id'):
             move_id = move_obj.browse(self.env.context.get('active_id'))
             lines = move_id.invoice_line_ids.filtered(lambda line : line.product_id.id ==  tip_product_id.id)
-            tip_value = move_id.amount_untaxed * (float(self.tip_amount) / 100)
+            tip_value = move_id.amount_untaxed * (float(self.tip_amount) / 100) if float(self.tip_amount) != -1 else self.tip_value
             if lines:
                 lines.write({
                     'quantity': 1,

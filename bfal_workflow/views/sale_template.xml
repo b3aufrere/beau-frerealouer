@@ -27,7 +27,7 @@
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
                                 <option value="15">15%</option>
-                                <option value="enter_amount">Saisir montant</option>
+                                <option value="-1">Saisir montant</option>
                             </select>
                             <input type="text" name="tip_amount" id="tip_amount" style="width: 100%; margin-top: 10px; display: none;"/>
                             <input type="hidden" id="inv_id" t-att-value="invoice.id" />
