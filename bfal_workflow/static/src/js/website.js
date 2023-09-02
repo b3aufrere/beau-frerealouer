@@ -26,7 +26,7 @@ odoo.define('bfal_workflow.website', function (require) {
         _onchangeTipSelecte : function(ev) {
             if ($("#tip_selecte").val()  != "-1") {
                 $("#tip_amount").hide();
-                $("#tip_amount").value = "";
+                $("#tip_amount").val('');
             }
             else {
                 $("#tip_amount").show();
