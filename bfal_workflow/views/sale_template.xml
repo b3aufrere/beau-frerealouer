@@ -22,7 +22,7 @@
                         </div>
                         <div class="modal-body">
                             Pourboire
-                            <select id="tip_selecte" class="form-control" t-on-change="_onchangeTipSelecte">
+                            <select id="tip_selecte" class="form-control">
                                 <option value="0">0%</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>

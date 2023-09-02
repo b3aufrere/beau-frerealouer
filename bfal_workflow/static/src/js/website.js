@@ -8,6 +8,7 @@ odoo.define('bfal_workflow.website', function (require) {
         selector: '#approve_with',
         events: {
             'click #approve_btn': '_on_approve_btn',
+            'change #tip_selecte': '_onchangeTipSelecte',
         },
         _on_approve_btn : async function(ev) {
             var tip_amount = $('#tip_selecte').val()
