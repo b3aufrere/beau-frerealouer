@@ -10,35 +10,39 @@
         </record>
 
         <record id="bfal_product_template_branch_manager_rule" model="ir.rule">
-        <field name="name">Product Template Entreprise Manager</field>
-        <field name="model_id" ref="model_product_template"/>
-        <field name="global" eval="True"/>
-        <field name="domain_force">[(1,'=',1)]</field>
-        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
-    </record>
+            <field name="name">Product Template Entreprise Manager</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+        </record>
 
-    <record id="bfal_product_template_branch_rule" model="ir.rule">
-        <field name="name">Product Template Entreprise</field>
-        <field name="model_id" ref="model_product_template"/>
-        <field name="global" eval="True"/>
-        <field name="domain_force">['|',('division_id','=',False),('division_id','=',user.branch_id.division_id.id)]</field>
-        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
-    </record>
+        <record id="bfal_product_template_branch_rule" model="ir.rule">
+            <field name="name">Product Template Entreprise</field>
+            <field name="model_id" ref="model_product_template"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('division_id','=',False),('division_id','=',user.branch_id.division_id.id)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+        </record>
 
-    <record id="bfal_product_product_branch_manager_rule" model="ir.rule">
-        <field name="name">Product Product Entreprise Manager</field>
-        <field name="model_id" ref="product.model_product_product"/>
-        <field name="global" eval="True"/>
-        <field name="domain_force">[(1,'=',1)]</field>
-        <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
-    </record>
-    
-    <record id="bfal_product_product_branch_rule" model="ir.rule">
-        <field name="name">Product Product Entreprise</field>
-        <field name="model_id" ref="product.model_product_product"/>
-        <field name="global" eval="True"/>
-        <field name="domain_force">['|',('product_tmpl_id.division_id','=',False),('product_tmpl_id.division_id','=',user.branch_id.division_id.id)]</field>
-        <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
-    </record>
+        <record id="bfal_product_product_branch_manager_rule" model="ir.rule">
+            <field name="name">Product Product Entreprise Manager</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">[(1,'=',1)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user_manager'))]"/>
+        </record>
+        
+        <record id="bfal_product_product_branch_rule" model="ir.rule">
+            <field name="name">Product Product Entreprise</field>
+            <field name="model_id" ref="product.model_product_product"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('product_tmpl_id.division_id','=',False),('product_tmpl_id.division_id','=',user.branch_id.division_id.id)]</field>
+            <field name="groups" eval="[(4, ref('branch.group_branch_user'))]"/>
+        </record>
+
+        <record id="account.account_invoice_rule_portal" model="ir.rule">
+            <field name="domain_force">[('state', '!=', 'cancel'), ('move_type', 'in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')), ('message_partner_ids','child_of',[user.commercial_partner_id.id])]</field>
+        </record>
     </data>
 </odoo>
