@@ -420,7 +420,7 @@
     </template>
 
     <template id="document_tax_totals" inherit_id="account.document_tax_totals">
-        <xpath expr="//tr" position="after">
+        <xpath expr="//tr[@class='border-black o_total']" position="before">
             <t t-if="tax_totals['tip_value']">
                 <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
                     <td><strong>Montant du Pourboire</strong></td>
