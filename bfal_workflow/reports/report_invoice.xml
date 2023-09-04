@@ -420,13 +420,15 @@
     </template>
 
     <template id="document_tax_totals" inherit_id="account.document_tax_totals">
-        <xpath expr="//t" position="before">
-            <tr t-if="tax_totals.get('formatted_tip_value')">
-                <td><strong>Montant du Pourboire</strong></td>
-                <td  class="text-end">
-                    <span t-esc="tax_totals['formatted_tip_value']" />
-                </td>
-            </tr>
+        <xpath expr="//tr" position="after">
+            <t t-if="tax_totals['tip_value']">
+                <tr t-if="tax_totals.get('formatted_tip_value')" class="border-black">
+                    <td><strong>Montant du Pourboire</strong></td>
+                    <td  class="text-end">
+                        <span t-esc="tax_totals['formatted_tip_value']" />
+                    </td>
+                </tr>
+            </t>
         </xpath>
     </template>
 </odoo>
