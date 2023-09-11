@@ -76,6 +76,7 @@ class ProjectTask(models.Model):
 
                 if project and project.task_ids:
                     w(">> _compute_kanban_state_label 3")
+                    # ALL CANCELLED
                     if all(t.stage_id.name == 'Annulée' for t in project.task_ids):
                         stage_cancelled_id = self.env['project.project.stage'].search([('name', '=', 'Annulé')])
                         if stage_cancelled_id:
@@ -83,23 +84,35 @@ class ProjectTask(models.Model):
                         else:
                             raise UserError("Il faut ajouté une étape 'Annulé' a ce projet")
                     else:  
+                        # ALL DONE
                         w(">> _compute_kanban_state_label 4")
-                        if all(t.stage_id.name == 'Nouveau' for t in project.task_ids):
+                        if all(t.stage_id.name == 'Fait' for t in project.task_ids):
                             w(">> _compute_kanban_state_label 5")
-                            stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Nouveau')])
+                            stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Fait')])
                             if stage_new_id:
                                 project.stage_id = stage_new_id.id
                             else:
-                                raise UserError("Il faut ajouté une étape 'Nouveau' a ce projet")
+                                raise UserError("Il faut ajouté une étape 'Fait' a ce projet")
                         else:
+                            # ALL NEW   
                             w(">> _compute_kanban_state_label 6")
-                            if all(t.stage_id.name in ('Nouveau', 'Planifié') for t in project.task_ids):
+                            if all(t.stage_id.name == 'Nouveau' for t in project.task_ids):
                                 w(">> _compute_kanban_state_label 7")
-                                stage_planned_id = self.env['project.project.stage'].search([('name', '=', 'Planifié')])
-                                if stage_planned_id:
-                                    project.stage_id = stage_planned_id.id
+                                stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Nouveau')])
+                                if stage_new_id:
+                                    project.stage_id = stage_new_id.id
                                 else:
-                                    raise UserError("Il faut ajouté une étape 'Planifié' a ce projet") 
+                                    raise UserError("Il faut ajouté une étape 'Nouveau' a ce projet")
+                            else:
+                                # ONLY NEW AND PLANNED
+                                w(">> _compute_kanban_state_label 8")
+                                if all(t.stage_id.name in ('Nouveau', 'Planifié') for t in project.task_ids):
+                                    w(">> _compute_kanban_state_label 9")
+                                    stage_planned_id = self.env['project.project.stage'].search([('name', '=', 'Planifié')])
+                                    if stage_planned_id:
+                                        project.stage_id = stage_planned_id.id
+                                    else:
+                                        raise UserError("Il faut ajouté une étape 'Planifié' a ce projet") 
 
 
             else:
