@@ -41,6 +41,7 @@ class ProjectTask(models.Model):
 
     @api.depends('stage_id', 'kanban_state')
     def _compute_kanban_state_label(self):
+        w(">> _compute_kanban_state_label 1")
         """
             colors :
                 0  : none 
@@ -55,6 +56,7 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
+                w(">> _compute_kanban_state_label 2")
                 if task.stage_id.name == 'Planifié':
                     task.color = 4
                 elif task.stage_id.name == 'En cours':
@@ -73,6 +75,7 @@ class ProjectTask(models.Model):
                 project = task.display_project_id if task.display_project_id else False
 
                 if project and project.task_ids:
+                    w(">> _compute_kanban_state_label 3")
                     if all(t.stage_id.name == 'Nouveau' for t in project.task_ids):
                         stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Nouveau')])
                         if stage_new_id:
@@ -80,7 +83,9 @@ class ProjectTask(models.Model):
                         else:
                             raise UserError("Il faut ajouté une étape 'Nouveau' a ce projet")
                     else:
+                        w(">> _compute_kanban_state_label 4")
                         if all(t.stage_id.name in ('Nouveau', 'Planifié') for t in project.task_ids):
+                            w(">> _compute_kanban_state_label 5")
                             stage_planned_id = self.env['project.project.stage'].search([('name', '=', 'Planifié')])
                             if stage_planned_id:
                                 project.stage_id = stage_planned_id.id
