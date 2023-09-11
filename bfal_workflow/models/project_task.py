@@ -67,6 +67,27 @@ class ProjectTask(models.Model):
                     task.color = 5
                 else:
                     task.color = 0
+                
+                project = False
+                project = task.project_id if task.project_id else False
+                project = task.display_project_id if task.display_project_id else False
+
+                if project and project.task_ids:
+                    if all(t.stage_id.name == 'Nouveau' for t in project.task_ids):
+                        stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Nouveau')])
+                        if stage_new_id:
+                            project.stage_id = stage_new_id.id
+                        else:
+                            raise UserError("Il faut ajouté une étape 'Nouveau' a ce projet")
+                    else:
+                        if all(t.stage_id.name in ('Nouveau', 'Planifié') for t in project.task_ids):
+                            stage_planned_id = self.env['project.project.stage'].search([('name', '=', 'Planifié')])
+                            if stage_planned_id:
+                                project.stage_id = stage_planned_id.id
+                            else:
+                                raise UserError("Il faut ajouté une étape 'Planifié' a ce projet") 
+
+
             else:
                 task.color = 0
         
