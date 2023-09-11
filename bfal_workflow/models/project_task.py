@@ -88,9 +88,9 @@ class ProjectTask(models.Model):
                         w(">> _compute_kanban_state_label 4")
                         if all(t.stage_id.name == 'Fait' for t in project.task_ids):
                             w(">> _compute_kanban_state_label 5")
-                            stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Fait')])
-                            if stage_new_id:
-                                project.stage_id = stage_new_id.id
+                            stage_done_id = self.env['project.project.stage'].search([('name', '=', 'Fait')])
+                            if stage_done_id:
+                                project.stage_id = stage_done_id.id
                             else:
                                 raise UserError("Il faut ajouté une étape 'Fait' a ce projet")
                         else:
@@ -113,6 +113,16 @@ class ProjectTask(models.Model):
                                         project.stage_id = stage_planned_id.id
                                     else:
                                         raise UserError("Il faut ajouté une étape 'Planifié' a ce projet") 
+                                else:
+                                    # ONLY NEW AND PLANNED AND IN PROGRESS
+                                    w(">> _compute_kanban_state_label 10")
+                                    if all(t.stage_id.name in ('Nouveau', 'Planifié', 'En cours') for t in project.task_ids):
+                                        w(">> _compute_kanban_state_label 11")
+                                        stage_in_progress_id = self.env['project.project.stage'].search([('name', '=', 'En cours')])
+                                        if stage_in_progress_id:
+                                            project.stage_id = stage_in_progress_id.id
+                                        else:
+                                            raise UserError("Il faut ajouté une étape 'En cours' a ce projet") 
 
 
             else:
