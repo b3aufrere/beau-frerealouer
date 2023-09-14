@@ -260,7 +260,9 @@
                         class="oe_highlight" 
                         title="Accepter l'opportunité" 
                         confirm="Si vous accepter, vous devez créer un devis"
-                        attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+                        attrs="{'invisible': ['|', ('type', '=', 'lead'), '|', ('is_accepted', '=', True), ('active', '=', False)]}"/>
+
+                        <!-- attrs="{'invisible': ['|', ('is_decision_stage', '=', False), '|', ('type', '=', 'lead'), '|', ('is_worker', '=', False), '|', ('is_accepted', '=', True), ('active', '=', False)]}" -->
 
                 <button string="Non accepté" 
                         name="action_not_accept_lead" 
