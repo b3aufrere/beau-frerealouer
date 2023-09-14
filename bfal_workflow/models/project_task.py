@@ -41,6 +41,7 @@ class ProjectTask(models.Model):
 
     @api.depends('stage_id', 'kanban_state')
     def _compute_kanban_state_label(self):
+        w(">> _compute_kanban_state_label 1")
         """
             colors :
                 0  : none 
@@ -55,6 +56,7 @@ class ProjectTask(models.Model):
 
         for task in self:
             if task.stage_id:
+                w(">> _compute_kanban_state_label 2")
                 if task.stage_id.name == 'Planifié':
                     task.color = 4
                 elif task.stage_id.name == 'En cours':
@@ -67,6 +69,62 @@ class ProjectTask(models.Model):
                     task.color = 5
                 else:
                     task.color = 0
+                
+                # project = False
+                # project = task.project_id if task.project_id else False
+                # project = task.display_project_id if task.display_project_id else False
+
+                # if project and project.task_ids:
+                #     w(">> _compute_kanban_state_label 3")
+                #     # ALL CANCELLED
+                #     if all(t.stage_id.name == 'Annulée' for t in project.task_ids):
+                #         stage_cancelled_id = self.env['project.project.stage'].search([('name', '=', 'Annulé')])
+                #         if stage_cancelled_id:
+                #             project.stage_id = stage_cancelled_id.id
+                #         else:
+                #             raise UserError("Il faut ajouté une étape 'Annulé' a ce projet")
+                #     else:  
+                #         # ALL DONE
+                #         w(">> _compute_kanban_state_label 4")
+                #         if all(t.stage_id.name == 'Fait' for t in project.task_ids):
+                #             w(">> _compute_kanban_state_label 5")
+                #             stage_done_id = self.env['project.project.stage'].search([('name', '=', 'Fait')])
+                #             if stage_done_id:
+                #                 project.stage_id = stage_done_id.id
+                #             else:
+                #                 raise UserError("Il faut ajouté une étape 'Fait' a ce projet")
+                #         else:
+                #             # ALL NEW   
+                #             w(">> _compute_kanban_state_label 6")
+                #             if all(t.stage_id.name == 'Nouveau' for t in project.task_ids):
+                #                 w(">> _compute_kanban_state_label 7")
+                #                 stage_new_id = self.env['project.project.stage'].search([('name', '=', 'Nouveau')])
+                #                 if stage_new_id:
+                #                     project.stage_id = stage_new_id.id
+                #                 else:
+                #                     raise UserError("Il faut ajouté une étape 'Nouveau' a ce projet")
+                #             else:
+                #                 # ONLY NEW AND PLANNED
+                #                 w(">> _compute_kanban_state_label 8")
+                #                 if all(t.stage_id.name in ('Nouveau', 'Planifié') for t in project.task_ids):
+                #                     w(">> _compute_kanban_state_label 9")
+                #                     stage_planned_id = self.env['project.project.stage'].search([('name', '=', 'Planifié')])
+                #                     if stage_planned_id:
+                #                         project.stage_id = stage_planned_id.id
+                #                     else:
+                #                         raise UserError("Il faut ajouté une étape 'Planifié' a ce projet") 
+                #                 else:
+                #                     # ONLY NEW AND PLANNED AND IN PROGRESS
+                #                     w(">> _compute_kanban_state_label 10")
+                #                     if all(t.stage_id.name in ('Nouveau', 'Planifié', 'En cours') for t in project.task_ids):
+                #                         w(">> _compute_kanban_state_label 11")
+                #                         stage_in_progress_id = self.env['project.project.stage'].search([('name', '=', 'En cours')])
+                #                         if stage_in_progress_id:
+                #                             project.stage_id = stage_in_progress_id.id
+                #                         else:
+                #                             raise UserError("Il faut ajouté une étape 'En cours' a ce projet") 
+
+
             else:
                 task.color = 0
         
