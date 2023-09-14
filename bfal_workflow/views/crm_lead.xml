@@ -254,7 +254,7 @@
                 <field name="is_worker" invisible="1"/>
                 <field name="is_accepted" invisible="1"/>
                 <field name="is_decision_stage" invisible="1"/>
-                <button string="Accepté" 
+                <button string="Faire une soumission" 
                         name="action_accept_lead" 
                         type="object" 
                         class="oe_highlight" 
