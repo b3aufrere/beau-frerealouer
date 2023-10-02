@@ -28,7 +28,6 @@
         'product',
         'twilio_sms_gateway_gsc',
         'bi_crm_task',
-        'sh_create_expense_from_task',
         'documents_project',
         'task_calendar_synch',
         'account'
